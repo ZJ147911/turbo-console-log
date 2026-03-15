@@ -1,25 +1,26 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: 功能请求
+feature_request.md
+about: 为这个项目提出一个想法
 title: ''
 labels: discussion, feature
 assignees: Chakroun-Anas
 ---
 
-**Is your feature request related to a problem?**
-A clear and concise description of what the problem is. Ex: "I'm frustrated when [...]"
+**您的功能请求是否与问题相关？**
+清晰简洁地描述问题是什么。例如："当 [...] 时我感到沮丧"
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**描述您想要的解决方案**
+清晰简洁地描述您希望发生什么。
 
-**Describe alternatives you've considered** (Optional)
-A clear and concise description of any alternative solutions or features you've considered.
+**描述您考虑过的替代方案**（可选）
+清晰简洁地描述您考虑过的任何替代解决方案或功能。
 
-**Context:**
+**上下文：**
 
-- OS name and version: [e.g., Windows 11]
-- VSCode version: [e.g., v1.96.2]
-- Extension version: [e.g., v2.10.0]
+- 操作系统名称和版本：[例如，Windows 11]
+- VSCode 版本：[例如，v1.96.2]
+- 扩展版本：[例如，v2.10.0]
 
-**Additional context** (Optional)
-Add any other context, screenshots, or examples about the feature request here.
+**其他上下文**（可选）
+在此处添加有关功能请求的任何其他上下文、屏幕截图或示例。

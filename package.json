@@ -82,22 +82,14 @@
     "@types/mocha": "^8.0.0",
     "@types/node": "^24.0.3",
     "@types/vscode": "^1.94.0",
-    "@typescript-eslint/eslint-plugin": "^8.32.1",
-    "@typescript-eslint/parser": "^8.32.1",
-    "@vscode/test-electron": "^2.4.1",
     "chai": "^4.3.7",
-    "chalk": "^4.1.0",
     "esbuild": "^0.25.4",
     "eslint": "^9.27.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^3.1.4",
     "glob": "^7.1.6",
     "jest": "^30.0.0",
     "mocha": "^11.2.2",
     "oxfmt": "^0.40.0",
     "ts-jest": "^29.4.0",
-    "ts-node": "^10.9.1",
-    "typescript-eslint": "^8.32.1",
     "vscode-test": "^1.6.1"
   },
   "contributes": {
@@ -188,11 +180,6 @@
             "telemetry",
             "usesOnlineServices"
           ]
-        },
-        "turboConsoleLog.dynamicFreemiumPanel": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable dynamic content fetching for the freemium panel. Recommended to keep enabled for the latest features and updates."
         }
       }
     },
@@ -244,38 +231,6 @@
       {
         "command": "turboConsoleLog.correctAllLogMessages",
         "title": "Turbo Console Log: Correct Turbo Log Messages"
-      },
-      {
-        "command": "turboConsoleLog.activateTurboProBundle",
-        "title": "Turbo Console Log: Activate Turbo Pro Bundle"
-      },
-      {
-        "command": "turboConsoleLogPro.hideLogs",
-        "title": "Turbo Console Log Pro: Hide Logs"
-      },
-      {
-        "command": "turboConsoleLogPro.showLogs",
-        "title": "Turbo Console Log Pro: Show Logs"
-      },
-      {
-        "command": "turboConsoleLogPro.logCleanupFromConfig",
-        "title": "Turbo Console Log Pro: Delete Logs From Config"
-      },
-      {
-        "command": "turboConsoleLogPro.commentLogsFromConfig",
-        "title": "Turbo Console Log Pro: Comment Logs From Config"
-      },
-      {
-        "command": "turboConsoleLogPro.uncommentLogsFromConfig",
-        "title": "Turbo Console Log Pro: Uncomment Logs From Config"
-      },
-      {
-        "command": "turboConsoleLogPro.toggleExpand",
-        "title": "Turbo Console Log Pro: Toggle Expand"
-      },
-      {
-        "command": "turboConsoleLogPro.searchLogs",
-        "title": "Turbo Console Log Pro: Search Logs"
       }
     ],
     "keybindings": [
@@ -350,102 +305,8 @@
         "key": "alt+shift+x",
         "mac": "alt+shift+x",
         "when": "editorTextFocus"
-      },
-      {
-        "command": "turboConsoleLog.activateTurboProBundle",
-        "key": "alt+shift+p",
-        "mac": "alt+shift+p",
-        "when": "editorTextFocus"
       }
-    ],
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "turboConsoleLogProPanelContainer",
-          "title": "TCL",
-          "icon": "images/icon.png"
-        }
-      ]
-    },
-    "views": {
-      "turboConsoleLogProPanelContainer": [
-        {
-          "id": "turboConsoleLogProView",
-          "name": "PRO Panel",
-          "icon": "images/icon.png",
-          "when": "turboConsoleLog:isInitialized && turboConsoleLog:isPro"
-        },
-        {
-          "id": "turboConsoleLogLogFiltersView",
-          "name": "Log Filters",
-          "icon": "images/icon.png",
-          "when": "turboConsoleLog:isInitialized && turboConsoleLog:isPro"
-        },
-        {
-          "id": "turboConsoleLogLogCleanupConfigView",
-          "name": "Log Cleanup Config",
-          "icon": "images/icon.png",
-          "when": "turboConsoleLog:isInitialized && turboConsoleLog:isPro"
-        },
-        {
-          "id": "turboConsoleLogFreemiumLauncher",
-          "name": "Become Pro",
-          "icon": "images/icon.png",
-          "when": "turboConsoleLog:isInitialized && !turboConsoleLog:isPro && !turboConsoleLog:isRepairMode && turboConsoleLog:isLauncherMode"
-        },
-        {
-          "id": "turboConsoleLogFreemiumPanel",
-          "name": "Turbo Console Log",
-          "icon": "images/icon.png",
-          "type": "webview",
-          "when": "turboConsoleLog:isInitialized && !turboConsoleLog:isPro && !turboConsoleLog:isRepairMode && !turboConsoleLog:isLauncherMode"
-        },
-        {
-          "id": "turboConsoleLogBundleRepairPanel",
-          "name": "Bundle Repair Mode",
-          "icon": "images/icon.png",
-          "type": "webview",
-          "when": "turboConsoleLog:isInitialized && turboConsoleLog:isRepairMode"
-        }
-      ]
-    },
-    "menus": {
-      "view/title": [
-        {
-          "command": "turboConsoleLogPro.searchLogs",
-          "when": "view == turboConsoleLogProView",
-          "group": "navigation",
-          "icon": "$(search)"
-        }
-      ],
-      "view/item/context": [
-        {
-          "command": "turboConsoleLogPro.hideLogs",
-          "when": "viewItem == fileLogsNode",
-          "group": "turbo@0"
-        },
-        {
-          "command": "turboConsoleLogPro.showLogs",
-          "when": "viewItem == hiddenFileLogsNode",
-          "group": "turbo@0"
-        },
-        {
-          "command": "turboConsoleLogPro.commentLogsFromConfig",
-          "when": "viewItem == fileLogsNode",
-          "group": "turbo@1"
-        },
-        {
-          "command": "turboConsoleLogPro.uncommentLogsFromConfig",
-          "when": "viewItem == fileLogsNode",
-          "group": "turbo@2"
-        },
-        {
-          "command": "turboConsoleLogPro.logCleanupFromConfig",
-          "when": "viewItem == fileLogsNode",
-          "group": "turbo@3"
-        }
-      ]
-    }
+    ]
   },
   "activationEvents": [
     "onLanguage:javascript",

@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-import { readFromGlobalState, writeToGlobalState, isProUser } from '@/helpers';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers';
 import {
   trackLogInsertions,
   clearFilesWithLogsInSession,

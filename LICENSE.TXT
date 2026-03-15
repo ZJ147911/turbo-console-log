@@ -1,58 +1,48 @@
-Turbo Unicorn Custom License  
+Turbo Unicorn Custom License
 (Open-Source Core + Proprietary Asset Protection)
 
 Copyright (c) 2018–2025 Turbo Unicorn
 
 ---
-## 1. Open Source Core
+## 1. 开源核心
 
-The source code located in the `src/` directory of this repository is provided under the following conditions:
+位于此存储库 `src/` 目录中的源代码按以下条件提供：
 
-- You are permitted to use, copy, modify, and distribute the core source code solely for personal or non-commercial purposes.
-- Commercial use — including resale, monetized forks, SaaS integration, paid add-ons, or inclusion in commercial tools — 
- is strictly prohibited unless explicitly licensed through Turbo Console Log and the Turbo Pro Bundle.
-- You may NOT redistribute it under the name “Turbo Console Log” or with any branding elements associated with Turbo Unicorn.
-- You must preserve the original copyright notice.
-- There is no warranty or guarantee of support.
+- 您可以仅出于个人或非商业目的使用、复制、修改和分发核心源代码。
+- 商业使用 — 包括转售、货币化分支、SaaS 集成、付费附加组件或包含在商业工具中 — 除非通过 Turbo Console Log 明确授权，否则严格禁止。
+- 您不得使用“Turbo Console Log”名称或与 Turbo Unicorn 相关的任何品牌元素重新分发它。
+- 您必须保留原始版权声明。
+- 不提供任何保证或支持保证。
 
-All commercial rights are exclusively reserved by **Turbo Unicorn**.
+所有商业权利由 **Turbo Unicorn** 独家保留。
 
-This code is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, or noninfringement.
-
----
-
-## 2. Proprietary Components & Brand Protection
-
-The following components are NOT open source and are explicitly excluded from the open license:
-
-- The name “Turbo Console Log"
-- The brand identity and visual design of Turbo Console Log
-- The domain name turboconsolelog.io
-- All illustrations, visual assets, and UI/UX design related to Turbo Console Log and Turbo Unicorn
-- The compiled and/or obfuscated Turbo Pro Bundle
-- All backend services and commercial activation logic for Turbo Console Log Pro
-
-These are the exclusive property of Turbo Unicorn.  
-They may not be used, copied, modified, redistributed, rebranded, resold, or embedded in any project — open or commercial — without explicit written permission.
-
-Forked projects must not:
-- Use the name “Turbo Console Log” or any confusingly similar name
-- Use the official logo, colors, or illustrations
-- Link to or reference the turboconsolelog.io website or Pro features
+本代码按“原样”提供，不附带任何形式的保证，无论是明示还是暗示，包括但不限于适销性、特定用途适用性或非侵权性的保证。
 
 ---
 
-## 3. Turbo Console Log Pro License
+## 2. 专有组件和品牌保护
 
-The Turbo Pro Bundle is a proprietary product sold separately.  
-Purchasing a license gives you the right to use the Pro features within your VS Code environment for personal or commercial development.  
-You are not allowed to redistribute, modify, reverse-engineer, or re-sell the Pro Bundle under any circumstance.
+以下组件不是开源的，明确排除在开放许可证之外：
+
+- 名称“Turbo Console Log"
+- Turbo Console Log 的品牌标识和视觉设计
+- 域名 turboconsolelog.io
+- 与 Turbo Console Log 和 Turbo Unicorn 相关的所有插图、视觉资产和 UI/UX 设计
+- 所有后端服务和商业激活逻辑
+
+这些是 Turbo Unicorn 的专有财产。
+未经明确书面许可，不得在任何项目（开源或商业）中使用、复制、修改、重新分发、重新品牌化、转售或嵌入它们。
+
+分叉项目不得：
+- 使用名称“Turbo Console Log”或任何令人混淆的相似名称
+- 使用官方徽标、颜色或插图
+- 链接到或引用 turboconsolelog.io 网站
 
 ---
 
-## 4. Final Notes
+## 3. 最终说明
 
-Use of this repository or any part of its tooling indicates your agreement with the terms above.
+使用此存储库或其工具的任何部分表示您同意上述条款。
 
-For licensing questions or commercial requests, contact:  
+有关许可问题或商业请求，请联系：
 📧 support@turboconsolelog.io

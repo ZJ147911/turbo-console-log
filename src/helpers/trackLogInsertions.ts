@@ -4,7 +4,7 @@ import { GlobalStateKey } from '@/entities';
 
 import { NotificationEvent } from '../notifications/NotificationEvent';
 import { showNotification } from '../notifications/showNotification';
-import { readFromGlobalState, writeToGlobalState, isProUser } from './index';
+import { readFromGlobalState, writeToGlobalState } from './index';
 
 // In-memory tracking of files with log insertions in current session
 // Automatically resets on VS Code restart
@@ -20,12 +20,12 @@ export function clearFilesWithLogsInSession(): void {
 
 /**
  * Tracks log insertion commands usage
- * Shows three-day streak notification after 3 consecutive days (curiosity, free users only)
- * Shows multi-file logs notification when logs inserted in 3+ files (pain-point conversion, free users only)
- * Shows ten inserts notification after 10 uses (educational, free users only)
- * Shows twenty inserts notification after 20 uses (newsletter, free users only)
- * Shows fifty inserts notification after 50 uses (conversion, free users only)
- * Shows hundred inserts notification after 100 uses (pro conversion, free users only)
+ * Shows three-day streak notification after 3 consecutive days
+ * Shows multi-file logs notification when logs inserted in 3+ files
+ * Shows ten inserts notification after 10 uses
+ * Shows twenty inserts notification after 20 uses
+ * Shows fifty inserts notification after 50 uses
+ * Shows hundred inserts notification after 100 uses
  * @param context VS Code extension context
  */
 export async function trackLogInsertions(
@@ -56,12 +56,9 @@ export async function trackLogInsertions(
     today.getTime(),
   );
 
-  // Don't show Pro upsell notifications to Pro users
-  if (isProUser(context)) {
-    return;
-  }
 
-  // Track file with log insertion (session-based, in-memory, free users only)
+
+  // Track file with log insertion (session-based, in-memory)
   const activeEditor = vscode.window.activeTextEditor;
   if (activeEditor) {
     filesWithLogsInSession.add(activeEditor.document.uri.toString());

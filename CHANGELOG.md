@@ -1,790 +1,402 @@
-# Change Log
+# 更新日志
 
-All notable changes to the "turbo-console-log" extension will be documented in this file.
+此文件记录 "turbo-console-log" 扩展的所有重要变更。
 
 ## [3.17.0] - 2026-02-25
 
-### 🧠 Context-Aware Notification Timing
+### 🧠 上下文感知的通知时机
 
-**Better timing, not more notifications.**
+**更好的时机，而不是更多的通知。**
 
-This release introduces intelligent scheduling that considers your workspace state, time of day, and day of week before showing notifications. We're not changing the frequency—same 6 notifications per month maximum—we're just showing them at better moments.
+此版本引入了智能调度，在显示通知之前会考虑您的工作区状态、一天中的时间和星期几。我们没有改变频率——每月最多6个通知——我们只是在更好的时刻显示它们。
 
-#### ✨ What's New
+#### ✨ 新增功能
 
-- **⏰ Smart Timing Analysis** — Notifications now wait for optimal moments based on tens of thousands of user interaction patterns
-- **🎯 Zero Configuration** — The system adapts automatically to your workflow without any settings or preferences
-- **🛡️ Same Protection Guarantees** — All existing safeguards remain: 48-hour cooldown, 6 notifications/month max, three-strike pause system
-- **📊 Data-Driven Decisions** — Scheduling decisions based on real user engagement data, not guesswork
+- **⏰ 智能时机分析** — 通知现在根据数万个用户交互模式等待最佳时刻
+- **🎯 零配置** — 系统自动适应您的工作流程，无需任何设置或首选项
+- **🛡️ 相同的保护保证** — 所有现有保障措施仍然存在：48小时冷却期，每月最多6个通知，三击暂停系统
+- **📊 数据驱动决策** — 调度决策基于真实用户参与数据，而非猜测
 
-#### 🎭 How It Works
+#### 🎭 工作原理
 
-The system considers multiple signals before showing a notification:
+系统在显示通知前会考虑多个信号：
 
-- **Workspace Context** — Respects your current focus (open editors, unsaved files, terminal activity)
-- **Time of Day** — Avoids interrupting during high-intensity work periods
-- **Day of Week** — Recognizes patterns like Monday momentum vs. mid-week focus time
+- **工作区上下文** — 尊重您当前的焦点（打开的编辑器、未保存的文件、终端活动）
+- **一天中的时间** — 避免在高强度工作期间打扰
+- **星期几** — 识别模式，如周一的动力与周中的专注时间
 
-This is continuous work. We're committed to building a notification system that respects your workflow while keeping you informed about features and updates that matter.
-
-→ [Read the Full v3.17.0 Release Article](https://www.turboconsolelog.io/articles/release-3170)
+这是持续的工作。我们致力于构建一个通知系统，尊重您的工作流程，同时让您了解重要的功能和更新。
 
 ## [3.16.1] - 2026-02-08
 
-### 🎉 Log Count Feature — Community Success & Optimized Awareness
+### 🎉 日志计数功能 — 社区成功与优化的意识
 
-**The log count badge feature shipped in v3.16.0 has been a resounding success with the community.** This release focuses on ensuring more users discover this powerful capability while validating its production stability.
+**v3.16.0 中发布的日志计数徽章功能在社区中取得了巨大成功。** 此版本专注于确保更多用户发现这一强大功能，同时验证其生产稳定性。
 
-#### ✨ What's Working Great
+#### ✨ 运行良好的功能
 
-- **📊 Performance Validated** — Real-time badge updates handle workspaces with hundreds of logs without any noticeable performance impact
-- **🛡️ Production Stable** — Zero critical issues reported, auto-sync works flawlessly across diverse project structures
-- **❤️ Community Love** — Users are discovering instant log visibility and workspace control with highly positive feedback
+- **📊 性能验证** — 实时徽章更新处理包含数百个日志的工作区，没有任何明显的性能影响
+- **🛡️ 生产稳定** — 零关键问题报告，自动同步在不同项目结构中完美运行
+- **❤️ 社区喜爱** — 用户发现即时日志可见性和工作区控制，反馈非常积极
 
-#### 🔧 Infrastructure Improvements
+#### 🔧 基础设施改进
 
-- Backend refinements to notification delivery, cooldown system, and activity tracking
+- 后端改进，包括通知传递、冷却系统和活动跟踪
 
-This release strengthens our ability to share powerful features with the community while maintaining the rock-solid stability Turbo is known for.
-
-## [3.16.0] - 2026-01-30
-
-### 🎯 Log Count Visibility
-
-**Finally know how many logs you actually have in your workspace.**
-
-This release introduces **instant log count visibility** directly in the VS Code sidebar. Whether you're debugging a small feature or managing hundreds of logs across a large codebase, you now have complete awareness of your debugging footprint.
-
-#### ✨ What's New
-
-**For Freemium Users:**
-
-- 🔢 **Initial Log Count** — See a one-time count of logs in your workspace when you first open the panel
-- 📊 **Basic Awareness** — Know your debugging scale at a glance (e.g., "47 logs detected")
-
-**For Pro Users — The Full Package:**
-
-That's where the real power kicks in. Pro users get **real-time synchronization** and complete workspace control:
-
-- ⚡ **Real-Time Badge Updates** — Count refreshes instantly as you insert, delete, or modify logs across your workspace
-- 🌲 **Navigate Every Log** — Click any of those 347 logs to jump straight to the source line
-- 🎯 **Filter by Type** — Toggle to see only errors, warnings, or specific log types
-- 🔍 **Search Instantly** — Find any log by content across all files in milliseconds
-- 🧹 **Mass Cleanup** — Delete hundreds of logs in seconds before committing
-- 🎨 **Color-Coded Tree** — Each log type displays in unique colors for instant recognition
-- 🔄 **Git Integration** — Filter to "Changed Files Only" to see only logs you just added
-- 🔁 **Auto-Sync** — Panel stays updated as you code, no manual refresh needed
-
-→ [Upgrade to Turbo Pro](https://www.turboconsolelog.io/pro) — See it, navigate it, control it.
+此版本加强了我们与社区分享强大功能的能力，同时保持了 Turbo 众所周知的稳固稳定性。
 
 ## [3.15.1] - 2026-01-25
 
-### 🔧 Infrastructure & Quality Improvements
+### 🔧 基础设施和质量改进
 
-- Internal improvements to extension infrastructure
-
-## [3.15.0] - 2026-01-19
-
-### 🔄 Git Integration for Turbo Pro
-
-**Introducing "Changed Files Only" Filter — Never Commit Debugging Logs Again**
-
-The most requested feature is here! Turbo Pro now integrates with VS Code's Git to give you precise control over which logs you see and manage.
-
-#### ✨ What's New
-
-**Git-Aware Filtering:**
-
-- 🎯 **"Changed Files Only" Filter** — See logs exclusively from files you've modified (staged, modified, or untracked)
-- 🔄 **Real-Time Git Awareness** — Panel updates automatically as you stage, modify, or save files
-- 🚀 **Pre-Commit Workflow** — Debug freely, filter to changed files, delete all debugging logs, commit clean code
-
-**How It Works:**
-
-1. **Debug Freely** — Insert logs across your codebase without worry
-2. **Filter Changed Files** — Toggle "Changed Files Only" to see logs from your working changes
-3. **Clean Up** — Delete all logs from changed files with one click
-4. **Commit** — Push clean code without debugging noise
-
-**Smart Git Detection:**
-
-- ✅ Staged changes (files ready for commit)
-- ✅ Modified files (unstaged changes)
-- ✅ Untracked files (new files not yet in Git)
-- ✅ Real-time sync (no manual refresh needed)
-
-#### 🎯 Why This Matters
-
-Previous versions showed all logs in your workspace. **This version shows only the logs you just added.** Whether you're cleaning up before a commit or focusing on your current feature, Git integration makes it effortless.
-
-No more manually hunting through files to remove debugging logs. No more accidentally committing console statements. Just a cleaner, smarter debugging workflow.
-
-→ [Read the full v3.15.0 release article](https://www.turboconsolelog.io/articles/release-3150)  
-→ [Learn more about Turbo Pro](https://www.turboconsolelog.io/pro)
-
-## [3.14.1] - 2026-01-15
-
-### 🔧 Bug Fixes & Improvements
-
-**Pro Tree Synchronization:**
-
-- Fixed Pro log tree panel not consistently syncing with live file changes
-- Replaced unreliable `createFileSystemWatcher` with `onDidSaveTextDocument` for immediate tree updates on file save
-
-**PLG Notification System:**
-
-- Improved duplicate detection to properly sync local guard keys with backend state
-- Fixed milestone flags not updating when backend identifies duplicates, preventing potential notification loops across sessions
+- 扩展基础设施的内部改进
 
 ## [3.14.0] - 2026-01-11
 
-### 🛡️ Enhanced Notification Reliability & Multi VSCode Instances Support
+### 🛡️ 增强的通知可靠性和多 VSCode 实例支持
 
-**Fixed Occasional Duplicate Notifications Across Updates:**
+**修复了更新过程中偶尔出现的重复通知：**
 
-- Resolved occasional issue where some users received duplicate milestone notifications
-- **Root Cause**: Global storage state was not consistently persisting across VSCode updates, causing notification flags to not be set properly in certain scenarios
-- **Solution**: Implemented robust migration system that ensures notification history persists reliably across all extension and editor lifecycle events
+- 解决了一些用户在达到某些里程碑时收到重复通知的问题
+- **根本原因**：全局存储状态在 VSCode 更新之间不一致，导致通知标志在某些情况下未正确设置
+- **解决方案**：实现了强大的迁移系统，确保通知历史在所有扩展和编辑器生命周期事件中可靠地持久化
 
-**Less Spammy Experience:**
+**更少的垃圾信息体验：**
 
-- Same user on the same machine can now run multiple VSCode instances without notification conflicts
-- Milestone notifications (e.g., "100 inserts completed") are now properly synchronized across all VSCode windows
-- Each instance respects the global notification state, preventing duplicate celebrations
+- 同一用户在同一台机器上现在可以运行多个 VSCode 实例，而不会有通知冲突
+- 里程碑通知（例如 "完成100次插入"）现在在所有 VSCode 窗口中正确同步
+- 每个实例都尊重全局通知状态，防止重复庆祝
 
-**Technical Improvements:**
+**技术改进：**
 
-- Enhanced global storage persistence mechanism to survive updates and reinstalls
-- Improved notification deduplication logic to handle edge cases in multi-instance environments
-- Strengthened state synchronization across VSCode windows on the same machine
+- 增强了全局存储持久性机制，以在更新和重新安装后存活
+- 改进了通知去重逻辑，以处理多实例环境中的边缘情况
+- 加强了同一机器上 VSCode 窗口之间的状态同步
 
-### 📊 About Turbo's Respectful Notification System
+### 📊 关于 Turbo 的尊重性通知系统
 
-Turbo Console Log is designed with **user experience first** — notifications only appear when truly meaningful:
+Turbo Console Log 设计时将 **用户体验放在首位** — 通知仅在真正有意义时出现：
 
-- **Milestone Celebrations**: Only when you achieve significant usage thresholds (10, 20, 50, 100+ log insertions)
-- **Smart Cooldown**: 2-day minimum gap between milestone notifications to prevent fatigue
-- **Monthly Limit**: Maximum 4 milestone/tip notifications per month
-- **Release Notes**: ~2 per month for major updates (don't count toward the limit)
-- **Total**: ~6-7 notifications/month maximum, all contextual and dismissible
+- **里程碑庆祝**：仅当您达到重要使用阈值时（10、20、50、100+ 日志插入）
+- **智能冷却**：里程碑通知之间至少有2天的间隔，以防止疲劳
+- **每月限制**：每月最多4个里程碑/提示通知
+- **发布说明**：每月约2次重大更新（不计入限制）
+- **总计**：每月最多约6-7个通知，全部上下文相关且可关闭
 
-**Why This Fix Matters**: The occasional duplicate bug undermined this careful design by creating unintended notification noise. v3.14.0 ensures the system works exactly as intended — respectful, predictable, and celebrating your actual milestones without repetition.
+**此修复的重要性**：偶尔的重复错误破坏了这一精心设计，产生了意外的通知噪音。v3.14.0 确保系统完全按预期工作 — 尊重、可预测，并庆祝您的实际里程碑而不重复。
 
 ## [3.13.1] - 2026-01-06
 
-### 🐛 Bug Fix
+### 🐛 错误修复
 
-**Fixed Double Notification Issue for Fresh Installs:**
+**修复了全新安装的双重通知问题：**
 
-- New users now only see the fresh install welcome notification
-- Release announcements are now shown exclusively to existing users who are updating
-- Prevents the confusing experience of seeing both notifications simultaneously during fresh installation
+- 新用户现在只看到全新安装的欢迎通知
+- 发布公告现在仅向更新的现有用户显示
+- 防止在全新安装期间同时看到两个通知的混乱体验
 
-This ensures a cleaner onboarding experience for new users while maintaining proper release communication for the existing community.
+这确保了新用户的更清洁的入职体验，同时为现有社区保持适当的发布沟通。
 
 ## [3.13.0] - 2026-01-06
 
-### 🎉 Happy New Year 2026 — Celebrating 2025 & Looking Ahead
+### 🎉 2026 新年快乐 — 庆祝 2025 并展望未来
 
-**2025 Achievements:**
+**2025 年成就：**
 
-- ✅ Full AST Engine (96% smaller, 89% faster, 86% test coverage)
-- ✅ Turbo PRO launched (workspace log explorer, mass cleanup, filtering, search)
-- ✅ PHP Support added (first multi-language expansion)
+- ✅ 完整 AST 引擎（体积小 96%，速度快 89%，测试覆盖率 86%）
+- ✅ PHP 支持添加（首次多语言扩展）
 
-**2026 Vision:**
+**2026 愿景：**
 
-- 🎯 Git Integration for Turbo Pro
-- 🌍 Multi-Language Expansion (Python, Java, C#, Go, Rust, Ruby)
-- 🤖 AI-Powered Code Analysis
-
-**🎁 New Year Offer:** 20% OFF Turbo Pro (January 6-12, 2026)
-
-→ [Read Full Celebration Article](https://www.turboconsolelog.io/articles/release-3130)  
-→ [Learn About Turbo Pro](https://www.turboconsolelog.io/pro)
+- 🌍 多语言扩展（Python、Java、C#、Go、Rust、Ruby）
+- 🤖 AI 驱动的代码分析
 
 ## [3.12.7] - 2025-12-31
 
-### 🐛 Bug Fix: Follow-up to v3.12.6
+### 🐛 错误修复：v3.12.6 的后续
 
-**Fixed Milestone Flag Persistence:**
+**修复了里程碑标志持久性：**
 
-- Milestone flags (e.g., "shown 100 inserts notification") now persist even if VS Code reloads before you interact with notifications
-- Previously, ignoring a notification then reloading VS Code could cause the same notification to appear again after the cooldown period
+- 里程碑标志（例如 "显示100次插入通知"）现在即使在您与通知交互之前 VS Code 重新加载也能保持
+- 以前，忽略通知然后重新加载 VS Code 可能导致相同的通知在冷却期后再次出现
 
-**Technical Details:**
+**技术细节：**
 
-- Refactored notification flow to fire-and-forget pattern
-- Milestone flags written immediately, immune to extension lifecycle abandonment
+- 将通知流重构为即发即弃模式
+- 里程碑标志立即写入，不受扩展生命周期放弃的影响
 
-### 📊 About the Notification System
+### 📊 关于通知系统
 
-Turbo uses a respectful cooldown system to avoid overwhelming you:
+Turbo 使用尊重性冷却系统以避免让您不知所措：
 
-- **2-day cooldown** between milestone notifications
-- **4 notifications/month max** for milestones and tips
-- **~2 release notes/month** (don't count toward the limit)
-- **Total: ~6-7 notifications/month maximum**
+- **2天冷却期** 里程碑通知之间
+- **每月最多4个通知** 用于里程碑和提示
+- **每月约2次发布说明**（不计入限制）
+- **总计：每月最多约6-7个通知**
 
-Thank you for your patience and feedback! 🙏
+感谢您的耐心和反馈！ 🙏
 
-Wishing you all a fantastic new year 2026 🚀 🎉
+祝您 2026 年一切顺利 🚀 🎉
 
 ## [3.12.6] - 2025-12-31
 
-### 🐛 Critical Bug Fix
+### 🐛 关键错误修复
 
-#### Fixed Race Condition Causing Duplicate Notifications
+#### 修复了导致重复通知的竞争条件
 
-- **Issue**: Users were receiving multiple identical notifications when reaching some milestones
-- **Root Cause**: Notification cooldown timestamp was updated asynchronously after notification completion, allowing rapid-fire command executions to bypass cooldown checks
-- **Result**: Duplicate notifications are now completely prevented, even when the conditions of an event are met multiple times
+- **问题**：用户在达到某些里程碑时收到多个相同的通知
+- **根本原因**：通知冷却时间戳在通知完成后异步更新，允许快速执行的命令绕过冷却检查
+- **结果**：现在完全防止重复通知，即使事件条件多次满足
 
-We sincerely apologize for any inconvenience caused by duplicate notifications. This hotfix ensures a much better notification experience going forward.
+我们对重复通知造成的任何不便深表歉意。此热修复确保了未来更好的通知体验。
 
 ## [3.12.5] - 2025-12-30
 
-### 🔧 Infrastructure & Quality Improvements
+### 🔧 基础设施和质量改进
 
-- Internal improvements to extension infrastructure
+- 扩展基础设施的内部改进
 
 ## [3.12.4] - 2025-12-28
 
-### 🔧 Infrastructure & Quality Improvements
+### 🔧 基础设施和质量改进
 
-- Internal improvements to extension infrastructure
+- 扩展基础设施的内部改进
 
 ## [3.12.3] - 2025-12-27
 
-### 🔧 Infrastructure & Quality Improvements
+### 🔧 基础设施和质量改进
 
-- Internal improvements to extension infrastructure
+- 扩展基础设施的内部改进
 
 ## [3.12.2] - 2025-12-24
 
-### 🔧 Infrastructure & Quality Improvements
+### 🔧 基础设施和质量改进
 
-- Internal improvements to extension infrastructure
+- 扩展基础设施的内部改进
 
 ## [3.12.1] - 2025-12-12
 
-### 🔧 Bug Fixes & Improvements
-
-#### Enhanced JSX Support in .js Files
-
-Fixes [#316](https://github.com/Chakroun-Anas/turbo-console-log/issues/316)
-
-- **Automatic JSX Detection**: The parser now automatically detects and handles JSX syntax in `.js` files without requiring explicit configuration
-- **Intelligent Fallback Mechanism**: When parsing fails in `.js` files, the engine automatically retries with JSX support enabled, seamlessly handling React projects that use JSX in `.js` files
-- **No Performance Impact**: Regular `.js` files without JSX parse efficiently on the first attempt; the fallback only activates when needed
-- **Improved Developer Experience**: React developers can now use Turbo Console Log in `.js` files with JSX syntax without any workarounds or file extension changes
-
-#### Test Coverage Expansion
-
-- **9 New Test Cases**: Added comprehensive test coverage for JSX patterns in `.js` files:
-  - React functional components with hooks
-  - JSX fragments and spread operators
-  - Nested ternary operators in JSX
-  - Self-closing tags and spread props
-  - Array methods with JSX mapping
-  - Arrow functions with implicit JSX returns
-  - Complex conditional rendering patterns
-  - Mixed files with both JSX and regular JavaScript
-- **Error Handling**: Maintains strict error detection for actual syntax errors while supporting valid JSX patterns
-
-This update resolves parsing issues for React projects using `.js` files with JSX syntax, a common pattern in many React codebases, especially those created with older versions of Create React App or custom configurations.
-
-## [3.12.0] - 2025-12-10
-
-### 🎯 Introducing the New Shape of Turbo Pro
-
-This release announces a major evolution in how Turbo Pro works. We're introducing a completely new experience that makes workspace-scale debugging more powerful and intuitive than ever before.
-
-#### What's New
-
-The new Turbo Pro delivers four breakthrough capabilities that fundamentally change how you manage logs:
-
-1. **Workspace Log Explorer** - See every log in your entire codebase in one unified tree view. Click any log to jump to its exact location.
-
-2. **Mass Cleanup Operations** - Delete hundreds of logs across your workspace in seconds. Choose specific log types (console.log, console.error, etc.) or remove them all at once.
-
-3. **Real-Time Filtering** - Toggle log types on and off to focus on what matters. The tree updates instantly without rescanning.
-
-4. **Instant Search** - Find any log by content in milliseconds. No more manual searching through files.
-
-These features work seamlessly across JavaScript, TypeScript, and PHP files, giving you total control over debugging at any scale.
-
-#### Why This Matters
-
-Previous versions helped you insert logs quickly. **This version helps you manage them at scale.** Whether you have 100 logs or 1000, whether you're debugging or cleaning up before a commit, Turbo Pro now makes it effortless.
-
-→ [See all features in action](https://www.turboconsolelog.io/pro#see-it-in-action)  
-→ [Learn more about Turbo Pro](https://www.turboconsolelog.io/pro)
-
-## [3.11.0] - 2025-12-01
-
-### 🚀 Turbo Pro: Ultimate Workspace Log Manager
-
-The wait is over. Turbo Pro is now the **ultimate workspace log manager** you've been asking for. This isn't just an update, it's a complete transformation of how you debug at scale.
-
-#### 🌲 What Makes This Release Different
-
-Remember when you had to hunt down logs across dozens of files? Delete them one by one before a commit? Wonder where that authentication log went three days ago? **Those days are over.**
-
-Turbo Pro now gives you **total visibility and control** over every log in your workspace, whether you wrote them yesterday or months ago, whether they're Turbo logs or plain console statements.
-
-#### ✨ Four Game-Changing Features
-
-**1. Workspace Log Explorer** 🌳  
-How many logs does your project actually have? Turbo Pro answers in one second flat. See all 600+ logs across 100+ files in a native VS Code tree view. Click any log to jump straight to the source line. No more guessing, no more searching—just instant navigation.
-
-**2. Mass Cleanup Operations** 🧹  
-About to push? Need to wipe logs across your entire codebase? Select the log types you want gone (console.log, console.error, all of them, or just Turbo's), choose your scope (workspace, folder, or file), and watch them disappear in seconds. We've tested this with 400+ logs—deleted instantly, reliably, every time.
-
-**3. Real-Time Filtering** 🎯  
-Your workspace has hundreds of logs but you only care about errors right now. Toggle log types (log, error, warn, info, debug, table) and the tree updates instantly—no re-scan, no waiting, just pure control over the noise.
-
-**4. Instant Search** 🔍  
-Remember that "user authentication" log from last week? Type the keyword, see matching logs instantly, click to jump to the exact line. Find any log by content in seconds—no grep, no scrolling through files, no memory required.
-
-#### 🎨 Enhanced Experience
-
-- **Multi-Language Support**: JavaScript, TypeScript, and PHP logs all in one unified view
-- **Smart Detection**: Pro recognizes console.log, console.error, console.warn, console.info, console.debug, console.table, and your custom log functions
-- **Color-Coded Tree**: Each log type shows in its unique color (🟦 log, 🟥 error, 🟨 warn, 🟩 info, 🟪 debug, 📊 table)
-- **Context Actions**: Right-click any log for instant comment, delete, or correction—no keyboard shortcuts needed
-
-#### 🎁 Your Pro License Still Includes
-
-- ✅ **Lifetime access**: pay once, own it permanently
-- ✅ **Use on up to 5 machines**: laptop, desktop, work
-- ✅ **All future updates included**: every enhancement, no additional cost
-- ✅ **Priority email support** at support@turboconsolelog.io
-
-#### 🔥 Why This Matters
-
-Previous releases gave you a tree panel. **This release gives you total workspace mastery.** This is the debugging experience large codebases deserve—fast, visual, comprehensive, and built to scale with your project.
-
-Whether you're managing 100 logs or 1000, whether you're debugging a feature or cleaning up before release, Turbo Pro makes it effortless.
-
-→ [See all four features in action](https://www.turboconsolelog.io/pro#see-it-in-action)  
-→ [Upgrade to Turbo Pro](https://www.turboconsolelog.io/pro)
-
-## [3.10.3] - 2025-11-26
-
-### 🔥 Coming Monday: Workspace-wide Log Cleanup
-
-**Releases December 1st, 2025** - Delete logs 100x faster with the new **Workspace-wide Log Cleanup** feature! Select which log functions to remove (`console.log`, `console.warn`, `console.error`, or all) and obliterate them across your entire workspace in seconds.
-
-#### What's Coming
-
-- **Selective Log Deletion**: Choose specific log types to remove or clean them all at once
-- **Workspace-wide Scope**: Process all files in your project with one click
-- **Total Control**: Precision targeting of log statements by type
-- **Lightning Fast**: Delete hundreds of logs in seconds instead of manually hunting them down
-
-#### How It Will Work
-
-1. Open the Turbo Pro panel
-2. Click "Delete Logs by Type"
-3. Select which log functions to remove
-4. Watch as logs disappear across your entire workspace
-
-This feature will be included in your Turbo Pro license at no extra charge.
-
-👉 [Watch the demo and learn more](https://www.turboconsolelog.io/pro) - Available Monday, December 1st, 2025!
-
-## [3.10.2] - 2025-11-24
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
-
-## [3.10.1] - 2025-11-22
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
-
-## [3.10.0] - 2025-11-17
-
-### 🚀 PHP Support
-
-Turbo Console Log now supports PHP files, bringing the same powerful debugging capabilities to your full-stack projects. PHP support is available as part of Turbo Pro, extending the logging experience you know from JavaScript and TypeScript to PHP development.
-
-#### New Features
-
-- **PHP Debugging Functions**: Full support for `var_dump()`, `print_r()`, and `error_log()` with dedicated keyboard shortcuts
-- **Custom Log Functions**: Configure your own PHP logging function via settings for personalized debugging workflows
-- **Unified Log Management**: Comment, uncomment, delete, and correct PHP logs using the same familiar commands
-- **Pro Panel Integration**: PHP logs appear alongside JavaScript and TypeScript in the centralized tree view
-- **Automatic Correction**: Pro's auto-correction keeps PHP log messages synchronized with your codebase
-
-#### PHP Keyboard Shortcuts
-
-- **var_dump()**: `⌘K ⌘L` (Mac) / `Ctrl+K Ctrl+L` (Windows/Linux)
-- **print_r()**: `⌘K ⌘N` (Mac) / `Ctrl+K Ctrl+N` (Windows/Linux)
-- **error_log()**: `⌘K ⌘B` or `⌘K ⌘E` (Mac) / `Ctrl+K Ctrl+B` or `Ctrl+K Ctrl+E` (Windows/Linux)
-- **Custom Log**: `⌘K ⌘K` (Mac) / `Ctrl+K Ctrl+K` (Windows/Linux)
-
-#### Enhanced Pro Experience
-
-- **Real-Time PHP Log Tracking**: The Pro panel displays all PHP logs with file paths and line numbers
-- **Cross-Language Debugging**: Switch seamlessly between JavaScript, TypeScript, and PHP logs in one unified view
-- **Selective Management**: Filter, hide, or batch-manage PHP logs directly from the tree panel
-
-👉 [Upgrade to Turbo Pro](https://www.turboconsolelog.io/pro) to unlock PHP support and supercharge your full-stack debugging workflow.
-
-## [3.9.7] - 2025-11-12
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
-
-## [3.9.6] - 2025-11-12
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
-
-## [3.9.5] - 2025-11-11
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
-
-## [3.9.4] - 2025-11-08
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
-
-## [3.9.3] - 2025-11-07
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
-
-## [3.9.2] - 2025-11-03
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
-
-## [3.9.1] - 2025-11-02
-
-### 🔧 Infrastructure & Quality Improvements
-
-- Internal improvements to extension infrastructure
+### 🔧 错误修复和改进
+
+#### 增强了 .js 文件中的 JSX 支持
+
+修复了 [#316](https://github.com/Chakroun-Anas/turbo-console-log/issues/316)
+
+- **自动 JSX 检测**：解析器现在自动检测并处理 `.js` 文件中的 JSX 语法，无需显式配置
+- **智能回退机制**：当 `.js` 文件解析失败时，引擎自动启用 JSX 支持重试，无缝处理在 `.js` 文件中使用 JSX 的 React 项目
+- **无性能影响**：没有 JSX 的常规 `.js` 文件在第一次尝试时高效解析；仅在需要时激活回退
+- **改进的开发体验**：React 开发人员现在可以在带有 JSX 语法的 `.js` 文件中使用 Turbo Console Log，无需任何变通方法或文件扩展名更改
+
+#### 测试覆盖扩展
+
+- **9 个新测试用例**：为 `.js` 文件中的 JSX 模式添加了全面的测试覆盖：
+  - 带有钩子的 React 函数组件
+  - JSX 片段和展开运算符
+  - JSX 中的嵌套三元运算符
+  - 自闭合标签和展开属性
+  - 带有 JSX 映射的数组方法
+  - 带有隐式 JSX 返回的箭头函数
+  - 复杂的条件渲染模式
+  - 混合了 JSX 和常规 JavaScript 的文件
+- **错误处理**：在支持有效的 JSX 模式的同时，对实际语法错误保持严格的错误检测
+
+此更新解决了使用带有 JSX 语法的 `.js` 文件的 React 项目的解析问题，这是许多 React 代码库中的常见模式，尤其是那些使用旧版本 Create React App 或自定义配置创建的项目。
 
 ## [3.9.0] - 2025-10-30
 
-### 🎃 Halloween Special Edition: Universal Framework Support
+### 🎃 万圣节特别版：通用框架支持
 
-#### 🚀 AST Engine: Universal Framework Support
+#### 🚀 AST 引擎：通用框架支持
 
-Our Full AST Engine has reached new heights of sophistication. With v3.9.0, Turbo Console Log now provides first-class support for modern web frameworks that were previously challenging to handle for our new Acorn AST parser:
+我们的完整 AST 引擎已经达到了新的复杂程度。通过 v3.9.0，Turbo Console Log 现在为现代 Web 框架提供一流的支持，这些框架以前对我们的新 Acorn AST 解析器来说具有挑战性：
 
-- **HTML Files with Script Tags**: Intelligent parsing of JavaScript and TypeScript within HTML `<script>` blocks
-- **Decorator Handling**: Enhanced support for TypeScript decorators right after type declarations, a common pattern in frameworks like Angular and NestJS
-- **Astro Framework Support**: Complete parsing support for Astro's unique component architecture, including component scripts and TypeScript integration
-- **Svelte Framework Support**: Native handling of Svelte's reactive syntax, stores, and component lifecycle methods
-- **Smarter Generic Detection**: Improved distinction between regular TypeScript files and JSX files when handling generic syntax
+- **带有脚本标签的 HTML 文件**：智能解析 HTML `<script>` 块中的 JavaScript 和 TypeScript
+- **装饰器处理**：增强对 TypeScript 装饰器的支持，这些装饰器紧跟在类型声明之后，这是 Angular 和 NestJS 等框架中的常见模式
+- **Astro 框架支持**：完全解析支持 Astro 的独特组件架构，包括组件脚本和 TypeScript 集成
+- **Svelte 框架支持**：原生处理 Svelte 的反应式语法、存储和组件生命周期方法
+- **更智能的泛型检测**：在处理泛型语法时改进了对常规 TypeScript 文件和 JSX 文件的区分
 
-These improvements mean that whether you're building with Astro's islands architecture, Svelte's reactive paradigm, or mixing HTML with embedded scripts, Turbo will understand your code context and insert logs with precision.
-
-#### ✨ Pro Bundle: Halloween Promo
-
-There has never been a better time to grab Turbo Pro:
-
-- **Revolutionary Performance**: The TypeScript AST to Acorn migration made Turbo 96% smaller and 89% faster startup — your VS Code experience has never been smoother
-- **Strengthened AST Engine**: With v3.9.0's universal framework support, our AST engine now handles virtually any JavaScript/TypeScript codebase
-- **Hide Logs Feature**: The #1 most requested Pro feature lets you selectively hide logs from the tree panel for cleaner logs navigation
-
-👉 [Read the Full v3.9.0 Release Article](https://www.turboconsolelog.io/articles/release-390)  
-👉 [Upgrade to Turbo Pro](https://www.turboconsolelog.io/pro)
-
-## [3.8.2] - 2025-10-22
-
-### 🎃 Halloween Update: Pro Bug Fix & Spooky New Theme
-
-#### 🐛 Turbo Pro: Critical VDOM Bug Fix
-
-- **Fixed Tree Panel Late Initialization Issue**: Resolved a major bug where opening the Turbo Pro tree panel mid-session would only display logs inserted _after_ the panel was opened, requiring a reload to see all workspace logs.
-- **Complete Log Visibility**: The tree panel now correctly displays _all_ turbo logs across the entire workspace/folder, regardless of when the panel is opened during your session.
-- **No More Reloads Needed**: Instant, complete visibility of all your debug logs — past, present, and future — without manual reloads.
-
-#### 🧙‍♀️ Halloween Theme & Enhanced Documentation
-
-We've given Turbo Console Log a festive makeover just in time for Halloween! 🎃✨
-
-- **🎥 New Pro Video with Halloween Theme**: Check out the updated [Turbo Pro demo video](https://www.turboconsolelog.io/pro#see-it-in-action) featuring our spooky seasonal theme
-- **📚 Enhanced Documentation**: Explore the completely refreshed [documentation](https://www.turboconsolelog.io/documentation) with the Halloween aesthetic — making debugging a little more fun this season!
-
-Whether you're Pro or freemium, take a moment to explore the new look and discover tips to supercharge your debugging workflow.
-
-Happy Halloween, and happy debugging! 🎃👻
+这些改进意味着无论您是使用 Astro 的岛屿架构、Svelte 的反应式范式，还是混合 HTML 与嵌入脚本，Turbo 都将理解您的代码上下文并精确插入日志。
 
 ## [3.8.1] - 2025-10-16
 
-### 🎯 Vue Single File Component (SFC) Support — Limitation Removed
+### 🎯 Vue 单文件组件 (SFC) 支持 — 限制已移除
 
-Turbo Console Log now fully supports **Vue Single File Components (.vue files)** with `<template>`, `<script>`, and `<style>` sections. This addresses the temporary limitation introduced by the lightweight Acorn AST engine migration in v3.8.0.
+Turbo Console Log 现在完全支持带有 `<template>`、`<script>` 和 `<style>` 部分的 **Vue 单文件组件 (.vue 文件)**。这解决了 v3.8.0 中轻量级 Acorn AST 引擎迁移引入的临时限制。
 
-#### ✨ What's New
+#### ✨ 新增功能
 
-- **Native `.vue` File Parsing**: Full support for `<script>` and `<script setup>` blocks within Vue SFC structure
-- **Dual-Script Context Awareness**: Intelligently handles Vue files with both `<script>` and `<script setup>` sections
-- **No New Dependencies**: Built entirely on the existing Acorn AST engine — no additional parsers needed
-- **Composition API & Options API**: Works seamlessly with both Vue coding styles
-- **TypeScript in Vue**: Full support for `<script lang="ts">` and `<script setup lang="ts">`
+- **原生 `.vue` 文件解析**：完全支持 Vue SFC 结构中的 `<script>` 和 `<script setup>` 块
+- **双脚本上下文感知**：智能处理同时包含 `<script>` 和 `<script setup>` 部分的 Vue 文件
+- **无新依赖**：完全基于现有的 Acorn AST 引擎构建 — 无需额外的解析器
+- **组合式 API 和选项式 API**：与两种 Vue 编码风格无缝协作
+- **Vue 中的 TypeScript**：完全支持 `<script lang="ts">` 和 `<script setup lang="ts">`
 
-#### 🚀 Performance & Architecture
+#### 🚀 性能和架构
 
-- **Lightweight Implementation**: No external Vue parser dependencies — keeps the extension fast and minimal
-- **AST-Powered Precision**: Leverages the same Acorn engine from v3.8.0 for accurate code understanding
-- **Production-Ready**: Comprehensive test coverage across all 31 helper functions (16 checkers + 15 line helpers)
+- **轻量级实现**：无外部 Vue 解析器依赖 — 保持扩展快速和最小化
+- **AST 驱动的精度**：利用 v3.8.0 中的相同 Acorn 引擎进行准确的代码理解
+- **生产就绪**：所有 31 个辅助函数（16 个检查器 + 15 个行辅助）的全面测试覆盖
 
-#### 🧪 Quality Assurance
+#### 🧪 质量保证
 
-- **40+ New Tests**: Dedicated Vue SFC test cases across all AST layers
-- **Edge Case Handling**: Graceful error messages for files without `<script>` tags or selections outside script blocks
-- **Zero Regressions**: All 1,193 tests passing with Vue support fully integrated
+- **40+ 新测试**：跨所有 AST 层的专用 Vue SFC 测试用例
+- **边缘情况处理**：对没有 `<script>` 标签或脚本块外选择的文件的优雅错误消息
+- **零回归**：所有 1,193 个测试通过，Vue 支持完全集成
 
-#### 📝 What This Means
+#### 📝 这意味着什么
 
-The **"Temporary Limitation"** mentioned in v3.8.0 is now **completely resolved**. Vue developers can now use Turbo Console Log directly in `.vue` files without any workarounds.
-
-👉 [Read the Full v3.8.0 Release Article](https://www.turboconsolelog.io/articles/release-380)
+v3.8.0 中提到的 **"临时限制"** 现在已 **完全解决**。Vue 开发人员现在可以直接在 `.vue` 文件中使用 Turbo Console Log，无需任何变通方法。
 
 ## [3.8.0] - 2025-10-14
 
-### 🎭 New Pro Feature: Hide Logs
+### 🧠 重大引擎升级：TypeScript AST → Acorn AST
 
-The most requested feature is here! **Hide Logs** lets you temporarily mute specific log entries without deleting them:
+我们完全重建了解析引擎，以获得更好的性能和可靠性：
 
-- **Hide file logs**: Hide all logs in specific files
-- **Hide folder logs**: Hide all logs in a specific folder
-- **Toggle visibility**: Reveal all hidden logs with a single action
+#### 📊 性能改进
 
-Managing dozens of log statements just got effortless. Hide everything that's not relevant to your current task, then reveal it all when needed.
+- **包大小减少 96%**：2.6MB → ~108KB（包大小）
+- **捆绑大小减少约 85%**：3.7MB → ~560KB（捆绑大小）
+- **激活速度快约 89%**：860ms → ~96ms（启动时间）
 
-### 🧠 Major Engine Upgrade: TypeScript AST → Acorn AST
+您的扩展现在加载几乎瞬间，占用空间大大减小。
 
-We've completely rebuilt the parsing engine for better performance and reliability:
+#### 🛠️ AST 引擎：解析模式改进
 
-#### 📊 Performance Improvements
+迁移到 Acorn 修复了多个边缘情况解析模式。日志插入现在在复杂的实际代码中正确工作：
 
-- **96% smaller package**: 2.6MB → ~108KB (package size)
-- **~85% smaller bundle**: 3.7MB → ~560KB (bundled size)
-- **~89% faster activation**: 860ms → ~96ms (startup time)
-
-Your extension now loads almost instantly with a dramatically smaller footprint.
-
-#### 🛠️ AST Engine: Parsing Pattern Improvements
-
-The migration to Acorn fixed several edge-case parsing patterns. Log insertion now works correctly in complex real-world code:
-
-- **Variables within return statements**: Correctly identifies when a log should stay inside the return block (e.g., callback parameters, inline expressions) vs. before the return
-- **JSX and React patterns**: Full support for modern React code including hooks, fragments, conditional rendering, and implicit arrow function returns
-- **Computed property destructuring**: Nested object destructuring patterns with dynamic computed property names (`[id]` syntax)
-- **Multi-line object literals**: Complex objects spanning dozens of lines with type annotations, arrow functions, and deep property nesting
-- **Binary expressions with optional chaining**: Inequality comparisons using `!==` with optional chaining operators now parse correctly
-- **Async destructuring assignments**: Multi-line destructuring from async function calls with type assertions and fallback values
-- **Nested default parameters**: Arrow functions with multi-line parameter lists where defaults are themselves function expressions
-- **Class method decorators**: Parameters within methods that have multiple decorators (NestJS, Angular patterns)
-
-### 📌 Temporary Limitation
-
-Vue 3 Composition API in separate `.js`/`.ts` files is fully supported. However, Single-File Components (`.vue` with `<script>` blocks) aren't parsed yet.
-
-**Workaround**: Isolate your `<script>` logic in a standalone file while we add first-class SFC support. [Track progress here](https://github.com/Chakroun-Anas/turbo-console-log/issues/292).
-
-### 🔮 What's Next: v3.9.0
-
-The next iteration focuses on broader AST engine strengthening — refining edge-case handling, improving parsing resilience, and expanding framework coverage. Vue Single-File Component support is part of this roadmap, bringing native `.vue` parsing alongside deeper pattern recognition for modern JavaScript constructs.
-
-### 🚀 Enhanced Pro Experience
-
-All Pro features now run on the new Acorn engine — lighter, faster, and more responsive. Hide Logs is the first of several power-user upgrades coming in future releases.
-
-👉 [Read the Full v3.8.0 Release Article](https://www.turboconsolelog.io/articles/release-380)  
-👉 [Upgrade to Turbo Pro](https://www.turboconsolelog.io/pro)
+- **return 语句中的变量**：正确识别日志何时应保持在 return 块内（例如回调参数、内联表达式）与 return 之前
+- **JSX 和 React 模式**：完全支持现代 React 代码，包括钩子、片段、条件渲染和隐式箭头函数返回
+- **计算属性解构**：带有动态计算属性名称（`[id]` 语法）的嵌套对象解构模式
+- **多行对象字面量**：跨越多行的复杂对象，带有类型注解、箭头函数和深度属性嵌套
+- **带有可选链的二元表达式**：使用 `!==` 与可选链运算符的不等式比较现在正确解析
+- **异步解构赋值**：来自带有类型断言和回退值的异步函数调用的多行解构
+- **嵌套默认参数**：带有多行参数列表的箭头函数，其中默认值本身是函数表达式
+- **类方法装饰器**：具有多个装饰器的方法中的参数（NestJS、Angular 模式）
 
 ## [3.7.2] - 2025-09-29
 
-### 🔧 Bug Fixes & Improvements
+### 🔧 错误修复和改进
 
-#### ⚠️ Known Issue (Harmless)
+#### ⚠️ 已知问题（无害）
 
-**VS Code Error Notification**: When upgrading from v3.7.0 to v3.7.1 or v3.7.2, some users may briefly see an error:  
-`"No view is registered with id: turboConsoleLogFreemiumLauncher"`.
+**VS Code 错误通知**：从 v3.7.0 升级到 v3.7.1 或 v3.7.2 时，一些用户可能会短暂看到错误：
+`"No view is registered with id: turboConsoleLogFreemiumLauncher"`。
 
-- **Harmless**: This does not affect the extension’s functionality
-- **One-time only**: Appears during the upgrade from v3.7.0 and will not return
-- **Why it happens**: Due to how VS Code loads new views before the extension activates
-- **No action needed**: You can safely dismiss the message
+- **无害**：这不影响扩展的功能
+- **仅一次**：在从 v3.7.0 升级期间出现，不会再次出现
+- **为什么会发生**：由于 VS Code 在扩展激活之前加载新视图的方式
+- **无需操作**：您可以安全地关闭消息
 
-#### 🛠️ Technical Improvements
+#### 🛠️ 技术改进
 
-- Improved reliability of the dynamic panel content system
-- Fixed article URL handling for dynamic panel content
-- Strengthened type safety for panel component interfaces
-
-## [3.7.1] - 2025-09-28
-
-### 🎉 Dynamic Freemium Panel & v3.8.0 Preview
-
-This release introduces a dynamic content system for the freemium panel and provides an exciting preview of the upcoming v3.8.0 hide logs feature:
-
-#### ✨ New Features
-
-- **Dynamic Freemium Panel**: Panel content now updates automatically with latest news, feature previews, and community updates
-- **v3.8.0 Teaser Integration**: Preview of the most requested hide logs feature coming October 6th, 2025
-- **Real-time Countdown**: Live countdown to v3.8.0 release with teaser article links
-- **Enhanced Community Engagement**: Direct links to surveys, articles, and feature previews
-
-#### 🔧 Improvements
-
-- Updated panel content structure for better user engagement
-- Improved freemium user experience with dynamic, relevant content
-- Better integration between extension panel and website features
-
-#### 📝 Documentation
-
-- Added comprehensive teaser article for v3.8.0 hide logs feature
-- Updated website with countdown and feature preview
+- 改进了动态面板内容系统的可靠性
+- 修复了动态面板内容的文章 URL 处理
+- 加强了面板组件接口的类型安全性
 
 ## [3.7.0] - 2025-09-18
 
-### 🎯 Community Engagement & Enhanced Freemium Panel Experience
+### 🎯 社区参与和增强的体验
 
-This release focuses on strengthening the connection between Turbo Console Log and its community while providing a richer experience for all users:
+此版本专注于加强 Turbo Console Log 与其社区之间的联系，同时为所有用户提供更丰富的体验：
 
-#### Release Features:
+#### 发布功能：
 
-- **Community Survey Integration**: Release notification now invite users to participate in community surveys to help shape Turbo's future development roadmap.
-
-- **Enhanced Freemium Panel**: The freemium panel has been completely revamped with:
-  - **Complete Commands Reference**: Interactive table showing all Turbo Console Log commands with keyboard shortcuts
-  - **Featured Turbo Articles**: Direct access to educational content including "Debugging: Between Science & Art" and "Understanding the Full AST Engine"
-  - **Community Survey Integration**: Easy access to provide feedback and influence future features
-
-This update reflects our commitment to building Turbo Console Log together with the community, ensuring that user feedback directly influences future development priorities.
-
-## [3.6.0] - 2025-09-05
-
-### 🌍 Regional Pricing for Turbo Pro
-
-This release introduces regional pricing for Turbo Pro, making the premium features more accessible worldwide:
-
-#### ✨ New Features
-
-- **🌎 Regional Pricing**: Turbo Pro is now available with regional pricing tailored to different countries and economies, ensuring fair access to premium features regardless of your location.
-
-- **💰 Automatic Price Adjustment**: The pricing automatically adjusts based on your region when visiting the purchase page, providing the most appropriate pricing for your area.
-
-#### 🔧 System Improvements
-
-- Enhanced purchase flow to support multiple regional pricing tiers
-- Improved user experience for international customers
-
-This update reflects our commitment to making Turbo Pro accessible to developers worldwide, regardless of their geographic location.
+- **社区调查集成**：发布通知现在邀请用户参与社区调查，帮助塑造 Turbo 的未来发展路线图。
 
 ## [3.5.0] - 2025-08-18
 
-### 🎯 Smarter release notifications and enhanced user control
+### 🎯 更智能的发布通知和增强的用户控制
 
-This release introduces significant improvements to how Turbo Console Log handles release announcements and gives users more control over their experience:
+此版本引入了 Turbo Console Log 处理发布公告的方式的重大改进，并为用户提供了更多对其体验的控制：
 
-#### ✨ New Features
+#### ✨ 新增功能
 
-- **🕒 Release Review Target Window Setting**: New configurable setting `turboConsoleLog.releaseReviewTargetWindow` allows users to control when they receive release notifications. Choose from `Morning`, `Afternoon`, `Evening`, or `Night` (default) time windows to align with your preferred review schedule.
+- **🕒 发布审查目标窗口设置**：新的可配置设置 `turboConsoleLog.releaseReviewTargetWindow` 允许用户控制他们何时收到发布通知。从 `Morning`、`Afternoon`、`Evening` 或 `Night`（默认）时间窗口中选择，以符合您的首选审查时间表。
 
-- **🚀 Non-intrusive Release Notifications**: Release announcements now appear as respectful VS Code notifications instead of automatically opening web views. Users can choose to view release notes or dismiss the notification gracefully.
+- **🚀 非侵入式发布通知**：发布公告现在以尊重的 VS Code 通知形式出现，而不是自动打开网页视图。用户可以选择查看发布说明或优雅地关闭通知。
 
-- **🌐 External Article Integration**: New releases now link to comprehensive articles on [turboconsolelog.io](https://www.turboconsolelog.io) instead of embedded web views, providing richer content and better accessibility.
+- **🌐 外部文章集成**：新版本现在链接到 [turboconsolelog.io](https://www.turboconsolelog.io) 上的综合文章，而不是嵌入式网页视图，提供更丰富的内容和更好的可访问性。
 
-#### 🔧 System Improvements
+#### 🔧 系统改进
 
-- **📊 Enhanced Reporting Service**: Reporting integration that fully respects VS Code's global telemetry settings and user privacy preferences.
+- **📊 增强的报告服务**：完全尊重 VS Code 的全局遥测设置和用户隐私偏好的报告集成。
 
-- **⚡ Smarter Timing Logic**: Intelligent release notification scheduling based on user's target window preference, ensuring announcements appear at convenient times.
+- **⚡ 更智能的时机逻辑**：基于用户目标窗口偏好的智能发布通知调度，确保公告在方便的时间出现。
 
-- **🔧 Turbo Pro Vue/Svelte/Astro Support**: Fixed an issue where Vue, Svelte, and Astro files were not appearing in the Turbo Pro TreeView panel. These file types now display correctly in the Pro panel alongside JavaScript and TypeScript files.
+#### 🎪 幕后
 
-#### 🎪 Behind the Scenes
+- 移除了可能中断工作流程的强制网页视图更新
+- 改进了通知跟踪的全局状态管理
+- 增强了发布内容交付的错误处理
+- 更好地集成 VS Code 的原生通知系统
 
-- Removed forced web view updates that could interrupt workflows
-- Improved global state management for notification tracking
-- Enhanced error handling for release content delivery
-- Better integration with VS Code's native notification system
-
-This release represents our commitment to user agency and non-disruptive feature discovery. Release notifications are now more respectful of your workflow while still keeping you informed about exciting new capabilities.
+此版本代表了我们对用户代理和非破坏性功能发现的承诺。发布通知现在更尊重您的工作流程，同时仍然让您了解令人兴奋的新功能。
 
 ## [3.4.2] - 2025-08-06
 
-### 🎯 Scoped shortcuts, reduced conflicts, and reinforced control
+### 🎯 范围快捷键，减少冲突，加强控制
 
-This patch addresses an important usability issue:  
-Some Turbo commands were triggering inside the terminal and other non-editor views — which was never intended.
+此补丁解决了一个重要的可用性问题：
+一些 Turbo 命令在终端和其他非编辑器视图中触发 — 这从未被打算。
 
-To resolve this:
+为了解决这个问题：
 
-- 🧠 All Turbo Console Log keyboard shortcuts are now scoped with `"when": "editorTextFocus"`, meaning they will only trigger inside active editors.
-- ✅ This completely eliminates unintended behaviors in terminal, sidebar, search, and other UI panels.
-- 🔒 Terminal actions like `Ctrl+K` to clear output are now fully respected.
+- 🧠 所有 Turbo Console Log 键盘快捷键现在都使用 `"when": "editorTextFocus"` 进行范围限定，这意味着它们只会在活动编辑器内触发。
+- ✅ 这完全消除了在终端、侧边栏、搜索和其他 UI 面板中的意外行为。
+- 🔒 终端操作如 `Ctrl+K` 清除输出现在得到完全尊重。
 
-We also want to take a moment to highlight that **Turbo now supports 6 brand-new log insertion shortcuts** — one for each log method, with intuitive and conflict-free bindings:
+我们还想借此机会强调 **Turbo 现在支持 6 个全新的日志插入快捷键** — 每个日志方法一个，具有直观且无冲突的绑定：
 
 - `Ctrl+K Ctrl+L` → `console.log`
-- `Ctrl+K Ctrl+N` → `console.info` (N = Note)
-- `Ctrl+K Ctrl+R` → `console.warn` (R = Risk)
+- `Ctrl+K Ctrl+N` → `console.info`（N = Note）
+- `Ctrl+K Ctrl+R` → `console.warn`（R = Risk）
 - `Ctrl+K Ctrl+E` → `console.error`
-- `Ctrl+K Ctrl+B` → `console.debug` (B = Breakpoint)
+- `Ctrl+K Ctrl+B` → `console.debug`（B = Breakpoint）
 - `Ctrl+K Ctrl+T` → `console.table`
-- `Ctrl+K Ctrl+K` → Custom log
+- `Ctrl+K Ctrl+K` → 自定义日志
 
-These shortcuts are fast, native, and designed to feel second-nature in your workflow.
+这些快捷键快速、原生，旨在在您的工作流程中感觉自然。
 
-We recognize that v3.4.0 introduced a few unintended side effects, and we reacted as quickly as possible to fix them while also addressing the root causes.
+我们认识到 v3.4.0 引入了一些意外的副作用，我们尽快做出反应来修复它们，同时解决根本原因。
 
-We’ll also be increasing integration test coverage around keyboard shortcuts and context detection to avoid this in future releases.
+我们还将增加围绕键盘快捷键和上下文检测的集成测试覆盖范围，以避免未来出现这种情况。
 
-Thanks to everyone who flagged this early and respectfully — you're helping make Turbo even sharper.
+感谢所有早期和尊重地标记此问题的人 — 您正在帮助使 Turbo 更加锐利。
 
 ## [3.4.1] - 2025-08-06
 
-### 🔧 Fixing shortcut conflicts and refining mental model
+### 🔧 修复快捷键冲突并完善思维模型
 
-After the v3.4.0 release introduced new console log shortcuts, we received helpful community feedback about conflicts with native VSCode keybindings. This patch resolves those issues and improves the logic behind our shortcut assignments to better match intuitive developer mental models:
+在 v3.4.0 版本引入新的控制台日志快捷键后，我们收到了有关与原生 VSCode 键绑定冲突的有用社区反馈。此补丁解决了这些问题，并改进了我们的快捷键分配背后的逻辑，以更好地匹配直观的开发人员思维模型：
 
-- 🛠️ Replaced the conflicting `Ctrl+K Ctrl+C` shortcut for **Insert Custom Log** with `Ctrl+K Ctrl+K`, avoiding override of VSCode’s native **Add Line Comment** command  
+- 🛠️ 将冲突的 `Ctrl+K Ctrl+C` 快捷键（用于 **插入自定义日志**）替换为 `Ctrl+K Ctrl+K`，避免覆盖 VSCode 的原生 **添加行注释** 命令
   ([#284](https://github.com/Chakroun-Anas/turbo-console-log/issues/284))
 
-- 🔁 Changed **Insert Console Info** from `Ctrl+K Ctrl+I` to `Ctrl+K Ctrl+N` → _N = Note_, avoiding conflict with **Show Hover**
+- 🔁 将 **插入控制台信息** 从 `Ctrl+K Ctrl+I` 更改为 `Ctrl+K Ctrl+N` → _N = Note_，避免与 **显示悬停** 冲突
 
-- 🔁 Changed **Insert Console Debug** from `Ctrl+K Ctrl+D` to `Ctrl+K Ctrl+B` → _B = Breakpoint_, avoiding conflict with **Move last selection to next match**
+- 🔁 将 **插入控制台调试** 从 `Ctrl+K Ctrl+D` 更改为 `Ctrl+K Ctrl+B` → _B = Breakpoint_，避免与 **将最后一个选择移动到下一个匹配项** 冲突
 
-- 🔁 Changed **Insert Console Warn** from `Ctrl+K Ctrl+W` to `Ctrl+K Ctrl+R` → _R = Risk_, avoiding conflict with **Close All Editors**
+- 🔁 将 **插入控制台警告** 从 `Ctrl+K Ctrl+W` 更改为 `Ctrl+K Ctrl+R` → _R = Risk_，避免与 **关闭所有编辑器** 冲突
 
-This update ensures all Turbo Console Log shortcuts are now:
+此更新确保所有 Turbo Console Log 快捷键现在：
 
-- Conflict-free across macOS and Windows
-- Easy to remember
-- Consistent with VSCode's native behaviors
+- 在 macOS 和 Windows 上无冲突
+- 易于记忆
+- 与 VSCode 的原生行为一致
 
-Thanks again to the community for the quick and constructive feedback!
+再次感谢社区的快速和建设性反馈！
 
 ## [3.4.0] - 2025-08-05
 
-### 🎯 Complete Console Method Coverage
+### 🎯 完整的控制台方法覆盖
 
-- **7 New Console Commands:** Dedicated commands for `console.log`, `console.info`, `console.debug`, `console.warn`, `console.error`, `console.table`, and custom log functions
-- **Individual Keyboard Shortcuts:** Each console method now has its own keyboard shortcut (⌘K combinations)
-- **Granular Control:** No more switching settings — choose the exact console method you need instantly
+- **7 个新控制台命令**：`console.log`、`console.info`、`console.debug`、`console.warn`、`console.error`、`console.table` 和自定义日志函数的专用命令
+- **单独的键盘快捷键**：每个控制台方法现在都有自己的键盘快捷键（⌘K 组合）
+- **精细控制**：不再需要切换设置 — 立即选择您需要的确切控制台方法
 
-### ⌨️ New Keyboard Shortcuts
+### ⌨️ 新键盘快捷键
 
 - **Console Log:** `⌘K ⌘L` (macOS) / `Ctrl+K Ctrl+L` (Windows/Linux)
 - **Console Info:** `⌘K ⌘I` (macOS) / `Ctrl+K Ctrl+I` (Windows/Linux)
@@ -794,499 +406,75 @@ Thanks again to the community for the quick and constructive feedback!
 - **Console Table:** `⌘K ⌘T` (macOS) / `Ctrl+K Ctrl+T` (Windows/Linux)
 - **Custom Log:** `⌘K ⌘C` (macOS) / `Ctrl+K Ctrl+C` (Windows/Linux)
 
-### 🚀 Enhanced Core Features
+### 🚀 增强的核心功能
 
-- **Auto-Save Integration:** Turbo commands (comment, uncomment, correct, delete) now auto-save documents after execution
-- **Enhanced AST Detection:** Continuing our AST revolution with even fewer false positives and improved accuracy
-- **Unified Command Structure:** All new commands follow identical patterns for consistency and reliability
-- **Improved Error Recovery:** Enhanced Pro bundle repair system with better recovery mechanisms
+- **自动保存集成**：Turbo 命令（注释、取消注释、更正、删除）现在在执行后自动保存文档
+- **增强的 AST 检测**：继续我们的 AST 革命，减少误报并提高准确性
+- **统一的命令结构**：所有新命令遵循相同的模式，以确保一致性和可靠性
 
-### ✨ Turbo Pro Enhancements
+### 🧪 测试和质量改进
 
-- **Color-Coded Console Methods:** Each console type displays in unique colors (🟦 log, 🟩 info, 🟪 debug, 🟨 warn, 🟥 error, 📊 table)
-- **Instant Auto-Sync:** Tree updates immediately after any Turbo command thanks to auto-save integration
-- **Smart Shortcut Integration:** All 7 new keyboard shortcuts work seamlessly with the Pro tree view
-- **Enhanced Expand All:** Now properly expands final log leaves in the tree structure
-- **Real-Time Synchronization:** Tree syncs immediately after file changes with improved reliability
+- **1,400+ 行新测试**：所有新控制台命令的全面 Jest 单元测试
+- **测试套件整合**：将 36+ 个单独的测试文件减少到 4 个统一、可维护的套件
+- **增强的覆盖范围**：改进了所有控制台方法场景的边缘情况处理
 
-### 🧪 Testing & Quality Improvements
-
-- **1,400+ Lines of New Tests:** Comprehensive Jest unit tests for all new console commands
-- **Test Suite Consolidation:** Reduced 36+ individual test files into 4 unified, maintainable suites
-- **Enhanced Coverage:** Improved edge case handling across all console method scenarios
-- **Repair Mode Testing:** 414 lines of comprehensive repair system tests
-
-→ **Legacy Support:** Original `displayLogMessage` command remains available as "Insert console log message (Legacy)"
-
-👉 [Read the Full v3.4.0 Release Article](https://www.turboconsolelog.io/articles/release-340)  
-👉 [Learn more about Turbo PRO](https://www.turboconsolelog.io/pro)  
-👉 [Subscribe to Newsletter (30% Pro Discount)](https://www.turboconsolelog.io/join)
+→ **遗留支持**：原始 `displayLogMessage` 命令仍然可用，作为 "插入控制台日志消息（遗留）"
 
 ## [3.3.2] - 2025-07-30
 
-### 📈 Marketplace Visibility & SEO
+### 📈 市场可见性和 SEO
 
-- Updated extension `categories` to improve discovery across **Debuggers**, **Snippets**, **Visualizations**, and **Programming Languages**
-- Refined `keywords` to appear in searches like `debug javascript`, `remove logs`, `log panel`, and `insert log`
+- 更新了扩展 `categories` 以改善在 **调试器**、**代码片段**、**可视化** 和 **编程语言** 中的发现
+- 优化了 `keywords` 以出现在 `debug javascript`、`remove logs`、`log panel` 和 `insert log` 等搜索中
 
-### 📜 License & Legal Structure
+### 📜 许可证和法律结构
 
-- Introduced a new **Turbo Unicorn Custom License** to protect the brand, logo, domain, and Turbo Pro bundle
-- The core of the extension remains **free and open source** for personal and non-commercial use
-- Commercial use of the source code is now **prohibited** unless licensed through Turbo Pro
-- All proprietary assets are now explicitly excluded from the open license
-- Updated `package.json` license field and added a full [LICENSE](./LICENSE) file
+- 引入了新的 **Turbo Unicorn 自定义许可证** 以保护品牌、徽标、域名
+- 扩展的核心仍然 **免费开源**，供个人和非商业使用
+- 源代码的商业使用现在 **禁止**，除非通过授权
+- 所有专有资产现在明确排除在开放许可证之外
+- 更新了 `package.json` 许可证字段并添加了完整的 [LICENSE](./LICENSE) 文件
 
-### 📝 README Improvements
+### 📝 README 改进
 
-- Rewrote intro to define Turbo Console Log as the **standard for automated logging in JavaScript and TypeScript**
-- Highlighted support for **custom log functions**, not just console.log
-- Updated license section to reflect new legal terms
-- Improved configuration section to clarify flexibility with custom log methods
+- 重写介绍，将 Turbo Console Log 定义为 **JavaScript 和 TypeScript 中自动日志记录的标准**
+- 强调对 **自定义日志函数** 的支持，而不仅仅是 console.log
+- 更新了许可证部分以反映新的法律条款
+- 改进了配置部分以澄清自定义日志方法的灵活性
 
 ## [3.3.1] - 2025-07-26
 
-### 🔧 Core Improvements
+### 🔧 核心改进
 
-- Optimized AST engine by generating and reusing a single `SourceFile` instance across all checkers and line helpers — improving performance and consistency.
-
-### 💎 UI Enhancements
-
-- Updated Turbo Pro showcase panel with a visual overlay and demo preview.
-- Clicking the overlay now opens the [Turbo Pro page](https://www.turboconsolelog.io/pro) with the Pro Bundle 25s demo video.
+- 通过在所有检查器和行辅助函数中生成和重用单个 `SourceFile` 实例来优化 AST 引擎 — 提高性能和一致性。
 
 ## [3.3.0] – 2025-07-23
 
-### Full AST Engine Revolution — Complete Rewrite
+### 完整 AST 引擎革命 — 完全重写
 
-- **Revolutionary AST Engine:** Complete rebuild from the ground up using TypeScript Compiler API
-- **Massive Quality Improvement:** Coverage increased from 45% to 86% average (statements, branches, functions, lines)
-- **2.6X More Comprehensive:** 4,423 lines of sophisticated AST code vs 1,688 in the old regex system
-- **750+ Tests:** Comprehensive unit and integration testing for bulletproof reliability
-- **16 Specialized AST Checkers:** Each code pattern handled with precision and semantic understanding
+- **革命性 AST 引擎**：使用 TypeScript 编译器 API 从头开始完全重建
+- **质量大幅提高**：覆盖率从平均 45% 增加到 86%（语句、分支、函数、行）
+- **更全面 2.6 倍**：4,423 行复杂的 AST 代码 vs 旧正则系统中的 1,688 行
+- **750+ 测试**：全面的单元和集成测试，确保防弹可靠性
+- **16 个专业 AST 检查器**：每种代码模式都以精度和语义理解处理
 
-### What's New:
+### 新增功能：
 
-- **Bulletproof Accuracy:** AST understands code structure semantically, not just pattern matching
-- **Modern JavaScript Support:** Native handling of destructuring, async/await, optional chaining
-- **Complex Expression Support:** Perfect handling of ternary operators, binary expressions, template literals
-- **Edge Case Mastery:** Robust support for multi-line assignments, chained method calls, nested objects
-- **TypeScript Integration:** Seamless support for TypeScript-specific syntax and patterns
-- **Future-Proof Architecture:** Easy to extend for new JavaScript language features
+- **防弹准确性**：AST 语义理解代码结构，而不仅仅是模式匹配
+- **现代 JavaScript 支持**：原生处理解构、async/await、可选链
+- **复杂表达式支持**：完美处理三元运算符、二元表达式、模板字面量
+- **边缘情况掌握**：对多行赋值、链式方法调用、嵌套对象的强大支持
+- **TypeScript 集成**：无缝支持 TypeScript 特定语法和模式
+- **面向未来的架构**：易于扩展以支持新的 JavaScript 语言功能
 
-### Bug Fixes & Improvements:
+### 错误修复和改进：
 
-- **Core Engine:** insertEnclosingClass and insertEnclosingFunction can now be deactivated
-- **Pro - Tree Sync:** Fixed sync issues when deleting logs from the tree view
-- **Pro - Better UX:** Status bar activation message now has neutral background instead of warning style
-- **Pro - Accuracy:** Significantly reduced false positives in the tree view detection
-
-→ [Read the full v3.3.0 release article](https://www.turboconsolelog.io/articles/release-330)  
-→ [Understanding the Full AST Engine](https://www.turboconsolelog.io/articles/turbo-full-ast-engine)  
-→ [Advanced Debugging: Memory Patterns](https://www.turboconsolelog.io/articles/debugging-memory)
+- **核心引擎**：insertEnclosingClass 和 insertEnclosingFunction 现在可以停用
 
 ## [3.2.0] – 2025-07-10
 
-- 🧠 **AST Support:** Introduced AST parsing for ternary expressions and function parameters
-- 📐 **More reliable Log Placement:** Improved accuracy for ternary expressions and function parameters using AST
-- 🐛 **Fix:** Properly handles object literal assignments with complex type annotations
-- 🛠️ **Fix:** Default config values are now respected, reducing false positives
-- 🧪 **Test Coverage:** New test cases added to validate AST logic and key edge scenarios
-
-→ [Read the full v3.2.0 release article](https://www.turboconsolelog.io/articles/release-320)  
-→ [Benchmark Turbo PRO v2](https://www.turboconsolelog.io/articles/benchmark-pro-v2)
-
-## [3.1.0] - 2025-06-25
-
-### ⚡ Turbo Pro v2 — Performance Unleashed & Rock-Solid Reliability
-
-- 🚀 **Massive performance boost**  
-  → Faster boot time, instant tree rendering, and snappier log syncing across large workspaces
-
-- 🧠 **False positive log detection drastically reduced**  
-  → Improved filtering and smarter engine prevent logs from wrongly appearing or being lost
-
-- 🔁 **Smarter update & self-repair flow**  
-  → If a Pro update fails, users now see a dedicated Repair panel with retry mechanism
-
-- ✅ **Increased test coverage with Jest**  
-  → Introduced Jest to strengthen unit testing across core logic
-
-- 🔐 **Improved Pro license handling**  
-  → Better feedback, error resilience, and auto-repair if something goes wrong in the update phase
-
-- 🎯 **Raised activation limit**  
-  → From 3 to 5 activations per version to better support multi-device setups
-
-- ✍️ **New technical articles released**
-
-  📖 [Release 3.1.0 – Full Update Overview](https://www.turboconsolelog.io/articles/release-310)  
-  🧬 [How Turbo Pro Works – Technical Deep Dive](https://www.turboconsolelog.io/articles/pro-v2-technical-overview)  
-  ⚡️ [Benchmark Pro v2](https://www.turboconsolelog.io/articles/benchmark-pro-v2) Real-world speed across React, Storybook & Vite
-
-🔥 This update turns Turbo Pro into a fully production-grade experience — faster, safer, and smarter than ever.
-
-## [3.0.0] - 2025-06-09
-
-### 🚀 Turbo Console Log PRO Launches — A New Era of Debugging Begins
-
-- 👑 **Turbo PRO officially released**  
-  → A new paid tier with powerful new capabilities built directly into the extension
-
-- 🌲 **Tree Panel View**  
-  → Instantly see all turbo logs grouped by file and line
-
-- ⚡ **Real-Time Sync**  
-  → Logs update live as you debug across files
-
-- 🖱️ **Contextual Actions**  
-  → Right-click to comment, delete, or correct logs directly from the panel
-
-- 🧠 **Memory-Friendly Debugging**  
-  → Logs persist and reappear on reload — no more lost context
-
-- 🔐 **License System Activated**  
-  → Secure, offline-friendly license key flow with lifetime ownership model
-
-- 🛠️ **New Setting: `logCorrectionNotificationEnabled`**
-
-  → Control whether notifications appear when Turbo automatically corrects log metadata  
-  → **Default: `false`** — especially tuned for a quieter experience in Turbo PRO’s real-time sync mode
-
-- ✍️ **New release article and companion piece published**
-
-  📖 [Read the full launch article](https://www.turboconsolelog.io/articles/release-300)  
-  📘 [Debugging with Memory — Why Turbo PRO Panel Matters!](https://www.turboconsolelog.io/articles/debugging-memory)
-
-🔥 The foundation is set — this is Turbo Console Log’s most powerful release ever.
-
-## [2.18.0] - 2025-05-30
-
-### 🔧 Foundation Strengthening Before Public PRO Launch (June 9)
-
-- 📢 **Panel messaging refined**  
-  → Updated wording to clearly distinguish early access from public launch and avoid confusion
-
-- ✍️ **New release article published**  
-  → Clarifies the early adopter policy, lifetime key eligibility, and next steps  
-  📖 [Read the full article](https://www.turboconsolelog.io/articles/release-2180)
-
-- 🧭 **Roadmap page improved**  
-  → Clear structure with updated focus, future enhancements, and community-driven direction
-
-- 💌 **Join & sponsorship pages rewritten**  
-  → Better persuasion, stronger CTAs, and reduced friction to subscribe or support
-
-📖 [Read the full release article](https://www.turboconsolelog.io/articles/release-2180)
-
-## [2.17.0] - 2025-05-27
-
-### 🚀 The First PRO Release (Pre-Launch Phase)
-
-- 🆕 **New command**: `activateTurboProBundle`  
-  → Allows early adopters to activate their PRO license key and unlock premium features
-
-- 🔐 **License key support**  
-  → PRO activation now persists securely via global storage
-
-- 🧠 **Dynamic PRO bundle execution**  
-  → Loads the PRO module at runtime with full isolation and validation
-
-- 🌐 **Freemium panel for non-activated users**  
-  → Encourages newsletter signup, activation, and educates on PRO availability
-
-- 🎉 **Early adopters (newsletter subscribers)** will receive a personal license key with **lifetime access to Turbo PRO**
-
-🔐 PRO sits on top of the free version — open source stays free forever.  
-📩 [Join the newsletter](https://www.turboconsolelog.io/join) to get early access and launch updates.
-
-> This is a **pre-launch milestone** — PRO is live for early testers and will roll out publicly next week. Thank you for being part of the journey.
-
-📖 [Read the full release article](https://www.turboconsolelog.io/articles/release-2170)
-
-## [2.16.0] - 2025-05-12
-
-### ✨ What's New
-
-- Introduced **tailored release webviews**:
-  - New users now get a dedicated welcome screen upon fresh install
-  - Existing users get update-focused release notes with relevant info
-
-- 🛡️ **Codebase audit completed** — all known vulnerabilities resolved
-- 🧪 100% test pass rate (109 tests) across the extension
-- 📦 Internal cleanup to support future stability and PRO enhancements
-
-### 🧠 What's Coming
-
-- **Turbo Console Log PRO** — launching next:
-  - Visual log panel
-  - File, Folder and Workspace graphical actions
-  - One-time license, no subscription
-
-➡️ Stay in the loop: [Join the newsletter](https://www.turboconsolelog.io/join)
-➡️ Support development: [Sponsor the project](https://www.turboconsolelog.io/sponsorship?showSponsor=true)
-
-Release article 🗞️: https://www.turboconsolelog.io/articles/release-2160
-
-## [2.15.3] - 2025-04-13
-
-V2.15.0 Release note illustration included in the release web view (The web view won't be shown again if already viewed, thank you!)
-
-## [2.15.2] - 2025-04-13
-
-V2.15.0 Release note illustration included in the release web view (The web view won't be shown again if already viewed, thank you!)
-
-## [2.15.1] - 2025-04-13
-
-Enable extension on onStartupFinished event
-
-## [2.15.0] - 2025-04-13
-
-### ✨ Highlights
-
-- This is the **only release of April** due to financial and burnout constraints — focused on stability and preparing for the upcoming PRO version.
-
-### ✅ Fixed
-
-- Fixed: All core commands (Comment, Uncomment, Delete, Correct Log Messages) now fully support custom log functions.
-  - Thanks to [tzarger](https://github.com/Chakroun-Anas/turbo-console-log/issues/265) for reporting this issue!
-
-### 🧪 Tests
-
-- Passed the **100+ unit and integration test** milestone — increasing overall confidence and stability.
-
-### 📦 Upcoming
-
-- **Turbo Console Log PRO** coming in May!
-  - Includes a graphical panel for enhanced UX.
-  - One-time purchase, no subscription.
-
-## [2.14.0] - 2025-03-26
-
-### 🧠 Stability & Sharpness: Turbo Console Log is Getting Smarter
-
-This release focuses on **fine-tuning the engine** behind log insertion. We tackled subtle edge cases around insertion precision, quote consistency, and function call tracking, making your debugging experience even smoother and more reliable.
-
-Huge thanks to everyone reporting issues and helping the extension evolve — your feedback drives this project forward! ❤️
-
-### 🛠️ Fixes & Improvements:
-
-- **Fix: Logs Appearing Outside Functions Due to Ignored Return Statements**
-  - Logs now correctly appear _inside_ functions, taking return statements into account when necessary.
-  - 📌 [Issue #256](https://github.com/Chakroun-Anas/turbo-console-log/issues/256)
-
-- **Fix: Incorrect Quote Usage in Object Log Statements**
-  - When logging objects, the extension now consistently selects the **correct quote style** based on context.
-  - 📌 [Issue #259](https://github.com/Chakroun-Anas/turbo-console-log/issues/259)
-
-- **Fix: Incorrect Log Line Computation in Function Calls**
-  - Resolved an issue where logs appeared at the **wrong line position** after function calls.
-  - 📌 [Issue #260](https://github.com/Chakroun-Anas/turbo-console-log/issues/260)
-
-- **Fix: Anonymous arrow function transformation when returning inline object**
-  - Resolved an issue where anonymous arrow functions returning inline objects were incorrectly transformed during log insertion.
-  - 📌 [Issue #262](https://github.com/Chakroun-Anas/turbo-console-log/issues/262)
-
-**Full Release Details:** https://github.com/Chakroun-Anas/turbo-console-log/issues/257
-
-## [2.13.0] - 2025-03-13
-
-### 🚀 First Mars Release: Smarter, More Precise, and Evolving!
-
-This release is all about **precision and reliability**! We tackled several long-standing issues to ensure that log messages are placed exactly where they should be.  
-Big thanks to the community for the **huge support** in the last release! ❤️ Let's keep the momentum going!
-
-### 🛠️ Fixes & Improvements:
-
-- **Corrected Log Placement in Object Assignments**
-  - Logs now appear **immediately after object literal assignments**, fixing previous misplacements.
-  - 📌 [Issue #252](https://github.com/Chakroun-Anas/turbo-console-log/issues/252)
-
-- **Accurate Log Placement for Array Assignments with TypeScript**
-  - Resolved a bug where logs were placed incorrectly in **TypeScript array assignments**.
-  - 📌 [Issue #253](https://github.com/Chakroun-Anas/turbo-console-log/issues/253)
-
-- **Precise Log Placement for Single-Line Expressions**
-  - Ensures that logs appear **immediately after complete single-line expressions**, rather than after enclosing brackets.
-  - 📌 [Issue #254](https://github.com/Chakroun-Anas/turbo-console-log/issues/254)
-
-- **Smart Quote Selection for Log Messages**
-  - The extension now intelligently selects **the correct quote style** (`'`, `"`, or \``) based on the variable content.
-  - 📌 Improvement linked to [Issue #254](https://github.com/Chakroun-Anas/turbo-console-log/issues/254)
-
-### 🔥 Addressing False Claims:
-
-A recent **false claim on GitHub** labeled Turbo Console Log as "spam adware." Let's set the record straight:  
-✅ The web view **only appears once per bi-weekly release** (or upon first installation).  
-✅ It **can be dismissed** and won’t reappear until the next release.  
-✅ Turbo Console Log is **completely free & open-source**, with no paywalls.  
-✅ We follow a **structured, predictable release schedule** for transparency.  
-📌 [Read our full response here](https://github.com/Chakroun-Anas/turbo-console-log/issues/250)
-
-### ❤️ How You Can Help:
-
-If Turbo Console Log **saves you time**, consider supporting its development:  
-🔹 **Sponsor the project:** [turboconsolelog.io/sponsorship](https://www.turboconsolelog.io/sponsorship?showSponsor=true)  
-🔹 **Spread the word & share the extension** 🚀
-
-Thank you all! **Turbo Console Log keeps evolving, and it's all thanks to you!** ❤️
-
-## [2.12.2] - 2025-02-20
-
-### 🛠️ Patch
-
-- The sponsorship campaign illustration link in the latest release web view has been updated.
-
-Thank u so much for your support (https://www.turboconsolelog.io/sponsorship?showSponsor=true) 💚 🚀
-
-## [2.12.1] - 2025-02-20
-
-### 🛠️ Patch
-
-- The sponsorship campaign illustration link in the latest release web view has been updated.
-
-## [2.12.0] - 2025-02-18
-
-**🛠️ Improved Stability Release**
-
-- Typed Function Call Logging Fix [#236 – Typescript function type parameters multiline brackets support](https://github.com/Chakroun-Anas/turbo-console-log/issues/236)
-- Fixed Function Call Assignment Edge Case [#231 – Some issues in Vue3 project](https://github.com/Chakroun-Anas/turbo-console-log/issues/231)
-- Whitespace Character Bug Resolved [#212 – Whitespace character bug](https://github.com/Chakroun-Anas/turbo-console-log/issues/227)
-
-## [2.11.5] - 2025-02-10
-
-- Fixed an issue where `wrapLogMessage` did not respect custom log functions. [#227 – custom "log function" does not apply on "Wrap Log Message](https://github.com/Chakroun-Anas/turbo-console-log/issues/227)
-
-## [2.11.4] - 2025-02-05
-
-Fix - Correct v2.11.0 full release notes link URL in the release web view
-
-## [2.11.3] - 2025-02-05
-
-### 🎯 Refining the Sponsorship Flow for Better Engagement
-
-**Web view adjustments** to further refine the sponsorship experience knowing that users who **already installed v2.11.0 or beyond** will not see the web view upon patch updates.
-
-💡 This update is a small but necessary patch to fine-tune our sponsorship model, ensuring that engagement remains meaningful without unnecessary distractions. While it brings a minor adjustment ahead of the next bi-weekly release, it’s a crucial step in optimizing the sustainability of Turbo Console Log 🚀
-
-## [2.11.2] - 2025-02-03
-
-### 🔥 Improved Engagement & Support Visibility
-
-- **Updated web view to prioritize sponsorship visibility** by making the primary call-to-action directly link to the sponsorship page.
-
-💡 _This change is designed to increase engagement, which is crucial for the long-term sustainability of the project. By improving the way sponsorship is presented, we aim to secure more support from developers who rely on Turbo Console Log._ 🚀
-
-## [2.11.1] - 2025-02-03
-
-### 🛠️ Patch Fixes
-
-- **Fixed log insertion in function parameter destructuring**.
-- **Resolved an issue with log placement inside template literals and JSX expressions**.
-- **Ensured the update notification is only shown once per major release** to avoid unnecessary prompts for users updating from patch versions.
-
-📢 This is a **patch update** to refine stability and user experience after **v2.11.0**.
-
-## [2.11.0] - 2025-02-03
-
-### ✨ New Features
-
-- **Correct Log Messages Command**: Logs now **automatically update their filenames and line numbers** after refactoring.
-  - 🏷️ **Command:** `turboConsoleLog.correctAllLogMessages`
-  - ⌨️ **Shortcut:** (Alt + Shift + X)
-  - 📌 Related issue: [#248 – 🚀 Release v2.11.0: Major Bug Fixes & Improvements](https://github.com/Chakroun-Anas/turbo-console-log/issues/248)
-
-- **Enhanced File Name & Line Number Handling**: The old `includeFileNameAndLineNum` setting has been split into:
-  - ✅ `includeFilename` → Includes the file name in log messages.
-  - ✅ `includeLineNum` → Includes the line number in log messages.
-  - 📌 Related issue: [#247 – Enhance File Name and Line Number Handling in Log Messages](https://github.com/Chakroun-Anas/turbo-console-log/issues/247)
-
-### 🛠️ Improvements & Bug Fixes
-
-- 🔧 Improved **log placement accuracy** in complex expressions.
-- 📝 Better handling of **nested objects, ternary expressions, and template literals**.
-- 🛠️ Refined detection logic for **function assignments and array elements**.
-
-📢 **First Bi-Weekly Release of 2025** → Expect **regular updates** and continuous improvements! 🚀
-
-## [2.10.8]
-
-### Fixed
-
-- Corrected the extension ID used in the donation notification logic to ensure the notification displays properly in the published version.  
-  Users will now see the sponsorship invitation notification when updating to a new version.
-
-## [2.10.7]
-
-### Changed
-
-- Refactored core extension code for better maintainability and performance.
-- Introduced a notification inviting users to sponsor the project.  
-  Your support is critical to keep Turbo Console Log alive! Consider sponsoring the project to help maintain and develop new features: [https://www.turboconsolelog.io/home?showSponsor=true](https://www.turboconsolelog.io/home?showSponsor=true)
-
-## [2.10.6]
-
-### Fixed
-
-- Improved detection of anonymous functions assigned to variable declarations, especially in cases where type annotations or complex expressions were used.
-
-## [2.10.5]
-
-### Fixed
-
-- Improved Turbo Console Log to accurately insert log messages for variable assignments, specifically when a variable is assigned a value from a function call in TypeScript and JavaScript files.
-
-## [2.10.4]
-
-### Fixed
-
-- Enhanced Turbo Console Log to accurately insert log messages for deconstructed function arguments in TypeScript and JavaScript files. This update ensures more reliable and precise logging capabilities, particularly in complex code structures involving destructuring within function parameters.
-
-## [2.10.3]
-
-- Update README website links
-
-## [2.10.2]
-
-- Fix README
-
-## [2.10.1]
-
-- Update README
-
-## [2.10.0]
-
-- Launch of Turbo Console Log new website (https://www.turboconsolelog.io) 🎉
-- Include file name and line number setting is now disabled by default
-
-## [2.9.10]
-
-- Fix issue with logging a parameter of a function assigned to a variable
-
-## [2.9.9]
-
-- Better detection of function assignment to a variable
-
-## [2.9.8]
-
-- Bundle size optimized following the release of recent version `2.9.7`
-
-## [2.9.7]
-
-- This update enhances the handling of destructuring assignments, ensuring that log messages are inserted in the correct line when logging variables within these structures.
-
-## [2.9.6]
-
-- Refined ES6 object literal assignment detection for improved accuracy.
-
-## [2.9.5]
-
-- Fix incorrect log line in the context of single-line and multi-line comments in object literal assignment check
-
-## [2.9.4]
-
-- Fix incorrect log line in the context of a variable within braces scope (#218)
-
-## [2.9.3]
-
-- Fix issue with logging a deep object property
+- 🧠 **AST 支持**：引入了对三元表达式和函数参数的 AST 解析
+- 📐 **更可靠的日志放置**：使用 AST 提高了三元表达式和函数参数的准确性
+- 🐛 **修复**：正确处理带有复杂类型注释的对象字面量赋值
+- 🛠️ **修复**：现在尊重默认配置值，减少误报
+- 🧪 **测试覆盖**：添加了新的测试用例来验证 AST 逻辑和关键边缘场景

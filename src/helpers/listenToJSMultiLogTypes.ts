@@ -11,7 +11,6 @@ import {
   writeToGlobalState,
   isJavaScriptOrTypeScriptFile,
   getExtensionProperties,
-  isProUser,
 } from './index';
 
 /**
@@ -50,10 +49,6 @@ export function listenToJSMultiLogTypes(
   context: vscode.ExtensionContext,
   version: string,
 ): void {
-  // Skip for Pro users
-  if (isProUser(context)) {
-    return;
-  }
 
   // Check if notification has already been shown BEFORE setting up listener
   const hasShownNotification = readFromGlobalState<boolean>(

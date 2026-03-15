@@ -1,14 +1,12 @@
 import * as vscode from 'vscode';
 
 import { GlobalStateKey, UserActivityStatus } from '@/entities';
-import { readFromGlobalState } from '@/helpers/readFromGlobalState';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers';
 import { updateUserActivityStatus } from '@/helpers/updateUserActivityStatus';
-import { writeToGlobalState } from '@/helpers/writeToGlobalState';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
 
 // Mock the dependencies
-jest.mock('@/helpers/readFromGlobalState');
-jest.mock('@/helpers/writeToGlobalState');
+jest.mock('@/helpers');
 
 describe('updateUserActivityStatus', () => {
   const mockReadFromGlobalState = readFromGlobalState as jest.MockedFunction<

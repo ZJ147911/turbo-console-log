@@ -7,7 +7,6 @@ import { showNotification } from '../notifications/showNotification';
 import {
   readFromGlobalState,
   writeToGlobalState,
-  isProUser,
   isJavaScriptOrTypeScriptFile,
 } from './index';
 
@@ -30,10 +29,6 @@ export function listenToActivationDayThree(
   context: vscode.ExtensionContext,
   version: string,
 ): void {
-  // Skip for Pro users - they're already engaged
-  if (isProUser(context)) {
-    return;
-  }
 
   // Check if notification has already been shown
   const hasShownNotification = readFromGlobalState<boolean>(

@@ -10,7 +10,6 @@ import {
   isJavaScriptOrTypeScriptFile,
   isPhpFile,
   getExtensionProperties,
-  isProUser,
 } from './index';
 
 /**
@@ -55,10 +54,6 @@ export function listenToCommitWithLogs(
   context: vscode.ExtensionContext,
   version: string,
 ): void {
-  // Skip for Pro users - they already have advanced log management features
-  if (isProUser(context)) {
-    return;
-  }
 
   // Check if notification has already been shown BEFORE setting up listener
   const hasShownNotification = readFromGlobalState<boolean>(

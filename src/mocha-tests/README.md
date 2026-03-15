@@ -1,60 +1,60 @@
-# 🧪 Turbo Console Log – Mocha Tests
+# 🧪 Turbo Console Log – Mocha 测试
 
-This folder contains **integration tests** that execute the extension inside a real VSCode instance.  
-We use **Mocha** here due to its compatibility with the official [VSCode Extension Test Runner](https://code.visualstudio.com/api/working-with-extensions/testing-extension).
+此文件夹包含在真实 VSCode 实例中执行扩展的 **集成测试**。
+我们在这里使用 **Mocha**，因为它与官方的 [VSCode 扩展测试运行器](https://code.visualstudio.com/api/working-with-extensions/testing-extension) 兼容。
 
-## 🔧 Testing Framework
+## 🔧 测试框架
 
 ### **Mocha**
 
-[Mocha](https://mochajs.org/) is a flexible, mature test runner that supports:
+[Mocha](https://mochajs.org/) 是一个灵活、成熟的测试运行器，支持：
 
-- Asynchronous test execution
-- TDD and BDD syntax
-- Lifecycle hooks (`before`, `after`, `beforeEach`, `afterEach`)
+- 异步测试执行
+- TDD 和 BDD 语法
+- 生命周期钩子 (`before`, `after`, `beforeEach`, `afterEach`)
 
 ### **Chai**
 
-[Chai](https://www.chaijs.com/) provides expressive assertions using `expect`, `should`, or `assert`.
+[Chai](https://www.chaijs.com/) 使用 `expect`、`should` 或 `assert` 提供表达性断言。
 
-## 📁 Folder Structure
+## 📁 文件夹结构
 
 ```
 mocha-tests/
-├── files/                   # Test fixture files used in integration
-├── integration/             # VSCode extension integration tests
+├── files/                   # 集成测试中使用的测试夹具文件
+├── integration/             # VSCode 扩展集成测试
 │   └── insert-log/
 │       └── insertLogAtCursor.test.ts
-├── unit/                    # (Deprecated) Mocha-based unit tests (migrating to Jest)
-├── runTests.ts              # Entry point
-├── testsRunner.ts           # Mocha runner loader
-└── README.md                # You are here
+├── unit/                    # (已弃用) 基于 Mocha 的单元测试（正在迁移到 Jest）
+├── runTests.ts              # 入口点
+├── testsRunner.ts           # Mocha 运行器加载器
+└── README.md                # 您在此处
 ```
 
-## 🧬 Writing Tests
+## 🧬 编写测试
 
-- Use the `.test.ts` suffix.
-- Place test files inside `integration/` or `unit/` directories.
-- Leverage helpers from `helpers/` like:
+- 使用 `.test.ts` 后缀。
+- 将测试文件放在 `integration/` 或 `unit/` 目录中。
+- 利用 `helpers/` 中的辅助函数，如：
   - `expectActiveTextEditorWithFile`
   - `documentLinesChanged`
 
-## 🚀 Running Tests
+## 🚀 运行测试
 
-### ▶️ Via CLI (headless)
+### ▶️ 通过 CLI（无头）
 
 ```bash
 npm run test
 ```
 
-> ⚠️ VSCode **must be closed** for CLI integration tests to run properly.
+> ⚠️ VSCode **必须关闭** 才能正确运行 CLI 集成测试。
 
-### 🐞 With Debugger (recommended)
+### 🐞 使用调试器（推荐）
 
-1. Run `npm run test:compile`
-2. Open the **Debug View** in VSCode
-3. Select **VSCode Integration Tests** from the launch dropdown
-4. Press **F5** to start debugging
+1. 运行 `npm run test:compile`
+2. 在 VSCode 中打开 **调试视图**
+3. 从启动下拉菜单中选择 **VSCode 集成测试**
+4. 按 **F5** 开始调试
 
-To run a single test file, use `.only` (e.g., `it.only(...)`)  
-Just don’t forget to remove it before committing 😉
+要运行单个测试文件，请使用 `.only`（例如 `it.only(...)`）
+只是不要忘记在提交前删除它 😉

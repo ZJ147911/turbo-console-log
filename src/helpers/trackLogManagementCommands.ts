@@ -4,7 +4,7 @@ import { GlobalStateKey } from '@/entities';
 
 import { NotificationEvent } from '../notifications/NotificationEvent';
 import { showNotification } from '../notifications/showNotification';
-import { readFromGlobalState, writeToGlobalState, isProUser } from './index';
+import { readFromGlobalState, writeToGlobalState } from './index';
 
 export type LogManagementCommandType =
   | 'comment'
@@ -14,7 +14,7 @@ export type LogManagementCommandType =
 
 /**
  * Tracks log management commands usage (comment, uncomment, delete, correct)
- * Shows notification after 5 uses to promote centralized Pro features
+ * Shows notification after 5 uses to provide usage tips
  * @param context VS Code extension context
  * @param commandType Type of command being tracked
  */
@@ -48,8 +48,7 @@ export async function trackLogManagementCommands(
 
   if (
     !hasShownFiveLogManagementCommandsNotification &&
-    logManagementCommandUsageCount >= 5 &&
-    !isProUser(context)
+    logManagementCommandUsageCount >= 5
   ) {
     // Show five log management commands notification (non-blocking) with version info
     const wasShown = await showNotification(
@@ -102,10 +101,7 @@ export async function trackLogManagementCommands(
   commandTypeCount++;
   writeToGlobalState(context, mapping.countKey, commandTypeCount);
 
-  // Don't show Pro upsell notifications to Pro users
-  if (isProUser(context)) {
-    return;
-  }
+
 
   // Check if this specific command type has reached 5 uses
   const hasShownSpecificNotification = readFromGlobalState<boolean>(

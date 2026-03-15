@@ -8,7 +8,6 @@ import {
   readFromGlobalState,
   writeToGlobalState,
   getUserActivityStatus,
-  isProUser,
   updateUserActivityStatus,
 } from './index';
 
@@ -23,10 +22,6 @@ import {
 export function listenToManualConsoleLogs(
   context: vscode.ExtensionContext,
 ): void {
-  // Skip for Pro users - they already have access to all features
-  if (isProUser(context)) {
-    return;
-  }
 
   // Check if notification has already been shown - if so, no need to listen
   const hasShownNotification = readFromGlobalState<boolean>(

@@ -4,10 +4,7 @@ import { getAllCommands } from './commands/';
 import { jsDebugMessage } from './debug-message/js';
 import { Command, ExtensionProperties } from './entities';
 import {
-  readFromGlobalState,
   getExtensionProperties,
-  activateRepairMode,
-  activateFreemiumLauncherMode,
   traceExtensionVersionHistory,
   listenToPhpFileOpenings,
   updateUserActivityStatus,
@@ -24,18 +21,7 @@ import {
   listenToCommitWithLogs,
   listenToCustomLogLibrary,
   listenToLogsInTestFile,
-  initialWorkspaceLogsCount,
 } from './helpers';
-import {
-  TurboFreemiumLauncherPanel,
-  TurboProBundleRepairPanel,
-  TurboProShowcasePanel,
-} from './pro';
-import {
-  proBundleNeedsUpdate,
-  runProBundle,
-  updateProBundle,
-} from './pro/utilities';
 import { releaseNotes } from './releases';
 
 export async function activate(
@@ -58,37 +44,7 @@ export async function activate(
     });
   }
 
-  // Register webview panels and tree views
-  const freemiumLauncherProvider = new TurboFreemiumLauncherPanel();
-  context.subscriptions.push(
-    vscode.window.registerTreeDataProvider(
-      TurboFreemiumLauncherPanel.viewType,
-      freemiumLauncherProvider,
-    ),
-  );
-  const launcherView = vscode.window.createTreeView(
-    TurboFreemiumLauncherPanel.viewType,
-    {
-      treeDataProvider: freemiumLauncherProvider,
-    },
-  );
-  const turboProShowCasePanel = new TurboProShowcasePanel(
-    context,
-    launcherView,
-  );
-  context.subscriptions.push(
-    vscode.window.registerWebviewViewProvider(
-      TurboProShowcasePanel.viewType,
-      turboProShowCasePanel,
-    ),
-  );
-  const turboProBundleRepairPanel = new TurboProBundleRepairPanel('', 'run');
-  context.subscriptions.push(
-    vscode.window.registerWebviewViewProvider(
-      TurboProBundleRepairPanel.viewType,
-      turboProBundleRepairPanel,
-    ),
-  );
+  // 移除 Pro 相关面板注册
 
   // Get current extension version
   const version = vscode.extensions.getExtension(
@@ -145,70 +101,5 @@ export async function activate(
   // Show weekend Turbo Sundays article notification (if it's weekend)
   listenToWeekendTurboSundays(context, version);
 
-  // Handle Pro user logic
-  const proLicenseKey = readFromGlobalState<string>(context, 'license-key');
-  const proBundle = readFromGlobalState<string>(context, 'pro-bundle');
-  const proBundleVersion = readFromGlobalState<string>(context, 'version');
-  const isProUser = proLicenseKey !== undefined && proBundle !== undefined;
-
-  if (isProUser) {
-    if (
-      releaseNotes[version]?.isPro &&
-      proBundleNeedsUpdate(version, proBundleVersion)
-    ) {
-      try {
-        await updateProBundle(
-          context,
-          version,
-          proLicenseKey,
-          extensionProperties,
-        );
-      } catch (error) {
-        activateRepairMode({
-          context,
-          version,
-          proLicenseKey,
-          config: extensionProperties,
-          turboProBundleRepairPanel,
-          reason: (error as { message?: string })?.message ?? '',
-          mode: 'update',
-          proBundle,
-        });
-        return;
-      }
-      return;
-    }
-    try {
-      await runProBundle(extensionProperties, proBundle, context);
-    } catch (error) {
-      activateRepairMode({
-        context,
-        version,
-        proLicenseKey,
-        config: extensionProperties,
-        turboProBundleRepairPanel,
-        reason: (error as { message?: string })?.message ?? '',
-        mode: 'run',
-        proBundle,
-      });
-      return;
-    }
-    return;
-  }
-
-  // Activate freemium launcher for non-Pro users
-  activateFreemiumLauncherMode(context, launcherView);
-
-  // Count initial workspace logs and potentially show notification (with error handling)
-  initialWorkspaceLogsCount(
-    extensionProperties,
-    launcherView,
-    context,
-    version,
-  ).catch((error) => {
-    console.error(
-      '[Extension] Failed to initialize workspace log count:',
-      error,
-    );
-  });
+  // 移除 Pro 相关逻辑和 freemium launcher 激活
 }

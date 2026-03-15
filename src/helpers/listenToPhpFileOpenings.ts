@@ -8,13 +8,12 @@ import {
   readFromGlobalState,
   writeToGlobalState,
   isPhpFile,
-  isProUser,
 } from './index';
 
 /**
  * Listens to document openings and shows PHP support notification when user opens a PHP file
- * Shows notification immediately (not delayed) for better engagement (v3.10.0 strategy)
- * One-time notification per user (free users only - Pro users already have access)
+ * Shows notification immediately (not delayed) for better engagement
+ * One-time notification per user
  *
  * @param context VS Code extension context
  */
@@ -22,10 +21,6 @@ export function listenToPhpFileOpenings(
   context: vscode.ExtensionContext,
   version: string,
 ): void {
-  // Skip for Pro users - they already have PHP access
-  if (isProUser(context)) {
-    return;
-  }
 
   // Check if notification has already been shown BEFORE setting up listener
   const hasShownNotification = readFromGlobalState<boolean>(

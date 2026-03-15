@@ -4,7 +4,7 @@ import { GlobalStateKey } from '@/entities';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
 import { showNotification } from '@/notifications/showNotification';
 
-import { readFromGlobalState, writeToGlobalState, isProUser } from './index';
+import { readFromGlobalState, writeToGlobalState } from './index';
 
 /**
  * Checks if the current time is during the weekend (Saturday or Sunday)
@@ -27,10 +27,6 @@ export async function listenToWeekendTurboSundays(
   context: vscode.ExtensionContext,
   version: string,
 ): Promise<void> {
-  // Skip for Pro users
-  if (isProUser(context)) {
-    return;
-  }
 
   // Check if notification has already been shown
   const hasShownNotification = readFromGlobalState<boolean>(

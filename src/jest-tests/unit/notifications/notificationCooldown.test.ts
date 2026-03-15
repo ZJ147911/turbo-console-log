@@ -1,8 +1,7 @@
 import vscode from 'vscode';
 
 import { GlobalStateKey } from '@/entities';
-import { readFromGlobalState } from '@/helpers/readFromGlobalState';
-import { writeToGlobalState } from '@/helpers/writeToGlobalState';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers';
 import {
   shouldShowNotification,
   recordNotificationShown,
@@ -13,8 +12,7 @@ import {
 import { NotificationEvent } from '@/notifications/NotificationEvent';
 import { createTelemetryService } from '@/telemetry/telemetryService';
 
-jest.mock('@/helpers/readFromGlobalState');
-jest.mock('@/helpers/writeToGlobalState');
+jest.mock('@/helpers');
 jest.mock('@/telemetry/telemetryService');
 
 describe('notificationCooldown', () => {

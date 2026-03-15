@@ -4,7 +4,7 @@ import { GlobalStateKey } from '@/entities';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
 import { showNotification } from '@/notifications/showNotification';
 
-import { readFromGlobalState, writeToGlobalState, isProUser } from './index';
+import { readFromGlobalState, writeToGlobalState } from './index';
 
 /**
  * Popular logging libraries to detect
@@ -85,10 +85,6 @@ export function listenToCustomLogLibrary(
   context: vscode.ExtensionContext,
   version: string,
 ): void {
-  // Skip for Pro users
-  if (isProUser(context)) {
-    return;
-  }
 
   // Check if notification has already been shown
   const hasShownNotification = readFromGlobalState<boolean>(

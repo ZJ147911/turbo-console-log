@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { GlobalStateKey } from '@/entities';
-import { readFromGlobalState, writeToGlobalState, isProUser } from '@/helpers';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers';
 import {
   trackLogManagementCommands,
   LogManagementCommandType,

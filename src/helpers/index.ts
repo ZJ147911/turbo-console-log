@@ -1,16 +1,10 @@
-import { activateFreemiumLauncherMode } from './activateFreemiumLauncherMode';
-import { activateProMode } from './activateProMode';
-import { activateRepairMode } from './activateRepairMode';
-import { activateFreemiumMode } from './activeFreemiumMode';
 import { canInsertLogInDocument } from './canInsertLogInDocument';
-import { deactivateRepairMode } from './deactivateRepairMode';
 import { getExtensionProperties } from './config';
 import { getUserActivityStatus } from './getUserActivityStatus';
 import { GlobalStateKeys } from './GlobalStateKeys';
 import { initialWorkspaceLogsCount } from './initialWorkspaceLogsCount/initialWorkspaceLogsCount';
 import { isFreshInstall } from './isFreshInstall';
 import { isJavaScriptOrTypeScriptFile, isPhpFile } from './file';
-import { isProUser } from './isProUser';
 import { listenToActivationDaySeven } from './listenToActivationDaySeven';
 import { listenToActivationDayThree } from './listenToActivationDayThree';
 import { listenToCommitWithLogs } from './listenToCommitWithLogs';
@@ -38,14 +32,8 @@ export {
   writeToGlobalState,
   GlobalStateKeys,
   getExtensionProperties,
-  activateFreemiumLauncherMode,
-  activateFreemiumMode,
-  activateProMode,
-  activateRepairMode,
-  deactivateRepairMode,
   trackLogInsertions,
   trackLogManagementCommands,
-  isProUser,
   isJavaScriptOrTypeScriptFile,
   isPhpFile,
   canInsertLogInDocument,

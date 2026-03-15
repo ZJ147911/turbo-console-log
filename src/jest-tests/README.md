@@ -1,22 +1,22 @@
-# ✅ Turbo Console Log – Jest Tests
+# ✅ Turbo Console Log – Jest 测试
 
-This folder contains **unit and integration tests** powered by **Jest**.
+此文件夹包含由 **Jest** 驱动的 **单元和集成测试**。
 
-## 🧪 Testing Framework
+## 🧪 测试框架
 
-[Jest](https://jestjs.io/) is a modern testing framework offering:
+[Jest](https://jestjs.io/) 是一个现代测试框架，提供：
 
-- Fast and isolated test execution
-- Snapshot testing
-- Built-in mocking utilities
-- Clear and readable error output
-- First-class TypeScript support via `ts-jest`
+- 快速且隔离的测试执行
+- 快照测试
+- 内置模拟工具
+- 清晰可读的错误输出
+- 通过 `ts-jest` 提供一流的 TypeScript 支持
 
-## 📁 Folder Structure
+## 📁 文件夹结构
 
 ```
 jest-tests/
-├── unit/                         # Unit tests by logic/feature
+├── unit/                         # 按逻辑/功能划分的单元测试
 │   └── js/
 │       └── loc-processing/
 │           ├── object/
@@ -25,21 +25,21 @@ jest-tests/
 │           │   ├── function-name.test.ts
 │           │   └── function-call.test.ts
 ├── commands/
-│   └── getAllCommands.test.ts    # Command-level logic tests
-├── mocks/                        # Manual Jest mocks
+│   └── getAllCommands.test.ts    # 命令级逻辑测试
+├── mocks/                        # 手动 Jest 模拟
 │   └── vscode.ts
-├── tsconfig.json                 # Jest-specific TypeScript config
+├── tsconfig.json                 # Jest 特定的 TypeScript 配置
 └── README.md
 ```
 
-## 🧬 Writing Tests
+## 🧬 编写测试
 
-- Use `.test.ts` for all test files.
-- Group by **feature** or **logic domain**.
-- Use `jest.mock()` to isolate dependencies as needed.
-- You **do not need to import** `describe`, `test`, or `expect` if your `tsconfig` includes `@types/jest`.
+- 所有测试文件使用 `.test.ts` 扩展名。
+- 按 **功能** 或 **逻辑域** 分组。
+- 必要时使用 `jest.mock()` 隔离依赖项。
+- 如果您的 `tsconfig` 包含 `@types/jest`，则 **不需要导入** `describe`、`test` 或 `expect`。
 
-## 🚀 Running Tests
+## 🚀 运行测试
 
 ```bash
 npm run test:jest

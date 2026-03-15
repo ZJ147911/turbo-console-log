@@ -1,34 +1,35 @@
 ---
-name: Inconvenience request
-about: Describe this issue template's purpose here.
+name: 不便之处请求
+inconvenience-request.md
+about: 描述此问题模板的目的。
 title: ''
 labels: discussion, inconvenience
 assignees: Chakroun-Anas
 ---
 
-**Describe the inconvenience**
-A clear and concise description of the issue or annoyance.
+**描述不便之处**
+清晰简洁地描述问题或烦恼。
 
-**Why is it inconvenient?**
-Explain how this affects your workflow or experience using the extension.
+**为什么不方便？**
+解释这如何影响您使用扩展的工作流程或体验。
 
-**Steps to reproduce** (Optional)
+**复现步骤**（可选）
 
-1. Go to '...'
-2. Click on '...'
-3. Observe '...'
+1. 转到 '...'
+2. 点击 '...'
+3. 观察 '...'
 
-**Expected behavior**
-A clear and concise description of what you would expect instead of the inconvenience.
+**预期行为**
+清晰简洁地描述您期望的替代不便之处的内容。
 
-**Workarounds** (Optional)
-If applicable, describe any temporary solutions or steps you've taken to mitigate the inconvenience.
+**变通方法**（可选）
+如果适用，描述您为减轻不便而采取的任何临时解决方案或步骤。
 
-**Context:**
+**上下文：**
 
-- OS name and version: [e.g., Windows 11]
-- VSCode version: [e.g., v1.96.2]
-- Extension version: [e.g., v2.10.0]
+- 操作系统名称和版本：[例如，Windows 11]
+- VSCode 版本：[例如，v1.96.2]
+- 扩展版本：[例如，v2.10.0]
 
-**Additional context** (Optional)
-Add any other context, screenshots, or examples to help explain the inconvenience.
+**其他上下文**（可选）
+添加任何其他上下文、屏幕截图或示例，以帮助解释不便之处。

@@ -7,7 +7,6 @@ import { showNotification } from '../notifications/showNotification';
 import {
   readFromGlobalState,
   writeToGlobalState,
-  isProUser,
   isJavaScriptOrTypeScriptFile,
 } from './index';
 
@@ -19,7 +18,7 @@ const TWO_WEEKS_MS = 14 * ONE_DAY_MS;
  * Listens to JS/TS file openings and shows second activation notification for new users
  * Targets users with zero usage (COMMAND_USAGE_COUNT === 0) between 7-14 days after install
  * Final attempt to activate users before they become "inactive" (14+ days)
- * One-time notification per user (free users only)
+ * One-time notification per user
  *
  * Works in conjunction with Day 3 event - both can show to same user (graduated escalation)
  * Users who reach 14 days are handled by the two-week return event
@@ -31,11 +30,6 @@ export function listenToActivationDaySeven(
   context: vscode.ExtensionContext,
   version: string,
 ): void {
-  // Skip for Pro users - they're already engaged
-  if (isProUser(context)) {
-    return;
-  }
-
   // Check if notification has already been shown
   const hasShownNotification = readFromGlobalState<boolean>(
     context,

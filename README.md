@@ -1,185 +1,137 @@
 # Turbo Console Log
 
-**[Official Website](https://www.turboconsolelog.io)** | **[Turbo Pro](https://www.turboconsolelog.io/pro)** | **[GitHub Repository](https://github.com/Chakroun-Anas/turbo-console-log)**
+**[GitHub 仓库](https://github.com/Chakroun-Anas/turbo-console-log)**
 
 ---
 
-## 🚀 From Automated Logging to Total Workspace Mastery
+## 🚀 从自动日志到完整工作区管理
 
-**Turbo Console Log transforms debugging in JavaScript, TypeScript, and PHP.** It's built for developers who refuse to waste time manually typing log statements or hunting them down across dozens of files.
-
-### **Two Versions. One Mission.**
-
-**🆓 Turbo Console Log (Free)**  
-Perfect for everyday debugging in your **active editor**. Insert, comment, uncomment, and delete logs with keyboard shortcuts. Powered by a full AST engine that understands your code structure.
-
-**💎 Turbo Console Log Pro**  
-The **ultimate workspace log manager**. See every log across your entire codebase in a matter of seconds, no matter how large. Delete logs by type across your entire workspace. Filter, search, and navigate logs instantly. This is debugging at scale.
+**Turbo Console Log 彻底改变了 JavaScript、TypeScript 和 PHP 的调试方式。** 它专为拒绝浪费时间手动输入日志语句或在数十个文件中寻找日志的开发者而设计。
 
 ---
 
-## 🆓 What You Get for Free
+## ✨ 功能特性
 
-The free version gives you intelligent log insertion right where you need it:
+Turbo Console Log 为您提供智能日志插入和管理功能，就在您需要的地方：
 
-### ✨ Smart Log Insertion
+### 📝 智能日志插入
 
-- **AST-Powered Precision** – Logs appear exactly where they belong, even in complex code
-- **7 Console Methods** – Dedicated commands for `console.log`, `console.info`, `console.debug`, `console.warn`, `console.error`, `console.table`, and a custom log method from the settings
-- **Individual Shortcuts** – Each method has its own ⌘K combination for instant access
-- **Multi-Cursor Support** – Debug multiple variables simultaneously
-- **Customizable Format** – Control prefixes, quotes, spacing, and context information
+- **AST 驱动的精准定位** – 日志精确显示在它们所属的位置，即使在复杂代码中
+- **7 种控制台方法** – 专门的命令用于 `console.log`、`console.info`、`console.debug`、`console.warn`、`console.error`、`console.table` 和来自设置的自定义日志方法
+- **独立快捷键** – 每种方法都有自己的组合键，可即时访问
+- **多光标支持** – 同时调试多个变量
+- **可定制格式** – 控制前缀、引号、间距和上下文信息
+- **多语言支持** – 支持 JavaScript、TypeScript 和 PHP
 
-### 🛠️ Log Management (Active Editor Only)
+### 🛠️ 日志管理
 
-- **Comment All Logs** – Mute all logs in your current file
-- **Uncomment All Logs** – Restore commented logs
-- **Delete All Logs** – Remove all logs from current file
-- **Correct Log Messages** – Auto-update file names and line numbers after refactoring
+- **注释所有日志** – 静音当前文件中的所有日志
+- **取消注释所有日志** – 恢复已注释的日志
+- **删除所有日志** – 从当前文件中删除所有日志
+- **修正日志消息** – 在重构后自动更新文件名和行号
 
-**Great for:** Solo files, small projects, everyday debugging tasks
+### 🌍 多语言支持
 
-**Full Documentation:** **[Turbo Console Log Docs](https://www.turboconsolelog.io/documentation)**
-
----
-
-## 💎 Turbo Console Log Pro – Total Workspace Mastery
-
-<p align="center">
-  <img src="https://www.turboconsolelog.io/assets/turbo-pro-illustration.png" alt="Turbo Console Log Pro" width="400">
-</p>
-
-**When your codebase grows, freemium doesn't scale.** Pro transforms Turbo into the ultimate workspace log manager with total visibility and control.
-
-### 🌲 Workspace Log Explorer
-
-**How many logs does your project actually have?** Pro answers in a matter of seconds.
-
-- See every log across your entire codebase in a native VS Code tree view, no matter how many files
-- Click any log to jump straight to the source line
-- No more guessing, no more searching—just instant navigation
-
-### 🧹 Mass Cleanup Operations
-
-**About to push?** Select the log types you want gone and watch them disappear across your entire workspace.
-
-- Choose specific log types: `console.log`, `console.error`, `console.warn`, or all of them
-- Pick your scope: workspace, folder, or file
-- Handles large codebases with hundreds of logs—deleted instantly, reliably, every time
-
-### 🎯 Real-Time Filtering
-
-**Hundreds of logs but only care about errors?** Toggle log types and the tree updates instantly.
-
-- Filter by: log, error, warn, info, debug, table
-- No re-scan, no waiting, just pure control over the noise
-- Color-coded for instant visual recognition (🟦 log, 🟥 error, 🟨 warn, 🟩 info, 🟪 debug, 📊 table)
-
-### 🔍 Instant Search
-
-**Find any log by content in seconds.** Type the keyword, see matching logs instantly, click to jump to the exact line.
-
-- No grep, no scrolling through files, no memory required
-- Search across your entire workspace
-- Results update as you type
-
-### 🌍 Multi-Language Support
-
-Pro recognizes **JavaScript, TypeScript, and PHP** logs in one unified view:
-
-- **JavaScript/TypeScript:** All console methods and a custom log method from the settings
-- **PHP:** `var_dump()`, `print_r()`, `error_log()`, and a custom log method from the settings
-- **Custom Functions:** Your own logging functions, any language
-
-### ✨ Enhanced Experience
-
-- **Context Actions:** Right-click any log for instant comment, delete, or correction
-- **Auto-Correction:** Keeps file names and line numbers synchronized after refactoring
-- **Hide Logs:** Temporarily mute logs by pattern, file, or folder
-- **Smart Detection:** Recognizes Turbo logs and plain console statements
-
-### 🎁 Your Pro License Includes
-
-- ✅ **Lifetime access** – Pay once, own it permanently
-- ✅ **Use on up to 5 machines** – Laptop, desktop, work computer
-- ✅ **All future updates included** – Every enhancement, no additional cost
-- ✅ **Priority email support** – Direct help at support@turboconsolelog.io
-
-**One-time payment. No subscriptions. Yours forever.**
-
-**[See Pro in Action](https://www.turboconsolelog.io/pro#see-it-in-action)** | **[Upgrade to Pro](https://www.turboconsolelog.io/pro)**
+- **JavaScript/TypeScript：** 所有控制台方法和来自设置的自定义日志方法
+- **PHP：** `var_dump()`、`print_r()`、`error_log()` 和来自设置的自定义日志方法
+- **自定义函数：** 您自己的日志函数，任何语言
 
 ---
 
-## ⚙️ Configuration & Customization
+## ⌨️ 快捷键
 
-Turbo Console Log (free and Pro) is fully customizable:
+### 插入日志
 
-- **Log Message Format** – Custom prefixes, suffixes, and delimiters
-- **Quote Style** – Single quotes, double quotes, or backticks
-- **Context Information** – Include/exclude filename, line numbers, class, and function names
-- **Spacing & Formatting** – Empty lines before/after logs, wrap messages, semicolons
-- **Custom Log Functions** – Use your own logging function instead of console methods
+- **插入 console.log** – `Ctrl+K Ctrl+L` (Windows/Linux) / `Cmd+K Cmd+L` (Mac)
+- **插入 console.info** – `Ctrl+K Ctrl+N` (Windows/Linux) / `Cmd+K Cmd+N` (Mac)
+- **插入 console.debug** – `Ctrl+K Ctrl+B` (Windows/Linux) / `Cmd+K Cmd+B` (Mac)
+- **插入 console.table** – `Ctrl+K Ctrl+T` (Windows/Linux) / `Cmd+K Cmd+T` (Mac)
+- **插入 console.warn** – `Ctrl+K Ctrl+R` (Windows/Linux) / `Cmd+K Cmd+R` (Mac)
+- **插入 console.error** – `Ctrl+K Ctrl+E` (Windows/Linux) / `Cmd+K Cmd+E` (Mac)
+- **插入自定义日志** – `Ctrl+K Ctrl+K` (Windows/Linux) / `Cmd+K Cmd+K` (Mac)
+- **插入日志（Legacy）** – `Ctrl+Alt+L` (Windows/Linux) / `Ctrl+Alt+L` (Mac)
 
-**Explore Settings:** **[Settings Documentation](https://www.turboconsolelog.io/documentation/settings/custom-prefix)**
+### 管理日志
 
----
-
-## 🔥 Why Developers Choose Turbo Pro
-
-**"Before Pro, I spent hours hunting down logs before commits. Now I delete 50+ logs in 1 second."**
-
-**"The workspace explorer saved my sanity. I can finally see what's actually in my codebase."**
-
-**"One-time payment for lifetime access? No-brainer. Best $49 I've spent on a dev tool."**
-
-Whether you're managing dozens or hundreds of logs, whether you're debugging a feature or cleaning up before release, **Turbo Pro makes it effortless.**
-
-**[Upgrade to Pro](https://www.turboconsolelog.io/pro)**
+- **注释所有日志** – `Alt+Shift+C` (Windows/Linux) / `Alt+Shift+C` (Mac)
+- **取消注释所有日志** – `Alt+Shift+U` (Windows/Linux) / `Alt+Shift+U` (Mac)
+- **删除所有日志** – `Alt+Shift+D` (Windows/Linux) / `Alt+Shift+D` (Mac)
+- **修正所有日志** – `Alt+Shift+X` (Windows/Linux) / `Alt+Shift+X` (Mac)
 
 ---
 
-## ✉️ Stay Updated
+## ⚙️ 配置与定制
 
-**Get early access to new features, exclusive updates, and behind-the-scenes insights.**  
-Be the first to know about improvements, releases, and Pro feature launches.
+Turbo Console Log 完全可定制：
 
-**[Join the Newsletter](https://www.turboconsolelog.io/join)** | **[Subscribe for 30% Pro Discount](https://www.turboconsolelog.io/join)**
-
----
-
-## 💚 Support Turbo Console Log
-
-The free version of Turbo Console Log is open-source and will always remain free. If this tool has saved you time and frustration, consider supporting its continued development:
-
-**[Sponsor the Project](https://www.turboconsolelog.io/sponsorship)**
-
-Your support keeps the project alive, funds new features, and helps us build tools developers actually love.
+- **日志消息格式** – 自定义前缀、后缀和分隔符
+- **引号样式** – 单引号、双引号或反引号
+- **上下文信息** – 包含/排除文件名、行号、类和函数名
+- **间距与格式** – 日志前后的空行、包装消息、分号
+- **自定义日志函数** – 使用您自己的日志函数代替控制台方法
 
 ---
 
-## Contact
+## 📦 安装
 
-**Support:** **[support@turboconsolelog.io](mailto:support@turboconsolelog.io)**  
-**Feedback:** **[feedback@turboconsolelog.io](mailto:feedback@turboconsolelog.io)**  
-**Sponsorship:** **[sponsorship@turboconsolelog.io](mailto:sponsorship@turboconsolelog.io)**
-
----
-
-## Contribute
-
-Turbo Console Log is open for contributions!  
-Want to improve it? Report issues, suggest features, or submit pull requests:
-
-**[Contribute on GitHub](https://github.com/Chakroun-Anas/turbo-console-log)**
+1. 在 VS Code 中打开扩展面板（`Ctrl+Shift+X`）
+2. 搜索 "Turbo Console Log"
+3. 点击 "安装" 按钮
+4. 安装完成后点击 "重新加载" 按钮
 
 ---
 
-## License
+## 🚀 使用方法
 
-The Turbo Console Log repository is released under the **Turbo Unicorn Custom License**.  
-It allows free personal and non-commercial use of the open-source core.
+### 插入日志
 
-Commercial use, redistribution, and use of the brand, logo, or Turbo Pro features are strictly protected.
+1. 选择要记录的变量
+2. 使用相应的快捷键（例如 `Ctrl+K Ctrl+L` 插入 `console.log`）
+3. 日志会自动插入到变量下方，包含变量名和值
 
-See the full **[LICENSE](./LICENSE.txt)** for details.
+### 管理日志
+
+1. 打开包含日志的文件
+2. 使用相应的快捷键管理日志：
+   - `Alt+Shift+C` – 注释所有日志
+   - `Alt+Shift+U` – 取消注释所有日志
+   - `Alt+Shift+D` – 删除所有日志
+   - `Alt+Shift+X` – 修正所有日志
+
+---
+
+## 💚 支持 Turbo Console Log
+
+Turbo Console Log 是开源的，并且将永远保持免费。如果这个工具为您节省了时间和挫折，考虑支持其持续开发：
+
+**[赞助项目](https://www.turboconsolelog.io/sponsorship)**
+
+您的支持使项目得以继续，为新功能提供资金，并帮助我们构建开发者真正喜爱的工具。
+
+---
+
+## 联系
+
+**支持：** **[support@turboconsolelog.io](mailto:support@turboconsolelog.io)**  
+**反馈：** **[feedback@turboconsolelog.io](mailto:feedback@turboconsolelog.io)**  
+**赞助：** **[sponsorship@turboconsolelog.io](mailto:sponsorship@turboconsolelog.io)**
+
+---
+
+## 贡献
+
+Turbo Console Log 欢迎贡献！  
+想要改进它？报告问题、建议功能或提交拉取请求：
+
+**[在 GitHub 上贡献](https://github.com/Chakroun-Anas/turbo-console-log)**
+
+---
+
+## 许可证
+
+Turbo Console Log 仓库以 **Turbo Unicorn 自定义许可证** 发布。  
+它允许免费个人和非商业使用开源核心。
+
+商业使用、重新分发以及使用品牌、徽标或 Turbo Pro 功能受到严格保护。
+
+有关详细信息，请参阅完整的 **[LICENSE](./LICENSE.txt)**。

@@ -1,28 +1,29 @@
 ---
-name: Enhancement request
-about: Describe this issue template's purpose here.
+name: 增强请求
+enhancement-request.md
+about: 描述此问题模板的目的。
 title: ''
 labels: discussion, enhancement
 assignees: Chakroun-Anas
 ---
 
-**Describe the enhancement**
-A clear and concise description of the improvement or change you would like to see in the existing feature.
+**描述增强**
+清晰简洁地描述您希望在现有功能中看到的改进或更改。
 
-**Current behavior**
-A clear and concise description of how the feature currently behaves.
+**当前行为**
+清晰简洁地描述该功能当前的行为方式。
 
-**Proposed behavior**
-A clear and concise description of how you think the feature should behave after the enhancement.
+**建议的行为**
+清晰简洁地描述您认为该功能在增强后应该如何表现。
 
-**Benefits**
-Explain why this enhancement would be beneficial (e.g., improve user experience, fix usability issues, add value).
+**好处**
+解释为什么此增强会有益处（例如，改善用户体验，解决可用性问题，增加价值）。
 
-**Context:**
+**上下文：**
 
-- OS name and version: [e.g., Windows 11]
-- VSCode version: [e.g., v1.96.2]
-- Extension version: [e.g., v2.10.0]
+- 操作系统名称和版本：[例如，Windows 11]
+- VSCode 版本：[例如，v1.96.2]
+- 扩展版本：[例如，v2.10.0]
 
-**Additional context** (Optional)
-Add any other context, screenshots, or examples about the enhancement request here.
+**其他上下文**（可选）
+在此处添加有关增强请求的任何其他上下文、屏幕截图或示例。

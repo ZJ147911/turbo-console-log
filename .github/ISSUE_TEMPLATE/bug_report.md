@@ -1,31 +1,32 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: 错误报告
+bug_report.md
+about: 创建报告以帮助我们改进
 title: ''
 labels: bug, discussion
 assignees: Chakroun-Anas
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**描述错误**
+清晰简洁地描述错误是什么。
 
-**Code snippet**
-Provide a code snippet that can help us reproduce the bug
+**代码片段**
+提供可以帮助我们复现错误的代码片段
 
-**Steps to reproduce**
-Steps to reproduce the bug using the provided code snippet.
+**复现步骤**
+使用提供的代码片段复现错误的步骤。
 
-**Screenshots** (Optional)
-If applicable, add screenshots to help explain your problem.
+**截图**（可选）
+如果适用，添加截图以帮助解释您的问题。
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**预期行为**
+清晰简洁地描述您期望发生的事情。
 
-**Context:**
+**上下文：**
 
-- OS name and version: [e.g. Windows 11]
-- VSCode version [e.g. v1.96.2]
-- Extension version [e.g. v2.10.0]
+- 操作系统名称和版本：[例如 Windows 11]
+- VSCode 版本 [例如 v1.96.2]
+- 扩展版本 [例如 v2.10.0]
 
-**Additional context** (Optional)
-Add any other context about the problem here.
+**其他上下文**（可选）
+在此处添加有关问题的任何其他上下文。

@@ -11,7 +11,6 @@ import {
   writeToGlobalState,
   isJavaScriptOrTypeScriptFile,
   getExtensionProperties,
-  isProUser,
 } from './index';
 
 /**
@@ -51,10 +50,6 @@ export function listenToLogsInTestFile(
   context: vscode.ExtensionContext,
   version: string,
 ): void {
-  // Skip for Pro users
-  if (isProUser(context)) {
-    return;
-  }
 
   // Check if notification has already been shown
   const hasShownNotification = readFromGlobalState<boolean>(
