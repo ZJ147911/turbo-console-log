@@ -1,7 +1,7 @@
 {
   "name": "quick-console",
   "displayName": "Quick Console",
-  "version": "3.17.0",
+  "version": "3.18.0",
   "description": "Automated logging for JavaScript, TypeScript, and PHP. Insert, manage, and clean log messages with AST-powered precision.",
   "categories": [
     "Debuggers",
@@ -31,15 +31,15 @@
     "wordpress"
   ],
   "bugs": {
-    "url": "https://github.com/Chakroun-Anas/turbo-console-log/issues",
-    "email": "chakroun.anas@outlook.com"
+    "url": "https://gitee.com/zj147/turbo-console-log/issues",
+    "email": "zj147911@foxmail.com"
   },
   "license": "SEE LICENSE IN LICENSE.txt",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chakroun-Anas/turbo-console-log"
+    "url": "git@gitee.com:zj147/turbo-console-log.git"
   },
-  "publisher": "ChakrounAnas",
+  "publisher": "zj147",
   "main": "./out/extension.js",
   "scripts": {
     "vscode:prepublish": "npm run esbuild-base -- --minify",
@@ -50,7 +50,10 @@
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
     "watch": "npm run esbuild --watch",
     "fmt": "oxfmt",
-    "prepare": "husky"
+    "prepare": "husky",
+    "version:patch": "npm version patch --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:major": "npm version major --no-git-tag-version"
   },
   "devDependencies": {
     "@types/node": "^24.0.3",
@@ -265,11 +268,5 @@
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.94.0"
-  },
-  "__metadata": {
-    "id": "6623619a-676d-4cde-943f-a3c193b44fc0",
-    "publisherDisplayName": "ChakrounAnas",
-    "publisherId": "4fecec8e-335d-44fc-ab16-5356745fb1ac",
-    "isPreReleaseVersion": false
   }
 }
