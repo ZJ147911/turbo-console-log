@@ -60,8 +60,7 @@ declare namespace QuickConsole {
     addSemicolonInTheEnd: boolean;
     /** 是否插入包含的类名 */
     insertEnclosingClass: boolean;
-    /** 是否启用日志修正通知 */
-    logCorrectionNotificationEnabled: boolean;
+
     /** 是否插入包含的函数名 */
     insertEnclosingFunction: boolean;
     /** 是否在日志消息前插入空行 */
@@ -78,6 +77,8 @@ declare namespace QuickConsole {
     quote: string;
     /** 日志函数名称 */
     logFunction: string;
+    /** 控制台对象名称 */
+    consoleObject: string;
   };
 
   /**

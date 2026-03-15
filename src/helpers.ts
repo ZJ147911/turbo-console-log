@@ -22,9 +22,7 @@ export function getExtensionProperties(
     addSemicolonInTheEnd: workspaceConfig.addSemicolonInTheEnd || false,
     /** 是否插入包含的类名 */
     insertEnclosingClass: workspaceConfig.insertEnclosingClass ?? true,
-    /** 是否启用日志修正通知 */
-    logCorrectionNotificationEnabled:
-      workspaceConfig.logCorrectionNotificationEnabled || false,
+
     /** 是否插入包含的函数名 */
     insertEnclosingFunction: workspaceConfig.insertEnclosingFunction ?? true,
     /** 是否在日志消息前插入空行 */
@@ -43,6 +41,8 @@ export function getExtensionProperties(
     includeFilename: workspaceConfig.includeFilename || false,
     /** 日志函数名称 */
     logFunction: workspaceConfig.logFunction || 'log',
+    /** 控制台对象名称 */
+    consoleObject: workspaceConfig.consoleObject || 'console',
   };
 }
 

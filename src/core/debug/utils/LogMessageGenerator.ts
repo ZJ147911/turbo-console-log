@@ -103,9 +103,9 @@ export class LogMessageGenerator {
       return `${indent}${logFunction}(${messageContent})${semicolon}`;
     } else {
       if (extensionProperties.wrapLogMessage) {
-        return `${indent}console.${logFunction}(${messageContent})${semicolon}`;
+        return `${indent}${extensionProperties.consoleObject}.${logFunction}(${messageContent})${semicolon}`;
       } else {
-        return `${indent}console.${logFunction}(${messageContent})${semicolon}`;
+        return `${indent}${extensionProperties.consoleObject}.${logFunction}(${messageContent})${semicolon}`;
       }
     }
   }

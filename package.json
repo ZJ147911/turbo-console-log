@@ -96,12 +96,12 @@
         },
         "quickConsole.includeFilename": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "是否在日志消息中包含文件名。"
         },
         "quickConsole.includeLineNum": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "是否在日志消息中包含行号。"
         },
         "quickConsole.addSemicolonInTheEnd": {
@@ -113,11 +113,6 @@
           "type": "boolean",
           "default": true,
           "description": "是否在日志消息中包含选中变量所在的类名。"
-        },
-        "quickConsole.logCorrectionNotificationEnabled": {
-          "type": "boolean",
-          "default": false,
-          "description": "是否启用日志修正通知。"
         },
         "quickConsole.insertEnclosingFunction": {
           "type": "boolean",
@@ -154,15 +149,12 @@
           "default": "log",
           "description": "指定使用 'displayCustomLogMessage' 命令时使用的日志函数。"
         },
-        "quickConsole.isTurboTelemetryEnabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "启用匿名遥测以收集 Quick Console 分析数据（遵循 VS Code 的全局遥测设置）。这有助于改进扩展，但绝不会收集个人信息。",
-          "tags": [
-            "telemetry",
-            "usesOnlineServices"
-          ]
+        "quickConsole.consoleObject": {
+          "type": "string",
+          "default": "console",
+          "description": "指定日志消息中使用的控制台对象名称。"
         }
+
       }
     },
     "commands": [
