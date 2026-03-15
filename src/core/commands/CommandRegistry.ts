@@ -5,13 +5,13 @@ import * as vscode from 'vscode';
  * 负责统一管理命令的注册和执行
  */
 export class CommandRegistry {
-  private commands: TurboConsoleLog.Command[] = [];
+  private commands: QuickConsole.Command[] = [];
 
   /**
    * 注册命令
    * @param command 命令对象
    */
-  registerCommand(command: TurboConsoleLog.Command): void {
+  registerCommand(command: QuickConsole.Command): void {
     this.commands.push(command);
   }
 
@@ -19,7 +19,7 @@ export class CommandRegistry {
    * 注册多个命令
    * @param commands 命令对象数组
    */
-  registerCommands(commands: TurboConsoleLog.Command[]): void {
+  registerCommands(commands: QuickConsole.Command[]): void {
     this.commands.push(...commands);
   }
 
@@ -32,7 +32,7 @@ export class CommandRegistry {
    */
   activateCommands(
     context: vscode.ExtensionContext,
-    extensionProperties: TurboConsoleLog.ExtensionProperties,
+    extensionProperties: QuickConsole.ExtensionProperties,
     jsDebugMessage: DebugMessage,
     phpDebugMessage?: DebugMessage,
   ): void {
@@ -57,7 +57,7 @@ export class CommandRegistry {
    * 获取所有注册的命令
    * @returns 命令对象数组
    */
-  getCommands(): TurboConsoleLog.Command[] {
+  getCommands(): QuickConsole.Command[] {
     return this.commands;
   }
 }

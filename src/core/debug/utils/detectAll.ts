@@ -13,16 +13,16 @@ export async function detectAll(
   fs: typeof import('fs'),
   vscode: typeof import('vscode'),
   filePath: string,
-  logFunction: TurboConsoleLog.ExtensionProperties['logFunction'],
-  logMessagePrefix: TurboConsoleLog.ExtensionProperties['logMessagePrefix'],
-  delimiterInsideMessage: TurboConsoleLog.ExtensionProperties['delimiterInsideMessage'],
+  logFunction: QuickConsole.ExtensionProperties['logFunction'],
+  logMessagePrefix: QuickConsole.ExtensionProperties['logMessagePrefix'],
+  delimiterInsideMessage: QuickConsole.ExtensionProperties['delimiterInsideMessage'],
   isPhp: boolean = false,
-): Promise<TurboConsoleLog.Message[]> {
+): Promise<QuickConsole.Message[]> {
   try {
     // 读取文件内容
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const lines = fileContent.split('\n');
-    const messages: TurboConsoleLog.Message[] = [];
+    const messages: QuickConsole.Message[] = [];
 
     // 搜索所有的日志语句
     let logRegex;
@@ -42,7 +42,7 @@ export async function detectAll(
         const spaces = lineCopy.substring(0, match.index);
 
         // 检查是否是由 Turbo Console Log 插入的日志
-        const isTurboConsoleLog =
+        const isQuickConsole =
           lineCopy.includes(logMessagePrefix) &&
           lineCopy.includes(delimiterInsideMessage);
 
@@ -52,12 +52,12 @@ export async function detectAll(
           : lineCopy.trim().startsWith('//');
 
         // 创建消息对象
-        const message: TurboConsoleLog.Message = {
+        const message: QuickConsole.Message = {
           spaces,
           lines: [index.toString()],
           isCommented,
           logFunction: isPhp ? logFunction : match[1],
-          isTurboConsoleLog,
+          isQuickConsole,
         };
 
         messages.push(message);

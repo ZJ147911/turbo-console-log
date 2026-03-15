@@ -4,9 +4,9 @@ import { processLogMessages, isLogMessageLine } from '../utils/commandUtils';
  * 创建取消注释所有日志消息的命令
  * @returns 包含命令名称和处理函数的 Command 对象
  */
-export function uncommentAllLogMessagesCommand(): TurboConsoleLog.Command {
+export function uncommentAllLogMessagesCommand(): QuickConsole.Command {
   return {
-    name: 'turboConsoleLog.uncommentAllLogMessages',
+    name: 'quickConsole.uncommentAllLogMessages',
     /**
      * 取消注释所有日志消息的处理函数
      * @param param0.jsDebugMessage JavaScript 调试消息对象

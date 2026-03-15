@@ -10,7 +10,7 @@ import { phpDebugMessage } from './core/debug/php';
  */
 export function getExtensionProperties(
   workspaceConfig: vscode.WorkspaceConfiguration,
-): TurboConsoleLog.ExtensionProperties {
+): QuickConsole.ExtensionProperties {
   return {
     /** 是否包装日志消息 */
     wrapLogMessage: workspaceConfig.wrapLogMessage || false,

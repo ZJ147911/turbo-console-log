@@ -77,69 +77,69 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Turbo Console Log 配置",
+      "title": "Quick Console 配置",
       "properties": {
-        "turboConsoleLog.wrapLogMessage": {
+        "quickConsole.wrapLogMessage": {
           "type": "boolean",
           "default": false,
           "description": "确定是否自动换行日志消息。"
         },
-        "turboConsoleLog.logMessagePrefix": {
+        "quickConsole.logMessagePrefix": {
           "type": "string",
           "default": "🚀",
           "description": "日志消息的前缀。"
         },
-        "turboConsoleLog.logMessageSuffix": {
+        "quickConsole.logMessageSuffix": {
           "type": "string",
           "default": ":",
           "description": "日志消息的后缀。"
         },
-        "turboConsoleLog.includeFilename": {
+        "quickConsole.includeFilename": {
           "type": "boolean",
           "default": false,
           "description": "是否在日志消息中包含文件名。"
         },
-        "turboConsoleLog.includeLineNum": {
+        "quickConsole.includeLineNum": {
           "type": "boolean",
           "default": false,
           "description": "是否在日志消息中包含行号。"
         },
-        "turboConsoleLog.addSemicolonInTheEnd": {
+        "quickConsole.addSemicolonInTheEnd": {
           "type": "boolean",
           "default": false,
           "description": "是否在日志消息末尾添加分号。"
         },
-        "turboConsoleLog.insertEnclosingClass": {
+        "quickConsole.insertEnclosingClass": {
           "type": "boolean",
           "default": true,
           "description": "是否在日志消息中包含选中变量所在的类名。"
         },
-        "turboConsoleLog.logCorrectionNotificationEnabled": {
+        "quickConsole.logCorrectionNotificationEnabled": {
           "type": "boolean",
           "default": false,
           "description": "是否启用日志修正通知。"
         },
-        "turboConsoleLog.insertEnclosingFunction": {
+        "quickConsole.insertEnclosingFunction": {
           "type": "boolean",
           "default": true,
           "description": "是否在日志消息中包含选中变量所在的函数名。"
         },
-        "turboConsoleLog.insertEmptyLineBeforeLogMessage": {
+        "quickConsole.insertEmptyLineBeforeLogMessage": {
           "type": "boolean",
           "default": false,
           "description": "是否在日志消息前插入空行。"
         },
-        "turboConsoleLog.insertEmptyLineAfterLogMessage": {
+        "quickConsole.insertEmptyLineAfterLogMessage": {
           "type": "boolean",
           "default": false,
           "description": "是否在日志消息后插入空行。"
         },
-        "turboConsoleLog.delimiterInsideMessage": {
+        "quickConsole.delimiterInsideMessage": {
           "type": "string",
           "default": "~",
           "description": "用于分隔日志消息中不同元素（文件名、行号、类、函数和变量）的分隔符。"
         },
-        "turboConsoleLog.quote": {
+        "quickConsole.quote": {
           "type": "string",
           "enum": [
             "\"",
@@ -149,15 +149,15 @@
           "default": "\"",
           "description": "引号类型：双引号、单引号或反引号。"
         },
-        "turboConsoleLog.logFunction": {
+        "quickConsole.logFunction": {
           "type": "string",
           "default": "log",
           "description": "指定使用 'displayCustomLogMessage' 命令时使用的日志函数。"
         },
-        "turboConsoleLog.isTurboTelemetryEnabled": {
+        "quickConsole.isTurboTelemetryEnabled": {
           "type": "boolean",
           "default": true,
-          "description": "启用匿名遥测以收集 Turbo Console Log 分析数据（遵循 VS Code 的全局遥测设置）。这有助于改进扩展，但绝不会收集个人信息。",
+          "description": "启用匿名遥测以收集 Quick Console 分析数据（遵循 VS Code 的全局遥测设置）。这有助于改进扩展，但绝不会收集个人信息。",
           "tags": [
             "telemetry",
             "usesOnlineServices"
@@ -167,113 +167,113 @@
     },
     "commands": [
       {
-        "command": "turboConsoleLog.insertConsoleLog",
-        "title": "Turbo Console Log: 插入 console.log 日志消息"
+        "command": "quickConsole.insertConsoleLog",
+        "title": "Quick Console: 插入 console.log 日志消息"
       },
       {
-        "command": "turboConsoleLog.insertConsoleInfo",
-        "title": "Turbo Console Log: 插入 console.info 信息消息"
+        "command": "quickConsole.insertConsoleInfo",
+        "title": "Quick Console: 插入 console.info 信息消息"
       },
       {
-        "command": "turboConsoleLog.insertConsoleDebug",
-        "title": "Turbo Console Log: 插入 console.debug 调试消息"
+        "command": "quickConsole.insertConsoleDebug",
+        "title": "Quick Console: 插入 console.debug 调试消息"
       },
       {
-        "command": "turboConsoleLog.insertConsoleTable",
-        "title": "Turbo Console Log: 插入 console.table 表格消息"
+        "command": "quickConsole.insertConsoleTable",
+        "title": "Quick Console: 插入 console.table 表格消息"
       },
       {
-        "command": "turboConsoleLog.insertConsoleWarn",
-        "title": "Turbo Console Log: 插入 console.warn 警告消息"
+        "command": "quickConsole.insertConsoleWarn",
+        "title": "Quick Console: 插入 console.warn 警告消息"
       },
       {
-        "command": "turboConsoleLog.insertConsoleError",
-        "title": "Turbo Console Log: 插入 console.error 错误消息"
+        "command": "quickConsole.insertConsoleError",
+        "title": "Quick Console: 插入 console.error 错误消息"
       },
       {
-        "command": "turboConsoleLog.insertCustomLog",
-        "title": "Turbo Console Log: 插入自定义日志消息"
+        "command": "quickConsole.insertCustomLog",
+        "title": "Quick Console: 插入自定义日志消息"
       },
       {
-        "command": "turboConsoleLog.commentAllLogMessages",
-        "title": "Turbo Console Log: 注释所有 Turbo 日志消息"
+        "command": "quickConsole.commentAllLogMessages",
+        "title": "Quick Console: 注释所有 Quick 日志消息"
       },
       {
-        "command": "turboConsoleLog.uncommentAllLogMessages",
-        "title": "Turbo Console Log: 取消注释所有 Turbo 日志消息"
+        "command": "quickConsole.uncommentAllLogMessages",
+        "title": "Quick Console: 取消注释所有 Quick 日志消息"
       },
       {
-        "command": "turboConsoleLog.deleteAllLogMessages",
-        "title": "Turbo Console Log: 删除所有 Turbo 日志消息"
+        "command": "quickConsole.deleteAllLogMessages",
+        "title": "Quick Console: 删除所有 Quick 日志消息"
       },
       {
-        "command": "turboConsoleLog.correctAllLogMessages",
-        "title": "Turbo Console Log: 修正所有 Turbo 日志消息"
+        "command": "quickConsole.correctAllLogMessages",
+        "title": "Quick Console: 修正所有 Quick 日志消息"
       }
     ],
     "keybindings": [
       {
-        "command": "turboConsoleLog.insertConsoleLog",
+        "command": "quickConsole.insertConsoleLog",
         "key": "ctrl+k ctrl+l",
         "mac": "cmd+k cmd+l",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.insertConsoleInfo",
+        "command": "quickConsole.insertConsoleInfo",
         "key": "ctrl+k ctrl+n",
         "mac": "cmd+k cmd+n",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.insertConsoleDebug",
+        "command": "quickConsole.insertConsoleDebug",
         "key": "ctrl+k ctrl+b",
         "mac": "cmd+k cmd+b",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.insertConsoleTable",
+        "command": "quickConsole.insertConsoleTable",
         "key": "ctrl+k ctrl+t",
         "mac": "cmd+k cmd+t",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.insertConsoleWarn",
+        "command": "quickConsole.insertConsoleWarn",
         "key": "ctrl+k ctrl+r",
         "mac": "cmd+k cmd+r",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.insertConsoleError",
+        "command": "quickConsole.insertConsoleError",
         "key": "ctrl+k ctrl+e",
         "mac": "cmd+k cmd+e",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.insertCustomLog",
+        "command": "quickConsole.insertCustomLog",
         "key": "ctrl+k ctrl+k",
         "mac": "cmd+k cmd+k",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.commentAllLogMessages",
+        "command": "quickConsole.commentAllLogMessages",
         "key": "alt+shift+c",
         "mac": "alt+shift+c",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.uncommentAllLogMessages",
+        "command": "quickConsole.uncommentAllLogMessages",
         "key": "alt+shift+u",
         "mac": "alt+shift+u",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.deleteAllLogMessages",
+        "command": "quickConsole.deleteAllLogMessages",
         "key": "alt+shift+d",
         "mac": "alt+shift+d",
         "when": "editorTextFocus"
       },
       {
-        "command": "turboConsoleLog.correctAllLogMessages",
+        "command": "quickConsole.correctAllLogMessages",
         "key": "alt+shift+x",
         "mac": "alt+shift+x",
         "when": "editorTextFocus"

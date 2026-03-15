@@ -18,7 +18,7 @@ export class LogMessageGenerator {
    */
   static generateMessageContent(
     selectedVar: string,
-    extensionProperties: TurboConsoleLog.ExtensionProperties,
+    extensionProperties: QuickConsole.ExtensionProperties,
     filename?: string,
     lineNum?: number,
     enclosingClass?: string,
@@ -93,7 +93,7 @@ export class LogMessageGenerator {
     messageContent: string,
     logFunction: string,
     tabSize: number,
-    extensionProperties: TurboConsoleLog.ExtensionProperties,
+    extensionProperties: QuickConsole.ExtensionProperties,
     isPhp: boolean = false,
   ): string {
     const indent = ' '.repeat(tabSize);

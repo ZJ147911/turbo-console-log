@@ -21,7 +21,7 @@ interface DebugMessage {
     selectedVar: string,
     lineOfSelectedVar: number,
     tabSize: number,
-    extensionProperties: TurboConsoleLog.ExtensionProperties,
+    extensionProperties: QuickConsole.ExtensionProperties,
     logFunction: string,
   ): void;
 
@@ -39,13 +39,13 @@ interface DebugMessage {
     fs: typeof import('fs'),
     vscode: typeof import('vscode'),
     filePath: string,
-    logFunction: TurboConsoleLog.ExtensionProperties['logFunction'],
-    logMessagePrefix: TurboConsoleLog.ExtensionProperties['logMessagePrefix'],
-    delimiterInsideMessage: TurboConsoleLog.ExtensionProperties['delimiterInsideMessage'],
-  ): Promise<TurboConsoleLog.Message[]>;
+    logFunction: QuickConsole.ExtensionProperties['logFunction'],
+    logMessagePrefix: QuickConsole.ExtensionProperties['logMessagePrefix'],
+    delimiterInsideMessage: QuickConsole.ExtensionProperties['delimiterInsideMessage'],
+  ): Promise<QuickConsole.Message[]>;
 }
 
-declare namespace TurboConsoleLog {
+declare namespace QuickConsole {
   /**
    * 扩展配置属性类型
    */
@@ -157,7 +157,7 @@ declare namespace TurboConsoleLog {
     /** 使用的日志函数（可选），例如 'console.log', 'console.warn', 'console.error' */
     logFunction?: string;
     /** 是否是由 Turbo Console Log 插入的日志（包含前缀和分隔符） */
-    isTurboConsoleLog?: boolean;
+    isQuickConsole?: boolean;
   };
 
   /**

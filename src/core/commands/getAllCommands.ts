@@ -15,7 +15,7 @@ import { uncommentAllLogMessagesCommand } from './uncommentAllLogMessages';
  * 获取所有可用的命令
  * @returns 命令对象数组
  */
-export function getAllCommands(): Array<TurboConsoleLog.Command> {
+export function getAllCommands(): Array<QuickConsole.Command> {
   return [
     insertConsoleLogCommand(),
     insertConsoleDebugCommand(),

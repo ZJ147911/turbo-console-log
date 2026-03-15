@@ -22,7 +22,7 @@ export function msg(
   selectedVar: string,
   lineOfSelectedVar: number,
   tabSize: number,
-  extensionProperties: TurboConsoleLog.ExtensionProperties,
+  extensionProperties: QuickConsole.ExtensionProperties,
   logFunction: string,
 ): void {
   // 检测文件类型

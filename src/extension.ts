@@ -7,8 +7,8 @@ export async function activate(
   context: vscode.ExtensionContext,
 ): Promise<void> {
   const config: vscode.WorkspaceConfiguration =
-    vscode.workspace.getConfiguration('turboConsoleLog');
-  const extensionProperties: TurboConsoleLog.ExtensionProperties =
+    vscode.workspace.getConfiguration('quickConsole');
+  const extensionProperties: QuickConsole.ExtensionProperties =
     getExtensionProperties(config);
 
   // Register all commands using CommandRegistry

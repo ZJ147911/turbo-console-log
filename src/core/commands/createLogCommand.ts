@@ -14,8 +14,8 @@ export function createLogCommand(
   commandName: string,
   logType:
     | string
-    | ((extensionProperties: TurboConsoleLog.ExtensionProperties) => string),
-): TurboConsoleLog.Command {
+    | ((extensionProperties: QuickConsole.ExtensionProperties) => string),
+): QuickConsole.Command {
   return {
     name: commandName,
     handler: async ({

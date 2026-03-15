@@ -23,7 +23,7 @@ export const jsDebugMessage: DebugMessage = {
     selectedVar: string,
     lineOfSelectedVar: number,
     tabSize: number,
-    extensionProperties: TurboConsoleLog.ExtensionProperties,
+    extensionProperties: QuickConsole.ExtensionProperties,
     logFunction: string,
   ): void {
     msg(
@@ -51,10 +51,10 @@ export const jsDebugMessage: DebugMessage = {
     fs: typeof import('fs'),
     vscode: typeof import('vscode'),
     filePath: string,
-    logFunction: TurboConsoleLog.ExtensionProperties['logFunction'],
-    logMessagePrefix: TurboConsoleLog.ExtensionProperties['logMessagePrefix'],
-    delimiterInsideMessage: TurboConsoleLog.ExtensionProperties['delimiterInsideMessage'],
-  ): Promise<TurboConsoleLog.Message[]> {
+    logFunction: QuickConsole.ExtensionProperties['logFunction'],
+    logMessagePrefix: QuickConsole.ExtensionProperties['logMessagePrefix'],
+    delimiterInsideMessage: QuickConsole.ExtensionProperties['delimiterInsideMessage'],
+  ): Promise<QuickConsole.Message[]> {
     return detectAll(
       fs,
       vscode,

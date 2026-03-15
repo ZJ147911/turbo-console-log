@@ -4,9 +4,9 @@ import { processLogMessages } from '../utils/commandUtils';
  * 创建修正所有日志消息的命令
  * @returns 包含命令名称和处理函数的 Command 对象
  */
-export function correctAllLogMessagesCommand(): TurboConsoleLog.Command {
+export function correctAllLogMessagesCommand(): QuickConsole.Command {
   return {
-    name: 'turboConsoleLog.correctAllLogMessages',
+    name: 'quickConsole.correctAllLogMessages',
     /**
      * 修正所有日志消息的处理函数
      * @param param0.extensionProperties 扩展配置属性
