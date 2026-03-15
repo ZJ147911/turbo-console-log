@@ -49,13 +49,15 @@
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
     "watch": "npm run esbuild --watch",
-    "fmt": "oxfmt"
+    "fmt": "oxfmt",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@types/node": "^24.0.3",
     "@types/vscode": "^1.94.0",
     "esbuild": "^0.25.4",
     "eslint": "^9.27.0",
+    "husky": "^9.1.7",
     "oxfmt": "^0.40.0",
     "rimraf": "^6.1.3"
   },
