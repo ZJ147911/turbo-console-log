@@ -1,3 +1,5 @@
+import * as path from "path";
+
 /**
  * 日志消息生成器
  * 负责生成不同类型的日志消息
@@ -15,55 +17,60 @@ export class LogMessageGenerator {
    * @returns 调试消息内容
    */
   static generateMessageContent(
-    selectedVar: string, 
-    extensionProperties: TurboConsoleLog.ExtensionProperties, 
-    filename?: string, 
-    lineNum?: number, 
-    enclosingClass?: string, 
+    selectedVar: string,
+    extensionProperties: TurboConsoleLog.ExtensionProperties,
+    filename?: string,
+    lineNum?: number,
+    enclosingClass?: string,
     enclosingFunction?: string,
-    isPhp: boolean = false
+    isPhp: boolean = false,
   ): string {
     const parts = [];
-    
+
     // 添加前缀
     if (isPhp) {
       parts.push(`'${extensionProperties.logMessagePrefix}`);
     } else {
       parts.push(`${extensionProperties.quote}${extensionProperties.logMessagePrefix}`);
     }
-    
+
+    // 添加分隔符
+    if (extensionProperties.delimiterInsideMessage) {
+      parts.push(`${extensionProperties.delimiterInsideMessage}`);
+    }
+
     // 添加文件名
     if (extensionProperties.includeFilename && filename) {
-      parts.push(`${extensionProperties.delimiterInsideMessage}${filename}`);
+      parts.push(`${filename}`);
     }
-    
+
     // 添加行号
     if (extensionProperties.includeLineNum && lineNum) {
-      parts.push(`${extensionProperties.delimiterInsideMessage}${lineNum}`);
+      parts.push(`${lineNum}`);
     }
-    
+
     // 添加类名
     if (extensionProperties.insertEnclosingClass && enclosingClass) {
-      parts.push(`${extensionProperties.delimiterInsideMessage}${enclosingClass}`);
+      parts.push(`${enclosingClass}`);
     }
-    
+
     // 添加函数名
     if (extensionProperties.insertEnclosingFunction && enclosingFunction) {
-      parts.push(`${extensionProperties.delimiterInsideMessage}${enclosingFunction}`);
+      parts.push(`${enclosingFunction}`);
     }
-    
+
     // 添加变量名和后缀
     if (isPhp) {
-      parts.push(`${extensionProperties.delimiterInsideMessage}${selectedVar}${extensionProperties.logMessageSuffix}'`);
+      parts.push(`${selectedVar}${extensionProperties.logMessageSuffix}'`);
       // 添加变量值
       parts.push(` . ${selectedVar}`);
     } else {
-      parts.push(`${extensionProperties.delimiterInsideMessage}${selectedVar}${extensionProperties.logMessageSuffix}${extensionProperties.quote}`);
+      parts.push(`${selectedVar}${extensionProperties.logMessageSuffix}${extensionProperties.quote}`);
       // 添加变量值
       parts.push(selectedVar);
     }
-    
-    return isPhp ? parts.join('') : parts.join(', ');
+
+    return parts.join(" ");
   }
 
   /**
@@ -76,15 +83,15 @@ export class LogMessageGenerator {
    * @returns 完整的调试消息
    */
   static generateLogMessage(
-    messageContent: string, 
-    logFunction: string, 
-    tabSize: number, 
+    messageContent: string,
+    logFunction: string,
+    tabSize: number,
     extensionProperties: TurboConsoleLog.ExtensionProperties,
-    isPhp: boolean = false
+    isPhp: boolean = false,
   ): string {
-    const indent = ' '.repeat(tabSize);
-    const semicolon = extensionProperties.addSemicolonInTheEnd ? ';' : '';
-    
+    const indent = " ".repeat(tabSize);
+    const semicolon = extensionProperties.addSemicolonInTheEnd ? ";" : "";
+
     if (isPhp) {
       return `${indent}${logFunction}(${messageContent})${semicolon}`;
     } else {

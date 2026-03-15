@@ -1,5 +1,6 @@
 import { TextEditorEdit, TextDocument } from 'vscode';
 import { isPhpFile } from '../../../helpers';
+import { getEnclosingContext } from '../../utils';
 import { insertDebugMessage, LogMessageGenerator } from './';
 
 /**
@@ -25,36 +26,35 @@ export function msg(
 ): void {
   // 检测文件类型
   const isPhp = isPhpFile(document.fileName);
-  
+
   // 计算日志消息的行号
   const lineOfLogMsg = LogMessageGenerator.calculateLogLine(lineOfSelectedVar);
 
   // 获取文件名
   const filename = extensionProperties.includeFilename ? document.fileName : undefined;
-  
+
   // 获取行号
   const lineNum = extensionProperties.includeLineNum ? lineOfSelectedVar + 1 : undefined;
-  
-  // 这里简化处理，实际应该通过 AST 解析获取类名和函数名
-  const enclosingClass = undefined;
-  const enclosingFunction = undefined;
+
+  // 通过 AST 解析获取类名和函数名
+  const { enclosingClass, enclosingFunction } = getEnclosingContext(document, lineOfSelectedVar);
 
   // 生成调试消息内容
   const debuggingMsgContent = LogMessageGenerator.generateMessageContent(
-    selectedVar, 
-    extensionProperties, 
-    filename, 
-    lineNum, 
-    enclosingClass, 
+    selectedVar,
+    extensionProperties,
+    filename,
+    lineNum,
+    enclosingClass,
     enclosingFunction,
     isPhp
   );
 
   // 生成完整的调试消息
   const debuggingMsg = LogMessageGenerator.generateLogMessage(
-    debuggingMsgContent, 
-    logFunction, 
-    tabSize, 
+    debuggingMsgContent,
+    logFunction,
+    tabSize,
     extensionProperties,
     isPhp
   );

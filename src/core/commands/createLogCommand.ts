@@ -26,7 +26,7 @@ export function createLogCommand(
 
       // Get extension version
       const version = vscode.extensions.getExtension(
-        'ChakrounAnas.turbo-console-log',
+        'ChakrounAnas.quick-console',
       )?.packageJSON.version;
 
       // Check if log insertion is allowed
