@@ -26,31 +26,29 @@ export class LogMessageGenerator {
     isPhp: boolean = false,
   ): string {
     const parts = [];
+    // 确保分隔符前后有空格
+    const delimiter = extensionProperties.delimiterInsideMessage
+      ? ` ${extensionProperties.delimiterInsideMessage} `
+      : ' ~ ';
 
     // 添加前缀
     if (isPhp) {
       parts.push(`'${extensionProperties.logMessagePrefix}`);
     } else {
-      parts.push(
-        `${extensionProperties.quote}${extensionProperties.logMessagePrefix}`,
-      );
+      parts.push(`${extensionProperties.quote}${extensionProperties.logMessagePrefix}`);
     }
 
-    // 添加分隔符
-    if (extensionProperties.delimiterInsideMessage) {
-      parts.push(`${extensionProperties.delimiterInsideMessage}`);
-    }
-
-    // 添加文件名
+    // 添加文件名和行号
     if (extensionProperties.includeFilename && filename) {
       // 只使用文件名，不包含路径
       const basename = path.basename(filename);
-      parts.push(`${basename}`);
-    }
-
-    // 添加行号
-    if (extensionProperties.includeLineNum && lineNum) {
-      parts.push(`${lineNum}`);
+      if (extensionProperties.includeLineNum && lineNum) {
+        parts.push(`${basename}:${lineNum}`);
+      } else {
+        parts.push(`${basename}`);
+      }
+    } else if (extensionProperties.includeLineNum && lineNum) {
+      parts.push(`line:${lineNum}`);
     }
 
     // 添加类名
@@ -64,19 +62,20 @@ export class LogMessageGenerator {
     }
 
     // 添加变量名和后缀
+    let variablePart = '';
     if (isPhp) {
-      parts.push(`${selectedVar}${extensionProperties.logMessageSuffix}'`);
+      variablePart = `${selectedVar}${extensionProperties.logMessageSuffix}'`;
       // 添加变量值
-      parts.push(` . ${selectedVar}`);
+      variablePart += ` . ${selectedVar}`;
     } else {
-      parts.push(
-        `${selectedVar}${extensionProperties.logMessageSuffix}${extensionProperties.quote}`,
-      );
+      variablePart = `${selectedVar}${extensionProperties.logMessageSuffix}${extensionProperties.quote}`;
       // 添加变量值
-      parts.push(selectedVar);
+      variablePart += `, ${selectedVar}`;
     }
+    parts.push(variablePart);
 
-    return parts.join(' ');
+    // 使用delimiter连接数组元素
+    return parts.join(delimiter);
   }
 
   /**

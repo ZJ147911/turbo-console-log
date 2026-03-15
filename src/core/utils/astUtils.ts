@@ -174,6 +174,11 @@ export function getEnclosingContext(
       continue;
     }
 
+    // 跳过HTML标签，除了<script>标签
+    if (line.startsWith('<') && !line.includes('<script')) {
+      continue;
+    }
+
     // 查找函数定义
     let foundFunction = false;
     for (const pattern of patterns.functionPatterns) {
@@ -192,6 +197,10 @@ export function getEnclosingContext(
         if (patterns.commentPatterns.some(pattern => pattern.test(classLine))) {
           continue;
         }
+        // 跳过HTML标签，除了<script>标签
+        if (classLine.startsWith('<') && !classLine.includes('<script')) {
+          continue;
+        }
         const classMatch = classLine.match(patterns.classPattern);
         if (classMatch) {
           enclosingClass = classMatch[2];
@@ -203,10 +212,13 @@ export function getEnclosingContext(
 
     // 查找类定义（如果还没有找到函数）
     if (!enclosingFunction) {
-      const classMatch = line.match(patterns.classPattern);
+      // 跳过HTML标签，除了<script>标签
+      if (!line.startsWith('<') || line.includes('<script')) {
+        const classMatch = line.match(patterns.classPattern);
         if (classMatch) {
           enclosingClass = classMatch[2];
         }
+      }
     }
   }
 
