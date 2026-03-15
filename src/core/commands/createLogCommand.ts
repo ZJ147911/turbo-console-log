@@ -1,10 +1,6 @@
 import * as vscode from 'vscode';
 
-import {
-  canInsertLogInDocument,
-  isJavaScriptOrTypeScriptFile,
-  isPhpFile,
-} from '../../helpers';
+import { canInsertLogInDocument, isPhpFile } from '../../helpers';
 import { getTabSize } from '../utils';
 import { isPrintableVariable } from '../utils/astUtils';
 
@@ -86,7 +82,9 @@ export function createLogCommand(
             });
           } else {
             // 如果不是可打印的变量，显示提示
-            vscode.window.showInformationMessage('Selected content is not a printable variable');
+            vscode.window.showInformationMessage(
+              'Selected content is not a printable variable',
+            );
           }
         }
       }

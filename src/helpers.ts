@@ -110,7 +110,17 @@ export async function loadPhpDebugMessage(
  * @returns 是否是JavaScript或TypeScript文件，或包含JavaScript/TypeScript代码的文件
  */
 export function isJavaScriptOrTypeScriptFile(fileName: string): boolean {
-  const jsTsExtensions = ['.js', '.jsx', '.ts', '.tsx', '.html', '.vue', '.svelte', '.astro', '.mdx'];
+  const jsTsExtensions = [
+    '.js',
+    '.jsx',
+    '.ts',
+    '.tsx',
+    '.html',
+    '.vue',
+    '.svelte',
+    '.astro',
+    '.mdx',
+  ];
   const extension = path.extname(fileName);
   return jsTsExtensions.includes(extension);
 }

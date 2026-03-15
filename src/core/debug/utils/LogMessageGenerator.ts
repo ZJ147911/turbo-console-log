@@ -35,7 +35,9 @@ export class LogMessageGenerator {
     if (isPhp) {
       parts.push(`'${extensionProperties.logMessagePrefix}`);
     } else {
-      parts.push(`${extensionProperties.quote}${extensionProperties.logMessagePrefix}`);
+      parts.push(
+        `${extensionProperties.quote}${extensionProperties.logMessagePrefix}`,
+      );
     }
 
     // 添加文件名和行号

@@ -1,12 +1,7 @@
 import * as vscode from 'vscode';
 
 import { getAllCommands, jsDebugMessage, CommandRegistry } from './core';
-import {
-  getExtensionProperties,
-  loadPhpDebugMessage,
-  isJavaScriptOrTypeScriptFile,
-  isPhpFile,
-} from './helpers';
+import { getExtensionProperties, loadPhpDebugMessage } from './helpers';
 
 export async function activate(
   context: vscode.ExtensionContext,

@@ -1,4 +1,4 @@
-import { processLogMessages, isLogMessageLine } from '../utils/commandUtils';
+import { processLogMessages } from '../utils/commandUtils';
 
 /**
  * 创建修正所有日志消息的命令

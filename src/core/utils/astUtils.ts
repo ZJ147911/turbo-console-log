@@ -10,125 +10,125 @@ import * as vscode from 'vscode';
 const LANGUAGE_PATTERNS = {
   js: {
     functionPatterns: [
-      /^function\s+([\w$]+)\s*\(/, // function declaration
-      /^function\*\s+([\w$]+)\s*\(/, // generator function
-      /^const\s+([\w$]+)\s*=\s*function\s*/, // const function expression
-      /^const\s+([\w$]+)\s*=\s*\(/, // const arrow function
-      /^([\w$]+)\s*=\s*function\s*/, // function expression
-      /^([\w$]+)\s*=\s*\(/, // arrow function
-      /^([\w$]+)\s*\([^)]*\)\s*=>/, // concise arrow function
-      /^([\w$]+)\s*:\s*function\s*/, // object method function
-      /^([\w$]+)\s*:\s*\(/, // object method arrow function
-      /^([\w$]+)\s*:\s*\([^)]*\)\s*=>/, // object method concise arrow function
-      /^static\s+function\s+([\w$]+)\s*\(/, // static method
-      /^static\s+([\w$]+)\s*\(/, // static method shorthand
-      /^static\s+([\w$]+)\s*:\s*function\s*/, // static object method function
-      /^static\s+([\w$]+)\s*:\s*\(/, // static object method arrow function
-      /^static\s+([\w$]+)\s*:\s*\([^)]*\)\s*=>/, // static object method concise arrow function
+      /^function\s+([\w$]+)\s*\(/, // 函数声明
+      /^function\*\s+([\w$]+)\s*\(/, // 生成器函数
+      /^const\s+([\w$]+)\s*=\s*function\s*/, // const函数表达式
+      /^const\s+([\w$]+)\s*=\s*\(/, // const箭头函数
+      /^([\w$]+)\s*=\s*function\s*/, // 函数表达式
+      /^([\w$]+)\s*=\s*\(/, // 箭头函数
+      /^([\w$]+)\s*\([^)]*\)\s*=>/, // 简洁箭头函数
+      /^([\w$]+)\s*:\s*function\s*/, // 对象方法函数
+      /^([\w$]+)\s*:\s*\(/, // 对象方法箭头函数
+      /^([\w$]+)\s*:\s*\([^)]*\)\s*=>/, // 对象方法简洁箭头函数
+      /^static\s+function\s+([\w$]+)\s*\(/, // 静态方法
+      /^static\s+([\w$]+)\s*\(/, // 静态方法简写
+      /^static\s+([\w$]+)\s*:\s*function\s*/, // 静态对象方法函数
+      /^static\s+([\w$]+)\s*:\s*\(/, // 静态对象方法箭头函数
+      /^static\s+([\w$]+)\s*:\s*\([^)]*\)\s*=>/, // 静态对象方法简洁箭头函数
       /^get\s+([\w$]+)\s*\(/, // getter
       /^set\s+([\w$]+)\s*\(/, // setter
-      /^static\s+get\s+([\w$]+)\s*\(/, // static getter
-      /^static\s+set\s+([\w$]+)\s*\(/, // static setter
-      /^async\s+function\s+([\w$]+)\s*\(/, // async function declaration
-      /^async\s+function\*\s+([\w$]+)\s*\(/, // async generator function
-      /^const\s+([\w$]+)\s*=\s*async\s*function\s*/, // async const function expression
-      /^const\s+([\w$]+)\s*=\s*async\s*\(/, // async const arrow function
-      /^([\w$]+)\s*=\s*async\s*function\s*/, // async function expression
-      /^([\w$]+)\s*=\s*async\s*\(/, // async arrow function
-      /^async\s+([\w$]+)\s*\([^)]*\)\s*=>/, // async concise arrow function
-      /^async\s+([\w$]+)\s*:\s*function\s*/, // async object method function
-      /^async\s+([\w$]+)\s*:\s*\(/, // async object method arrow function
-      /^async\s+([\w$]+)\s*:\s*\([^)]*\)\s*=>/, // async object method concise arrow function
-      /^static\s+async\s+function\s+([\w$]+)\s*\(/, // static async method
-      /^static\s+async\s+([\w$]+)\s*\(/, // static async method shorthand
-      /^async\s+get\s+([\w$]+)\s*\(/, // async getter
-      /^async\s+set\s+([\w$]+)\s*\(/, // async setter
-      /^static\s+async\s+get\s+([\w$]+)\s*\(/, // static async getter
-      /^static\s+async\s+set\s+([\w$]+)\s*\(/, // static async setter
+      /^static\s+get\s+([\w$]+)\s*\(/, // 静态getter
+      /^static\s+set\s+([\w$]+)\s*\(/, // 静态setter
+      /^async\s+function\s+([\w$]+)\s*\(/, // 异步函数声明
+      /^async\s+function\*\s+([\w$]+)\s*\(/, // 异步生成器函数
+      /^const\s+([\w$]+)\s*=\s*async\s*function\s*/, // 异步const函数表达式
+      /^const\s+([\w$]+)\s*=\s*async\s*\(/, // 异步const箭头函数
+      /^([\w$]+)\s*=\s*async\s*function\s*/, // 异步函数表达式
+      /^([\w$]+)\s*=\s*async\s*\(/, // 异步箭头函数
+      /^async\s+([\w$]+)\s*\([^)]*\)\s*=>/, // 异步简洁箭头函数
+      /^async\s+([\w$]+)\s*:\s*function\s*/, // 异步对象方法函数
+      /^async\s+([\w$]+)\s*:\s*\(/, // 异步对象方法箭头函数
+      /^async\s+([\w$]+)\s*:\s*\([^)]*\)\s*=>/, // 异步对象方法简洁箭头函数
+      /^static\s+async\s+function\s+([\w$]+)\s*\(/, // 静态异步方法
+      /^static\s+async\s+([\w$]+)\s*\(/, // 静态异步方法简写
+      /^async\s+get\s+([\w$]+)\s*\(/, // 异步getter
+      /^async\s+set\s+([\w$]+)\s*\(/, // 异步setter
+      /^static\s+async\s+get\s+([\w$]+)\s*\(/, // 静态异步getter
+      /^static\s+async\s+set\s+([\w$]+)\s*\(/, // 静态异步setter
       // 添加访问修饰符支持
-      /^public\s+function\s+([\w$]+)\s*\(/, // public method
-      /^protected\s+function\s+([\w$]+)\s*\(/, // protected method
-      /^private\s+function\s+([\w$]+)\s*\(/, // private method
-      /^public\s+static\s+function\s+([\w$]+)\s*\(/, // public static method
-      /^protected\s+static\s+function\s+([\w$]+)\s*\(/, // protected static method
-      /^private\s+static\s+function\s+([\w$]+)\s*\(/, // private static method
-      /^public\s+([\w$]+)\s*\(/, // public method shorthand
-      /^protected\s+([\w$]+)\s*\(/, // protected method shorthand
-      /^private\s+([\w$]+)\s*\(/, // private method shorthand
-      /^public\s+static\s+([\w$]+)\s*\(/, // public static method shorthand
-      /^protected\s+static\s+([\w$]+)\s*\(/, // protected static method shorthand
-      /^private\s+static\s+([\w$]+)\s*\(/, // private static method shorthand
+      /^public\s+function\s+([\w$]+)\s*\(/, // public方法
+      /^protected\s+function\s+([\w$]+)\s*\(/, // protected方法
+      /^private\s+function\s+([\w$]+)\s*\(/, // private方法
+      /^public\s+static\s+function\s+([\w$]+)\s*\(/, // public静态方法
+      /^protected\s+static\s+function\s+([\w$]+)\s*\(/, // protected静态方法
+      /^private\s+static\s+function\s+([\w$]+)\s*\(/, // private静态方法
+      /^public\s+([\w$]+)\s*\(/, // public方法简写
+      /^protected\s+([\w$]+)\s*\(/, // protected方法简写
+      /^private\s+([\w$]+)\s*\(/, // private方法简写
+      /^public\s+static\s+([\w$]+)\s*\(/, // public静态方法简写
+      /^protected\s+static\s+([\w$]+)\s*\(/, // protected静态方法简写
+      /^private\s+static\s+([\w$]+)\s*\(/, // private静态方法简写
       /^public\s+get\s+([\w$]+)\s*\(/, // public getter
       /^protected\s+get\s+([\w$]+)\s*\(/, // protected getter
       /^private\s+get\s+([\w$]+)\s*\(/, // private getter
       /^public\s+set\s+([\w$]+)\s*\(/, // public setter
       /^protected\s+set\s+([\w$]+)\s*\(/, // protected setter
       /^private\s+set\s+([\w$]+)\s*\(/, // private setter
-      /^public\s+async\s+function\s+([\w$]+)\s*\(/, // public async method
-      /^protected\s+async\s+function\s+([\w$]+)\s*\(/, // protected async method
-      /^private\s+async\s+function\s+([\w$]+)\s*\(/, // private async method
-      /^public\s+async\s+([\w$]+)\s*\(/, // public async method shorthand
-      /^protected\s+async\s+([\w$]+)\s*\(/, // protected async method shorthand
-      /^private\s+async\s+([\w$]+)\s*\(/, // private async method shorthand
-      /^public\s+static\s+async\s+function\s+([\w$]+)\s*\(/, // public static async method
-      /^protected\s+static\s+async\s+function\s+([\w$]+)\s*\(/, // protected static async method
-      /^private\s+static\s+async\s+function\s+([\w$]+)\s*\(/, // private static async method
-      /^public\s+static\s+async\s+([\w$]+)\s*\(/, // public static async method shorthand
-      /^protected\s+static\s+async\s+([\w$]+)\s*\(/, // protected static async method shorthand
-      /^private\s+static\s+async\s+([\w$]+)\s*\(/, // private static async method shorthand
+      /^public\s+async\s+function\s+([\w$]+)\s*\(/, // public异步方法
+      /^protected\s+async\s+function\s+([\w$]+)\s*\(/, // protected异步方法
+      /^private\s+async\s+function\s+([\w$]+)\s*\(/, // private异步方法
+      /^public\s+async\s+([\w$]+)\s*\(/, // public异步方法简写
+      /^protected\s+async\s+([\w$]+)\s*\(/, // protected异步方法简写
+      /^private\s+async\s+([\w$]+)\s*\(/, // private异步方法简写
+      /^public\s+static\s+async\s+function\s+([\w$]+)\s*\(/, // public静态异步方法
+      /^protected\s+static\s+async\s+function\s+([\w$]+)\s*\(/, // protected静态异步方法
+      /^private\s+static\s+async\s+function\s+([\w$]+)\s*\(/, // private静态异步方法
+      /^public\s+static\s+async\s+([\w$]+)\s*\(/, // public静态异步方法简写
+      /^protected\s+static\s+async\s+([\w$]+)\s*\(/, // protected静态异步方法简写
+      /^private\s+static\s+async\s+([\w$]+)\s*\(/, // private静态异步方法简写
       // 添加无访问修饰符的方法支持
-      /^([\w$]+)\s*\([^)]*\)\s*\{/, // class method without access modifier
-      /^async\s+([\w$]+)\s*\([^)]*\)\s*\{/, // async class method without access modifier
-      /^static\s+([\w$]+)\s*\([^)]*\)\s*\{/, // static class method without access modifier
-      /^static\s+async\s+([\w$]+)\s*\([^)]*\)\s*\{/, // static async class method without access modifier
+      /^([\w$]+)\s*\([^)]*\)\s*\{/, // 无访问修饰符的类方法
+      /^async\s+([\w$]+)\s*\([^)]*\)\s*\{/, // 无访问修饰符的异步类方法
+      /^static\s+([\w$]+)\s*\([^)]*\)\s*\{/, // 无访问修饰符的静态类方法
+      /^static\s+async\s+([\w$]+)\s*\([^)]*\)\s*\{/, // 无访问修饰符的静态异步类方法
     ],
     classPattern: /^(export\s+)?class\s+([\w$]+)/, // 支持可选的export关键字，匹配 'class Test' 或 'export class Test'
     commentPatterns: [
-      /^\/\//, // single line comment
-      /^\/\*\*/, // JSDoc comment
-      /^\*\//, // end of block comment
-      /^\*/, // middle of block comment
+      /^\/\//, // 单行注释
+      /^\/\*\*/, // JSDoc注释
+      /^\*\//, // 块注释结束
+      /^\*/, // 块注释中间
     ],
   },
   php: {
     functionPatterns: [
-      /^function\s+([\w$]+)\s*\(/, // function declaration
-      /^function\s+&\s*([\w$]+)\s*\(/, // reference function
-      /^public\s+function\s+([\w$]+)\s*\(/, // public method
-      /^protected\s+function\s+([\w$]+)\s*\(/, // protected method
-      /^private\s+function\s+([\w$]+)\s*\(/, // private method
-      /^public\s+static\s+function\s+([\w$]+)\s*\(/, // public static method
-      /^protected\s+static\s+function\s+([\w$]+)\s*\(/, // protected static method
-      /^private\s+static\s+function\s+([\w$]+)\s*\(/, // private static method
-      /^public\s+final\s+function\s+([\w$]+)\s*\(/, // public final method
-      /^protected\s+final\s+function\s+([\w$]+)\s*\(/, // protected final method
-      /^private\s+final\s+function\s+([\w$]+)\s*\(/, // private final method
-      /^public\s+abstract\s+function\s+([\w$]+)\s*\(/, // public abstract method
-      /^protected\s+abstract\s+function\s+([\w$]+)\s*\(/, // protected abstract method
-      /^public\s+static\s+final\s+function\s+([\w$]+)\s*\(/, // public static final method
-      /^protected\s+static\s+final\s+function\s+([\w$]+)\s*\(/, // protected static final method
-      /^private\s+static\s+final\s+function\s+([\w$]+)\s*\(/, // private static final method
-      /^__construct\s*\(/, // constructor
-      /^__destruct\s*\(/, // destructor
-      /^__get\s*\(/, // magic get
-      /^__set\s*\(/, // magic set
-      /^__call\s*\(/, // magic call
-      /^__callStatic\s*\(/, // magic callStatic
-      /^__isset\s*\(/, // magic isset
-      /^__unset\s*\(/, // magic unset
-      /^__toString\s*\(/, // magic toString
-      /^__invoke\s*\(/, // magic invoke
-      /^__set_state\s*\(/, // magic set_state
-      /^__clone\s*\(/, // magic clone
-      /^__debugInfo\s*\(/, // magic debugInfo
+      /^function\s+([\w$]+)\s*\(/, // 函数声明
+      /^function\s+&\s*([\w$]+)\s*\(/, // 引用函数
+      /^public\s+function\s+([\w$]+)\s*\(/, // public方法
+      /^protected\s+function\s+([\w$]+)\s*\(/, // protected方法
+      /^private\s+function\s+([\w$]+)\s*\(/, // private方法
+      /^public\s+static\s+function\s+([\w$]+)\s*\(/, // public静态方法
+      /^protected\s+static\s+function\s+([\w$]+)\s*\(/, // protected静态方法
+      /^private\s+static\s+function\s+([\w$]+)\s*\(/, // private静态方法
+      /^public\s+final\s+function\s+([\w$]+)\s*\(/, // public final方法
+      /^protected\s+final\s+function\s+([\w$]+)\s*\(/, // protected final方法
+      /^private\s+final\s+function\s+([\w$]+)\s*\(/, // private final方法
+      /^public\s+abstract\s+function\s+([\w$]+)\s*\(/, // public抽象方法
+      /^protected\s+abstract\s+function\s+([\w$]+)\s*\(/, // protected抽象方法
+      /^public\s+static\s+final\s+function\s+([\w$]+)\s*\(/, // public静态final方法
+      /^protected\s+static\s+final\s+function\s+([\w$]+)\s*\(/, // protected静态final方法
+      /^private\s+static\s+final\s+function\s+([\w$]+)\s*\(/, // private静态final方法
+      /^__construct\s*\(/, // 构造函数
+      /^__destruct\s*\(/, // 析构函数
+      /^__get\s*\(/, // 魔术方法get
+      /^__set\s*\(/, // 魔术方法set
+      /^__call\s*\(/, // 魔术方法call
+      /^__callStatic\s*\(/, // 魔术方法callStatic
+      /^__isset\s*\(/, // 魔术方法isset
+      /^__unset\s*\(/, // 魔术方法unset
+      /^__toString\s*\(/, // 魔术方法toString
+      /^__invoke\s*\(/, // 魔术方法invoke
+      /^__set_state\s*\(/, // 魔术方法set_state
+      /^__clone\s*\(/, // 魔术方法clone
+      /^__debugInfo\s*\(/, // 魔术方法debugInfo
     ],
     classPattern: /^class\s+([\w$]+)/,
     commentPatterns: [
-      /^\/\//, // single line comment
-      /^#/, // single line comment (hash)
-      /^\/\*\*/, // PHPDoc comment
-      /^\*\//, // end of block comment
-      /^\*/, // middle of block comment
+      /^\/\//, // 单行注释
+      /^#/, // 单行注释（井号）
+      /^\/\*\*/, // PHPDoc注释
+      /^\*\//, // 块注释结束
+      /^\*/, // 块注释中间
     ],
   },
 };
@@ -170,7 +170,7 @@ export function getEnclosingContext(
     const line = lines[i].trim();
 
     // 跳过注释行
-    if (patterns.commentPatterns.some(pattern => pattern.test(line))) {
+    if (patterns.commentPatterns.some((pattern) => pattern.test(line))) {
       continue;
     }
 
@@ -194,7 +194,9 @@ export function getEnclosingContext(
       // 继续向上搜索，可能还有嵌套的类
       for (let j = i - 1; j >= 0; j--) {
         const classLine = lines[j].trim();
-        if (patterns.commentPatterns.some(pattern => pattern.test(classLine))) {
+        if (
+          patterns.commentPatterns.some((pattern) => pattern.test(classLine))
+        ) {
           continue;
         }
         // 跳过HTML标签，除了<script>标签
@@ -231,7 +233,10 @@ export function getEnclosingContext(
  * @param languageType 语言类型
  * @returns 是否为可打印的变量
  */
-export function isPrintableVariable(text: string, languageType: 'js' | 'php'): boolean {
+export function isPrintableVariable(
+  text: string,
+  languageType: 'js' | 'php',
+): boolean {
   // 移除首尾空白
   const trimmedText = text.trim();
 
@@ -241,9 +246,11 @@ export function isPrintableVariable(text: string, languageType: 'js' | 'php'): b
   }
 
   // 检查是否为字符串字面量
-  if ((trimmedText.startsWith('"') && trimmedText.endsWith('"')) ||
-      (trimmedText.startsWith('\'') && trimmedText.endsWith('\'')) ||
-      (trimmedText.startsWith('`') && trimmedText.endsWith('`'))) {
+  if (
+    (trimmedText.startsWith('"') && trimmedText.endsWith('"')) ||
+    (trimmedText.startsWith("'") && trimmedText.endsWith("'")) ||
+    (trimmedText.startsWith('`') && trimmedText.endsWith('`'))
+  ) {
     return false;
   }
 
@@ -263,16 +270,27 @@ export function isPrintableVariable(text: string, languageType: 'js' | 'php'): b
   }
 
   // 检查是否为PHP特殊值
-  if (languageType === 'php' && (trimmedText === 'null' || trimmedText === 'true' || trimmedText === 'false' || trimmedText === 'array' || trimmedText === 'object')) {
+  if (
+    languageType === 'php' &&
+    (trimmedText === 'null' ||
+      trimmedText === 'true' ||
+      trimmedText === 'false' ||
+      trimmedText === 'array' ||
+      trimmedText === 'object')
+  ) {
     return false;
   }
 
   // 检查是否为有效的变量名或表达式
   if (languageType === 'js') {
     // JavaScript变量名或表达式
-    return /^[a-zA-Z_$][a-zA-Z0-9_$]*(\.[a-zA-Z_$][a-zA-Z0-9_$]*)*$/.test(trimmedText);
+    return /^[a-zA-Z_$][a-zA-Z0-9_$]*(\.[a-zA-Z_$][a-zA-Z0-9_$]*)*$/.test(
+      trimmedText,
+    );
   } else {
     // PHP变量名或表达式
-    return /^\$?[a-zA-Z_][a-zA-Z0-9_]*(->[a-zA-Z_][a-zA-Z0-9_]*)*$/.test(trimmedText);
+    return /^\$?[a-zA-Z_][a-zA-Z0-9_]*(->[a-zA-Z_][a-zA-Z0-9_]*)*$/.test(
+      trimmedText,
+    );
   }
 }
