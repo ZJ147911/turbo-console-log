@@ -1,4 +1,4 @@
-import * as path from "path";
+import * as path from 'path';
 
 /**
  * 日志消息生成器
@@ -31,7 +31,9 @@ export class LogMessageGenerator {
     if (isPhp) {
       parts.push(`'${extensionProperties.logMessagePrefix}`);
     } else {
-      parts.push(`${extensionProperties.quote}${extensionProperties.logMessagePrefix}`);
+      parts.push(
+        `${extensionProperties.quote}${extensionProperties.logMessagePrefix}`,
+      );
     }
 
     // 添加分隔符
@@ -65,12 +67,14 @@ export class LogMessageGenerator {
       // 添加变量值
       parts.push(` . ${selectedVar}`);
     } else {
-      parts.push(`${selectedVar}${extensionProperties.logMessageSuffix}${extensionProperties.quote}`);
+      parts.push(
+        `${selectedVar}${extensionProperties.logMessageSuffix}${extensionProperties.quote}`,
+      );
       // 添加变量值
       parts.push(selectedVar);
     }
 
-    return parts.join(" ");
+    return parts.join(' ');
   }
 
   /**
@@ -89,8 +93,8 @@ export class LogMessageGenerator {
     extensionProperties: TurboConsoleLog.ExtensionProperties,
     isPhp: boolean = false,
   ): string {
-    const indent = " ".repeat(tabSize);
-    const semicolon = extensionProperties.addSemicolonInTheEnd ? ";" : "";
+    const indent = ' '.repeat(tabSize);
+    const semicolon = extensionProperties.addSemicolonInTheEnd ? ';' : '';
 
     if (isPhp) {
       return `${indent}${logFunction}(${messageContent})${semicolon}`;

@@ -1,7 +1,12 @@
 import * as vscode from 'vscode';
 
 import { getAllCommands, jsDebugMessage, CommandRegistry } from './core';
-import { getExtensionProperties, loadPhpDebugMessage, isJavaScriptOrTypeScriptFile, isPhpFile } from './helpers';
+import {
+  getExtensionProperties,
+  loadPhpDebugMessage,
+  isJavaScriptOrTypeScriptFile,
+  isPhpFile,
+} from './helpers';
 
 export async function activate(
   context: vscode.ExtensionContext,
@@ -20,5 +25,10 @@ export async function activate(
   const phpDebugMessage = await loadPhpDebugMessage(context.extensionPath);
 
   // Activate commands with both debug message processors
-  commandRegistry.activateCommands(context, extensionProperties, jsDebugMessage, phpDebugMessage || undefined);
+  commandRegistry.activateCommands(
+    context,
+    extensionProperties,
+    jsDebugMessage,
+    phpDebugMessage || undefined,
+  );
 }

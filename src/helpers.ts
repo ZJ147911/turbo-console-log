@@ -1,42 +1,48 @@
-import * as vscode from "vscode";
-import * as path from "path";
-import { phpDebugMessage } from "./core/debug/php";
+import * as path from 'path';
+import * as vscode from 'vscode';
+
+import { phpDebugMessage } from './core/debug/php';
 
 /**
  * 从工作区配置中获取扩展属性
  * @param workspaceConfig 工作区配置对象
  * @returns 扩展属性对象
  */
-export function getExtensionProperties(workspaceConfig: vscode.WorkspaceConfiguration): TurboConsoleLog.ExtensionProperties {
+export function getExtensionProperties(
+  workspaceConfig: vscode.WorkspaceConfiguration,
+): TurboConsoleLog.ExtensionProperties {
   return {
     /** 是否包装日志消息 */
     wrapLogMessage: workspaceConfig.wrapLogMessage || false,
     /** 日志消息前缀 */
-    logMessagePrefix: workspaceConfig.logMessagePrefix || "🚀",
+    logMessagePrefix: workspaceConfig.logMessagePrefix || '🚀',
     /** 日志消息后缀 */
-    logMessageSuffix: workspaceConfig.logMessageSuffix || ":",
+    logMessageSuffix: workspaceConfig.logMessageSuffix || ':',
     /** 是否在末尾添加分号 */
     addSemicolonInTheEnd: workspaceConfig.addSemicolonInTheEnd || false,
     /** 是否插入包含的类名 */
     insertEnclosingClass: workspaceConfig.insertEnclosingClass ?? true,
     /** 是否启用日志修正通知 */
-    logCorrectionNotificationEnabled: workspaceConfig.logCorrectionNotificationEnabled || false,
+    logCorrectionNotificationEnabled:
+      workspaceConfig.logCorrectionNotificationEnabled || false,
     /** 是否插入包含的函数名 */
     insertEnclosingFunction: workspaceConfig.insertEnclosingFunction ?? true,
     /** 是否在日志消息前插入空行 */
-    insertEmptyLineBeforeLogMessage: workspaceConfig.insertEmptyLineBeforeLogMessage || false,
+    insertEmptyLineBeforeLogMessage:
+      workspaceConfig.insertEmptyLineBeforeLogMessage || false,
     /** 是否在日志消息后插入空行 */
-    insertEmptyLineAfterLogMessage: workspaceConfig.insertEmptyLineAfterLogMessage || false,
+    insertEmptyLineAfterLogMessage:
+      workspaceConfig.insertEmptyLineAfterLogMessage || false,
     /** 引号类型 */
     quote: workspaceConfig.quote || '"',
     /** 消息内部的分隔符 */
-    delimiterInsideMessage: workspaceConfig.delimiterInsideMessage || "~",
+    delimiterInsideMessage: workspaceConfig.delimiterInsideMessage || '~',
     /** 是否包含行号 */
     includeLineNum: workspaceConfig.includeLineNum || false,
     /** 是否包含文件名 */
     includeFilename: workspaceConfig.includeFilename || false,
     /** 日志函数名称 */
-    logFunction: workspaceConfig.logFunction || "log",
+    logFunction: workspaceConfig.logFunction || 'log',
   };
 }
 
@@ -47,7 +53,11 @@ export function getExtensionProperties(workspaceConfig: vscode.WorkspaceConfigur
  * @param version 扩展版本
  * @returns 是否可以插入日志
  */
-export function canInsertLogInDocument(context: vscode.ExtensionContext, document: vscode.TextDocument, version: string | undefined): boolean {
+export function canInsertLogInDocument(
+  context: vscode.ExtensionContext,
+  document: vscode.TextDocument,
+  version: string | undefined,
+): boolean {
   // 检查文档是否存在
   if (!document) {
     return false;
@@ -88,7 +98,9 @@ export function canInsertLogInDocument(context: vscode.ExtensionContext, documen
  * @param extensionPath 扩展路径
  * @returns PHP调试消息处理器
  */
-export async function loadPhpDebugMessage(extensionPath: string): Promise<DebugMessage | null> {
+export async function loadPhpDebugMessage(
+  extensionPath: string,
+): Promise<DebugMessage | null> {
   return phpDebugMessage;
 }
 
@@ -98,7 +110,7 @@ export async function loadPhpDebugMessage(extensionPath: string): Promise<DebugM
  * @returns 是否是JavaScript或TypeScript文件
  */
 export function isJavaScriptOrTypeScriptFile(fileName: string): boolean {
-  const jsTsExtensions = [".js", ".jsx", ".ts", ".tsx"];
+  const jsTsExtensions = ['.js', '.jsx', '.ts', '.tsx'];
   const extension = path.extname(fileName);
   return jsTsExtensions.includes(extension);
 }
@@ -109,7 +121,7 @@ export function isJavaScriptOrTypeScriptFile(fileName: string): boolean {
  * @returns 是否是PHP文件
  */
 export function isPhpFile(fileName: string): boolean {
-  return path.extname(fileName) === ".php";
+  return path.extname(fileName) === '.php';
 }
 
 /**
@@ -118,7 +130,10 @@ export function isPhpFile(fileName: string): boolean {
  * @param key 存储键名
  * @returns 存储的值，如果不存在则返回 undefined
  */
-export function readFromGlobalState<T>(context: vscode.ExtensionContext, key: string): T | undefined {
+export function readFromGlobalState<T>(
+  context: vscode.ExtensionContext,
+  key: string,
+): T | undefined {
   return context.globalState.get<T>(key);
 }
 

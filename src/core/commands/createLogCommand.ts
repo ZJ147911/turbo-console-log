@@ -1,7 +1,10 @@
 import * as vscode from 'vscode';
 
-
-import { canInsertLogInDocument, isJavaScriptOrTypeScriptFile, isPhpFile } from '../../helpers';
+import {
+  canInsertLogInDocument,
+  isJavaScriptOrTypeScriptFile,
+  isPhpFile,
+} from '../../helpers';
 import { getTabSize } from '../utils';
 
 /**
@@ -12,12 +15,20 @@ import { getTabSize } from '../utils';
  */
 export function createLogCommand(
   commandName: string,
-  logType: string | ((extensionProperties: TurboConsoleLog.ExtensionProperties) => string),
+  logType:
+    | string
+    | ((extensionProperties: TurboConsoleLog.ExtensionProperties) => string),
 ): TurboConsoleLog.Command {
   return {
     name: commandName,
-    handler: async ({ extensionProperties, jsDebugMessage, phpDebugMessage, context }) => {
-      const editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
+    handler: async ({
+      extensionProperties,
+      jsDebugMessage,
+      phpDebugMessage,
+      context,
+    }) => {
+      const editor: vscode.TextEditor | undefined =
+        vscode.window.activeTextEditor;
       if (!editor) {
         return;
       }
@@ -42,7 +53,8 @@ export function createLogCommand(
       }
 
       // Get the actual log type
-      const actualLogType = typeof logType === 'function' ? logType(extensionProperties) : logType;
+      const actualLogType =
+        typeof logType === 'function' ? logType(extensionProperties) : logType;
 
       for (let index = 0; index < editor.selections.length; index++) {
         const selection: vscode.Selection = editor.selections[index];

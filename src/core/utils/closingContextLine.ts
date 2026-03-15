@@ -18,8 +18,10 @@ export function closingContextLine(
 
   for (let i = lineIndex; i < lines.length; i++) {
     const line = lines[i];
-    const openBrackets = (line.match(new RegExp(openBracket, 'g')) || []).length;
-    const closeBrackets = (line.match(new RegExp(closeBracket, 'g')) || []).length;
+    const openBrackets = (line.match(new RegExp(openBracket, 'g')) || [])
+      .length;
+    const closeBrackets = (line.match(new RegExp(closeBracket, 'g')) || [])
+      .length;
 
     openBracketsCount += openBrackets;
     closeBracketsCount += closeBrackets;

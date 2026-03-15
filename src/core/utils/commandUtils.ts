@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+
 import { isPhpFile } from '../../helpers';
 
 /**
@@ -13,7 +14,11 @@ export interface CommandHandlerContext {
 /**
  * 处理日志消息的回调函数类型
  */
-export type LogMessageHandler = (line: string, isPhpFile: boolean, extensionProperties?: any) => string | null;
+export type LogMessageHandler = (
+  line: string,
+  isPhpFile: boolean,
+  extensionProperties?: any,
+) => string | null;
 
 /**
  * 处理文档中的日志消息
@@ -24,7 +29,7 @@ export type LogMessageHandler = (line: string, isPhpFile: boolean, extensionProp
 export async function processLogMessages(
   context: CommandHandlerContext,
   handler: LogMessageHandler,
-  shouldFilter: boolean = false
+  shouldFilter: boolean = false,
 ): Promise<void> {
   const editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
   if (!editor) {
@@ -41,13 +46,13 @@ export async function processLogMessages(
 
   if (shouldFilter) {
     // 过滤模式：只保留返回非null的行
-    updatedLines = lines.filter(line => {
+    updatedLines = lines.filter((line) => {
       const result = handler(line, isPhp, context.extensionProperties);
       return result !== null;
     });
   } else {
     // 映射模式：替换返回非null的行
-    updatedLines = lines.map(line => {
+    updatedLines = lines.map((line) => {
       const result = handler(line, isPhp, context.extensionProperties);
       return result !== null ? result : line;
     });
@@ -57,7 +62,7 @@ export async function processLogMessages(
   await editor.edit((editBuilder) => {
     editBuilder.replace(
       new vscode.Range(0, 0, document.lineCount, 0),
-      updatedLines.join('\n')
+      updatedLines.join('\n'),
     );
   });
 }
@@ -70,7 +75,11 @@ export async function processLogMessages(
  */
 export function isLogMessageLine(line: string, isPhp: boolean): boolean {
   if (isPhp) {
-    return line.includes('error_log') || line.includes('var_dump') || line.includes('print_r');
+    return (
+      line.includes('error_log') ||
+      line.includes('var_dump') ||
+      line.includes('print_r')
+    );
   } else {
     return line.includes('console.');
   }

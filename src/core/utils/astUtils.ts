@@ -8,8 +8,11 @@ import * as vscode from 'vscode';
  */
 export function getEnclosingContext(
   document: vscode.TextDocument,
-  lineNumber: number
-): { enclosingClass: string | undefined; enclosingFunction: string | undefined } {
+  lineNumber: number,
+): {
+  enclosingClass: string | undefined;
+  enclosingFunction: string | undefined;
+} {
   // 获取文档内容
   const text = document.getText();
   const lines = text.split('\n');
@@ -23,7 +26,12 @@ export function getEnclosingContext(
     const line = lines[i].trim();
 
     // 跳过注释行
-    if (line.startsWith('//') || line.startsWith('/*') || line.startsWith('*') || line.endsWith('*/')) {
+    if (
+      line.startsWith('//') ||
+      line.startsWith('/*') ||
+      line.startsWith('*') ||
+      line.endsWith('*/')
+    ) {
       continue;
     }
 
@@ -36,7 +44,7 @@ export function getEnclosingContext(
       /^([\w$]+)\s*=\s*function\s*/, // function expression
       /^([\w$]+)\s*=\s*\(/, // arrow function
       /^function\*\s+([\w$]+)\s*\(/, // generator function
-      /^([\w$]+)\s*\([^)]*\)\s*=>/ // concise arrow function
+      /^([\w$]+)\s*\([^)]*\)\s*=>/, // concise arrow function
     ];
 
     for (const pattern of functionPatterns) {

@@ -10,18 +10,18 @@
  * @returns 检测到的消息数组
  */
 export async function detectAll(
-  fs: typeof import("fs"),
-  vscode: typeof import("vscode"),
+  fs: typeof import('fs'),
+  vscode: typeof import('vscode'),
   filePath: string,
-  logFunction: TurboConsoleLog.ExtensionProperties["logFunction"],
-  logMessagePrefix: TurboConsoleLog.ExtensionProperties["logMessagePrefix"],
-  delimiterInsideMessage: TurboConsoleLog.ExtensionProperties["delimiterInsideMessage"],
-  isPhp: boolean = false
+  logFunction: TurboConsoleLog.ExtensionProperties['logFunction'],
+  logMessagePrefix: TurboConsoleLog.ExtensionProperties['logMessagePrefix'],
+  delimiterInsideMessage: TurboConsoleLog.ExtensionProperties['delimiterInsideMessage'],
+  isPhp: boolean = false,
 ): Promise<TurboConsoleLog.Message[]> {
   try {
     // 读取文件内容
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    const lines = fileContent.split("\n");
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const lines = fileContent.split('\n');
     const messages: TurboConsoleLog.Message[] = [];
 
     // 搜索所有的日志语句
@@ -42,12 +42,14 @@ export async function detectAll(
         const spaces = lineCopy.substring(0, match.index);
 
         // 检查是否是由 Turbo Console Log 插入的日志
-        const isTurboConsoleLog = lineCopy.includes(logMessagePrefix) && lineCopy.includes(delimiterInsideMessage);
+        const isTurboConsoleLog =
+          lineCopy.includes(logMessagePrefix) &&
+          lineCopy.includes(delimiterInsideMessage);
 
         // 检查是否被注释
-        const isCommented = isPhp 
-          ? lineCopy.trim().startsWith("//") || lineCopy.trim().startsWith("#") 
-          : lineCopy.trim().startsWith("//");
+        const isCommented = isPhp
+          ? lineCopy.trim().startsWith('//') || lineCopy.trim().startsWith('#')
+          : lineCopy.trim().startsWith('//');
 
         // 创建消息对象
         const message: TurboConsoleLog.Message = {
@@ -64,7 +66,7 @@ export async function detectAll(
 
     return messages;
   } catch (error) {
-    console.error("Error detecting log messages:", error);
+    console.error('Error detecting log messages:', error);
     return [];
   }
 }

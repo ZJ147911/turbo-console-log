@@ -16,8 +16,8 @@ interface DebugMessage {
    * @param logFunction 日志函数名称
    */
   msg(
-    textEditor: import("vscode").TextEditorEdit,
-    document: import("vscode").TextDocument,
+    textEditor: import('vscode').TextEditorEdit,
+    document: import('vscode').TextDocument,
     selectedVar: string,
     lineOfSelectedVar: number,
     tabSize: number,
@@ -36,12 +36,12 @@ interface DebugMessage {
    * @returns 检测到的消息数组
    */
   detectAll(
-    fs: typeof import("fs"),
-    vscode: typeof import("vscode"),
+    fs: typeof import('fs'),
+    vscode: typeof import('vscode'),
     filePath: string,
-    logFunction: TurboConsoleLog.ExtensionProperties["logFunction"],
-    logMessagePrefix: TurboConsoleLog.ExtensionProperties["logMessagePrefix"],
-    delimiterInsideMessage: TurboConsoleLog.ExtensionProperties["delimiterInsideMessage"],
+    logFunction: TurboConsoleLog.ExtensionProperties['logFunction'],
+    logMessagePrefix: TurboConsoleLog.ExtensionProperties['logMessagePrefix'],
+    delimiterInsideMessage: TurboConsoleLog.ExtensionProperties['delimiterInsideMessage'],
   ): Promise<TurboConsoleLog.Message[]>;
 }
 
@@ -85,34 +85,48 @@ declare namespace TurboConsoleLog {
    */
   type CommandHandlerProperties = {
     /** VS Code 扩展上下文 */
-    context: import("vscode").ExtensionContext;
+    context: import('vscode').ExtensionContext;
     /** 扩展配置属性 */
     extensionProperties: ExtensionProperties;
     /** JavaScript 调试消息处理器 */
     jsDebugMessage: {
       msg: (
-        textEditor: import("vscode").TextEditorEdit,
-        document: import("vscode").TextDocument,
+        textEditor: import('vscode').TextEditorEdit,
+        document: import('vscode').TextDocument,
         selectedVar: string,
         lineOfSelectedVar: number,
         tabSize: number,
         extensionProperties: ExtensionProperties,
         logFunction: string,
       ) => void;
-      detectAll: (fs: any, vscode: any, filePath: string, logFunction: string, logMessagePrefix: string, delimiterInsideMessage: string) => Promise<Message[]>;
+      detectAll: (
+        fs: any,
+        vscode: any,
+        filePath: string,
+        logFunction: string,
+        logMessagePrefix: string,
+        delimiterInsideMessage: string,
+      ) => Promise<Message[]>;
     };
     /** PHP 调试消息处理器 */
     phpDebugMessage?: {
       msg: (
-        textEditor: import("vscode").TextEditorEdit,
-        document: import("vscode").TextDocument,
+        textEditor: import('vscode').TextEditorEdit,
+        document: import('vscode').TextDocument,
         selectedVar: string,
         lineOfSelectedVar: number,
         tabSize: number,
         extensionProperties: ExtensionProperties,
         logFunction: string,
       ) => void;
-      detectAll: (fs: any, vscode: any, filePath: string, logFunction: string, logMessagePrefix: string, delimiterInsideMessage: string) => Promise<Message[]>;
+      detectAll: (
+        fs: any,
+        vscode: any,
+        filePath: string,
+        logFunction: string,
+        logMessagePrefix: string,
+        delimiterInsideMessage: string,
+      ) => Promise<Message[]>;
     };
     /** 命令参数（可选） */
     args?: string[];
@@ -125,7 +139,9 @@ declare namespace TurboConsoleLog {
     /** 命令名称 */
     name: string;
     /** 命令处理函数 */
-    handler: (commandHandlerProperties: CommandHandlerProperties) => Promise<void>;
+    handler: (
+      commandHandlerProperties: CommandHandlerProperties,
+    ) => Promise<void>;
   };
 
   /**
@@ -148,23 +164,24 @@ declare namespace TurboConsoleLog {
    * 编程语言类型
    */
   const ProgrammingLanguage = {
-    JAVASCRIPT: "javascript",
-    TYPESCRIPT: "typescript",
-    PHP: "php",
+    JAVASCRIPT: 'javascript',
+    TYPESCRIPT: 'typescript',
+    PHP: 'php',
   } as const;
 
-  type ProgrammingLanguage = (typeof ProgrammingLanguage)[keyof typeof ProgrammingLanguage];
+  type ProgrammingLanguage =
+    (typeof ProgrammingLanguage)[keyof typeof ProgrammingLanguage];
 
   /**
    * 块类型
    */
   const BlockType = {
-    FUNCTION: "function",
-    CLASS: "class",
-    LOOP: "loop",
-    CONDITIONAL: "conditional",
-    TRY_CATCH: "try-catch",
-    ARROW_FUNCTION: "arrow-function",
+    FUNCTION: 'function',
+    CLASS: 'class',
+    LOOP: 'loop',
+    CONDITIONAL: 'conditional',
+    TRY_CATCH: 'try-catch',
+    ARROW_FUNCTION: 'arrow-function',
   } as const;
 
   type BlockType = (typeof BlockType)[keyof typeof BlockType];
@@ -173,9 +190,9 @@ declare namespace TurboConsoleLog {
    * 括号类型
    */
   const BracketType = {
-    CURLY: "curly",
-    SQUARE: "square",
-    ROUND: "round",
+    CURLY: 'curly',
+    SQUARE: 'square',
+    ROUND: 'round',
   } as const;
 
   type BracketType = (typeof BracketType)[keyof typeof BracketType];

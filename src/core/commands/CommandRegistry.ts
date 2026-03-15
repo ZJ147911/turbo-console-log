@@ -1,4 +1,4 @@
-import * as vscode from "vscode";
+import * as vscode from 'vscode';
 
 /**
  * 命令注册器
@@ -30,17 +30,25 @@ export class CommandRegistry {
    * @param jsDebugMessage JavaScript 调试消息对象
    * @param phpDebugMessage PHP 调试消息对象
    */
-  activateCommands(context: vscode.ExtensionContext, extensionProperties: TurboConsoleLog.ExtensionProperties, jsDebugMessage: DebugMessage, phpDebugMessage?: DebugMessage): void {
+  activateCommands(
+    context: vscode.ExtensionContext,
+    extensionProperties: TurboConsoleLog.ExtensionProperties,
+    jsDebugMessage: DebugMessage,
+    phpDebugMessage?: DebugMessage,
+  ): void {
     for (const { name, handler } of this.commands) {
-      const disposable = vscode.commands.registerCommand(name, (args: string[]) => {
-        handler({
-          extensionProperties,
-          jsDebugMessage,
-          phpDebugMessage,
-          args,
-          context,
-        });
-      });
+      const disposable = vscode.commands.registerCommand(
+        name,
+        (args: string[]) => {
+          handler({
+            extensionProperties,
+            jsDebugMessage,
+            phpDebugMessage,
+            args,
+            context,
+          });
+        },
+      );
       context.subscriptions.push(disposable);
     }
   }

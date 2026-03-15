@@ -20,12 +20,23 @@ export function correctAllLogMessagesCommand(): TurboConsoleLog.Command {
         // For JavaScript files
         if (!isPhp && line.includes('console.')) {
           // Replace with a standardized log format
-          return line.replace(/console\.\w+\(.*\);/g, `console.log('${extensionProperties.logMessagePrefix} variable:', variable);`);
+          return line.replace(
+            /console\.\w+\(.*\);/g,
+            `console.log('${extensionProperties.logMessagePrefix} variable:', variable);`,
+          );
         }
         // For PHP files
-        if (isPhp && (line.includes('error_log') || line.includes('var_dump') || line.includes('print_r'))) {
+        if (
+          isPhp &&
+          (line.includes('error_log') ||
+            line.includes('var_dump') ||
+            line.includes('print_r'))
+        ) {
           // Replace with a standardized log format
-          return line.replace(/(error_log|var_dump|print_r)\(.*\);/g, `error_log('${extensionProperties.logMessagePrefix} variable: ' . $variable);`);
+          return line.replace(
+            /(error_log|var_dump|print_r)\(.*\);/g,
+            `error_log('${extensionProperties.logMessagePrefix} variable: ' . $variable);`,
+          );
         }
         return null;
       });

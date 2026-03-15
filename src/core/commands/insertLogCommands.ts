@@ -5,10 +5,7 @@ import { createLogCommand } from './createLogCommand';
  * @returns 包含命令名称和处理函数的 Command 对象
  */
 export function insertConsoleLogCommand() {
-  return createLogCommand(
-    'turboConsoleLog.insertConsoleLog',
-    'log'
-  );
+  return createLogCommand('turboConsoleLog.insertConsoleLog', 'log');
 }
 
 /**
@@ -16,10 +13,7 @@ export function insertConsoleLogCommand() {
  * @returns 包含命令名称和处理函数的 Command 对象
  */
 export function insertConsoleDebugCommand() {
-  return createLogCommand(
-    'turboConsoleLog.insertConsoleDebug',
-    'debug'
-  );
+  return createLogCommand('turboConsoleLog.insertConsoleDebug', 'debug');
 }
 
 /**
@@ -27,10 +21,7 @@ export function insertConsoleDebugCommand() {
  * @returns 包含命令名称和处理函数的 Command 对象
  */
 export function insertConsoleInfoCommand() {
-  return createLogCommand(
-    'turboConsoleLog.insertConsoleInfo',
-    'info'
-  );
+  return createLogCommand('turboConsoleLog.insertConsoleInfo', 'info');
 }
 
 /**
@@ -38,10 +29,7 @@ export function insertConsoleInfoCommand() {
  * @returns 包含命令名称和处理函数的 Command 对象
  */
 export function insertConsoleTableCommand() {
-  return createLogCommand(
-    'turboConsoleLog.insertConsoleTable',
-    'table'
-  );
+  return createLogCommand('turboConsoleLog.insertConsoleTable', 'table');
 }
 
 /**
@@ -49,10 +37,7 @@ export function insertConsoleTableCommand() {
  * @returns 包含命令名称和处理函数的 Command 对象
  */
 export function insertConsoleWarnCommand() {
-  return createLogCommand(
-    'turboConsoleLog.insertConsoleWarn',
-    'warn'
-  );
+  return createLogCommand('turboConsoleLog.insertConsoleWarn', 'warn');
 }
 
 /**
@@ -60,10 +45,7 @@ export function insertConsoleWarnCommand() {
  * @returns 包含命令名称和处理函数的 Command 对象
  */
 export function insertConsoleErrorCommand() {
-  return createLogCommand(
-    'turboConsoleLog.insertConsoleError',
-    'error'
-  );
+  return createLogCommand('turboConsoleLog.insertConsoleError', 'error');
 }
 
 /**
@@ -73,6 +55,6 @@ export function insertConsoleErrorCommand() {
 export function insertCustomLogCommand() {
   return createLogCommand(
     'turboConsoleLog.insertCustomLog',
-    (extensionProperties) => extensionProperties.logFunction || 'log'
+    (extensionProperties) => extensionProperties.logFunction || 'log',
   );
 }

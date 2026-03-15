@@ -13,10 +13,14 @@ export function deleteAllLogMessagesCommand(): TurboConsoleLog.Command {
      * @param param0.phpDebugMessage PHP 调试消息对象
      */
     handler: async (context) => {
-      await processLogMessages(context, (line, isPhp) => {
-        // 只保留非日志消息行
-        return isLogMessageLine(line, isPhp) ? null : line;
-      }, true); // 使用过滤模式
+      await processLogMessages(
+        context,
+        (line, isPhp) => {
+          // 只保留非日志消息行
+          return isLogMessageLine(line, isPhp) ? null : line;
+        },
+        true,
+      ); // 使用过滤模式
     },
   };
 }

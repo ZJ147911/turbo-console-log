@@ -62,7 +62,7 @@ export const jsDebugMessage: DebugMessage = {
       logFunction,
       logMessagePrefix,
       delimiterInsideMessage,
-      false // isPhp = false
+      false, // isPhp = false
     );
   },
 };
