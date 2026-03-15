@@ -1,1 +1,0 @@
-export { selectQuote } from './selectQuote';

@@ -1,1 +1,0 @@
-export { getEnclosingContext } from './getEnclosingContext';

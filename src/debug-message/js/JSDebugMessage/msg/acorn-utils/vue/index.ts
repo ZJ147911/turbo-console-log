@@ -1,1 +1,0 @@
-export { extractVueScript } from './extractVueScript';

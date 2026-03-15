@@ -1,28 +1,24 @@
 import * as vscode from 'vscode';
 
-import { getAllCommands } from './commands/';
-import { jsDebugMessage } from './debug-message/js';
-import { Command, ExtensionProperties } from './entities';
-import { getExtensionProperties } from './helpers';
+import { getAllCommands, jsDebugMessage, CommandRegistry } from './core';
+import { getExtensionProperties, loadPhpDebugMessage, isJavaScriptOrTypeScriptFile, isPhpFile } from './helpers';
 
 export async function activate(
   context: vscode.ExtensionContext,
 ): Promise<void> {
   const config: vscode.WorkspaceConfiguration =
     vscode.workspace.getConfiguration('turboConsoleLog');
-  const extensionProperties: ExtensionProperties =
+  const extensionProperties: TurboConsoleLog.ExtensionProperties =
     getExtensionProperties(config);
 
-  // Register all commands
-  const commands: Array<Command> = getAllCommands();
-  for (const { name, handler } of commands) {
-    vscode.commands.registerCommand(name, (args: unknown[]) => {
-      handler({
-        extensionProperties,
-        debugMessage: jsDebugMessage,
-        args,
-        context,
-      });
-    });
-  }
+  // Register all commands using CommandRegistry
+  const commandRegistry = new CommandRegistry();
+  const commands = getAllCommands();
+  commandRegistry.registerCommands(commands);
+
+  // Load PHP debug message processor
+  const phpDebugMessage = await loadPhpDebugMessage(context.extensionPath);
+
+  // Activate commands with both debug message processors
+  commandRegistry.activateCommands(context, extensionProperties, jsDebugMessage, phpDebugMessage || undefined);
 }

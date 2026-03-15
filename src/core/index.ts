@@ -1,2 +1,3 @@
-export * from './debug-message';
-export * from './utilities';
+export * from './commands';
+export * from './debug';
+export * from './utils';

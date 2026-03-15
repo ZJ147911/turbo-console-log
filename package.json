@@ -1,6 +1,6 @@
 {
-  "name": "turbo-console-log",
-  "displayName": "Turbo Console Log",
+  "name": "quick-console",
+  "displayName": "Quick Console",
   "version": "3.17.0",
   "description": "Automated logging for JavaScript, TypeScript, and PHP. Insert, manage, and clean log messages with AST-powered precision.",
   "categories": [
@@ -57,7 +57,7 @@
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
     "watch": "npm run esbuild --watch",
-    "lint": "tsc --noEmit && tsc --project src/jest-tests/tsconfig.json --noEmit && eslint src --ext ts",
+    "lint": "tsc --noEmit && eslint src --ext ts",
     "pretest": "yarn run esbuild-base",
     "test:compile": "rm -rf out && tsc -p ./ && mkdir out/mocha-tests/files && cp -r src/mocha-tests/files/ out/mocha-tests/files/",
     "test": "npm run test:compile && npm run test:jest && node ./out/mocha-tests/runTests.js",
@@ -67,14 +67,8 @@
     "fmt": "oxfmt"
   },
   "dependencies": {
-    "@sveltejs/acorn-typescript": "^1.0.6",
-    "acorn": "^8.15.0",
-    "ignore": "^7.0.5",
-    "p-limit": "^6.2.0",
-    "php-parser": "^3.2.5"
   },
   "devDependencies": {
-    "@types/acorn": "^6.0.4",
     "@types/chai": "^5.0.0",
     "@types/glob": "^7.1.3",
     "@types/jest": "^30.0.0",
@@ -94,67 +88,67 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Turbo Console Log Configuration",
+      "title": "Turbo Console Log 配置",
       "properties": {
         "turboConsoleLog.wrapLogMessage": {
           "type": "boolean",
           "default": false,
-          "description": "Determine if the log message should be wrapped or not."
+          "description": "确定是否自动换行日志消息。"
         },
         "turboConsoleLog.logMessagePrefix": {
           "type": "string",
           "default": "🚀",
-          "description": "The prefix of the log message."
+          "description": "日志消息的前缀。"
         },
         "turboConsoleLog.logMessageSuffix": {
           "type": "string",
           "default": ":",
-          "description": "The suffix of the log message."
+          "description": "日志消息的后缀。"
         },
         "turboConsoleLog.includeFilename": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to include the file name of the log message."
+          "description": "是否在日志消息中包含文件名。"
         },
         "turboConsoleLog.includeLineNum": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to include the line number of the log message."
+          "description": "是否在日志消息中包含行号。"
         },
         "turboConsoleLog.addSemicolonInTheEnd": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to add or not a semicolon in the end of the log message."
+          "description": "是否在日志消息末尾添加分号。"
         },
         "turboConsoleLog.insertEnclosingClass": {
           "type": "boolean",
           "default": true,
-          "description": "Whether to insert or not the enclosing class of the selected variable in the log message."
+          "description": "是否在日志消息中包含选中变量所在的类名。"
         },
         "turboConsoleLog.logCorrectionNotificationEnabled": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to enable or disable the log correction notification."
+          "description": "是否启用日志修正通知。"
         },
         "turboConsoleLog.insertEnclosingFunction": {
           "type": "boolean",
           "default": true,
-          "description": "Whether to insert or not the enclosing function of the selected variable in the log message."
+          "description": "是否在日志消息中包含选中变量所在的函数名。"
         },
         "turboConsoleLog.insertEmptyLineBeforeLogMessage": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to insert an empty line before the log message or not."
+          "description": "是否在日志消息前插入空行。"
         },
         "turboConsoleLog.insertEmptyLineAfterLogMessage": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to insert an empty line after the log message or not."
+          "description": "是否在日志消息后插入空行。"
         },
         "turboConsoleLog.delimiterInsideMessage": {
           "type": "string",
           "default": "~",
-          "description": "The delimiter that will separate the different log message elements (file name, line number, class, function and variable)"
+          "description": "用于分隔日志消息中不同元素（文件名、行号、类、函数和变量）的分隔符。"
         },
         "turboConsoleLog.quote": {
           "type": "string",
@@ -164,17 +158,17 @@
             "`"
           ],
           "default": "\"",
-          "description": "Double quotes, single quotes or backtick"
+          "description": "引号类型：双引号、单引号或反引号。"
         },
         "turboConsoleLog.logFunction": {
           "type": "string",
           "default": "log",
-          "description": "Specify the log function to use with 'displayCustomLogMessage' command. "
+          "description": "指定使用 'displayCustomLogMessage' 命令时使用的日志函数。"
         },
         "turboConsoleLog.isTurboTelemetryEnabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable anonymous telemetry for Turbo Console Log analytics (respects VS Code's global telemetry settings). This helps improve the extension but never collects personal information.",
+          "description": "启用匿名遥测以收集 Turbo Console Log 分析数据（遵循 VS Code 的全局遥测设置）。这有助于改进扩展，但绝不会收集个人信息。",
           "tags": [
             "telemetry",
             "usesOnlineServices"
@@ -184,61 +178,51 @@
     },
     "commands": [
       {
-        "command": "turboConsoleLog.displayLogMessage",
-        "title": "Turbo Console Log: Insert console log message (Legacy)"
-      },
-      {
         "command": "turboConsoleLog.insertConsoleLog",
-        "title": "Turbo Console Log: Insert console log message"
+        "title": "Turbo Console Log: 插入 console.log 日志消息"
       },
       {
         "command": "turboConsoleLog.insertConsoleInfo",
-        "title": "Turbo Console Log: Insert console info message"
+        "title": "Turbo Console Log: 插入 console.info 信息消息"
       },
       {
         "command": "turboConsoleLog.insertConsoleDebug",
-        "title": "Turbo Console Log: Insert console debug message"
+        "title": "Turbo Console Log: 插入 console.debug 调试消息"
       },
       {
         "command": "turboConsoleLog.insertConsoleTable",
-        "title": "Turbo Console Log: Insert console table message"
+        "title": "Turbo Console Log: 插入 console.table 表格消息"
       },
       {
         "command": "turboConsoleLog.insertConsoleWarn",
-        "title": "Turbo Console Log: Insert console warn message"
+        "title": "Turbo Console Log: 插入 console.warn 警告消息"
       },
       {
         "command": "turboConsoleLog.insertConsoleError",
-        "title": "Turbo Console Log: Insert console error message"
+        "title": "Turbo Console Log: 插入 console.error 错误消息"
       },
       {
         "command": "turboConsoleLog.insertCustomLog",
-        "title": "Turbo Console Log: Insert custom log message"
+        "title": "Turbo Console Log: 插入自定义日志消息"
       },
       {
         "command": "turboConsoleLog.commentAllLogMessages",
-        "title": "Turbo Console Log: Comment Turbo Log Messages"
+        "title": "Turbo Console Log: 注释所有 Turbo 日志消息"
       },
       {
         "command": "turboConsoleLog.uncommentAllLogMessages",
-        "title": "Turbo Console Log: Uncomment Turbo Log Messages"
+        "title": "Turbo Console Log: 取消注释所有 Turbo 日志消息"
       },
       {
         "command": "turboConsoleLog.deleteAllLogMessages",
-        "title": "Turbo Console Log: Delete Turbo Log Messages"
+        "title": "Turbo Console Log: 删除所有 Turbo 日志消息"
       },
       {
         "command": "turboConsoleLog.correctAllLogMessages",
-        "title": "Turbo Console Log: Correct Turbo Log Messages"
+        "title": "Turbo Console Log: 修正所有 Turbo 日志消息"
       }
     ],
     "keybindings": [
-      {
-        "command": "turboConsoleLog.displayLogMessage",
-        "key": "ctrl+alt+l",
-        "mac": "ctrl+alt+l",
-        "when": "editorTextFocus"
-      },
       {
         "command": "turboConsoleLog.insertConsoleLog",
         "key": "ctrl+k ctrl+l",
@@ -308,15 +292,10 @@
     ]
   },
   "activationEvents": [
-    "onLanguage:javascript",
-    "onLanguage:javascriptreact",
-    "onLanguage:typescript",
-    "onLanguage:typescriptreact",
     "onStartupFinished"
   ],
-  "extensionDependencies": [
-    "vscode.git"
-  ],
+  "extensionDependencies": [],
+
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.94.0"

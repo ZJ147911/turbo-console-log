@@ -1,1 +1,0 @@
-export { addFileInfo } from './addFileInfo';
