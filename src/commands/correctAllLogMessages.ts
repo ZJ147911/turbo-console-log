@@ -2,8 +2,6 @@ import * as fs from 'fs';
 import * as vscode from 'vscode';
 
 import { Command, Message } from '../entities';
-import { trackLogManagementCommands } from '../helpers';
-import { showNotification } from '../ui';
 
 /**
  * 从日志消息中提取文件名
@@ -122,21 +120,6 @@ export function correctAllLogMessagesCommand(): Command {
         .then(async (applied) => {
           if (applied && edits.length > 0) {
             await document.save();
-            // Track log management command usage
-            trackLogManagementCommands(context, 'correct');
-          }
-          if (extensionProperties.logCorrectionNotificationEnabled) {
-            const editCount = edits.length;
-            if (editCount !== 0) {
-              if (editCount === 1) {
-                showNotification(`1 log message has been updated`, 5000);
-                return;
-              }
-              showNotification(
-                `${updatedCount} log messages have been updated`,
-                5000,
-              );
-            }
           }
         });
     },

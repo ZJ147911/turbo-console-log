@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { Command } from '../entities';
-import { trackLogInsertions, canInsertLogInDocument } from '../helpers';
+import { canInsertLogInDocument } from '../helpers';
 import { getTabSize } from '../utilities';
 
 /**
@@ -32,7 +32,7 @@ export function insertCustomLogCommand(): Command {
         'ChakrounAnas.turbo-console-log',
       )?.packageJSON.version;
 
-      // Check if log insertion is allowed (PHP requires Pro)
+      // Check if log insertion is allowed
       const canInsert = canInsertLogInDocument(context, document, version);
       if (!canInsert) {
         return;
@@ -71,9 +71,6 @@ export function insertCustomLogCommand(): Command {
           });
         }
       }
-
-      // Track logs insertions
-      trackLogInsertions(context);
     },
   };
 }

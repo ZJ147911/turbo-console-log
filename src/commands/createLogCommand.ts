@@ -1,11 +1,7 @@
 import * as vscode from 'vscode';
 
 import { Command } from '../entities';
-import {
-  trackLogInsertions,
-  canInsertLogInDocument,
-  loadPhpDebugMessage,
-} from '../helpers';
+import { canInsertLogInDocument } from '../helpers';
 import { getTabSize } from '../utilities';
 
 /**
@@ -35,27 +31,16 @@ export function createLogCommand(
         'ChakrounAnas.turbo-console-log',
       )?.packageJSON.version;
 
-      // Check if log insertion is allowed (PHP requires Pro)
+      // Check if log insertion is allowed
       const canInsert = canInsertLogInDocument(context, document, version);
       if (!canInsert) {
         return;
       }
 
-      // For PHP files, load PHP debug message from Pro bundle
-      let activeDebugMessage = debugMessage;
-      let currentLogType = logType;
+      // Use the provided debug message for now
+      const activeDebugMessage = debugMessage;
+      const currentLogType = logType;
 
-      if (document.languageId === 'php') {
-        const phpDebugMessage = await loadPhpDebugMessage(context);
-        if (!phpDebugMessage) {
-          vscode.window.showErrorMessage(
-            'Failed to load PHP support from Pro bundle.',
-          );
-          return;
-        }
-        activeDebugMessage = phpDebugMessage;
-        currentLogType = phpLogType;
-      }
       for (let index = 0; index < editor.selections.length; index++) {
         const selection: vscode.Selection = editor.selections[index];
         let wordUnderCursor = '';
@@ -82,9 +67,6 @@ export function createLogCommand(
           });
         }
       }
-
-      // Track logs insertions
-      trackLogInsertions(context);
     },
   };
 }

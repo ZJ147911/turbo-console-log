@@ -2,11 +2,7 @@ import * as fs from 'fs';
 import * as vscode from 'vscode';
 
 import { Command, Message } from '../entities';
-import {
-  loadPhpDebugMessage,
-  canInsertLogInDocument,
-  trackLogManagementCommands,
-} from '../helpers';
+import { canInsertLogInDocument } from '../helpers';
 
 /**
  * 创建取消注释所有日志消息的命令
@@ -37,24 +33,14 @@ export function uncommentAllLogMessagesCommand(): Command {
         'ChakrounAnas.turbo-console-log',
       )?.packageJSON.version;
 
-      // Check if log operations are allowed (PHP requires Pro)
+      // Check if log operations are allowed
       const canOperate = canInsertLogInDocument(context, document, version);
       if (!canOperate) {
         return;
       }
 
-      // For PHP files, load PHP debug message from Pro bundle
-      let activeDebugMessage = debugMessage;
-      if (document.languageId === 'php') {
-        const phpDebugMessage = await loadPhpDebugMessage(context);
-        if (!phpDebugMessage) {
-          vscode.window.showErrorMessage(
-            'Failed to load PHP support from Pro bundle.',
-          );
-          return;
-        }
-        activeDebugMessage = phpDebugMessage;
-      }
+      // Use the provided debug message for now
+      const activeDebugMessage = debugMessage;
 
       const logMessages: Message[] = await activeDebugMessage.detectAll(
         fs,
@@ -88,8 +74,6 @@ export function uncommentAllLogMessagesCommand(): Command {
         .then(async (applied) => {
           if (applied) {
             await document.save();
-            // Track log management command usage
-            trackLogManagementCommands(context, 'uncomment');
           }
         });
     },
