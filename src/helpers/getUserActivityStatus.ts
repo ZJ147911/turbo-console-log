@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 import { UserActivityStatus, GlobalStateKey } from '@/entities';
 
-import { readFromGlobalState } from './readFromGlobalState';
+import { readFromGlobalState } from './state/readFromGlobalState';
 
 export function getUserActivityStatus(
   context: vscode.ExtensionContext,

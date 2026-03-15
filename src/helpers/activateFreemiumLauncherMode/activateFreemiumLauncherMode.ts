@@ -4,7 +4,7 @@ import { createTelemetryService } from '../../telemetry/telemetryService';
 import { activateFreemiumMode } from '../activeFreemiumMode';
 import { GlobalStateKeys } from '../GlobalStateKeys';
 import { trackPanelOpenings } from '../trackPanelOpenings';
-import { writeToGlobalState } from '../writeToGlobalState';
+import { writeToGlobalState } from '../state/writeToGlobalState';
 import { manageDynamicFreemiumPanel } from './launcherContent';
 
 export function activateFreemiumLauncherMode(

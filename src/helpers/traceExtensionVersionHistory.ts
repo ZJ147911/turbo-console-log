@@ -4,9 +4,9 @@ import { GlobalStateKey } from '@/entities';
 import { showNotification, NotificationEvent } from '@/notifications';
 import { createTelemetryService } from '@/telemetry';
 
-import { readFromGlobalState } from './readFromGlobalState';
+import { readFromGlobalState } from './state/readFromGlobalState';
 import { showReleaseNotification } from './showReleaseNotification';
-import { writeToGlobalState } from './writeToGlobalState';
+import { writeToGlobalState } from './state/writeToGlobalState';
 
 /**
  * Traces extension version history by maintaining an array of versions the user has installed.

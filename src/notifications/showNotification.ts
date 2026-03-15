@@ -4,7 +4,7 @@ import { GlobalStateKey } from '@/entities';
 import { TurboAnalyticsProvider } from '@/telemetry';
 
 import { generateDeveloperId } from '../helpers/generateDeveloperId';
-import { writeToGlobalState } from '../helpers/writeToGlobalState';
+import { writeToGlobalState } from '@/helpers/state';
 import { createTelemetryService } from '../telemetry/telemetryService';
 import { isRightContext } from './contextualAnalysis';
 import { ExtensionNotificationResponse } from './ExtensionNotificationResponse';

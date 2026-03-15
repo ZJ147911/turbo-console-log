@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 
 import { UserActivityStatus, GlobalStateKey } from '@/entities';
 
-import { readFromGlobalState } from './readFromGlobalState';
-import { writeToGlobalState } from './writeToGlobalState';
+import { readFromGlobalState } from './state/readFromGlobalState';
+import { writeToGlobalState } from './state/writeToGlobalState';
 
 const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 

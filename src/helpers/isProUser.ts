@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-import { readFromGlobalState } from './readFromGlobalState';
+import { readFromGlobalState } from './state/readFromGlobalState';
 
 /**
  * Checks if the current user has an active Turbo Pro bundle

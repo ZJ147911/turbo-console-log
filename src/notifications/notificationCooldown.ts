@@ -1,8 +1,7 @@
 import vscode from 'vscode';
 
 import { GlobalStateKey } from '@/entities';
-import { readFromGlobalState } from '@/helpers/readFromGlobalState';
-import { writeToGlobalState } from '@/helpers/writeToGlobalState';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers/state';
 import { createTelemetryService } from '@/telemetry/telemetryService';
 
 import { NotificationEvent } from './NotificationEvent';

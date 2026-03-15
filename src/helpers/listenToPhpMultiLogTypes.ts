@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 
 import { detectAll } from '@/debug-message/php/detectAll';
-import { GlobalStateKey } from '@/entities';
-import { Message } from '@/entities/extension/message';
+import { GlobalStateKey, Message } from '@/entities';
+// Message 类型已经在 entities/index.ts 中重新导出
+// import { Message } from '@/entities/extension/message';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
 import { showNotification } from '@/notifications/showNotification';
 

@@ -4,13 +4,12 @@ import { activateRepairMode } from './activateRepairMode';
 import { activateFreemiumMode } from './activeFreemiumMode';
 import { canInsertLogInDocument } from './canInsertLogInDocument';
 import { deactivateRepairMode } from './deactivateRepairMode';
-import { getExtensionProperties } from './getExtensionProperties';
+import { getExtensionProperties } from './config';
 import { getUserActivityStatus } from './getUserActivityStatus';
 import { GlobalStateKeys } from './GlobalStateKeys';
 import { initialWorkspaceLogsCount } from './initialWorkspaceLogsCount/initialWorkspaceLogsCount';
 import { isFreshInstall } from './isFreshInstall';
-import { isJavaScriptOrTypeScriptFile } from './isJavaScriptOrTypeScriptFile';
-import { isPhpFile } from './isPhpFile';
+import { isJavaScriptOrTypeScriptFile, isPhpFile } from './file';
 import { isProUser } from './isProUser';
 import { listenToActivationDaySeven } from './listenToActivationDaySeven';
 import { listenToActivationDayThree } from './listenToActivationDayThree';
@@ -27,14 +26,13 @@ import { listenToPhpMessyFileDetection } from './listenToPhpMessyFileDetection';
 import { listenToPhpMultiLogTypes } from './listenToPhpMultiLogTypes';
 import { listenToWeekendTurboSundays } from './listenToWeekendTurboSundays';
 import { loadPhpDebugMessage } from './loadPhpDebugMessage';
-import { readFromGlobalState } from './readFromGlobalState';
+import { readFromGlobalState, writeToGlobalState } from './state';
 import { showReleaseNotification } from './showReleaseNotification';
 import { showReleaseWebView } from './showReleaseWebView';
 import { traceExtensionVersionHistory } from './traceExtensionVersionHistory';
 import { trackLogInsertions } from './trackLogInsertions';
 import { trackLogManagementCommands } from './trackLogManagementCommands';
 import { updateUserActivityStatus } from './updateUserActivityStatus';
-import { writeToGlobalState } from './writeToGlobalState';
 export {
   readFromGlobalState,
   writeToGlobalState,

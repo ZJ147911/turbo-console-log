@@ -1,17 +1,17 @@
-import { BlockType } from './extension/blockType';
-import { BracketType } from './extension/bracketType';
-import { Command } from './extension/Command';
-import { ExtensionProperties } from './extension/extensionProperties';
-import { LogBracket } from './extension/logBracket';
+import { BlockType } from '../types/extension/blockType';
+import { BracketType } from '../types/extension/bracketType';
+import { Command } from '../types/extension/Command';
+import { ExtensionProperties } from '../types/extension/extensionProperties';
+import { LogBracket } from '../types/extension/logBracket';
 import {
   LogMessageType,
   LogMessage,
   LogContextMetadata,
   WithinReturnStatementMetadata,
-} from './extension/logMessage';
-import { Message } from './extension/message';
-import { MultilineContextVariable } from './extension/MultilineContextVariable';
-import { ProgrammingLanguage } from './extension/ProgrammingLanguage';
+} from '../types/extension/logMessage';
+import { Message } from '../types/extension/message';
+import { MultilineContextVariable } from '../types/extension/MultilineContextVariable';
+import { ProgrammingLanguage } from '../types/extension/ProgrammingLanguage';
 import { GlobalStateKey } from './GlobalStateKey';
 import { UserActivityStatus } from './UserActivityStatus';
 import { WorkspaceContext } from './WorkspaceContext';

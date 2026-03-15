@@ -2,7 +2,7 @@ import type { ExtensionContext } from 'vscode';
 
 import { GlobalStateKey } from '@/entities';
 
-import { readFromGlobalState } from './readFromGlobalState';
+import { readFromGlobalState } from './state/readFromGlobalState';
 
 /**
  * Determines if the current user is on a fresh install (new user) or an existing user
