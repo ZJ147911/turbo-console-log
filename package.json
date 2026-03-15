@@ -40,39 +40,24 @@
     "url": "https://github.com/Chakroun-Anas/turbo-console-log"
   },
   "publisher": "ChakrounAnas",
-  "files": [
-    "out/extension.js",
-    "images/icon.png",
-    "README.md",
-    "CHANGELOG.md",
-    "LICENSE.txt",
-    "package.json"
-  ],
   "main": "./out/extension.js",
   "scripts": {
-    "vscode:prepublish": "rm -rf out && npm run esbuild-base -- --minify",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "rimraf out && mkdir out && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
     "esbuild-base-minify": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify",
     "esbuild-base-minify-analyze": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify --analyze",
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
     "watch": "npm run esbuild --watch",
-    "lint": "tsc --noEmit && eslint src --ext ts",
-    "pretest": "yarn run esbuild-base",
-    "test:compile": "rm -rf out && tsc -p ./ && mkdir out/mocha-tests/files && cp -r src/mocha-tests/files/ out/mocha-tests/files/",
-    "test": "npm run test:compile && npm run test:jest && node ./out/mocha-tests/runTests.js",
-    "test:jest": "jest --config jest.config.ts",
-    "test:jest:coverage": "jest --config jest.config.ts --coverage",
-    "test:jest:coverage:report": "jest --config jest.config.ts --coverage && open ./coverage/lcov-report/index.html",
     "fmt": "oxfmt"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/node": "^24.0.3",
     "@types/vscode": "^1.94.0",
     "esbuild": "^0.25.4",
     "eslint": "^9.27.0",
-    "oxfmt": "^0.40.0"
+    "oxfmt": "^0.40.0",
+    "rimraf": "^6.1.3"
   },
   "contributes": {
     "configuration": {
@@ -154,7 +139,6 @@
           "default": "console",
           "description": "指定日志消息中使用的控制台对象名称。"
         }
-
       }
     },
     "commands": [
