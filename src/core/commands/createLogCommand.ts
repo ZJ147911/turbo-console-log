@@ -6,6 +6,7 @@ import {
   isPhpFile,
 } from '../../helpers';
 import { getTabSize } from '../utils';
+import { isPrintableVariable } from '../utils/astUtils';
 
 /**
  * 创建日志插入命令的工厂函数
@@ -69,17 +70,24 @@ export function createLogCommand(
           document.getText(selection) || wordUnderCursor;
         const lineOfSelectedVar: number = selection.active.line;
         if (selectedVar.trim().length !== 0) {
-          await editor.edit((editBuilder) => {
-            activeDebugMessage.msg(
-              editBuilder,
-              document,
-              selectedVar,
-              lineOfSelectedVar,
-              tabSize,
-              extensionProperties,
-              actualLogType,
-            );
-          });
+          // 检查是否为可打印的变量
+          const languageType = isPhpFile(document.fileName) ? 'php' : 'js';
+          if (isPrintableVariable(selectedVar, languageType)) {
+            await editor.edit((editBuilder) => {
+              activeDebugMessage.msg(
+                editBuilder,
+                document,
+                selectedVar,
+                lineOfSelectedVar,
+                tabSize,
+                extensionProperties,
+                actualLogType,
+              );
+            });
+          } else {
+            // 如果不是可打印的变量，显示提示
+            vscode.window.showInformationMessage('Selected content is not a printable variable');
+          }
         }
       }
     },

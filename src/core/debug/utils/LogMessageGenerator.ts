@@ -43,7 +43,9 @@ export class LogMessageGenerator {
 
     // 添加文件名
     if (extensionProperties.includeFilename && filename) {
-      parts.push(`${filename}`);
+      // 只使用文件名，不包含路径
+      const basename = path.basename(filename);
+      parts.push(`${basename}`);
     }
 
     // 添加行号
