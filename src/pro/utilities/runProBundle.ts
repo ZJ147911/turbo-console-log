@@ -1,12 +1,13 @@
-import * as vscode from 'vscode';
 import fs from 'fs';
-import path from 'path';
 import ignore from 'ignore';
 import os from 'os';
 import pLimit from 'p-limit';
+import path from 'path';
+import * as vscode from 'vscode';
+
+import { detectAll } from '../../debug-message/js/JSDebugMessage/detectAll';
 import { ExtensionProperties } from '../../entities';
 import { activateProMode, deactivateRepairMode } from '../../helpers';
-import { detectAll } from '../../debug-message/js/JSDebugMessage/detectAll';
 
 export async function runProBundle(
   extensionProperties: ExtensionProperties,

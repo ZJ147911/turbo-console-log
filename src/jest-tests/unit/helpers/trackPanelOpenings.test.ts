@@ -1,10 +1,11 @@
 import * as vscode from 'vscode';
-import { trackPanelOpenings } from '@/helpers/trackPanelOpenings';
-import { readFromGlobalState, writeToGlobalState } from '@/helpers/index';
+
 import { GlobalStateKey } from '@/entities';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers/index';
+import { trackPanelOpenings } from '@/helpers/trackPanelOpenings';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 // Mock dependencies
 jest.mock('@/helpers/index');

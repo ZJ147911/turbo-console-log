@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
-import { listenToManualConsoleLogs } from '@/helpers/listenToManualConsoleLogs';
+
+import { GlobalStateKey, UserActivityStatus } from '@/entities';
 import {
   readFromGlobalState,
   writeToGlobalState,
@@ -7,10 +8,10 @@ import {
   isProUser,
   updateUserActivityStatus,
 } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { GlobalStateKey, UserActivityStatus } from '@/entities';
+import { listenToManualConsoleLogs } from '@/helpers/listenToManualConsoleLogs';
 import { createMockChangeEvent } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('vscode');
 jest.mock('@/helpers', () => ({

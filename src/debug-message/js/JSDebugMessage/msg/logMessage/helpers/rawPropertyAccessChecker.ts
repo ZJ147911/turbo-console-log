@@ -1,5 +1,7 @@
 import { Position, TextDocument } from 'vscode';
+
 import { LogContextMetadata } from '@/entities';
+
 import {
   type AcornNode,
   type Property,

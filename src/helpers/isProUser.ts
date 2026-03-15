@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+
 import { readFromGlobalState } from './readFromGlobalState';
 
 /**
@@ -9,6 +10,6 @@ import { readFromGlobalState } from './readFromGlobalState';
 export function isProUser(context: vscode.ExtensionContext): boolean {
   const proLicenseKey = readFromGlobalState<string>(context, 'license-key');
   const proBundle = readFromGlobalState<string>(context, 'pro-bundle');
-  
+
   return !!(proLicenseKey && proBundle);
 }

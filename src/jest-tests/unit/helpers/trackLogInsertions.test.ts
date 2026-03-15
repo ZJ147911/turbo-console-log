@@ -1,12 +1,13 @@
 import * as vscode from 'vscode';
+
+import { readFromGlobalState, writeToGlobalState, isProUser } from '@/helpers';
 import {
   trackLogInsertions,
   clearFilesWithLogsInSession,
 } from '@/helpers/trackLogInsertions';
-import { readFromGlobalState, writeToGlobalState, isProUser } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 // Mock the dependencies
 jest.mock('@/helpers', () => ({

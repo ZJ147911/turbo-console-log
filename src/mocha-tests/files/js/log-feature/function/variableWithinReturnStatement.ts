@@ -3,9 +3,5 @@ function sayHello(person) {
 }
 
 function testMultiLineReturn(firstValue, secondValue) {
-    return (
-      true
-        ? firstValue
-        : secondValue
-    );
-  }
+  return true ? firstValue : secondValue;
+}

@@ -1,8 +1,6 @@
 // @ts-nocheck
 
-const foo = 1 + 1 === 2
-    ? 'bar'
-    : 'baz';
+const foo = 1 + 1 === 2 ? 'bar' : 'baz';
 
 export const c =
   // @ts-expect-error

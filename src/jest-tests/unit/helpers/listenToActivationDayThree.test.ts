@@ -1,14 +1,15 @@
 import * as vscode from 'vscode';
-import { listenToActivationDayThree } from '@/helpers/listenToActivationDayThree';
+
+import { GlobalStateKey } from '@/entities';
 import {
   readFromGlobalState,
   writeToGlobalState,
   isProUser,
   isJavaScriptOrTypeScriptFile,
 } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
+import { listenToActivationDayThree } from '@/helpers/listenToActivationDayThree';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { GlobalStateKey } from '@/entities';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('vscode');
 jest.mock('@/helpers', () => ({

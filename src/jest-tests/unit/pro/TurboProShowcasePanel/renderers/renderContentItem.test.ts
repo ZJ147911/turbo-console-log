@@ -55,12 +55,12 @@ jest.mock(
   }),
 );
 
-import { renderParagraphComponent } from '@/pro/TurboProShowcasePanel/renderers/renderParagraphComponent';
 import { renderArticleComponent } from '@/pro/TurboProShowcasePanel/renderers/renderArticleComponent';
 import { renderCountDownComponent } from '@/pro/TurboProShowcasePanel/renderers/renderCountDownComponent';
+import { renderMediaShowcaseCTAComponent } from '@/pro/TurboProShowcasePanel/renderers/renderMediaShowcaseCTAComponent';
+import { renderParagraphComponent } from '@/pro/TurboProShowcasePanel/renderers/renderParagraphComponent';
 import { renderSurveyComponent } from '@/pro/TurboProShowcasePanel/renderers/renderSurveyComponent';
 import { renderTableComponent } from '@/pro/TurboProShowcasePanel/renderers/renderTableComponent';
-import { renderMediaShowcaseCTAComponent } from '@/pro/TurboProShowcasePanel/renderers/renderMediaShowcaseCTAComponent';
 import { renderVideoComponent } from '@/pro/TurboProShowcasePanel/renderers/renderVideoComponent';
 import { renderYouTubeVideoComponent } from '@/pro/TurboProShowcasePanel/renderers/renderYouTubeVideoComponent';
 

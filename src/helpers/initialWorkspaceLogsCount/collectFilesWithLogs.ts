@@ -1,13 +1,14 @@
 import fs from 'fs';
+import pLimit from 'p-limit';
 import path from 'path';
 import vscode from 'vscode';
-import pLimit from 'p-limit';
-import { ExtensionProperties, Message } from '@/entities';
-import { folderWorkspaceTargetFiles } from './targetFiles';
-import { GitIgnoreMatcher } from './GitIgnoreMatcher';
 
 import { detectAll as jsDetectAll } from '@/debug-message/js/JSDebugMessage/detectAll';
 import { detectAll as phpDetectAll } from '@/debug-message/php/detectAll';
+import { ExtensionProperties, Message } from '@/entities';
+
+import { GitIgnoreMatcher } from './GitIgnoreMatcher';
+import { folderWorkspaceTargetFiles } from './targetFiles';
 
 /**
  * Internal recursive function that shares a single pLimit instance.

@@ -1,21 +1,22 @@
+import * as vscode from 'vscode';
+
 import { msg } from '@/debug-message/js/JSDebugMessage/msg';
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+import { constructDebuggingMsg } from '@/debug-message/js/JSDebugMessage/msg/constructDebuggingMsg';
+import { constructDebuggingMsgContent } from '@/debug-message/js/JSDebugMessage/msg/constructDebuggingMsgContent';
+import { omit } from '@/debug-message/js/JSDebugMessage/msg/helpers/omit';
+import { insertDebugMessage } from '@/debug-message/js/JSDebugMessage/msg/insertDebugMessage';
 import { logMessage } from '@/debug-message/js/JSDebugMessage/msg/logMessage';
 import { line as logMessageLine } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine';
 import { spacesBeforeLogMsg } from '@/debug-message/js/JSDebugMessage/msg/spacesBeforeLogMsg';
-import { constructDebuggingMsgContent } from '@/debug-message/js/JSDebugMessage/msg/constructDebuggingMsgContent';
-import { constructDebuggingMsg } from '@/debug-message/js/JSDebugMessage/msg/constructDebuggingMsg';
-import { insertDebugMessage } from '@/debug-message/js/JSDebugMessage/msg/insertDebugMessage';
 import {
   needTransformation,
   performTransformation,
   applyTransformedCode,
 } from '@/debug-message/js/JSDebugMessage/msg/transformer';
-import { omit } from '@/debug-message/js/JSDebugMessage/msg/helpers/omit';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
-import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
-import { createMockTextEditorEdit } from '@/jest-tests/mocks/helpers/createMockTextEditorEdit';
 import { ExtensionProperties, LogMessage, LogMessageType } from '@/entities';
-import * as vscode from 'vscode';
+import { createMockTextEditorEdit } from '@/jest-tests/mocks/helpers/createMockTextEditorEdit';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
 
 // Mock all dependencies
 jest.mock('@/debug-message/js/JSDebugMessage/msg/logMessage');

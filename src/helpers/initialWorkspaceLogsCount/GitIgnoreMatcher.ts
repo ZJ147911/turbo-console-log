@@ -1,9 +1,10 @@
-import vscode from 'vscode';
-import fs from 'fs';
-import path from 'path';
-import pLimit from 'p-limit';
-import ignore from 'ignore';
 import type { Ignore } from 'ignore';
+
+import fs from 'fs';
+import ignore from 'ignore';
+import pLimit from 'p-limit';
+import path from 'path';
+import vscode from 'vscode';
 
 export class GitIgnoreMatcher {
   private matchers: Map<string, Ignore>; // Map of workspace root -> ignore matcher

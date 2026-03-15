@@ -1,6 +1,7 @@
-import * as vscode from 'vscode';
 import axios from 'axios';
 import * as crypto from 'crypto';
+import * as vscode from 'vscode';
+
 import {
   createTelemetryService,
   resetTelemetryService,

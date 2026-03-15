@@ -1,10 +1,11 @@
+import * as vscode from 'vscode';
+
 import { applyTransformedCode } from '@/debug-message/js/JSDebugMessage/msg/transformer/applyTransformedCode';
 import {
   makeTextDocument,
   makeTextEditor,
   createMockTextEditorEdit,
 } from '@/jest-tests/mocks/helpers';
-import * as vscode from 'vscode';
 
 describe('applyTransformedCode', () => {
   let mockTextEditorEdit: jest.Mocked<vscode.TextEditorEdit>;

@@ -1,10 +1,11 @@
-import { listenToWeekendTurboSundays } from '@/helpers/listenToWeekendTurboSundays';
-import { readFromGlobalState, writeToGlobalState, isProUser } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { GlobalStateKey } from '@/entities';
-import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
 import type { ExtensionContext } from 'vscode';
+
+import { GlobalStateKey } from '@/entities';
+import { readFromGlobalState, writeToGlobalState, isProUser } from '@/helpers';
+import { listenToWeekendTurboSundays } from '@/helpers/listenToWeekendTurboSundays';
+import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('@/helpers', () => ({
   readFromGlobalState: jest.fn(),

@@ -1,9 +1,10 @@
-import { detectAll } from '@/debug-message/js/JSDebugMessage/detectAll/detectAll';
-import { makeTextDocument } from '@/jest-tests/mocks/helpers';
-import { ExtensionProperties } from '@/entities';
-import { spacesBeforeLogMsg } from '@/debug-message/js/JSDebugMessage/msg/spacesBeforeLogMsg';
-import * as vscode from 'vscode';
 import * as fs from 'fs';
+import * as vscode from 'vscode';
+
+import { detectAll } from '@/debug-message/js/JSDebugMessage/detectAll/detectAll';
+import { spacesBeforeLogMsg } from '@/debug-message/js/JSDebugMessage/msg/spacesBeforeLogMsg';
+import { ExtensionProperties } from '@/entities';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers';
 
 jest.mock('@/debug-message/js/JSDebugMessage/msg/spacesBeforeLogMsg', () => ({
   spacesBeforeLogMsg: jest.fn(),

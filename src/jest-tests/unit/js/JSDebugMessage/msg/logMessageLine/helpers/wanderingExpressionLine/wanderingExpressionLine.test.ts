@@ -1,6 +1,7 @@
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { wanderingExpressionLine } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers/wanderingExpressionLine';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+
 import cases from './cases';
 
 describe('wanderingExpressionLine', () => {

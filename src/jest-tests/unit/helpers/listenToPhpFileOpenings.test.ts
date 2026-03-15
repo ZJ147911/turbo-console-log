@@ -1,15 +1,16 @@
 import * as vscode from 'vscode';
-import { listenToPhpFileOpenings } from '@/helpers/listenToPhpFileOpenings';
+
+import { GlobalStateKey } from '@/entities';
 import {
   readFromGlobalState,
   writeToGlobalState,
   isPhpFile,
   isProUser,
 } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { GlobalStateKey } from '@/entities';
+import { listenToPhpFileOpenings } from '@/helpers/listenToPhpFileOpenings';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('@/helpers', () => ({
   readFromGlobalState: jest.fn(),

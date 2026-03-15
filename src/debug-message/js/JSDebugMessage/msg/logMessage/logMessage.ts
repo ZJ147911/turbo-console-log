@@ -1,5 +1,7 @@
 import { TextDocument } from 'vscode';
+
 import { LogMessageType, LogMessage, LogContextMetadata } from '@/entities';
+
 import { type AcornNode } from '../acorn-utils';
 import {
   arrayAssignmentChecker,

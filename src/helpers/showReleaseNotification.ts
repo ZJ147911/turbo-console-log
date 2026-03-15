@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
-import { readFromGlobalState, writeToGlobalState } from '@/helpers';
+
 import { GlobalStateKey } from '@/entities';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers';
 import { showNotification } from '@/notifications';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
 

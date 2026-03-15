@@ -1,8 +1,11 @@
 import type { TextDocument } from 'vscode';
+
 import fs from 'fs';
 import vscode from 'vscode';
+
 import { Message, ExtensionProperties, BracketType } from '@/entities';
 import { closingContextLine } from '@/utilities';
+
 import { spacesBeforeLogMsg } from '../js/JSDebugMessage/msg/spacesBeforeLogMsg';
 
 /**

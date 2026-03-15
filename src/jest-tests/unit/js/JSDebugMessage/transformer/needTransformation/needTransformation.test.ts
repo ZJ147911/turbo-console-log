@@ -1,8 +1,9 @@
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { needTransformation } from '@/debug-message/js/JSDebugMessage/msg/transformer/needTransformation';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
-import passingCases from './passingCases';
+
 import failingCases from './failingCases';
+import passingCases from './passingCases';
 
 describe('needTransformation', () => {
   for (const testCase of passingCases) {

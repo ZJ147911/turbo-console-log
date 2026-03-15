@@ -1,12 +1,13 @@
-import * as vscode from 'vscode';
-import Mocha, { it, describe } from 'mocha';
 import { expect } from 'chai';
+import Mocha, { it, describe } from 'mocha';
+import * as vscode from 'vscode';
+
+import { ProgrammingLanguage } from '../../../../../entities';
 import {
   openDocument,
   expectActiveTextEditorWithFile,
   documentLinesChanged,
 } from '../../../helpers';
-import { ProgrammingLanguage } from '../../../../../entities';
 
 export default (): void => {
   describe('Function parameter', () => {

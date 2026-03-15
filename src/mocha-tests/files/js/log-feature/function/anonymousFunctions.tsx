@@ -1,65 +1,71 @@
 // @ts-nocheck
 
-const anonymousAssignment = identity => identity;
+const anonymousAssignment = (identity) => identity;
 
-array.filter(member => member.include('S'));
+array.filter((member) => member.include('S'));
 
 fundsCalls
-    .filter((item) => item.index !== original.index)
-    .map((item, index) => ({ ...item, index }));
-
-Promise.all(
-  budgets.map((budget) => 
-    checkAccountingPeriodDivide(budget._id, accountingPeriodId))
-).then((checkedBudgets) => {
-  this.setState({ checkedBudgets });
-})
+  .filter((item) => item.index !== original.index)
+  .map((item, index) => ({ ...item, index }));
 
 Promise.all(
   budgets.map((budget) =>
-    checkAccountingPeriodDivide(budget._id)
-    .checkAccountingPeriodDivide(budget._id, accountingPeriodId))
+    checkAccountingPeriodDivide(budget._id, accountingPeriodId),
+  ),
 ).then((checkedBudgets) => {
   this.setState({ checkedBudgets });
-})
+});
 
 Promise.all(
-    budgets.map((budget) => 
-      checkAccountingPeriodDivide(budget._id, accountingPeriodId)
-    )
+  budgets.map((budget) =>
+    checkAccountingPeriodDivide(budget._id).checkAccountingPeriodDivide(
+      budget._id,
+      accountingPeriodId,
+    ),
+  ),
 ).then((checkedBudgets) => {
-    this.setState({ checkedBudgets });
-})
+  this.setState({ checkedBudgets });
+});
 
 Promise.all(
-    budgets.map((budget) => 
-        checkAccountingPeriodDivide(budget._id)
-        .checkAccountingPeriodDivide(budget._id, accountingPeriodId)
-    )
+  budgets.map((budget) =>
+    checkAccountingPeriodDivide(budget._id, accountingPeriodId),
+  ),
 ).then((checkedBudgets) => {
-    this.setState({ checkedBudgets });
-})
+  this.setState({ checkedBudgets });
+});
+
+Promise.all(
+  budgets.map((budget) =>
+    checkAccountingPeriodDivide(budget._id).checkAccountingPeriodDivide(
+      budget._id,
+      accountingPeriodId,
+    ),
+  ),
+).then((checkedBudgets) => {
+  this.setState({ checkedBudgets });
+});
 
 const SearchInput = (props: any) => {
   // value state
-  const [value, setValue] = useState('')
-  console.debug('lp ~ file: index.tsx:19 ~ SearchInput ~ value:', value)
+  const [value, setValue] = useState('');
+  console.debug('lp ~ file: index.tsx:19 ~ SearchInput ~ value:', value);
 
   const _search = () => {
-    props.onSearch(value)
-  }
+    props.onSearch(value);
+  };
   return (
     <div className={cxBind('box')}>
       <Search
         background="#f2f3f5"
         className={cxBind('search')}
         value={value}
-        onChange={(_)=>{
-          _ // Here, if using control+option+L, it will be generated at the top of the file.
+        onChange={(_) => {
+          _; // Here, if using control+option+L, it will be generated at the top of the file.
         }}
         clearable
         onClear={() => {
-          setValue('')
+          setValue('');
         }}
         onSearch={_search}
         leftIcon={null}
@@ -67,18 +73,20 @@ const SearchInput = (props: any) => {
         rightIcon={<SearchIcon onClick={_search} />}
       />
     </div>
-  )
-}
+  );
+};
 
 function cleanData(rawStr) {
   const now = new Date();
   const json = JSON.parse(rawStr);
-  return json
-    .map(raw => ({
-      ...raw,
-      createdAt: now - new Date(raw.createdAt),
-      msSinceLastAccessed: now - new Date(raw.lastAccessedAt),
-    }))
-    // Order: oldest last access time first
-    .sort((a, b) => b.msSinceLastAccessed - a.msSinceLastAccessed);
+  return (
+    json
+      .map((raw) => ({
+        ...raw,
+        createdAt: now - new Date(raw.createdAt),
+        msSinceLastAccessed: now - new Date(raw.lastAccessedAt),
+      }))
+      // Order: oldest last access time first
+      .sort((a, b) => b.msSinceLastAccessed - a.msSinceLastAccessed)
+  );
 }

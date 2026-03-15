@@ -1,6 +1,7 @@
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { performTransformation } from '@/debug-message/js/JSDebugMessage/msg/transformer/performTransformation';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+
 import testCases from './cases';
 
 const options = {

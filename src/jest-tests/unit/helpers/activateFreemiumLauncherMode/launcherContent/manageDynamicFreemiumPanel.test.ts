@@ -1,9 +1,10 @@
-import { manageDynamicFreemiumPanel } from '@/helpers/activateFreemiumLauncherMode/launcherContent/manageDynamicFreemiumPanel';
-import * as vscode from 'vscode';
 import axios from 'axios';
+import * as vscode from 'vscode';
+
+import { manageDynamicFreemiumPanel } from '@/helpers/activateFreemiumLauncherMode/launcherContent/manageDynamicFreemiumPanel';
+import { GlobalStateKeys } from '@/helpers/GlobalStateKeys';
 import { readFromGlobalState } from '@/helpers/readFromGlobalState';
 import { writeToGlobalState } from '@/helpers/writeToGlobalState';
-import { GlobalStateKeys } from '@/helpers/GlobalStateKeys';
 
 // Mock all dependencies
 jest.mock('axios');

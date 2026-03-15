@@ -1,6 +1,6 @@
+import { WorkspaceContext } from '@/entities';
 import { isJSMultiLogTypesContextRight } from '@/notifications/contextualAnalysis/contexts/isJSMultiLogTypesContextRight';
 import { collectWorkspaceContext } from '@/notifications/contextualAnalysis/helpers';
-import { WorkspaceContext } from '@/entities';
 
 jest.mock('@/notifications/contextualAnalysis/helpers');
 

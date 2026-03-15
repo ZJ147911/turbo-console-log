@@ -1,10 +1,11 @@
 import * as vscode from 'vscode';
-import { listenToCustomLogLibrary } from '@/helpers/listenToCustomLogLibrary';
-import { readFromGlobalState, writeToGlobalState, isProUser } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
+
 import { GlobalStateKey } from '@/entities';
+import { readFromGlobalState, writeToGlobalState, isProUser } from '@/helpers';
+import { listenToCustomLogLibrary } from '@/helpers/listenToCustomLogLibrary';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('@/helpers', () => ({
   readFromGlobalState: jest.fn(),
@@ -57,7 +58,7 @@ describe('listenToCustomLogLibrary', () => {
       editorChangeCallback = callback;
       return mockDisposable;
     });
-    
+
     mockWindow = vscode.window as unknown as MockVSCodeWindow;
     mockWindow.onDidChangeActiveTextEditor = mockOnDidChangeActiveTextEditor;
 

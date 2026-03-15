@@ -1,6 +1,6 @@
+import { WorkspaceContext } from '@/entities';
 import { isJSMessyFileContextRight } from '@/notifications/contextualAnalysis/contexts/isJSMessyFileContextRight';
 import { collectWorkspaceContext } from '@/notifications/contextualAnalysis/helpers';
-import { WorkspaceContext } from '@/entities';
 
 jest.mock('@/notifications/contextualAnalysis/helpers');
 

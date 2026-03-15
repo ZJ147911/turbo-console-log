@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
-import { listenToInactiveTwoWeeksReturn } from '@/helpers/listenToInactiveTwoWeeksReturn';
+
+import { GlobalStateKey, UserActivityStatus } from '@/entities';
 import {
   readFromGlobalState,
   writeToGlobalState,
@@ -7,9 +8,9 @@ import {
   isProUser,
   isJavaScriptOrTypeScriptFile,
 } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
+import { listenToInactiveTwoWeeksReturn } from '@/helpers/listenToInactiveTwoWeeksReturn';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { GlobalStateKey, UserActivityStatus } from '@/entities';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('vscode');
 jest.mock('@/helpers', () => ({

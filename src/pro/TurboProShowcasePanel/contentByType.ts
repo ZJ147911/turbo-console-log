@@ -1,9 +1,9 @@
+import { renderContentItem } from './renderers/renderContentItem';
 import {
   DynamicFreemiumPanel,
   DynamicFreemiumPanelContent,
   SeparatedContent,
 } from './types';
-import { renderContentItem } from './renderers/renderContentItem';
 
 /**
  * Separate content by type for different placement in the UI

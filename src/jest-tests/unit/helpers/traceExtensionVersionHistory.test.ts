@@ -1,9 +1,10 @@
 import { ExtensionContext } from 'vscode';
-import { traceExtensionVersionHistory } from '@/helpers/traceExtensionVersionHistory';
+
 import { readFromGlobalState } from '@/helpers/readFromGlobalState';
+import { traceExtensionVersionHistory } from '@/helpers/traceExtensionVersionHistory';
 import { writeToGlobalState } from '@/helpers/writeToGlobalState';
-import { createTelemetryService } from '@/telemetry';
 import { showNotification, NotificationEvent } from '@/notifications';
+import { createTelemetryService } from '@/telemetry';
 
 jest.mock('@/helpers/readFromGlobalState');
 jest.mock('@/helpers/writeToGlobalState');

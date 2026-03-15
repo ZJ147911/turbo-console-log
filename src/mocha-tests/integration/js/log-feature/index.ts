@@ -1,11 +1,12 @@
 import { describe } from 'mocha';
+
+import arrayTests from './array';
 import classContextTests from './class';
+import expressionTests from './expression';
 import functionContextTests from './function';
 import objectContextTests from './object';
-import variableTests from './variable';
 import operatorsTests from './operators';
-import arrayTests from './array';
-import expressionTests from './expression';
+import variableTests from './variable';
 
 export default (): void => {
   describe('Insert log message feature', () => {

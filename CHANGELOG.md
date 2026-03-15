@@ -1009,7 +1009,6 @@ Thanks again to the community for the quick and constructive feedback!
 ### ✨ What's New
 
 - Introduced **tailored release webviews**:
-
   - New users now get a dedicated welcome screen upon fresh install
   - Existing users get update-focused release notes with relevant info
 
@@ -1073,22 +1072,18 @@ Huge thanks to everyone reporting issues and helping the extension evolve — yo
 ### 🛠️ Fixes & Improvements:
 
 - **Fix: Logs Appearing Outside Functions Due to Ignored Return Statements**
-
   - Logs now correctly appear _inside_ functions, taking return statements into account when necessary.
   - 📌 [Issue #256](https://github.com/Chakroun-Anas/turbo-console-log/issues/256)
 
 - **Fix: Incorrect Quote Usage in Object Log Statements**
-
   - When logging objects, the extension now consistently selects the **correct quote style** based on context.
   - 📌 [Issue #259](https://github.com/Chakroun-Anas/turbo-console-log/issues/259)
 
 - **Fix: Incorrect Log Line Computation in Function Calls**
-
   - Resolved an issue where logs appeared at the **wrong line position** after function calls.
   - 📌 [Issue #260](https://github.com/Chakroun-Anas/turbo-console-log/issues/260)
 
 - **Fix: Anonymous arrow function transformation when returning inline object**
-
   - Resolved an issue where anonymous arrow functions returning inline objects were incorrectly transformed during log insertion.
   - 📌 [Issue #262](https://github.com/Chakroun-Anas/turbo-console-log/issues/262)
 
@@ -1104,17 +1099,14 @@ Big thanks to the community for the **huge support** in the last release! ❤️
 ### 🛠️ Fixes & Improvements:
 
 - **Corrected Log Placement in Object Assignments**
-
   - Logs now appear **immediately after object literal assignments**, fixing previous misplacements.
   - 📌 [Issue #252](https://github.com/Chakroun-Anas/turbo-console-log/issues/252)
 
 - **Accurate Log Placement for Array Assignments with TypeScript**
-
   - Resolved a bug where logs were placed incorrectly in **TypeScript array assignments**.
   - 📌 [Issue #253](https://github.com/Chakroun-Anas/turbo-console-log/issues/253)
 
 - **Precise Log Placement for Single-Line Expressions**
-
   - Ensures that logs appear **immediately after complete single-line expressions**, rather than after enclosing brackets.
   - 📌 [Issue #254](https://github.com/Chakroun-Anas/turbo-console-log/issues/254)
 
@@ -1200,7 +1192,6 @@ Fix - Correct v2.11.0 full release notes link URL in the release web view
 ### ✨ New Features
 
 - **Correct Log Messages Command**: Logs now **automatically update their filenames and line numbers** after refactoring.
-
   - 🏷️ **Command:** `turboConsoleLog.correctAllLogMessages`
   - ⌨️ **Shortcut:** (Alt + Shift + X)
   - 📌 Related issue: [#248 – 🚀 Release v2.11.0: Major Bug Fixes & Improvements](https://github.com/Chakroun-Anas/turbo-console-log/issues/248)

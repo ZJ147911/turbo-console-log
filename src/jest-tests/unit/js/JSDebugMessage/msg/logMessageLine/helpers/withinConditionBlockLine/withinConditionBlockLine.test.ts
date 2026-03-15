@@ -1,6 +1,7 @@
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { withinConditionBlockLine } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers/withinConditionBlockLine';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+
 import cases from './index';
 
 describe('withinConditionBlockLine', () => {

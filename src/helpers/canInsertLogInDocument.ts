@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
-import { isProUser, isPhpFile } from './index';
-import { showNotification } from '../notifications/showNotification';
+
 import { NotificationEvent } from '../notifications/NotificationEvent';
+import { showNotification } from '../notifications/showNotification';
+import { isProUser, isPhpFile } from './index';
 
 let notificationLockUntil = 0; // Timestamp until which notifications are blocked
 

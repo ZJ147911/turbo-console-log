@@ -1,9 +1,16 @@
-import * as vscode from 'vscode';
 import * as fs from 'fs';
-import { Command, Message } from '../entities';
-import { showNotification } from '../ui';
-import { trackLogManagementCommands } from '../helpers';
+import * as vscode from 'vscode';
 
+import { Command, Message } from '../entities';
+import { trackLogManagementCommands } from '../helpers';
+import { showNotification } from '../ui';
+
+/**
+ * 从日志消息中提取文件名
+ * @param logMessage 日志消息文本
+ * @param delimiterInsideMessage 消息内部的分隔符
+ * @returns 提取的文件名，如果没有找到则返回 null
+ */
 function getFilenameFromLogMessage(
   logMessage: string,
   delimiterInsideMessage: string,
@@ -15,9 +22,20 @@ function getFilenameFromLogMessage(
   return match ? match[1] : null;
 }
 
+/**
+ * 创建修正所有日志消息的命令
+ * @returns 包含命令名称和处理函数的 Command 对象
+ */
 export function correctAllLogMessagesCommand(): Command {
   return {
     name: 'turboConsoleLog.correctAllLogMessages',
+    /**
+     * 处理修正所有日志消息的命令
+     * @param param0 命令参数
+     * @param param0.extensionProperties 扩展配置属性
+     * @param param0.debugMessage 调试消息处理器
+     * @param param0.context VS Code 扩展上下文
+     */
     handler: async ({ extensionProperties, debugMessage, context }) => {
       const editor: vscode.TextEditor | undefined =
         vscode.window.activeTextEditor;

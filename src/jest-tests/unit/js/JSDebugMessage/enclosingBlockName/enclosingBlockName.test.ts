@@ -1,6 +1,6 @@
 import { enclosingBlockName } from '@/debug-message/js/JSDebugMessage/enclosingBlockName/enclosingBlockName';
-import { BlockType } from '@/entities';
 import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+import { BlockType } from '@/entities';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
 
 describe('enclosingBlockName', () => {

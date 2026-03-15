@@ -1,12 +1,13 @@
 import * as vscode from 'vscode';
-import { initialWorkspaceLogsCount } from '@/helpers/initialWorkspaceLogsCount/initialWorkspaceLogsCount';
-import { GitIgnoreMatcher } from '@/helpers/initialWorkspaceLogsCount/GitIgnoreMatcher';
-import { collectFilesWithLogs } from '@/helpers/initialWorkspaceLogsCount/collectFilesWithLogs';
-import { readFromGlobalState, writeToGlobalState } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
+
 import { GlobalStateKey, ExtensionProperties, Message } from '@/entities';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers';
+import { collectFilesWithLogs } from '@/helpers/initialWorkspaceLogsCount/collectFilesWithLogs';
+import { GitIgnoreMatcher } from '@/helpers/initialWorkspaceLogsCount/GitIgnoreMatcher';
+import { initialWorkspaceLogsCount } from '@/helpers/initialWorkspaceLogsCount/initialWorkspaceLogsCount';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 // Mock dependencies
 jest.mock('@/helpers/initialWorkspaceLogsCount/GitIgnoreMatcher');

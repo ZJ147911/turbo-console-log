@@ -31,8 +31,8 @@ jest.mock('@/pro/TurboProShowcasePanel/javascript/javascript', () => ({
 }));
 
 import { contentByType } from '@/pro/TurboProShowcasePanel/contentByType';
-import { getCommonStyles } from '@/pro/TurboProShowcasePanel/styles/getCommonStyles';
 import { getJavaScript } from '@/pro/TurboProShowcasePanel/javascript/javascript';
+import { getCommonStyles } from '@/pro/TurboProShowcasePanel/styles/getCommonStyles';
 
 describe('getDynamicHtml', () => {
   let consoleSpy: jest.SpyInstance;

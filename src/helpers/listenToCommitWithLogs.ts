@@ -1,4 +1,9 @@
 import * as vscode from 'vscode';
+
+import { GlobalStateKey } from '@/entities';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
+
 import {
   readFromGlobalState,
   writeToGlobalState,
@@ -7,9 +12,6 @@ import {
   getExtensionProperties,
   isProUser,
 } from './index';
-import { GlobalStateKey } from '@/entities';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
 
 /**
  * Git extension API types

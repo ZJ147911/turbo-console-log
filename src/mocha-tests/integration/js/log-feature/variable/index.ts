@@ -1,8 +1,9 @@
 import { describe } from 'mocha';
-import deconstructionVarAssignmentTest from './deconstructionVarAssignment';
+
 import deconstructionArgFunction from './deconstructionArgFunction';
-import primitiveVariableTest from './primitiveVariable';
+import deconstructionVarAssignmentTest from './deconstructionVarAssignment';
 import logLastLineTest from './logLastLine';
+import primitiveVariableTest from './primitiveVariable';
 import valueFromFunctionCall from './valueFromFunctionCall';
 
 export default (): void => {

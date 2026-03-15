@@ -1,5 +1,7 @@
 import { TextDocument } from 'vscode';
+
 import { BlockType } from '@/entities';
+
 import {
   type AcornNode,
   isIdentifier,

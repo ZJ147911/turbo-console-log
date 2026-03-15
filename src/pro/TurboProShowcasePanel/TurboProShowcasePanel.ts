@@ -1,10 +1,11 @@
 import * as vscode from 'vscode';
-import { DynamicFreemiumPanel, DynamicFreemiumPanelContent } from './types';
+
+import { GlobalStateKeys } from '../../helpers/GlobalStateKeys';
+import { trackPanelOpenings } from '../../helpers/trackPanelOpenings';
+import { createTelemetryService } from '../../telemetry/telemetryService';
 import { getDynamicHtml } from './html/getDynamicHtml';
 import { getStaticHtml } from './html/getStaticHtml';
-import { GlobalStateKeys } from '../../helpers/GlobalStateKeys';
-import { createTelemetryService } from '../../telemetry/telemetryService';
-import { trackPanelOpenings } from '../../helpers/trackPanelOpenings';
+import { DynamicFreemiumPanel, DynamicFreemiumPanelContent } from './types';
 
 export class TurboProShowcasePanel implements vscode.WebviewViewProvider {
   public static readonly viewType = 'turboConsoleLogFreemiumPanel';

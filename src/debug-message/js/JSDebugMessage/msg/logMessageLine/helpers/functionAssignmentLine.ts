@@ -1,4 +1,5 @@
 import { TextDocument } from 'vscode';
+
 import {
   type AcornNode,
   type FunctionExpression,

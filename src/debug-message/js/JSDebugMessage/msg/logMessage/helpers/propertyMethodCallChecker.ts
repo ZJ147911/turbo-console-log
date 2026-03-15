@@ -1,4 +1,5 @@
 import { TextDocument, Position } from 'vscode';
+
 import {
   type AcornNode,
   isCallExpression,

@@ -1,13 +1,8 @@
 {
   "name": "turbo-console-log",
   "displayName": "Turbo Console Log",
-  "description": "Automated logging for JavaScript, TypeScript, and PHP. Insert, manage, and clean log messages with AST-powered precision.",
   "version": "3.17.0",
-  "publisher": "ChakrounAnas",
-  "engines": {
-    "vscode": "^1.94.0"
-  },
-  "icon": "images/icon.png",
+  "description": "Automated logging for JavaScript, TypeScript, and PHP. Insert, manage, and clean log messages with AST-powered precision.",
   "categories": [
     "Debuggers",
     "Programming Languages",
@@ -15,37 +10,36 @@
     "Visualization"
   ],
   "keywords": [
+    "ast parser",
     "console log",
     "debug",
-    "javascript",
-    "typescript",
-    "php",
     "debugging",
-    "var_dump",
-    "print_r",
-    "error_log",
-    "log management",
-    "productivity",
-    "log panel",
     "developer tools",
-    "multi-language",
+    "error_log",
+    "javascript",
     "laravel",
-    "wordpress",
-    "vue",
+    "log management",
+    "log panel",
+    "multi-language",
     "nodejs",
-    "ast parser"
+    "php",
+    "print_r",
+    "productivity",
+    "typescript",
+    "var_dump",
+    "vue",
+    "wordpress"
   ],
-  "activationEvents": [
-    "onStartupFinished",
-    "onLanguage:javascript",
-    "onLanguage:javascriptreact",
-    "onLanguage:typescript",
-    "onLanguage:typescriptreact"
-  ],
-  "extensionDependencies": [
-    "vscode.git"
-  ],
-  "main": "./out/extension.js",
+  "bugs": {
+    "url": "https://github.com/Chakroun-Anas/turbo-console-log/issues",
+    "email": "chakroun.anas@outlook.com"
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chakroun-Anas/turbo-console-log"
+  },
+  "publisher": "ChakrounAnas",
   "files": [
     "out/extension.js",
     "images/icon.png",
@@ -54,6 +48,58 @@
     "LICENSE.txt",
     "package.json"
   ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "rm -rf out && npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild-base-minify": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "esbuild-base-minify-analyze": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify --analyze",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "watch": "npm run esbuild --watch",
+    "lint": "tsc --noEmit && tsc --project src/jest-tests/tsconfig.json --noEmit && eslint src --ext ts",
+    "pretest": "yarn run esbuild-base",
+    "test:compile": "rm -rf out && tsc -p ./ && mkdir out/mocha-tests/files && cp -r src/mocha-tests/files/ out/mocha-tests/files/",
+    "test": "npm run test:compile && npm run test:jest && node ./out/mocha-tests/runTests.js",
+    "test:jest": "jest --config jest.config.ts",
+    "test:jest:coverage": "jest --config jest.config.ts --coverage",
+    "test:jest:coverage:report": "jest --config jest.config.ts --coverage && open ./coverage/lcov-report/index.html",
+    "fmt": "oxfmt"
+  },
+  "dependencies": {
+    "@sveltejs/acorn-typescript": "^1.0.6",
+    "acorn": "^8.15.0",
+    "axios": "^1.9.0",
+    "ignore": "^7.0.5",
+    "p-limit": "^6.2.0",
+    "php-parser": "^3.2.5"
+  },
+  "devDependencies": {
+    "@types/acorn": "^6.0.4",
+    "@types/chai": "^5.0.0",
+    "@types/glob": "^7.1.3",
+    "@types/jest": "^30.0.0",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^24.0.3",
+    "@types/vscode": "^1.94.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "@vscode/test-electron": "^2.4.1",
+    "chai": "^4.3.7",
+    "chalk": "^4.1.0",
+    "esbuild": "^0.25.4",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "glob": "^7.1.6",
+    "jest": "^30.0.0",
+    "mocha": "^11.2.2",
+    "oxfmt": "^0.40.0",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.1",
+    "typescript-eslint": "^8.32.1",
+    "vscode-test": "^1.6.1"
+  },
   "contributes": {
     "configuration": {
       "type": "object",
@@ -401,69 +447,24 @@
       ]
     }
   },
-  "scripts": {
-    "vscode:prepublish": "rm -rf out && npm run esbuild-base -- --minify",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
-    "esbuild-base-minify": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify",
-    "esbuild-base-minify-analyze": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify --analyze",
-    "esbuild": "npm run esbuild-base -- --sourcemap",
-    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
-    "watch": "npm run esbuild --watch",
-    "lint": "tsc --noEmit && tsc --project src/jest-tests/tsconfig.json --noEmit && eslint src --ext ts",
-    "pretest": "yarn run esbuild-base",
-    "test:compile": "rm -rf out && tsc -p ./ && mkdir out/mocha-tests/files && cp -r src/mocha-tests/files/ out/mocha-tests/files/",
-    "test": "npm run test:compile && npm run test:jest && node ./out/mocha-tests/runTests.js",
-    "test:jest": "jest --config jest.config.ts",
-    "test:jest:coverage": "jest --config jest.config.ts --coverage",
-    "test:jest:coverage:report": "jest --config jest.config.ts --coverage && open ./coverage/lcov-report/index.html"
-  },
-  "devDependencies": {
-    "@types/acorn": "^6.0.4",
-    "@types/chai": "^5.0.0",
-    "@types/glob": "^7.1.3",
-    "@types/jest": "^30.0.0",
-    "@types/mocha": "^8.0.0",
-    "@types/node": "^24.0.3",
-    "@types/vscode": "^1.94.0",
-    "@typescript-eslint/eslint-plugin": "^8.32.1",
-    "@typescript-eslint/parser": "^8.32.1",
-    "@vscode/test-electron": "^2.4.1",
-    "chai": "^4.3.7",
-    "chalk": "^4.1.0",
-    "esbuild": "^0.25.4",
-    "eslint": "^9.27.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "glob": "^7.1.6",
-    "jest": "^30.0.0",
-    "mocha": "^11.2.2",
-    "prettier": "^3.5.3",
-    "ts-jest": "^29.4.0",
-    "ts-node": "^10.9.1",
-    "typescript-eslint": "^8.32.1",
-    "vscode-test": "^1.6.1"
-  },
-  "license": "SEE LICENSE IN LICENSE.txt",
-  "bugs": {
-    "url": "https://github.com/Chakroun-Anas/turbo-console-log/issues",
-    "email": "chakroun.anas@outlook.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Chakroun-Anas/turbo-console-log"
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onStartupFinished"
+  ],
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.94.0"
   },
   "__metadata": {
     "id": "6623619a-676d-4cde-943f-a3c193b44fc0",
     "publisherDisplayName": "ChakrounAnas",
     "publisherId": "4fecec8e-335d-44fc-ab16-5356745fb1ac",
     "isPreReleaseVersion": false
-  },
-  "dependencies": {
-    "@sveltejs/acorn-typescript": "file:../../acorn-typescript/sveltejs-acorn-typescript-1.0.6.tgz",
-    "acorn": "^8.15.0",
-    "axios": "^1.9.0",
-    "ignore": "^7.0.5",
-    "p-limit": "^6.2.0",
-    "php-parser": "^3.2.5"
   }
 }

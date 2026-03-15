@@ -1,17 +1,21 @@
-import { insertConsoleLogCommand } from './insertConsoleLog';
+import { Command } from '../entities';
+import { activateTurboProBundleCommand } from './activateTurboProBundle';
+import { commentAllLogMessagesCommand } from './commentAllLogMessages';
+import { correctAllLogMessagesCommand } from './correctAllLogMessages';
+import { deleteAllLogMessagesCommand } from './deleteAllLogMessages';
+import { displayLogMessageCommand } from './displayLogMessage';
 import { insertConsoleDebugCommand } from './insertConsoleDebug';
+import { insertConsoleErrorCommand } from './insertConsoleError';
+import { insertConsoleInfoCommand } from './insertConsoleInfo';
+import { insertConsoleLogCommand } from './insertConsoleLog';
 import { insertConsoleTableCommand } from './insertConsoleTable';
 import { insertConsoleWarnCommand } from './insertConsoleWarn';
 import { insertCustomLogCommand } from './insertCustomLog';
-import { insertConsoleInfoCommand } from './insertConsoleInfo';
-import { commentAllLogMessagesCommand } from './commentAllLogMessages';
 import { uncommentAllLogMessagesCommand } from './uncommentAllLogMessages';
-import { deleteAllLogMessagesCommand } from './deleteAllLogMessages';
-import { correctAllLogMessagesCommand } from './correctAllLogMessages';
-import { insertConsoleErrorCommand } from './insertConsoleError';
-import { activateTurboProBundleCommand } from './activateTurboProBundle';
-import { displayLogMessageCommand } from './displayLogMessage';
-import { Command } from '../entities';
+/**
+ * 获取所有可用的命令
+ * @returns 命令对象数组
+ */
 export function getAllCommands(): Array<Command> {
   return [
     insertConsoleLogCommand(),

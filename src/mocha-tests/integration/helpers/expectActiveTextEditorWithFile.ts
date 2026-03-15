@@ -1,5 +1,5 @@
-import { TextEditor } from 'vscode';
 import { expect } from 'chai';
+import { TextEditor } from 'vscode';
 
 /**
  * Ensure that activeTextEditor is defined and that the current opened document reflects the testFileName

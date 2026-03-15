@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+
 import { loadPhpDebugMessage } from '@/helpers/loadPhpDebugMessage';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
 

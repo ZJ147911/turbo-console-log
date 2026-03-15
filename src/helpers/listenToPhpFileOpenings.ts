@@ -1,13 +1,15 @@
 import * as vscode from 'vscode';
+
+import { GlobalStateKey } from '@/entities';
+
+import { NotificationEvent } from '../notifications/NotificationEvent';
+import { showNotification } from '../notifications/showNotification';
 import {
   readFromGlobalState,
   writeToGlobalState,
   isPhpFile,
   isProUser,
 } from './index';
-import { showNotification } from '../notifications/showNotification';
-import { NotificationEvent } from '../notifications/NotificationEvent';
-import { GlobalStateKey } from '@/entities';
 
 /**
  * Listens to document openings and shows PHP support notification when user opens a PHP file

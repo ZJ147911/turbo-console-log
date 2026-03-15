@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { fetchProBundle } from '../../../../pro/utilities';
 
 jest.mock('axios');

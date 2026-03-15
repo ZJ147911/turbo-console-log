@@ -1,5 +1,6 @@
-import { getAllCommands } from '@/commands';
 import type { Command } from '@/entities';
+
+import { getAllCommands } from '@/commands';
 
 // Mock each command function
 jest.mock('@/commands/insertConsoleLog', () => ({

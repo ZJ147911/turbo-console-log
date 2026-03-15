@@ -1,7 +1,8 @@
-import { updateProBundle } from '../../../../pro/utilities/updateProBundle';
-import * as proUtilities from '../../../../pro/utilities';
 import * as vscode from 'vscode';
+
 import { ExtensionProperties } from '../../../../entities';
+import * as proUtilities from '../../../../pro/utilities';
+import { updateProBundle } from '../../../../pro/utilities/updateProBundle';
 import { showNotification } from '../../../../ui';
 import { makeExtensionContext } from '../../../mocks/helpers/makeExtensionContext';
 

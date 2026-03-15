@@ -1,14 +1,15 @@
 import * as vscode from 'vscode';
+
 import { correctAllLogMessagesCommand } from '@/commands/correctAllLogMessages';
-import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
-import { makeTextEditor } from '@/jest-tests/mocks/helpers/makeTextEditor';
-import { createMockTextEditorEdit } from '@/jest-tests/mocks/helpers/createMockTextEditorEdit';
+import { DebugMessage } from '@/debug-message';
+import { ExtensionProperties } from '@/entities';
 import {
   makeExtensionContext,
   makeDebugMessage,
 } from '@/jest-tests/mocks/helpers';
-import { ExtensionProperties } from '@/entities';
-import { DebugMessage } from '@/debug-message';
+import { createMockTextEditorEdit } from '@/jest-tests/mocks/helpers/createMockTextEditorEdit';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
+import { makeTextEditor } from '@/jest-tests/mocks/helpers/makeTextEditor';
 import { showNotification } from '@/ui';
 
 // Mock the UI module

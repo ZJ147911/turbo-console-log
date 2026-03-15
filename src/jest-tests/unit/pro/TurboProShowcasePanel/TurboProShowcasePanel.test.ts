@@ -1,7 +1,8 @@
-import { TurboProShowcasePanel } from '@/pro/TurboProShowcasePanel/TurboProShowcasePanel';
 import * as vscode from 'vscode';
-import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+
 import { GlobalStateKeys } from '@/helpers/GlobalStateKeys';
+import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { TurboProShowcasePanel } from '@/pro/TurboProShowcasePanel/TurboProShowcasePanel';
 import { DynamicFreemiumPanel } from '@/pro/TurboProShowcasePanel/types';
 
 // Mock the HTML generators to focus on panel logic
@@ -14,10 +15,10 @@ jest.mock('@/pro/TurboProShowcasePanel/html/getStaticHtml', () => ({
 jest.mock('@/telemetry/telemetryService');
 jest.mock('@/helpers/trackPanelOpenings');
 
+import { trackPanelOpenings } from '@/helpers/trackPanelOpenings';
 import { getDynamicHtml } from '@/pro/TurboProShowcasePanel/html/getDynamicHtml';
 import { getStaticHtml } from '@/pro/TurboProShowcasePanel/html/getStaticHtml';
 import { createTelemetryService } from '@/telemetry/telemetryService';
-import { trackPanelOpenings } from '@/helpers/trackPanelOpenings';
 
 // Mock telemetry service
 const mockTelemetryService = {

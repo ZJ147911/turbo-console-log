@@ -1,10 +1,11 @@
 import * as vscode from 'vscode';
-import { activate } from '../../extension';
+
 import * as commandsModule from '../../commands';
-import * as helpers from '../../helpers';
-import * as releases from '../../releases';
-import * as proUtilities from '../../pro/utilities';
 import { ExtensionProperties, UserActivityStatus } from '../../entities';
+import { activate } from '../../extension';
+import * as helpers from '../../helpers';
+import * as proUtilities from '../../pro/utilities';
+import * as releases from '../../releases';
 
 jest.mock('../../helpers');
 jest.mock('../../releases');

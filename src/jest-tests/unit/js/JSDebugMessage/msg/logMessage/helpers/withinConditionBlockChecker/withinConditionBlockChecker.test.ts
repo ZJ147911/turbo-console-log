@@ -1,7 +1,8 @@
-import cases from './index';
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { withinConditionBlockChecker } from '@/debug-message/js/JSDebugMessage/msg/logMessage/helpers/withinConditionBlockChecker';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+
+import cases from './index';
 
 describe('withinConditionBlockChecker', () => {
   cases.forEach((testCase) => {

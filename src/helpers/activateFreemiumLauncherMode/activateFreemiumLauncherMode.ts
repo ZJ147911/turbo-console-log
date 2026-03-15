@@ -1,10 +1,11 @@
 import * as vscode from 'vscode';
-import { activateFreemiumMode } from '../activeFreemiumMode';
-import { manageDynamicFreemiumPanel } from './launcherContent';
-import { writeToGlobalState } from '../writeToGlobalState';
-import { GlobalStateKeys } from '../GlobalStateKeys';
+
 import { createTelemetryService } from '../../telemetry/telemetryService';
+import { activateFreemiumMode } from '../activeFreemiumMode';
+import { GlobalStateKeys } from '../GlobalStateKeys';
 import { trackPanelOpenings } from '../trackPanelOpenings';
+import { writeToGlobalState } from '../writeToGlobalState';
+import { manageDynamicFreemiumPanel } from './launcherContent';
 
 export function activateFreemiumLauncherMode(
   context: vscode.ExtensionContext,

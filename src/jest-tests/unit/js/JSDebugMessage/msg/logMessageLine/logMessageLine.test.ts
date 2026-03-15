@@ -1,8 +1,5 @@
-import { line } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine';
-import { LogMessage, LogMessageType } from '@/entities';
-import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
 import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
-
+import { line } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine';
 // Import the helpers that we want to mock
 import {
   ternaryExpressionLine,
@@ -21,6 +18,8 @@ import {
   withinConditionBlockLine,
   withinReturnStatementLine,
 } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers';
+import { LogMessage, LogMessageType } from '@/entities';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
 
 // Mock the entire helpers module
 jest.mock('@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers');

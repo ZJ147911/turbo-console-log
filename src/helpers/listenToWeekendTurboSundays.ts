@@ -1,8 +1,10 @@
 import * as vscode from 'vscode';
-import { readFromGlobalState, writeToGlobalState, isProUser } from './index';
+
 import { GlobalStateKey } from '@/entities';
-import { showNotification } from '@/notifications/showNotification';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
+
+import { readFromGlobalState, writeToGlobalState, isProUser } from './index';
 
 /**
  * Checks if the current time is during the weekend (Saturday or Sunday)

@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
-import { listenToJSMultiLogTypes } from '@/helpers/listenToJSMultiLogTypes';
+
+import { detectAll } from '@/debug-message/js/JSDebugMessage/detectAll/detectAll';
+import { GlobalStateKey } from '@/entities';
 import {
   readFromGlobalState,
   writeToGlobalState,
@@ -7,11 +9,10 @@ import {
   getExtensionProperties,
   isProUser,
 } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { GlobalStateKey } from '@/entities';
+import { listenToJSMultiLogTypes } from '@/helpers/listenToJSMultiLogTypes';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
-import { detectAll } from '@/debug-message/js/JSDebugMessage/detectAll/detectAll';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('@/helpers', () => ({
   readFromGlobalState: jest.fn(),

@@ -3,7 +3,7 @@
 export class SomeClass {
   constructor(
     protected firstDependency: Segments,
-    protected secondDependency: SegmentProviders
+    protected secondDependency: SegmentProviders,
   ) {}
 }
 
@@ -14,5 +14,5 @@ interface Person {
 function sayHello(person: Person) {}
 
 sayHello({
-  fullName: "CHAKROUN Anas",
+  fullName: 'CHAKROUN Anas',
 });

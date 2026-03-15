@@ -1,8 +1,6 @@
 import * as vscode from 'vscode';
 
-export class TurboFreemiumLauncherPanel
-  implements vscode.TreeDataProvider<string>
-{
+export class TurboFreemiumLauncherPanel implements vscode.TreeDataProvider<string> {
   public static readonly viewType = 'turboConsoleLogFreemiumLauncher';
   private _onDidChangeTreeData = new vscode.EventEmitter<void>();
   readonly onDidChangeTreeData = this._onDidChangeTreeData.event;

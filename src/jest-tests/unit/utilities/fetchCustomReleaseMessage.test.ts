@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { fetchCustomReleaseMessage } from '@/utilities/fetchCustomReleaseMessage';
 
 jest.mock('axios');

@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
+
+import { GlobalStateKey, UserActivityStatus } from '@/entities';
 import { getUserActivityStatus } from '@/helpers/getUserActivityStatus';
 import { readFromGlobalState } from '@/helpers/readFromGlobalState';
-import { GlobalStateKey, UserActivityStatus } from '@/entities';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
 
 jest.mock('@/helpers/readFromGlobalState');

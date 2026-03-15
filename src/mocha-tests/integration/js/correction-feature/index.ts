@@ -1,13 +1,14 @@
-import * as vscode from 'vscode';
-import Mocha, { it, describe } from 'mocha';
 import { expect } from 'chai';
+import Mocha, { it, describe } from 'mocha';
+import * as vscode from 'vscode';
+
+import { ProgrammingLanguage } from '../../../../entities';
 import {
   openDocument,
   expectActiveTextEditorWithFile,
   documentLinesChanged,
   naturalEditorLine,
 } from '../../helpers';
-import { ProgrammingLanguage } from '../../../../entities';
 
 export default (): void => {
   describe('Correct all log types filename and line number metadata (console.log, console.warn, console.error, console.debug, console.info, console.table, myLogger)', () => {

@@ -1,7 +1,5 @@
 import * as vscode from 'vscode';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { createTelemetryService } from '@/telemetry/telemetryService';
+
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers/makeExtensionContext';
 import {
   shouldShowNotification,
@@ -10,6 +8,9 @@ import {
   resetDismissalCounter,
   undoNotificationRecording,
 } from '@/notifications/notificationCooldown';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
+import { createTelemetryService } from '@/telemetry/telemetryService';
 
 // Mock dependencies
 jest.mock('@/telemetry/telemetryService');

@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
-import { listenToCommitWithLogs } from '@/helpers/listenToCommitWithLogs';
+
+import { ExtensionProperties, GlobalStateKey } from '@/entities';
 import {
   readFromGlobalState,
   writeToGlobalState,
@@ -8,10 +9,10 @@ import {
   getExtensionProperties,
   isProUser,
 } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { ExtensionProperties, GlobalStateKey } from '@/entities';
+import { listenToCommitWithLogs } from '@/helpers/listenToCommitWithLogs';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('@/helpers', () => ({
   readFromGlobalState: jest.fn(),

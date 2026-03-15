@@ -1,15 +1,16 @@
 import * as vscode from 'vscode';
+
 import { insertConsoleDebugCommand } from '@/commands/insertConsoleDebug';
-import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
-import { makeTextEditor } from '@/jest-tests/mocks/helpers/makeTextEditor';
-import { createMockTextEditorEdit } from '@/jest-tests/mocks/helpers/createMockTextEditorEdit';
 import { ExtensionProperties } from '@/entities';
+import { canInsertLogInDocument } from '@/helpers/canInsertLogInDocument';
+import { trackLogInsertions } from '@/helpers/trackLogInsertions';
 import {
   makeDebugMessage,
   makeExtensionContext,
 } from '@/jest-tests/mocks/helpers';
-import { trackLogInsertions } from '@/helpers/trackLogInsertions';
-import { canInsertLogInDocument } from '@/helpers/canInsertLogInDocument';
+import { createMockTextEditorEdit } from '@/jest-tests/mocks/helpers/createMockTextEditorEdit';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
+import { makeTextEditor } from '@/jest-tests/mocks/helpers/makeTextEditor';
 
 jest.mock('@/utilities', () => ({
   getTabSize: () => 2,

@@ -1,5 +1,7 @@
 import { TextDocument } from 'vscode';
+
 import { LogMessage, LogMessageType } from '@/entities';
+
 import { type AcornNode } from '../acorn-utils';
 import {
   ternaryExpressionLine,

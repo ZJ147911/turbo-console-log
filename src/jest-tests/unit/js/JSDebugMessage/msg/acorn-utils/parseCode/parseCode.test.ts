@@ -1,6 +1,7 @@
 import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
-import passingCases from './passingCases';
+
 import failingCases from './failingCases';
+import passingCases from './passingCases';
 
 describe('parseCode', () => {
   describe('successful parsing cases', () => {

@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
-import { writeProBundleToCache } from '../../../../pro/utilities/';
+
 import * as helpers from '../../../../helpers';
+import { writeProBundleToCache } from '../../../../pro/utilities/';
 
 jest.mock('../../../../helpers');
 

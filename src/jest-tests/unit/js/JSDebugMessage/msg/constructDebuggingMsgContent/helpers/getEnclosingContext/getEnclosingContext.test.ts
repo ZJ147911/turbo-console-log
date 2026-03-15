@@ -1,8 +1,8 @@
-import { getEnclosingContext } from '@/debug-message/js/JSDebugMessage/msg/constructDebuggingMsgContent/helpers/getEnclosingContext';
 import { enclosingBlockName } from '@/debug-message/js/JSDebugMessage/enclosingBlockName';
 import { findEnclosingBlocks } from '@/debug-message/js/JSDebugMessage/enclosingBlockName/findEnclosingBlocks';
-import { makeTextDocument } from '@/jest-tests/mocks/helpers';
 import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+import { getEnclosingContext } from '@/debug-message/js/JSDebugMessage/msg/constructDebuggingMsgContent/helpers/getEnclosingContext';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers';
 
 // Mock the dependencies
 jest.mock('@/debug-message/js/JSDebugMessage/enclosingBlockName');

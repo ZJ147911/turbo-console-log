@@ -1,11 +1,13 @@
 import vscode from 'vscode';
-import { NotificationEvent } from './NotificationEvent';
-import { ExtensionNotificationResponse } from './ExtensionNotificationResponse';
-import { createTelemetryService } from '../telemetry/telemetryService';
+
+import { GlobalStateKey } from '@/entities';
+import { TurboAnalyticsProvider } from '@/telemetry';
+
 import { generateDeveloperId } from '../helpers/generateDeveloperId';
 import { writeToGlobalState } from '../helpers/writeToGlobalState';
-import { GlobalStateKey } from '@/entities';
+import { createTelemetryService } from '../telemetry/telemetryService';
 import { isRightContext } from './contextualAnalysis';
+import { ExtensionNotificationResponse } from './ExtensionNotificationResponse';
 import {
   shouldShowNotification,
   recordNotificationShown,
@@ -13,7 +15,7 @@ import {
   resetDismissalCounter,
   undoNotificationRecording,
 } from './notificationCooldown';
-import { TurboAnalyticsProvider } from '@/telemetry';
+import { NotificationEvent } from './NotificationEvent';
 
 const TURBO_WEBSITE_BASE_URL = 'https://www.turboconsolelog.io';
 // const TURBO_WEBSITE_BASE_URL = 'http://localhost:3000';

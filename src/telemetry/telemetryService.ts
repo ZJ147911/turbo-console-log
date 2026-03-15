@@ -1,5 +1,6 @@
-import * as vscode from 'vscode';
 import axios from 'axios';
+import * as vscode from 'vscode';
+
 import { generateDeveloperId } from '../helpers/generateDeveloperId';
 import { getUserActivityStatus } from '../helpers/getUserActivityStatus';
 import {

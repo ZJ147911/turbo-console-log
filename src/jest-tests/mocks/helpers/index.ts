@@ -1,10 +1,10 @@
-import { makeTextDocument } from './makeTextDocument';
-import { makeTextLine } from './makeTextLine';
+import { createMockChangeEvent } from './createMockChangeEvent';
 import { createMockTextEditorEdit } from './createMockTextEditorEdit';
-import { makeTextEditor } from './makeTextEditor';
 import { makeDebugMessage } from './makeDebugMessage';
 import { makeExtensionContext } from './makeExtensionContext';
-import { createMockChangeEvent } from './createMockChangeEvent';
+import { makeTextDocument } from './makeTextDocument';
+import { makeTextEditor } from './makeTextEditor';
+import { makeTextLine } from './makeTextLine';
 export {
   makeTextDocument,
   makeTextLine,

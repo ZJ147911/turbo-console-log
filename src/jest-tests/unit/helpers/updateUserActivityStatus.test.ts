@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
-import { updateUserActivityStatus } from '@/helpers/updateUserActivityStatus';
-import { readFromGlobalState } from '@/helpers/readFromGlobalState';
-import { writeToGlobalState } from '@/helpers/writeToGlobalState';
+
 import { GlobalStateKey, UserActivityStatus } from '@/entities';
+import { readFromGlobalState } from '@/helpers/readFromGlobalState';
+import { updateUserActivityStatus } from '@/helpers/updateUserActivityStatus';
+import { writeToGlobalState } from '@/helpers/writeToGlobalState';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
 
 // Mock the dependencies

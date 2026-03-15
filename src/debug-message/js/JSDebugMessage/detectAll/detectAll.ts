@@ -1,20 +1,27 @@
 import type { TextDocument } from 'vscode';
+
 import { Message, ExtensionProperties, BracketType } from '@/entities';
-import { spacesBeforeLogMsg } from '../msg/spacesBeforeLogMsg';
 import { closingContextLine } from '@/utilities';
 
+import { spacesBeforeLogMsg } from '../msg/spacesBeforeLogMsg';
+
 /**
- * Escapes regex special characters in a string to use it safely in a RegExp
+ * 转义字符串中的正则表达式特殊字符，使其可以安全地用于 RegExp
+ * @param str 需要转义的字符串
+ * @returns 转义后的字符串
  */
 function escapeRegex(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 /**
- * Fast detection using pure regex on source code without opening document or parsing AST.
- * Returns true if ANY log function calls are found (both Turbo and regular logs).
- * This is Stage 1 - used internally for quick filtering before expensive operations.
+ * 使用纯正则表达式在源代码上进行快速检测，无需打开文档或解析 AST
+ * 如果找到任何日志函数调用（包括 Turbo 和普通日志），则返回 true
+ * 这是第 1 阶段 - 用于在昂贵操作之前进行快速过滤
  * @internal
+ * @param sourceCode 源代码字符串
+ * @param customLogFunction 自定义日志函数
+ * @returns 是否找到日志函数调用
  */
 function hasLogs(
   sourceCode: string,
@@ -45,11 +52,18 @@ function hasLogs(
 }
 
 /**
- * Detects all log messages from a file (both Turbo-inserted and regular logs).
- * Uses two-stage optimization:
- * 1. Fast regex prefilter on raw file content (fs.readFile - cheap)
- * 2. Opens VS Code document ONLY if logs are found (expensive operation)
- * Marks each log message with isTurboConsoleLog flag to distinguish Turbo logs from regular ones.
+ * 检测文件中的所有日志消息（包括 Turbo 插入的和普通的日志）
+ * 使用两阶段优化：
+ * 1. 在原始文件内容上进行快速正则表达式预过滤（fs.readFile - 廉价）
+ * 2. 仅当找到日志时才打开 VS Code 文档（昂贵操作）
+ * 为每条日志消息标记 isTurboConsoleLog 标志，以区分 Turbo 日志和普通日志
+ * @param fs 文件系统模块
+ * @param vscode VS Code 模块
+ * @param filePath 文件路径
+ * @param customLogFunction 自定义日志函数
+ * @param logMessagePrefix 日志消息前缀
+ * @param delimiterInsideMessage 消息内部的分隔符
+ * @returns 检测到的消息数组
  */
 export async function detectAll(
   fs: typeof import('fs'),
@@ -103,9 +117,14 @@ export async function detectAll(
 }
 
 /**
- * Detects all log messages (both active and commented, Turbo and regular) using regex pattern matching.
- * Much faster than AST parsing for this use case.
- * Marks each message with isTurboConsoleLog flag to distinguish Turbo logs from regular ones.
+ * 使用正则表达式模式匹配检测所有日志消息（活动和已注释，Turbo 和普通）
+ * 对于此用例，这比 AST 解析快得多
+ * 为每条消息标记 isTurboConsoleLog 标志，以区分 Turbo 日志和普通日志
+ * @param document 文本文档
+ * @param knownLogFunctions 已知的日志函数数组
+ * @param logMessagePrefix 日志消息前缀
+ * @param delimiterInsideMessage 消息内部的分隔符
+ * @returns 检测到的消息数组
  */
 function detectLogMessages(
   document: TextDocument,

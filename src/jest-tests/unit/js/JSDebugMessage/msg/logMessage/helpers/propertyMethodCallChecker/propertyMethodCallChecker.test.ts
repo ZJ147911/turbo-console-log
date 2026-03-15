@@ -1,8 +1,9 @@
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { propertyMethodCallChecker } from '@/debug-message/js/JSDebugMessage/msg/logMessage/helpers/propertyMethodCallChecker';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
-import passingCases from './passingCases';
+
 import failingCases from './failingCases';
+import passingCases from './passingCases';
 
 describe('propertyMethodCallChecker', () => {
   for (const test of passingCases) {

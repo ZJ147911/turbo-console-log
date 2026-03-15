@@ -3,6 +3,7 @@
  */
 
 import { TextDocument, TextEditorEdit, Position } from 'vscode';
+
 import { ExtensionProperties } from '@/entities';
 
 /**

@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
-import { listenToPhpMessyFileDetection } from '@/helpers/listenToPhpMessyFileDetection';
+
+import { detectAll } from '@/debug-message/php/detectAll';
+import { GlobalStateKey } from '@/entities';
 import {
   readFromGlobalState,
   writeToGlobalState,
@@ -7,11 +9,10 @@ import {
   getExtensionProperties,
   isProUser,
 } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { GlobalStateKey } from '@/entities';
+import { listenToPhpMessyFileDetection } from '@/helpers/listenToPhpMessyFileDetection';
 import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
-import { detectAll } from '@/debug-message/php/detectAll';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('@/helpers', () => ({
   readFromGlobalState: jest.fn(),

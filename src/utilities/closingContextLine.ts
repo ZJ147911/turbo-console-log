@@ -1,4 +1,5 @@
 import { TextDocument } from 'vscode';
+
 import { BracketType } from '../entities';
 import { locBrackets } from './locBrackets';
 

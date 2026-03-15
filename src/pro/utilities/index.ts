@@ -1,9 +1,9 @@
-import { proBundleNeedsUpdate } from './proBundleNeedsUpdate';
 import { fetchProBundle } from './fetchProBundle';
-import { runProBundle } from './runProBundle';
-import { writeProBundleToCache } from './writeProBundleToCache';
-import { updateProBundle } from './updateProBundle';
 import { isOnline } from './isOnline';
+import { proBundleNeedsUpdate } from './proBundleNeedsUpdate';
+import { runProBundle } from './runProBundle';
+import { updateProBundle } from './updateProBundle';
+import { writeProBundleToCache } from './writeProBundleToCache';
 export {
   proBundleNeedsUpdate,
   fetchProBundle,

@@ -1,15 +1,27 @@
 import * as vscode from 'vscode';
+
 import { Command } from '../entities';
-import { getTabSize } from '../utilities';
 import {
   trackLogInsertions,
   canInsertLogInDocument,
   loadPhpDebugMessage,
 } from '../helpers';
+import { getTabSize } from '../utilities';
 
+/**
+ * 创建插入 console.error 日志的命令
+ * @returns 包含命令名称和处理函数的 Command 对象
+ */
 export function insertConsoleErrorCommand(): Command {
   return {
     name: 'turboConsoleLog.insertConsoleError',
+    /**
+     * 处理插入 console.error 日志的命令
+     * @param param0 命令参数
+     * @param param0.extensionProperties 扩展配置属性
+     * @param param0.debugMessage 调试消息处理器
+     * @param param0.context VS Code 扩展上下文
+     */
     handler: async ({ extensionProperties, debugMessage, context }) => {
       const editor: vscode.TextEditor | undefined =
         vscode.window.activeTextEditor;

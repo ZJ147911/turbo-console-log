@@ -3,6 +3,7 @@
  */
 
 import { ExtensionProperties } from '@/entities';
+
 import { getLogFunction } from '../helpers/getLogFunction';
 
 const WRAPPER_OFFSET = 16;

@@ -1,6 +1,7 @@
-import { activateRepairMode } from '../../../helpers/activateRepairMode';
 import * as vscode from 'vscode';
+
 import { ExtensionProperties } from '../../../entities';
+import { activateRepairMode } from '../../../helpers/activateRepairMode';
 import { TurboProBundleRepairPanel } from '../../../pro';
 import * as proUtilities from '../../../pro/utilities';
 

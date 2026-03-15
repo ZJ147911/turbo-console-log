@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
+
 import { UserActivityStatus, GlobalStateKey } from '@/entities';
+
 import { readFromGlobalState } from './readFromGlobalState';
 
 export function getUserActivityStatus(

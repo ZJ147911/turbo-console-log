@@ -1,8 +1,9 @@
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { primitiveAssignmentChecker } from '@/debug-message/js/JSDebugMessage/msg/logMessage/helpers/primitiveAssignmentChecker';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
-import passingCases from './passingCases';
+
 import failingCases from './failingCases';
+import passingCases from './passingCases';
 
 describe('primitiveAssignmentChecker', () => {
   for (const testCase of passingCases) {

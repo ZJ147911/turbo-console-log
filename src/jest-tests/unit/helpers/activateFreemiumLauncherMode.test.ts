@@ -1,12 +1,13 @@
-import { activateFreemiumLauncherMode } from '@/helpers/activateFreemiumLauncherMode';
 import * as vscode from 'vscode';
-import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
-import { activateFreemiumMode } from '@/helpers/activeFreemiumMode';
+
+import { activateFreemiumLauncherMode } from '@/helpers/activateFreemiumLauncherMode';
 import { manageDynamicFreemiumPanel } from '@/helpers/activateFreemiumLauncherMode/launcherContent/manageDynamicFreemiumPanel';
-import { writeToGlobalState } from '@/helpers/writeToGlobalState';
+import { activateFreemiumMode } from '@/helpers/activeFreemiumMode';
 import { GlobalStateKeys } from '@/helpers/GlobalStateKeys';
-import { createTelemetryService } from '@/telemetry/telemetryService';
 import { trackPanelOpenings } from '@/helpers/trackPanelOpenings';
+import { writeToGlobalState } from '@/helpers/writeToGlobalState';
+import { makeExtensionContext } from '@/jest-tests/mocks/helpers';
+import { createTelemetryService } from '@/telemetry/telemetryService';
 
 // Mock the dependencies
 jest.mock('@/helpers/activeFreemiumMode');

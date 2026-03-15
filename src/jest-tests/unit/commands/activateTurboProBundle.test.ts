@@ -1,14 +1,15 @@
+import { AxiosError } from 'axios';
 import * as vscode from 'vscode';
+
 import { activateTurboProBundleCommand } from '@/commands/activateTurboProBundle';
+import { ExtensionProperties } from '@/entities';
 import {
   makeExtensionContext,
   makeDebugMessage,
 } from '@/jest-tests/mocks/helpers';
-import { ExtensionProperties } from '@/entities';
-import { showNotification } from '@/ui';
 import * as proUtilities from '@/pro/utilities';
 import { isOnline } from '@/pro/utilities/isOnline';
-import { AxiosError } from 'axios';
+import { showNotification } from '@/ui';
 
 // Mock the dependencies
 jest.mock('@/ui');

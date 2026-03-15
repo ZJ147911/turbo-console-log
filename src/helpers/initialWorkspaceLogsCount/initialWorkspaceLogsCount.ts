@@ -1,10 +1,12 @@
 import vscode from 'vscode';
-import { GitIgnoreMatcher } from './GitIgnoreMatcher';
-import { collectFilesWithLogs } from './collectFilesWithLogs';
+
 import { ExtensionProperties, Message, GlobalStateKey } from '@/entities';
 import { readFromGlobalState, writeToGlobalState } from '@/helpers';
-import { showNotification } from '@/notifications/showNotification';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
+
+import { collectFilesWithLogs } from './collectFilesWithLogs';
+import { GitIgnoreMatcher } from './GitIgnoreMatcher';
 
 /**
  * Minimum log count threshold to trigger notification

@@ -1,6 +1,7 @@
-import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
-import { propertyAccessAssignmentLine } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers';
 import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+import { propertyAccessAssignmentLine } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
+
 import testCases from './cases';
 
 describe('propertyAccessAssignmentLine – insert after property access assignment', () => {

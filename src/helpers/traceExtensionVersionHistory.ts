@@ -1,10 +1,12 @@
 import type { ExtensionContext } from 'vscode';
+
 import { GlobalStateKey } from '@/entities';
-import { readFromGlobalState } from './readFromGlobalState';
-import { writeToGlobalState } from './writeToGlobalState';
-import { createTelemetryService } from '@/telemetry';
 import { showNotification, NotificationEvent } from '@/notifications';
+import { createTelemetryService } from '@/telemetry';
+
+import { readFromGlobalState } from './readFromGlobalState';
 import { showReleaseNotification } from './showReleaseNotification';
+import { writeToGlobalState } from './writeToGlobalState';
 
 /**
  * Traces extension version history by maintaining an array of versions the user has installed.

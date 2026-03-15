@@ -1,13 +1,15 @@
 import * as vscode from 'vscode';
+
+import { GlobalStateKey } from '@/entities';
+
+import { NotificationEvent } from '../notifications/NotificationEvent';
+import { showNotification } from '../notifications/showNotification';
 import {
   readFromGlobalState,
   writeToGlobalState,
   isProUser,
   isJavaScriptOrTypeScriptFile,
 } from './index';
-import { showNotification } from '../notifications/showNotification';
-import { NotificationEvent } from '../notifications/NotificationEvent';
-import { GlobalStateKey } from '@/entities';
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 const SEVEN_DAYS_MS = 7 * ONE_DAY_MS;

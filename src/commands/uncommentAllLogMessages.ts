@@ -1,5 +1,6 @@
-import * as vscode from 'vscode';
 import * as fs from 'fs';
+import * as vscode from 'vscode';
+
 import { Command, Message } from '../entities';
 import {
   loadPhpDebugMessage,
@@ -7,9 +8,20 @@ import {
   trackLogManagementCommands,
 } from '../helpers';
 
+/**
+ * 创建取消注释所有日志消息的命令
+ * @returns 包含命令名称和处理函数的 Command 对象
+ */
 export function uncommentAllLogMessagesCommand(): Command {
   return {
     name: 'turboConsoleLog.uncommentAllLogMessages',
+    /**
+     * 处理取消注释所有日志消息的命令
+     * @param param0 命令参数
+     * @param param0.extensionProperties 扩展配置属性
+     * @param param0.debugMessage 调试消息处理器
+     * @param param0.context VS Code 扩展上下文
+     */
     handler: async ({ extensionProperties, debugMessage, context }) => {
       const { logFunction, logMessagePrefix, delimiterInsideMessage } =
         extensionProperties;

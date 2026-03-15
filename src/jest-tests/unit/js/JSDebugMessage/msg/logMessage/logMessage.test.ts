@@ -1,8 +1,4 @@
-import { logMessage } from '@/debug-message/js/JSDebugMessage/msg/logMessage/logMessage';
-import { LogMessageType } from '@/entities';
-import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
 import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
-
 // Import the helpers that we want to mock
 import {
   arrayAssignmentChecker,
@@ -23,6 +19,9 @@ import {
   wanderingExpressionChecker,
   logTypeOrder,
 } from '@/debug-message/js/JSDebugMessage/msg/logMessage/helpers';
+import { logMessage } from '@/debug-message/js/JSDebugMessage/msg/logMessage/logMessage';
+import { LogMessageType } from '@/entities';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
 
 // Mock the entire helpers module
 jest.mock('@/debug-message/js/JSDebugMessage/msg/logMessage/helpers');

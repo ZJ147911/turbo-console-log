@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: ''
 labels: bug, discussion
 assignees: Chakroun-Anas
-
 ---
 
 **Describe the bug**
@@ -23,9 +22,10 @@ If applicable, add screenshots to help explain your problem.
 A clear and concise description of what you expected to happen.
 
 **Context:**
- - OS name and version: [e.g. Windows 11]
- - VSCode version [e.g. v1.96.2]
- - Extension version [e.g. v2.10.0]
+
+- OS name and version: [e.g. Windows 11]
+- VSCode version [e.g. v1.96.2]
+- Extension version [e.g. v2.10.0]
 
 **Additional context** (Optional)
 Add any other context about the problem here.

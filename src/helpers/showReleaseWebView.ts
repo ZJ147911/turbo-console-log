@@ -1,10 +1,12 @@
-import * as vscode from 'vscode';
 import axios from 'axios';
-import { readFromGlobalState, writeToGlobalState } from '@/helpers';
+import * as vscode from 'vscode';
+
 import { GlobalStateKey } from '@/entities';
-import { createTelemetryService } from '../telemetry/telemetryService';
 import { WebviewVariantResponse } from '@/entities/WebviewVariant';
+import { readFromGlobalState, writeToGlobalState } from '@/helpers';
+
 import { WEBVIEW_FALLBACK_VARIANTS } from '../releases/3120';
+import { createTelemetryService } from '../telemetry/telemetryService';
 
 const TURBO_WEBSITE_BASE_URL = 'https://www.turboconsolelog.io';
 // const TURBO_WEBSITE_BASE_URL = 'http://localhost:3000';

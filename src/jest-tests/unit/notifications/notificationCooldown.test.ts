@@ -1,3 +1,8 @@
+import vscode from 'vscode';
+
+import { GlobalStateKey } from '@/entities';
+import { readFromGlobalState } from '@/helpers/readFromGlobalState';
+import { writeToGlobalState } from '@/helpers/writeToGlobalState';
 import {
   shouldShowNotification,
   recordNotificationShown,
@@ -6,10 +11,6 @@ import {
   undoNotificationRecording,
 } from '@/notifications/notificationCooldown';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { GlobalStateKey } from '@/entities';
-import vscode from 'vscode';
-import { readFromGlobalState } from '@/helpers/readFromGlobalState';
-import { writeToGlobalState } from '@/helpers/writeToGlobalState';
 import { createTelemetryService } from '@/telemetry/telemetryService';
 
 jest.mock('@/helpers/readFromGlobalState');

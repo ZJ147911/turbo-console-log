@@ -1,14 +1,16 @@
 import vscode from 'vscode';
+
+import { GlobalStateKey } from '@/entities';
+import { readFromGlobalState } from '@/helpers/readFromGlobalState';
+import { writeToGlobalState } from '@/helpers/writeToGlobalState';
+import { createTelemetryService } from '@/telemetry/telemetryService';
+
 import { NotificationEvent } from './NotificationEvent';
 import {
   NotificationPriority,
   NOTIFICATION_PRIORITY_MAP,
   COOLDOWN_CONFIG,
 } from './NotificationPriority';
-import { GlobalStateKey } from '@/entities';
-import { readFromGlobalState } from '@/helpers/readFromGlobalState';
-import { writeToGlobalState } from '@/helpers/writeToGlobalState';
-import { createTelemetryService } from '@/telemetry/telemetryService';
 
 /**
  * Maximum number of notifications allowed per user per month

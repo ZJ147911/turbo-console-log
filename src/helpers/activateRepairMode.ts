@@ -1,7 +1,8 @@
+import * as vscode from 'vscode';
+
 import { ExtensionProperties } from '@/entities';
 import { TurboProBundleRepairPanel } from '@/pro';
 import { runProBundle, updateProBundle } from '@/pro/utilities';
-import * as vscode from 'vscode';
 
 type RepairMode = {
   context: vscode.ExtensionContext;

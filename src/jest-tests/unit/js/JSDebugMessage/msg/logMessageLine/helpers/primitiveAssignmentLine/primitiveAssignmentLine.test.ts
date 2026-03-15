@@ -1,6 +1,7 @@
-import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
-import { primitiveAssignmentLine } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers';
 import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+import { primitiveAssignmentLine } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
+
 import testCases from './cases';
 
 describe('primitiveAssignmentLine', () => {

@@ -1,6 +1,7 @@
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { objectLiteralLine } from '@/debug-message/js/JSDebugMessage/msg/logMessageLine/helpers';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
+
 import testCases from './cases';
 
 describe('objectLiteralLine', () => {

@@ -1,4 +1,11 @@
 import * as vscode from 'vscode';
+
+import { detectAll } from '@/debug-message/php/detectAll';
+import { GlobalStateKey } from '@/entities';
+import { Message } from '@/entities/extension/message';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
+
 import {
   readFromGlobalState,
   writeToGlobalState,
@@ -6,11 +13,6 @@ import {
   getExtensionProperties,
   isProUser,
 } from './index';
-import { GlobalStateKey } from '@/entities';
-import { detectAll } from '@/debug-message/php/detectAll';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
-import { Message } from '@/entities/extension/message';
 
 /**
  * Minimum number of different log types to trigger notification

@@ -1,11 +1,12 @@
-import * as vscode from 'vscode';
 import { AxiosError } from 'axios';
+import * as vscode from 'vscode';
+
+import { ExtensionProperties } from '../../entities';
 import { showNotification } from '../../ui';
 import { fetchProBundle } from './fetchProBundle';
+import { isOnline } from './isOnline';
 import { runProBundle } from './runProBundle';
 import { writeProBundleToCache } from './writeProBundleToCache';
-import { isOnline } from './isOnline';
-import { ExtensionProperties } from '../../entities';
 
 export async function updateProBundle(
   context: vscode.ExtensionContext,

@@ -1,8 +1,9 @@
+import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
 import { functionParameterChecker } from '@/debug-message/js/JSDebugMessage/msg/logMessage/helpers/';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers/';
-import { parseCode } from '@/debug-message/js/JSDebugMessage/msg/acorn-utils';
-import passingCases from './passingCases';
+
 import failingCases from './failingCases';
+import passingCases from './passingCases';
 
 describe('functionParameterChecker', () => {
   for (const doc of passingCases) {

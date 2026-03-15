@@ -1,6 +1,6 @@
+import { WorkspaceContext } from '@/entities';
 import { isInactiveFourWeeksSurveyContextRight } from '@/notifications/contextualAnalysis/contexts/isInactiveFourWeeksSurveyContextRight';
 import { collectWorkspaceContext } from '@/notifications/contextualAnalysis/helpers';
-import { WorkspaceContext } from '@/entities';
 
 // Mock the collectWorkspaceContext helper
 jest.mock('@/notifications/contextualAnalysis/helpers');

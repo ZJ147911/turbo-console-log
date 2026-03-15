@@ -1,6 +1,8 @@
-import * as vscode from 'vscode';
-import Mocha, { describe, it } from 'mocha';
 import { expect } from 'chai';
+import Mocha, { describe, it } from 'mocha';
+import * as vscode from 'vscode';
+
+import { ProgrammingLanguage } from '../../../../../../entities';
 import {
   openDocument,
   naturalEditorLine,
@@ -8,7 +10,6 @@ import {
   expectActiveTextEditorWithFile,
   documentLinesChanged,
 } from '../../../../helpers';
-import { ProgrammingLanguage } from '../../../../../../entities';
 
 export default (): void => {
   describe('Ternary Assignment', () => {

@@ -1,7 +1,7 @@
-import { DynamicFreemiumPanel } from '../types';
 import { contentByType } from '../contentByType';
-import { getCommonStyles } from '../styles/getCommonStyles';
 import { getJavaScript } from '../javascript/javascript';
+import { getCommonStyles } from '../styles/getCommonStyles';
+import { DynamicFreemiumPanel } from '../types';
 
 /**
  * Generate dynamic HTML when dynamic content is available

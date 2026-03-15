@@ -10,14 +10,8 @@ type Person = {
 };
 
 function logPersonInfo(person: Person) {
-  const {
-    fullName,
-    age,
-    isMarried,
-    something,
-    anotherThing,
-    thirdThing,
-  } = person;
+  const { fullName, age, isMarried, something, anotherThing, thirdThing } =
+    person;
   return true;
 }
 

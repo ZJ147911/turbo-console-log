@@ -2,14 +2,14 @@ import {
   canInsertLogInDocument,
   resetNotificationLock,
 } from '@/helpers/canInsertLogInDocument';
-import { isProUser } from '@/helpers/isProUser';
 import { isPhpFile } from '@/helpers/isPhpFile';
-import { showNotification } from '@/notifications/showNotification';
-import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { isProUser } from '@/helpers/isProUser';
 import {
   makeExtensionContext,
   makeTextDocument,
 } from '@/jest-tests/mocks/helpers';
+import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 jest.mock('@/helpers/isProUser');
 jest.mock('@/helpers/isPhpFile');

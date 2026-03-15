@@ -1,20 +1,21 @@
+import * as fs from 'fs';
+import { Range } from 'vscode';
+import * as vscode from 'vscode';
+
+import { detectAll } from '@/debug-message/js/JSDebugMessage/detectAll';
 import { jsDebugMessage } from '@/debug-message/js/JSDebugMessage/JSDebugMessage';
 import { msg } from '@/debug-message/js/JSDebugMessage/msg';
 import { logMessage } from '@/debug-message/js/JSDebugMessage/msg/logMessage';
-import { detectAll } from '@/debug-message/js/JSDebugMessage/detectAll';
-import {
-  makeTextDocument,
-  createMockTextEditorEdit,
-} from '@/jest-tests/mocks/helpers';
 import {
   ExtensionProperties,
   LogMessage,
   LogMessageType,
   Message,
 } from '@/entities';
-import { Range } from 'vscode';
-import * as fs from 'fs';
-import * as vscode from 'vscode';
+import {
+  makeTextDocument,
+  createMockTextEditorEdit,
+} from '@/jest-tests/mocks/helpers';
 
 // Mock all imported functions
 jest.mock('@/debug-message/js/JSDebugMessage/msg');

@@ -9,8 +9,8 @@ jest.mock('@/pro/TurboProShowcasePanel/javascript/javascript', () => ({
   getJavaScript: jest.fn(() => 'function openUrl(url) { window.open(url); }'),
 }));
 
-import { getCommonStyles } from '@/pro/TurboProShowcasePanel/styles/getCommonStyles';
 import { getJavaScript } from '@/pro/TurboProShowcasePanel/javascript/javascript';
+import { getCommonStyles } from '@/pro/TurboProShowcasePanel/styles/getCommonStyles';
 
 describe('getStaticHtml', () => {
   let consoleSpy: jest.SpyInstance;

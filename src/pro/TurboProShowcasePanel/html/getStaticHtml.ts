@@ -1,7 +1,7 @@
-import { getCommonStyles } from '../styles/getCommonStyles';
-import { getJavaScript } from '../javascript/javascript';
 import { contentByType } from '../contentByType';
+import { getJavaScript } from '../javascript/javascript';
 import { getStaticContent } from '../staticContent';
+import { getCommonStyles } from '../styles/getCommonStyles';
 import { DynamicFreemiumPanelContent } from '../types';
 
 /**

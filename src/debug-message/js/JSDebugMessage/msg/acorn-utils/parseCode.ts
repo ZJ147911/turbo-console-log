@@ -1,11 +1,13 @@
-import * as acorn from 'acorn';
 import { tsPlugin } from '@sveltejs/acorn-typescript';
+import * as acorn from 'acorn';
+
 import type { AcornNode } from './types';
-import { extractVueScript } from './vue';
+
+import { adjustASTLocations } from './adjustASTLocations';
+import { extractAstroScript } from './astro';
 import { extractHtmlScript } from './html';
 import { extractSvelteScript } from './svelte';
-import { extractAstroScript } from './astro';
-import { adjustASTLocations } from './adjustASTLocations';
+import { extractVueScript } from './vue';
 
 /**
  * Parses JavaScript/TypeScript source code into an Acorn AST.

@@ -1,8 +1,9 @@
-import * as vscode from 'vscode';
 import axios from 'axios';
+import * as vscode from 'vscode';
+
+import { GlobalStateKeys } from '../../GlobalStateKeys';
 import { readFromGlobalState } from '../../readFromGlobalState';
 import { writeToGlobalState } from '../../writeToGlobalState';
-import { GlobalStateKeys } from '../../GlobalStateKeys';
 
 // const TURBO_WEBSITE_BASE_URL = 'http://localhost:3000';
 const TURBO_WEBSITE_BASE_URL = 'https://www.turboconsolelog.io';

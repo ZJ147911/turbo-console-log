@@ -1,6 +1,3 @@
 // @ts-nocheck
 
-const result = myFunc<
-  MyType,
-  MyType
->();
+const result = myFunc<MyType, MyType>();

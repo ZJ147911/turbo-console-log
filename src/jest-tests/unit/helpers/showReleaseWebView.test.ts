@@ -1,10 +1,11 @@
-import * as vscode from 'vscode';
 import axios from 'axios';
-import { showReleaseWebView } from '@/helpers/showReleaseWebView';
-import * as helpers from '@/helpers';
-import { createTelemetryService } from '@/telemetry/telemetryService';
+import * as vscode from 'vscode';
+
 import { GlobalStateKey } from '@/entities';
+import * as helpers from '@/helpers';
+import { showReleaseWebView } from '@/helpers/showReleaseWebView';
 import { WEBVIEW_FALLBACK_VARIANTS } from '@/releases/3120';
+import { createTelemetryService } from '@/telemetry/telemetryService';
 
 // Mock axios
 jest.mock('axios');

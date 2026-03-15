@@ -3,7 +3,11 @@
  */
 
 import { TextDocument } from 'vscode';
+
 import { ExtensionProperties } from '@/entities';
+
+import type { AcornNode } from '../acorn-utils';
+
 import {
   addPrefix,
   addFileInfo,
@@ -13,17 +17,17 @@ import {
   getFileName,
   getEnclosingContext,
 } from './helpers';
-import type { AcornNode } from '../acorn-utils';
 
 /**
- * Constructs the debugging message content using helper functions.
- * @param ast The pre-parsed AST (to avoid re-parsing)
- * @param document The text document
- * @param selectedVar The selected variable name
- * @param lineOfSelectedVar The line number of the selected variable
- * @param lineOfLogMsg The line number where the log message will be inserted
- * @param extensionProperties Configuration properties for the extension
- * @returns The constructed debugging message content
+ * 使用辅助函数构建调试消息内容
+ * @param ast 预解析的 AST（以避免重复解析）
+ * @param document 文本文档
+ * @param selectedVar 选中的变量名
+ * @param lineOfSelectedVar 选中变量的行号
+ * @param lineOfLogMsg 日志消息将插入的行号
+ * @param extensionProperties 扩展的配置属性
+ * @param logFunction 日志函数名称
+ * @returns 构建的调试消息内容
  */
 export function constructDebuggingMsgContent(
   ast: AcornNode,

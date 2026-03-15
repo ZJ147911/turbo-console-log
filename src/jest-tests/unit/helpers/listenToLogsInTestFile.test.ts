@@ -1,11 +1,12 @@
+import * as fs from 'fs';
+import * as vscode from 'vscode';
+
+import { detectAll } from '@/debug-message/js/JSDebugMessage/detectAll/detectAll';
+import { GlobalStateKey } from '@/entities';
 import { listenToLogsInTestFile } from '@/helpers/listenToLogsInTestFile';
 import { makeTextDocument } from '@/jest-tests/mocks/helpers';
-import { GlobalStateKey } from '@/entities';
-import * as vscode from 'vscode';
-import * as fs from 'fs';
-import { detectAll } from '@/debug-message/js/JSDebugMessage/detectAll/detectAll';
-import { showNotification } from '@/notifications/showNotification';
 import { NotificationEvent } from '@/notifications/NotificationEvent';
+import { showNotification } from '@/notifications/showNotification';
 
 // Mock dependencies
 jest.mock('@/debug-message/js/JSDebugMessage/detectAll/detectAll');
@@ -30,11 +31,11 @@ const mockShowNotification = showNotification as jest.MockedFunction<
   typeof showNotification
 >;
 
+import { getExtensionProperties } from '@/helpers/getExtensionProperties';
+import { isJavaScriptOrTypeScriptFile } from '@/helpers/isJavaScriptOrTypeScriptFile';
 import { isProUser } from '@/helpers/isProUser';
 import { readFromGlobalState } from '@/helpers/readFromGlobalState';
 import { writeToGlobalState } from '@/helpers/writeToGlobalState';
-import { isJavaScriptOrTypeScriptFile } from '@/helpers/isJavaScriptOrTypeScriptFile';
-import { getExtensionProperties } from '@/helpers/getExtensionProperties';
 
 const mockIsProUser = isProUser as jest.MockedFunction<typeof isProUser>;
 const mockReadFromGlobalState = readFromGlobalState as jest.MockedFunction<

@@ -1,6 +1,6 @@
+import { WorkspaceContext } from '@/entities';
 import { isCommitWithLogsContextRight } from '@/notifications/contextualAnalysis/contexts/isCommitWithLogsContextRight';
 import { collectWorkspaceContext } from '@/notifications/contextualAnalysis/helpers';
-import { WorkspaceContext } from '@/entities';
 
 jest.mock('@/notifications/contextualAnalysis/helpers');
 

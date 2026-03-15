@@ -1,4 +1,5 @@
 import { LogMessage } from '@/entities';
+
 import {
   type AcornNode,
   isVariableDeclaration,

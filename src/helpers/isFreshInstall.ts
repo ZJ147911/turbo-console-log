@@ -1,5 +1,7 @@
 import type { ExtensionContext } from 'vscode';
+
 import { GlobalStateKey } from '@/entities';
+
 import { readFromGlobalState } from './readFromGlobalState';
 
 /**

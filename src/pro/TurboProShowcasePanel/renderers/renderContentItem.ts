@@ -10,15 +10,15 @@ import {
   YouTubeVideoPanelComponent,
   WorkspaceLogCountComponent,
 } from '../types';
-import { renderParagraphComponent } from './renderParagraphComponent';
 import { renderArticleComponent } from './renderArticleComponent';
 import { renderCountDownComponent } from './renderCountDownComponent';
+import { renderMediaShowcaseCTAComponent } from './renderMediaShowcaseCTAComponent';
+import { renderParagraphComponent } from './renderParagraphComponent';
 import { renderSurveyComponent } from './renderSurveyComponent';
 import { renderTableComponent } from './renderTableComponent';
-import { renderMediaShowcaseCTAComponent } from './renderMediaShowcaseCTAComponent';
 import { renderVideoComponent } from './renderVideoComponent';
-import { renderYouTubeVideoComponent } from './renderYouTubeVideoComponent';
 import { renderWorkspaceLogCountComponent } from './renderWorkspaceLogCountComponent';
+import { renderYouTubeVideoComponent } from './renderYouTubeVideoComponent';
 
 /**
  * Render a single content item based on its type

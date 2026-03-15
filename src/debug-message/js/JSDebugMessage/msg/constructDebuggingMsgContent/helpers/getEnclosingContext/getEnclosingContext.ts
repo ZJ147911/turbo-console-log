@@ -3,9 +3,11 @@
  */
 
 import { TextDocument } from 'vscode';
+
+import type { AcornNode } from '../../../acorn-utils';
+
 import { enclosingBlockName } from '../../../../enclosingBlockName';
 import { findEnclosingBlocks } from '../../../../enclosingBlockName/findEnclosingBlocks';
-import type { AcornNode } from '../../../acorn-utils';
 
 /**
  * Gets the enclosing class and function names for the selected variable.

@@ -1,17 +1,28 @@
-import * as vscode from 'vscode';
-import { Command } from '../entities';
-import { showNotification } from '../ui';
 import { AxiosError } from 'axios';
+import * as vscode from 'vscode';
+
+import { Command } from '../entities';
 import {
   fetchProBundle,
   runProBundle,
   writeProBundleToCache,
 } from '../pro/utilities';
 import { isOnline } from '../pro/utilities/isOnline';
+import { showNotification } from '../ui';
 
+/**
+ * 创建激活 Turbo Pro 捆绑包的命令
+ * @returns 包含命令名称和处理函数的 Command 对象
+ */
 export function activateTurboProBundleCommand(): Command {
   return {
     name: 'turboConsoleLog.activateTurboProBundle',
+    /**
+     * 处理激活 Turbo Pro 捆绑包的命令
+     * @param param0 命令参数
+     * @param param0.extensionProperties 扩展配置属性
+     * @param param0.context VS Code 扩展上下文
+     */
     handler: async ({ extensionProperties, context }) => {
       const licenseKey = (
         await vscode.window.showInputBox({

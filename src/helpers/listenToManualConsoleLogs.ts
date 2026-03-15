@@ -1,4 +1,9 @@
 import * as vscode from 'vscode';
+
+import { GlobalStateKey, UserActivityStatus } from '@/entities';
+
+import { NotificationEvent } from '../notifications/NotificationEvent';
+import { showNotification } from '../notifications/showNotification';
 import {
   readFromGlobalState,
   writeToGlobalState,
@@ -6,9 +11,6 @@ import {
   isProUser,
   updateUserActivityStatus,
 } from './index';
-import { showNotification } from '../notifications/showNotification';
-import { NotificationEvent } from '../notifications/NotificationEvent';
-import { GlobalStateKey, UserActivityStatus } from '@/entities';
 
 /**
  * Listens to text document changes and detects manual console.log typing

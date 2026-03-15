@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+
 import { writeToGlobalState } from '../../helpers';
 
 export function writeProBundleToCache(

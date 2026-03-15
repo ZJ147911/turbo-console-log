@@ -1,5 +1,6 @@
-import * as vscode from 'vscode';
 import * as crypto from 'crypto';
+import * as vscode from 'vscode';
+
 import { generateDeveloperId } from '@/helpers/generateDeveloperId';
 
 // Mock dependencies

@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
+
+import { getAllCommands } from './commands/';
 import { jsDebugMessage } from './debug-message/js';
 import { Command, ExtensionProperties } from './entities';
-import { getAllCommands } from './commands/';
 import {
   readFromGlobalState,
   getExtensionProperties,
@@ -30,12 +31,12 @@ import {
   TurboProBundleRepairPanel,
   TurboProShowcasePanel,
 } from './pro';
-import { releaseNotes } from './releases';
 import {
   proBundleNeedsUpdate,
   runProBundle,
   updateProBundle,
 } from './pro/utilities';
+import { releaseNotes } from './releases';
 
 export async function activate(
   context: vscode.ExtensionContext,

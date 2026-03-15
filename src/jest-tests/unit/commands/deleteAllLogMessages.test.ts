@@ -1,15 +1,16 @@
 import * as vscode from 'vscode';
+
 import { deleteAllLogMessagesCommand } from '@/commands/deleteAllLogMessages';
-import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
-import { makeTextEditor } from '@/jest-tests/mocks/helpers/makeTextEditor';
-import { createMockTextEditorEdit } from '@/jest-tests/mocks/helpers/createMockTextEditorEdit';
+import { DebugMessage } from '@/debug-message';
+import { ExtensionProperties } from '@/entities';
+import { canInsertLogInDocument } from '@/helpers/canInsertLogInDocument';
 import {
   makeExtensionContext,
   makeDebugMessage,
 } from '@/jest-tests/mocks/helpers';
-import { ExtensionProperties } from '@/entities';
-import { DebugMessage } from '@/debug-message';
-import { canInsertLogInDocument } from '@/helpers/canInsertLogInDocument';
+import { createMockTextEditorEdit } from '@/jest-tests/mocks/helpers/createMockTextEditorEdit';
+import { makeTextDocument } from '@/jest-tests/mocks/helpers/makeTextDocument';
+import { makeTextEditor } from '@/jest-tests/mocks/helpers/makeTextEditor';
 
 jest.mock('@/helpers/canInsertLogInDocument');
 
