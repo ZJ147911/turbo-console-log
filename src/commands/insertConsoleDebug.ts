@@ -8,7 +8,6 @@ import { createLogCommand } from './createLogCommand';
 export function insertConsoleDebugCommand(): Command {
   return createLogCommand(
     'turboConsoleLog.insertConsoleDebug',
-    'debug',
-    'error_log'
+    'debug'
   );
 }

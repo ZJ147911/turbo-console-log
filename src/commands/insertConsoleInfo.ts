@@ -8,7 +8,6 @@ import { createLogCommand } from './createLogCommand';
 export function insertConsoleInfoCommand(): Command {
   return createLogCommand(
     'turboConsoleLog.insertConsoleInfo',
-    'info',
-    'print_r'
+    'info'
   );
 }

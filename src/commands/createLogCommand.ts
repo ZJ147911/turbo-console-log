@@ -7,14 +7,12 @@ import { getTabSize } from '../utilities';
 /**
  * 创建日志插入命令的工厂函数
  * @param commandName 命令名称
- * @param logType 日志类型
- * @param phpLogType PHP 环境下的日志类型
+ * @param logType 日志类型或日志类型获取函数
  * @returns 命令对象
  */
 export function createLogCommand(
   commandName: string,
-  logType: string,
-  phpLogType: string,
+  logType: string | ((extensionProperties: any) => string),
 ): Command {
   return {
     name: commandName,
@@ -37,9 +35,11 @@ export function createLogCommand(
         return;
       }
 
-      // Use the provided debug message for now
+      // Use the provided debug message
       const activeDebugMessage = debugMessage;
-      const currentLogType = logType;
+
+      // Get the actual log type
+      const actualLogType = typeof logType === 'function' ? logType(extensionProperties) : logType;
 
       for (let index = 0; index < editor.selections.length; index++) {
         const selection: vscode.Selection = editor.selections[index];
@@ -62,7 +62,7 @@ export function createLogCommand(
               lineOfSelectedVar,
               tabSize,
               extensionProperties,
-              currentLogType,
+              actualLogType,
             );
           });
         }
