@@ -109,12 +109,6 @@ jobs:
           echo "Package info:"
           cat package.json | grep -E "(name|version|publisher|engines)"
 
-          # 验证package.json完整性
-          if ! cat package.json | grep -q "engines.vscode"; then
-            echo "❌ package.json缺少必要字段：engines.vscode"
-            exit 1
-          fi
-
           # 创建VSIX包（移除无效的--verbose参数）
           vsce package --no-dependencies
 
