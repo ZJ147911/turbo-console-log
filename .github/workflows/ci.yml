@@ -24,41 +24,47 @@ jobs:
       # 2. 设置Node.js环境
       - name: Set up Node.js
         uses: actions/setup-node@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           node-version: '22' # 使用Node.js 22版本
           cache: 'pnpm' # 缓存pnpm依赖
 
-      # 3. 安装依赖
+      # 3. 安装pnpm
+      - name: Install pnpm
+        run: wget -qO- https://get.pnpm.io/install.sh | sh -
+
+      # 4. 安装依赖
       - name: Install dependencies
         run: pnpm install
 
-      # 4. 构建扩展
+      # 5. 构建扩展
       - name: Build extension
         run: pnpm run vscode:prepublish # 运行预发布构建命令
 
-      # 5. 运行代码格式化
+      # 6. 运行代码格式化
       - name: Run formatter
         run: pnpm run fmt # 运行oxfmt进行代码格式化
 
-      # 6. 检查代码格式是否正确
+      # 7. 检查代码格式是否正确
       - name: Check formatting
         run: git diff --exit-code # 确保格式化后的代码没有变更
 
-      # 7. 上传构建产物作为artifacts
+      # 8. 上传构建产物作为artifacts
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: extension-build
           path: out/ # 上传out目录中的构建产物
 
-      # 8. 创建VSIX包（仅在推送tag时执行）
+      # 9. 创建VSIX包（仅在推送tag时执行）
       - name: Create VSIX package
         if: startsWith(github.ref, 'refs/tags/') # 条件：只在推送tag时执行
         run: |
           npm install -g vsce  # 全局安装vsce工具
           vsce package         # 创建VSIX包
 
-      # 9. 上传VSIX包作为artifacts（仅在推送tag时执行）
+      # 10. 上传VSIX包作为artifacts（仅在推送tag时执行）
       - name: Upload VSIX artifact
         if: startsWith(github.ref, 'refs/tags/') # 条件：只在推送tag时执行
         uses: actions/upload-artifact@v4
