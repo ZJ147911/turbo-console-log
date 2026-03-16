@@ -10,6 +10,18 @@ import * as vscode from 'vscode';
 const LANGUAGE_PATTERNS = {
   js: {
     functionPatterns: [
+      // export 导出的函数（优先匹配，避免被其它模式漏掉）
+      /^export\s+async\s+function\s+([\w$]+)\s*\(/, // export async function name(
+      /^export\s+function\s+([\w$]+)\s*\(/, // export function name(
+      /^export\s+function\*\s+([\w$]+)\s*\(/, // export function* name(
+      /^export\s+default\s+async\s+function\s+([\w$]+)\s*\(/, // export default async function name(
+      /^export\s+default\s+function\s+([\w$]+)\s*\(/, // export default function name(
+      // export 导出的 const 函数（箭头函数 / function 表达式）
+      /^export\s+const\s+([\w$]+)\s*=\s*async\s*function\s*/, // export const name = async function
+      /^export\s+const\s+([\w$]+)\s*=\s*async\s*\(/, // export const name = async (
+      /^export\s+const\s+([\w$]+)\s*=\s*function\s*/, // export const name = function
+      /^export\s+const\s+([\w$]+)\s*=\s*function\*/, // export const name = function*
+      /^export\s+const\s+([\w$]+)\s*=\s*\(/, // export const name = (
       /^function\s+([\w$]+)\s*\(/, // 函数声明
       /^function\*\s+([\w$]+)\s*\(/, // 生成器函数
       /^const\s+([\w$]+)\s*=\s*function\s*/, // const函数表达式
