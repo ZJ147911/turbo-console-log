@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 必须：允许创建Release和上传资产
+      contents: write
       packages: write
       id-token: write
 
@@ -70,6 +70,14 @@ jobs:
         run: |
           export PATH="$PNPM_HOME:$PATH"
           pnpm run vscode:prepublish
+
+          # 检查构建产物
+          if [ ! -d "out" ] || [ -z "$(ls -A out)" ]; then
+            echo "❌ 构建失败：out目录为空或不存在！"
+            exit 1
+          fi
+          echo "✅ 构建成功，out目录内容："
+          ls -la out/
         env:
           NODE_ENV: production
 
@@ -81,31 +89,40 @@ jobs:
           path: out/
           retention-days: 7
 
-      # 9. 创建VSIX包（添加详细日志）
+      # 9. 创建VSIX包（修复核心问题）
       - name: Create VSIX package
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           export PATH="$PNPM_HOME:$PATH"
 
-          # 安装vsce并检查版本
-          npm install -g vsce@latest
-          echo "VSCE version: $(vsce --version)"
+          # 安装最新的官方VSCE包（修复包名问题）
+          npm install -g @vscode/vsce@latest
+          # 验证安装并查看帮助（确认参数）
+          vsce --version
+          vsce package --help || true
 
-          # 显示当前目录文件（调试）
+          # 显示当前目录文件
           echo "Current directory files:"
           ls -la
 
-          # 显示package.json（确认名称和版本）
-          cat package.json | grep -E "(name|version)"
+          # 显示package.json关键信息
+          echo "Package info:"
+          cat package.json | grep -E "(name|version|publisher|engines)"
 
-          # 创建VSIX包（保留详细日志）
-          vsce package --no-dependencies --verbose
+          # 验证package.json完整性
+          if ! cat package.json | grep -q "engines.vscode"; then
+            echo "❌ package.json缺少必要字段：engines.vscode"
+            exit 1
+          fi
 
-          # 检查生成的VSIX文件（关键：确保文件存在）
+          # 创建VSIX包（移除无效的--verbose参数）
+          vsce package --no-dependencies
+
+          # 检查生成的VSIX文件
           echo "Generated files after packaging:"
           ls -la *.vsix || echo "❌ No VSIX file generated!"
 
-          # 安全捕获VSIX文件名（容错处理）
+          # 安全捕获VSIX文件名
           if ls *.vsix 1> /dev/null 2>&1; then
             VSIX_FILE=$(ls *.vsix | head -n 1)
             echo "VSIX_FILE=$VSIX_FILE" >> $GITHUB_ENV
@@ -115,7 +132,7 @@ jobs:
             exit 1
           fi
 
-      # 10. 上传VSIX包（独立验证）
+      # 10. 上传VSIX包
       - name: Upload VSIX artifact
         if: startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v4
@@ -124,17 +141,16 @@ jobs:
           path: ${{ env.VSIX_FILE }}
           retention-days: 30
 
-      # 11. 创建GitHub Release（修复路径问题）
+      # 11. 创建GitHub Release
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          # 双重保障：直接匹配VSIX文件 + 使用环境变量
           files: |
             ${{ env.VSIX_FILE }}
             *.vsix
           generate_release_notes: true
-          draft: false # 直接发布，不创建草稿
+          draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
