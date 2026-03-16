@@ -1,23 +1,20 @@
-import { processLogMessages, isLogMessageLine } from '../utils/commandUtils';
+import {
+  processLogMessages,
+  getUncommentedLogLine,
+} from '../utils/commandUtils';
 
 /**
  * 创建取消注释所有日志消息的命令
+ * 仅对“被注释的日志行”（// 或 # 后紧跟 log 调用）去掉注释并保留行首缩进
  * @returns 包含命令名称和处理函数的 Command 对象
  */
 export function uncommentAllLogMessagesCommand(): QuickConsole.Command {
   return {
     name: 'quickConsole.uncommentAllLogMessages',
-    /**
-     * 取消注释所有日志消息的处理函数
-     * @param param0.jsDebugMessage JavaScript 调试消息对象
-     * @param param0.phpDebugMessage PHP 调试消息对象
-     */
     handler: async (context) => {
       await processLogMessages(context, (line, isPhp) => {
-        if (line.trim().startsWith('//') && isLogMessageLine(line, isPhp)) {
-          return line.trim().substring(2).trim();
-        }
-        return null;
+        const uncommented = getUncommentedLogLine(line, isPhp);
+        return uncommented !== null ? uncommented : null;
       });
     },
   };

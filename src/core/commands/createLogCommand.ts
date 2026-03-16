@@ -32,6 +32,7 @@ export function createLogCommand(
       const tabSize: number | string = getTabSize(editor.options.tabSize);
       const document: vscode.TextDocument = editor.document;
 
+      // 从当前扩展上下文取版本号，避免写死扩展 ID，任意 publisher 下都能正确插入日志
       const version = context.extension?.packageJSON?.version as
         | string
         | undefined;
@@ -39,13 +40,13 @@ export function createLogCommand(
         return;
       }
 
-      // Determine which debug message processor to use based on file type
+      // 按文件类型选择调试消息处理器：PHP 用 phpDebugMessage，否则用 jsDebugMessage
       let activeDebugMessage = jsDebugMessage;
       if (isPhpFile(document.fileName) && phpDebugMessage) {
         activeDebugMessage = phpDebugMessage;
       }
 
-      // Get the actual log type
+      // 若 logType 为函数则根据配置计算实际方法名（如自定义 log），否则直接使用字符串
       const actualLogType =
         typeof logType === 'function' ? logType(extensionProperties) : logType;
 

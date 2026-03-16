@@ -1,3 +1,12 @@
+/** 转义正则中的特殊字符，用于动态拼接 PHP 的 logFunction（如 error_log、print_r） */
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/** JS/TS：匹配 console.(log|debug|info|warn|error|table)(...); 分号可选，参数非贪婪，同一行多条可分别匹配 */
+const JS_LOG_REGEX =
+  /console\.(log|debug|info|warn|error|table)\s*\(([\s\S]*?)\)\s*;?/g;
+
 /**
  * 检测文件中的所有日志消息
  * @param fs 文件系统模块
@@ -11,7 +20,7 @@
  */
 export async function detectAll(
   fs: typeof import('fs'),
-  vscode: typeof import('vscode'),
+  _vscode: typeof import('vscode'),
   filePath: string,
   logFunction: QuickConsole.ExtensionProperties['logFunction'],
   logMessagePrefix: QuickConsole.ExtensionProperties['logMessagePrefix'],
@@ -19,50 +28,43 @@ export async function detectAll(
   isPhp: boolean = false,
 ): Promise<QuickConsole.Message[]> {
   try {
-    // 读取文件内容
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const lines = fileContent.split('\n');
     const messages: QuickConsole.Message[] = [];
 
-    // 搜索所有的日志语句
-    let logRegex;
-    if (isPhp) {
-      logRegex = new RegExp(`${logFunction}\((.*)\);`, 'g');
-    } else {
-      logRegex = /console\.(log|debug|info|warn|error|table)\((.*)\);/g;
-    }
+    // PHP 按配置的 logFunction 动态拼正则并转义；JS 使用固定 console 方法集合
+    const logRegex = isPhp
+      ? new RegExp(
+          `${escapeRegExp(logFunction)}\\s*\\(([\\s\\S]*?)\\)\\s*;?`,
+          'g',
+        )
+      : JS_LOG_REGEX;
 
-    lines.forEach((line, index) => {
-      let match;
-      const lineCopy = line;
+    for (let index = 0; index < lines.length; index++) {
+      const line = lines[index];
+      // 全局正则跨行使用时必须每行重置 lastIndex，否则下一行从错误位置开始匹配
+      logRegex.lastIndex = 0;
 
-      // 查找所有匹配的日志语句
-      while ((match = logRegex.exec(lineCopy)) !== null) {
-        // 提取空格
-        const spaces = lineCopy.substring(0, match.index);
-
-        // 检查是否是由 Turbo Console Log 插入的日志
+      let match: RegExpExecArray | null;
+      while ((match = logRegex.exec(line)) !== null) {
+        const spaces = line.substring(0, match.index);
         const isQuickConsole =
-          lineCopy.includes(logMessagePrefix) &&
-          lineCopy.includes(delimiterInsideMessage);
-
-        // 检查是否被注释
+          line.includes(logMessagePrefix) &&
+          line.includes(delimiterInsideMessage);
+        const trimmed = line.trim();
         const isCommented = isPhp
-          ? lineCopy.trim().startsWith('//') || lineCopy.trim().startsWith('#')
-          : lineCopy.trim().startsWith('//');
+          ? trimmed.startsWith('//') || trimmed.startsWith('#')
+          : trimmed.startsWith('//');
 
-        // 创建消息对象
-        const message: QuickConsole.Message = {
+        messages.push({
           spaces,
-          lines: [index.toString()],
+          lines: [String(index)],
           isCommented,
           logFunction: isPhp ? logFunction : match[1],
           isQuickConsole,
-        };
-
-        messages.push(message);
+        });
       }
-    });
+    }
 
     return messages;
   } catch (error) {

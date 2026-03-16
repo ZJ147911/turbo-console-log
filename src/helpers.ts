@@ -35,9 +35,9 @@ export function getExtensionProperties(
     quote: workspaceConfig.quote || '"',
     /** 消息内部的分隔符 */
     delimiterInsideMessage: workspaceConfig.delimiterInsideMessage || '~',
-    /** 是否包含行号 */
+    /** 是否包含行号（未配置时与 package.json 默认值 true 一致，用 ?? 以区分用户显式设为 false） */
     includeLineNum: workspaceConfig.includeLineNum ?? true,
-    /** 是否包含文件名 */
+    /** 是否包含文件名（同上，默认 true） */
     includeFilename: workspaceConfig.includeFilename ?? true,
     /** 日志函数名称 */
     logFunction: workspaceConfig.logFunction || 'log',
@@ -79,6 +79,7 @@ export function canInsertLogInDocument(
     return false;
   }
 
+  // 扩展版本号无效时不允许插入，避免在未正确加载时执行
   if (version == null || version === '') {
     return false;
   }

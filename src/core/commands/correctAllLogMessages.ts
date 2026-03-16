@@ -17,27 +17,27 @@ export function correctAllLogMessagesCommand(): QuickConsole.Command {
       await processLogMessages(context, (line, isPhp, extensionProperties) => {
         if (!extensionProperties) return null;
 
-        // For JavaScript files
-        if (!isPhp && line.includes('console.')) {
-          // Replace with a standardized log format
-          return line.replace(
-            /console\.\w+\(.*\);/g,
-            `console.log('${extensionProperties.logMessagePrefix} variable:', variable);`,
+        const prefix = extensionProperties.logMessagePrefix;
+
+        // JS/TS：保留原方法名与实参，仅统一加上前缀（非贪婪匹配参数，支持一行多条）
+        if (!isPhp) {
+          const replaced = line.replace(
+            /console\.(log|debug|info|warn|error|table)\s*\(([\s\S]*?)\)\s*;?/g,
+            (_, method, args) =>
+              `console.${method}('${prefix}', ${args.trim()});`,
           );
+          return replaced !== line ? replaced : null;
         }
-        // For PHP files
-        if (
-          isPhp &&
-          (line.includes('error_log') ||
-            line.includes('var_dump') ||
-            line.includes('print_r'))
-        ) {
-          // Replace with a standardized log format
-          return line.replace(
-            /(error_log|var_dump|print_r)\(.*\);/g,
-            `error_log('${extensionProperties.logMessagePrefix} variable: ' . $variable);`,
+
+        // PHP：保留原函数名与实参，仅统一加上前缀
+        if (isPhp) {
+          const replaced = line.replace(
+            /(error_log|var_dump|print_r)\s*\(([\s\S]*?)\)\s*;?/g,
+            (_, fn, args) => `${fn}('${prefix}', ${args.trim()});`,
           );
+          return replaced !== line ? replaced : null;
         }
+
         return null;
       });
     },

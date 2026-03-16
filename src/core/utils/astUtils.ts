@@ -227,7 +227,8 @@ export function getEnclosingContext(
   return { enclosingClass, enclosingFunction };
 }
 
-// 可打印变量校验：字面量与保留字集合（O(1) 查找）
+// 可打印变量校验：字面量与保留字集合（用 Set 做 O(1) 查找，避免误把字面量/关键字当变量插入日志）
+/** JS 字面量：这些不应作为“变量”插入 log */
 const JS_LITERALS = new Set([
   'true',
   'false',
@@ -236,6 +237,7 @@ const JS_LITERALS = new Set([
   'NaN',
   'Infinity',
 ]);
+/** JS 保留字：关键字不能作为变量名插入 log */
 const JS_RESERVED = new Set([
   'const',
   'let',
@@ -276,9 +278,11 @@ const JS_RESERVED = new Set([
   'delete',
   'void',
 ]);
+/** PHP 字面量/类型名：不作为变量插入 log */
 const PHP_LITERALS = new Set(['null', 'true', 'false', 'array', 'object']);
 
-// JS/TS：支持 identifier、obj.prop、obj?.prop、arr[0]、obj['key']、obj["key"]
+// 变量形式正则：模块级常量，只编译一次
+/** JS/TS：支持 identifier、obj.prop、obj?.prop、arr[0]、obj['key']、obj["key"] */
 const JS_VARIABLE_PATTERN =
   /^[a-zA-Z_$][a-zA-Z0-9_$]*(?:\.[a-zA-Z_$][a-zA-Z0-9_$]*|\?\.[a-zA-Z_$][a-zA-Z0-9_$]*|\[\s*(?:[a-zA-Z0-9_$]+|'[^']*'|"[^"]*")\s*\])*$/;
 // PHP：支持 $var、$obj->prop、$arr[0]、$arr['key']、$obj->prop['key']
@@ -307,7 +311,7 @@ export function isPrintableVariable(
     return false;
   }
 
-  // 字符串字面量（含模板字符串）
+  // 字符串字面量：首尾为 " (0x22) / ' (0x27) / ` (0x60) 的视为字符串，不插入 log
   const first = trimmedText.charCodeAt(0);
   const last = trimmedText.charCodeAt(trimmedText.length - 1);
   if (
@@ -318,7 +322,7 @@ export function isPrintableVariable(
     return false;
   }
 
-  // 数字字面量（整数、小数、十六进制、Infinity、NaN 等）
+  // 数字字面量：能按数字解析且形如数字/十六进制/Infinity/NaN 的排除
   const num = Number(trimmedText);
   if (
     !Number.isNaN(num) &&
@@ -334,6 +338,7 @@ export function isPrintableVariable(
     return JS_VARIABLE_PATTERN.test(trimmedText);
   }
 
+  // PHP：先排除字面量，再按变量形式正则校验
   if (PHP_LITERALS.has(trimmedText)) {
     return false;
   }
