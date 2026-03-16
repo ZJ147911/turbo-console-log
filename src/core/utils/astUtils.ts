@@ -227,8 +227,67 @@ export function getEnclosingContext(
   return { enclosingClass, enclosingFunction };
 }
 
+// 可打印变量校验：字面量与保留字集合（O(1) 查找）
+const JS_LITERALS = new Set([
+  'true',
+  'false',
+  'null',
+  'undefined',
+  'NaN',
+  'Infinity',
+]);
+const JS_RESERVED = new Set([
+  'const',
+  'let',
+  'var',
+  'function',
+  'class',
+  'if',
+  'else',
+  'for',
+  'while',
+  'do',
+  'switch',
+  'case',
+  'return',
+  'new',
+  'this',
+  'typeof',
+  'instanceof',
+  'in',
+  'of',
+  'throw',
+  'try',
+  'catch',
+  'finally',
+  'break',
+  'continue',
+  'default',
+  'export',
+  'import',
+  'from',
+  'extends',
+  'static',
+  'async',
+  'await',
+  'yield',
+  'get',
+  'set',
+  'delete',
+  'void',
+]);
+const PHP_LITERALS = new Set(['null', 'true', 'false', 'array', 'object']);
+
+// JS/TS：支持 identifier、obj.prop、obj?.prop、arr[0]、obj['key']、obj["key"]
+const JS_VARIABLE_PATTERN =
+  /^[a-zA-Z_$][a-zA-Z0-9_$]*(?:\.[a-zA-Z_$][a-zA-Z0-9_$]*|\?\.[a-zA-Z_$][a-zA-Z0-9_$]*|\[\s*(?:[a-zA-Z0-9_$]+|'[^']*'|"[^"]*")\s*\])*$/;
+// PHP：支持 $var、$obj->prop、$arr[0]、$arr['key']、$obj->prop['key']
+const PHP_VARIABLE_PATTERN =
+  /^\$?[a-zA-Z_][a-zA-Z0-9_]*(?:->[a-zA-Z_][a-zA-Z0-9_]*(?:\[\s*[a-zA-Z0-9_$'"]+\s*\])*|\[\s*[a-zA-Z0-9_$'"]+\s*\])*$/;
+
 /**
  * 检测是否为可打印的变量
+ * 支持：简单标识符、成员链、可选链、下标/括号访问；排除字面量与保留字
  * @param text 文本内容
  * @param languageType 语言类型
  * @returns 是否为可打印的变量
@@ -237,60 +296,46 @@ export function isPrintableVariable(
   text: string,
   languageType: 'js' | 'php',
 ): boolean {
-  // 移除首尾空白
   const trimmedText = text.trim();
 
-  // 空字符串不是变量
-  if (!trimmedText) {
+  if (trimmedText.length === 0) {
     return false;
   }
 
-  // 检查是否为字符串字面量
+  // 仅允许单行（多行视为表达式，不当作单一变量）
+  if (trimmedText.includes('\n')) {
+    return false;
+  }
+
+  // 字符串字面量（含模板字符串）
+  const first = trimmedText.charCodeAt(0);
+  const last = trimmedText.charCodeAt(trimmedText.length - 1);
   if (
-    (trimmedText.startsWith('"') && trimmedText.endsWith('"')) ||
-    (trimmedText.startsWith("'") && trimmedText.endsWith("'")) ||
-    (trimmedText.startsWith('`') && trimmedText.endsWith('`'))
+    (first === 0x22 && last === 0x22) ||
+    (first === 0x27 && last === 0x27) ||
+    (first === 0x60 && last === 0x60)
   ) {
     return false;
   }
 
-  // 检查是否为数字字面量
-  if (!isNaN(Number(trimmedText)) && trimmedText !== '') {
-    return false;
-  }
-
-  // 检查是否为布尔字面量
-  if (trimmedText === 'true' || trimmedText === 'false') {
-    return false;
-  }
-
-  // 检查是否为null或undefined
-  if (trimmedText === 'null' || trimmedText === 'undefined') {
-    return false;
-  }
-
-  // 检查是否为PHP特殊值
+  // 数字字面量（整数、小数、十六进制、Infinity、NaN 等）
+  const num = Number(trimmedText);
   if (
-    languageType === 'php' &&
-    (trimmedText === 'null' ||
-      trimmedText === 'true' ||
-      trimmedText === 'false' ||
-      trimmedText === 'array' ||
-      trimmedText === 'object')
+    !Number.isNaN(num) &&
+    /^-?(?:\d|\.\d|\d\.|0x[\da-fA-F]|Infinity|NaN)/i.test(trimmedText)
   ) {
     return false;
   }
 
-  // 检查是否为有效的变量名或表达式
   if (languageType === 'js') {
-    // JavaScript变量名或表达式
-    return /^[a-zA-Z_$][a-zA-Z0-9_$]*(\.[a-zA-Z_$][a-zA-Z0-9_$]*)*$/.test(
-      trimmedText,
-    );
-  } else {
-    // PHP变量名或表达式
-    return /^\$?[a-zA-Z_][a-zA-Z0-9_]*(->[a-zA-Z_][a-zA-Z0-9_]*)*$/.test(
-      trimmedText,
-    );
+    if (JS_LITERALS.has(trimmedText) || JS_RESERVED.has(trimmedText)) {
+      return false;
+    }
+    return JS_VARIABLE_PATTERN.test(trimmedText);
   }
+
+  if (PHP_LITERALS.has(trimmedText)) {
+    return false;
+  }
+  return PHP_VARIABLE_PATTERN.test(trimmedText);
 }

@@ -32,14 +32,10 @@ export function createLogCommand(
       const tabSize: number | string = getTabSize(editor.options.tabSize);
       const document: vscode.TextDocument = editor.document;
 
-      // Get extension version
-      const version = vscode.extensions.getExtension(
-        'ChakrounAnas.quick-console',
-      )?.packageJSON.version;
-
-      // Check if log insertion is allowed
-      const canInsert = canInsertLogInDocument(context, document, version);
-      if (!canInsert) {
+      const version = context.extension?.packageJSON?.version as
+        | string
+        | undefined;
+      if (!canInsertLogInDocument(context, document, version)) {
         return;
       }
 

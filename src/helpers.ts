@@ -36,9 +36,9 @@ export function getExtensionProperties(
     /** 消息内部的分隔符 */
     delimiterInsideMessage: workspaceConfig.delimiterInsideMessage || '~',
     /** 是否包含行号 */
-    includeLineNum: workspaceConfig.includeLineNum || false,
+    includeLineNum: workspaceConfig.includeLineNum ?? true,
     /** 是否包含文件名 */
-    includeFilename: workspaceConfig.includeFilename || false,
+    includeFilename: workspaceConfig.includeFilename ?? true,
     /** 日志函数名称 */
     logFunction: workspaceConfig.logFunction || 'log',
     /** 控制台对象名称 */
@@ -79,17 +79,10 @@ export function canInsertLogInDocument(
     return false;
   }
 
-  // 检查版本是否有效
-  if (!version) {
+  if (version == null || version === '') {
     return false;
   }
 
-  // 检查文档是否已保存
-  if (document.isDirty) {
-    // 可以在未保存的文档中插入日志
-  }
-
-  // 所有检查都通过，可以插入日志
   return true;
 }
 

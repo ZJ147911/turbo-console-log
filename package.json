@@ -262,7 +262,17 @@
     ]
   },
   "activationEvents": [
-    "onStartupFinished"
+    "onCommand:quickConsole.commentAllLogMessages",
+    "onCommand:quickConsole.correctAllLogMessages",
+    "onCommand:quickConsole.deleteAllLogMessages",
+    "onCommand:quickConsole.insertConsoleDebug",
+    "onCommand:quickConsole.insertConsoleError",
+    "onCommand:quickConsole.insertConsoleInfo",
+    "onCommand:quickConsole.insertConsoleLog",
+    "onCommand:quickConsole.insertConsoleTable",
+    "onCommand:quickConsole.insertConsoleWarn",
+    "onCommand:quickConsole.insertCustomLog",
+    "onCommand:quickConsole.uncommentAllLogMessages"
   ],
   "extensionDependencies": [],
   "icon": "images/icon.png",
