@@ -37,7 +37,7 @@
   "license": "SEE LICENSE IN LICENSE.txt",
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:zj147/turbo-console-log.git"
+    "url": "https://gitee.com/zj147/turbo-console-log.git"
   },
   "publisher": "zj147",
   "main": "./out/extension.js",

@@ -1,48 +1,9 @@
 Turbo Unicorn Custom License
-(Open-Source Core + Proprietary Asset Protection)
 
-Copyright (c) 2018–2025 Turbo Unicorn
+Copyright (c) Turbo Console Log / Quick Console
 
----
-## 1. 开源核心
+- The extension core is free and open source for personal and non-commercial use.
+- Commercial use of the source code is prohibited without explicit authorization.
+- All proprietary assets (brand, logo, domain) are excluded from the open license.
 
-位于此存储库 `src/` 目录中的源代码按以下条件提供：
-
-- 您可以仅出于个人或非商业目的使用、复制、修改和分发核心源代码。
-- 商业使用 — 包括转售、货币化分支、SaaS 集成、付费附加组件或包含在商业工具中 — 除非通过 Turbo Console Log 明确授权，否则严格禁止。
-- 您不得使用“Turbo Console Log”名称或与 Turbo Unicorn 相关的任何品牌元素重新分发它。
-- 您必须保留原始版权声明。
-- 不提供任何保证或支持保证。
-
-所有商业权利由 **Turbo Unicorn** 独家保留。
-
-本代码按“原样”提供，不附带任何形式的保证，无论是明示还是暗示，包括但不限于适销性、特定用途适用性或非侵权性的保证。
-
----
-
-## 2. 专有组件和品牌保护
-
-以下组件不是开源的，明确排除在开放许可证之外：
-
-- 名称“Turbo Console Log"
-- Turbo Console Log 的品牌标识和视觉设计
-- 域名 turboconsolelog.io
-- 与 Turbo Console Log 和 Turbo Unicorn 相关的所有插图、视觉资产和 UI/UX 设计
-- 所有后端服务和商业激活逻辑
-
-这些是 Turbo Unicorn 的专有财产。
-未经明确书面许可，不得在任何项目（开源或商业）中使用、复制、修改、重新分发、重新品牌化、转售或嵌入它们。
-
-分叉项目不得：
-- 使用名称“Turbo Console Log”或任何令人混淆的相似名称
-- 使用官方徽标、颜色或插图
-- 链接到或引用 turboconsolelog.io 网站
-
----
-
-## 3. 最终说明
-
-使用此存储库或其工具的任何部分表示您同意上述条款。
-
-有关许可问题或商业请求，请联系：
-📧 support@turboconsolelog.io
+For full terms, see: https://gitee.com/zj147/turbo-console-log
