@@ -16,6 +16,10 @@ jobs:
     # 使用最新的Ubuntu环境
     runs-on: ubuntu-latest
 
+    # 环境变量
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     # 构建步骤
     steps:
       # 1. 检出代码
@@ -24,15 +28,15 @@ jobs:
       # 2. 设置Node.js环境
       - name: Set up Node.js
         uses: actions/setup-node@v4
-        env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           node-version: '22' # 使用Node.js 22版本
           cache: 'pnpm' # 缓存pnpm依赖
 
       # 3. 安装pnpm
       - name: Install pnpm
-        run: wget -qO- https://get.pnpm.io/install.sh | sh -
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest
 
       # 4. 安装依赖
       - name: Install dependencies
