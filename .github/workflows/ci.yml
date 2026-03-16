@@ -34,9 +34,7 @@ jobs:
 
       # 3. 安装pnpm
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: latest
+        run: npm install -g pnpm
 
       # 4. 安装依赖
       - name: Install dependencies
