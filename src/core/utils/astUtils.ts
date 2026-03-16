@@ -147,6 +147,36 @@ function getLanguageType(fileName: string): 'js' | 'php' {
   return 'js';
 }
 
+/** 匹配到“函数形式”但不是真正函数名的关键字（if/for/try 等），不当作 enclosingFunction 输出 */
+const JS_BLOCK_KEYWORDS = new Set([
+  'if',
+  'else',
+  'for',
+  'foreach',
+  'while',
+  'do',
+  'switch',
+  'case',
+  'try',
+  'catch',
+  'finally',
+  'with',
+]);
+const PHP_BLOCK_KEYWORDS = new Set([
+  'if',
+  'elseif',
+  'else',
+  'for',
+  'foreach',
+  'while',
+  'do',
+  'switch',
+  'case',
+  'try',
+  'catch',
+  'finally',
+]);
+
 export function getEnclosingContext(
   document: vscode.TextDocument,
   lineNumber: number,
@@ -179,12 +209,16 @@ export function getEnclosingContext(
       continue;
     }
 
-    // 查找函数定义
+    // 查找函数定义（匹配到的名称若是 if/try/for 等块关键字则忽略，继续向上找）
     let foundFunction = false;
+    const blockKeywords =
+      languageType === 'js' ? JS_BLOCK_KEYWORDS : PHP_BLOCK_KEYWORDS;
     for (const pattern of patterns.functionPatterns) {
       const match = line.match(pattern);
       if (match && match[1]) {
-        enclosingFunction = match[1];
+        const name = match[1];
+        if (blockKeywords.has(name)) continue;
+        enclosingFunction = name;
         foundFunction = true;
         break;
       }
