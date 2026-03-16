@@ -9,6 +9,9 @@ on:
   push:
     tags:
       - v*.*.*
+    branches:
+      - master
+      - develop
 
 # 作业定义
 jobs:
@@ -25,61 +28,47 @@ jobs:
       # 1. 检出代码
       - uses: actions/checkout@v4
 
-      # 2. 设置 Node.js 环境（先不配置 cache，因为 pnpm 还未安装）
+      # 2. 设置 Node.js 环境（npm 已预装在 GitHub Actions 中）
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22' # 使用 Node.js 22 版本
+          cache: 'npm' # 缓存 npm 依赖
 
-      # 3. 安装 pnpm
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      # 4. 配置 pnpm 缓存
-      - name: Cache pnpm modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-
-      # 5. 安装依赖
+      # 3. 安装依赖
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci
 
-      # 6. 构建扩展
+      # 4. 构建扩展
       - name: Build extension
-        run: pnpm run vscode:prepublish # 运行预发布构建命令
+        run: npm run vscode:prepublish # 运行预发布构建命令
 
-      # 7. 运行代码格式化
+      # 5. 运行代码格式化
       - name: Run formatter
-        run: pnpm run fmt # 运行 oxfmt 进行代码格式化
+        run: npm run fmt # 运行 oxfmt 进行代码格式化
 
-      # 8. 检查代码格式是否正确
+      # 6. 检查代码格式是否正确
       - name: Check formatting
         run: git diff --exit-code # 确保格式化后的代码没有变更
 
-      # 9. 上传构建产物作为 artifacts
+      # 7. 上传构建产物作为 artifacts
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: extension-build
           path: out/ # 上传 out 目录中的构建产物
 
-      # 10. 创建 VSIX 包（仅在推送 tag 时执行）
+      # 8. 创建 VSIX 包（仅在推送 tag 时执行）
       - name: Create VSIX package
         if: startsWith(github.ref, 'refs/tags/') # 条件：只在推送 tag 时执行
         run: |
           npm install -g vsce  # 全局安装 vsce 工具
           vsce package         # 创建 VSIX 包
 
-      # 11. 上传 VSIX 包作为 artifacts（仅在推送 tag 时执行）
+      # 9. 上传 VSIX 包作为 artifacts（仅在推送 tag 时执行）
       - name: Upload VSIX artifact
         if: startsWith(github.ref, 'refs/tags/') # 条件：只在推送 tag 时执行
         uses: actions/upload-artifact@v4
         with:
           name: extension-vsix
-          path: '*.vsix' # 上传生成的 VSIX包
+          path: '*.vsix' # 上传生成的 VSIX 包
