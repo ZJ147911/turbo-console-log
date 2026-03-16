@@ -1,84 +1,93 @@
 name: CI/CD for VSCode Extension
 
-# 触发条件：推送版本tag、master/develop分支提交
 on:
   push:
     tags:
       - v*.*.*
     branches:
       - master
-      - develop
+  workflow_dispatch: # 允许手动触发测试
 
-# 作业定义
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 赋予上传artifacts和创建release的权限
+      contents: write
       packages: write
 
-    # 环境变量
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      NODE_OPTIONS: --max_old_space_size=4096 # 增加内存限制，防止构建OOM
+      NODE_OPTIONS: --max_old_space_size=4096
+      NODE_NO_WARNINGS: 1 # 关闭 punycode 弃用警告
 
-    # 构建步骤
     steps:
-      # 1. 检出代码（包含完整提交历史）
+      # 1. 检出代码
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # 获取完整提交历史
+          fetch-depth: 0
 
-      # 2. 设置Node.js环境（配置pnpm缓存）
+      # 2. 设置Node.js环境（先不配置pnpm缓存）
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm' # 配置pnpm缓存
-          cache-dependency-path: 'pnpm-lock.yaml' # 指定锁文件路径
+          # 暂时移除pnpm缓存配置，先安装pnpm
+          check-latest: false
 
-      # 3. 安装pnpm（官方推荐方式）
-      - name: Install pnpm
+      # 3. 手动安装pnpm（关键修复）
+      - name: Install pnpm manually
         run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
+          # 手动下载并安装pnpm，确保PATH中能找到
+          curl -fsSL https://get.pnpm.io/install.sh | sh -
+          # 将pnpm添加到PATH
+          echo "$HOME/.local/share/pnpm" >> $GITHUB_PATH
+          echo "$HOME/.pnpm-store" >> $GITHUB_PATH
+          # 验证pnpm安装
+          pnpm --version
 
-      # 4. 安装依赖（使用pnpm，锁定版本确保一致性）
+      # 4. 重新设置缓存（现在pnpm已安装）
+      - name: Setup pnpm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+
+      # 5. 安装依赖
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        continue-on-error: false # 依赖安装失败则终止
+        continue-on-error: false
 
-      # 5. 代码格式化检查（提前执行，快速反馈）
+      # 6. 代码格式化检查
       - name: Check code formatting
         run: |
           pnpm run fmt
-          # 格式错误时给出明确提示
           git diff --exit-code || (echo "❌ 代码格式不符合规范，请本地运行 pnpm run fmt 修复后再提交" && exit 1)
 
-      # 6. 构建扩展（设置生产环境）
+      # 7. 构建扩展
       - name: Build extension
         run: pnpm run vscode:prepublish
         env:
           NODE_ENV: production
 
-      # 7. 上传构建产物（所有触发场景都执行）
+      # 8. 上传构建产物
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: extension-build-${{ github.ref_name }}
           path: out/
-          retention-days: 7 # 设置保留时间
+          retention-days: 7
 
-      # 8. 创建VSIX包（仅在推送tag时执行）
+      # 9. 创建VSIX包（仅在推送tag时执行）
       - name: Create VSIX package
         if: startsWith(github.ref, 'refs/tags/')
         run: |
-          npm install -g vsce@latest  # 使用最新版vsce
-          vsce package --no-dependencies  # 不打包node_modules，减小体积
-          echo "VSIX_FILE=$(ls *.vsix)" >> $GITHUB_ENV  # 保存VSIX文件名
+          npm install -g vsce@latest
+          vsce package --no-dependencies
+          echo "VSIX_FILE=$(ls *.vsix)" >> $GITHUB_ENV
 
-      # 9. 上传VSIX包（仅在推送tag时执行）
+      # 10. 上传VSIX包（仅在推送tag时执行）
       - name: Upload VSIX artifact
         if: startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v4
@@ -87,12 +96,12 @@ jobs:
           path: ${{ env.VSIX_FILE }}
           retention-days: 30
 
-      # 10. 创建GitHub Release（仅在推送tag时执行）
+      # 11. 创建GitHub Release（仅在推送tag时执行）
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ env.VSIX_FILE }}
-          generate_release_notes: true # 自动生成发布说明
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
