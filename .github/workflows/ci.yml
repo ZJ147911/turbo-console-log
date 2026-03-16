@@ -1,11 +1,7 @@
-# CI配置文件 - GitHub Actions
-# 自动化构建和打包流程
+name: CI/CD for VSCode Extension
 
-name: CI
-
-# 触发条件
+# 触发条件：推送版本tag、master/develop分支提交
 on:
-  # 只在推送版本tag时触发（格式：v*.*.*）
   push:
     tags:
       - v*.*.*
@@ -16,59 +12,87 @@ on:
 # 作业定义
 jobs:
   build:
-    # 使用最新的Ubuntu环境
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # 赋予上传artifacts和创建release的权限
+      packages: write
 
     # 环境变量
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      NODE_OPTIONS: --max_old_space_size=4096 # 增加内存限制，防止构建OOM
 
     # 构建步骤
     steps:
-      # 1. 检出代码
-      - uses: actions/checkout@v4
+      # 1. 检出代码（包含完整提交历史）
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 获取完整提交历史
 
-      # 2. 设置 Node.js 环境（npm 已预装在 GitHub Actions 中）
+      # 2. 设置Node.js环境（配置pnpm缓存）
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # 使用 Node.js 22 版本
-          cache: 'npm' # 缓存 npm 依赖
+          node-version: '22'
+          cache: 'pnpm' # 配置pnpm缓存
+          cache-dependency-path: 'pnpm-lock.yaml' # 指定锁文件路径
 
-      # 3. 安装依赖（使用 npm install 而非 npm ci，因为项目使用 pnpm）
+      # 3. 安装pnpm（官方推荐方式）
+      - name: Install pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      # 4. 安装依赖（使用pnpm，锁定版本确保一致性）
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
+        continue-on-error: false # 依赖安装失败则终止
 
-      # 4. 构建扩展
+      # 5. 代码格式化检查（提前执行，快速反馈）
+      - name: Check code formatting
+        run: |
+          pnpm run fmt
+          # 格式错误时给出明确提示
+          git diff --exit-code || (echo "❌ 代码格式不符合规范，请本地运行 pnpm run fmt 修复后再提交" && exit 1)
+
+      # 6. 构建扩展（设置生产环境）
       - name: Build extension
-        run: npm run vscode:prepublish # 运行预发布构建命令
+        run: pnpm run vscode:prepublish
+        env:
+          NODE_ENV: production
 
-      # 5. 运行代码格式化
-      - name: Run formatter
-        run: npm run fmt # 运行 oxfmt 进行代码格式化
-
-      # 6. 检查代码格式是否正确
-      - name: Check formatting
-        run: git diff --exit-code # 确保格式化后的代码没有变更
-
-      # 7. 上传构建产物作为 artifacts
+      # 7. 上传构建产物（所有触发场景都执行）
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: extension-build
-          path: out/ # 上传 out 目录中的构建产物
+          name: extension-build-${{ github.ref_name }}
+          path: out/
+          retention-days: 7 # 设置保留时间
 
-      # 8. 创建 VSIX 包（仅在推送 tag 时执行）
+      # 8. 创建VSIX包（仅在推送tag时执行）
       - name: Create VSIX package
-        if: startsWith(github.ref, 'refs/tags/') # 条件：只在推送 tag 时执行
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
-          npm install -g vsce  # 全局安装 vsce 工具
-          vsce package         # 创建 VSIX 包
+          npm install -g vsce@latest  # 使用最新版vsce
+          vsce package --no-dependencies  # 不打包node_modules，减小体积
+          echo "VSIX_FILE=$(ls *.vsix)" >> $GITHUB_ENV  # 保存VSIX文件名
 
-      # 9. 上传 VSIX 包作为 artifacts（仅在推送 tag 时执行）
+      # 9. 上传VSIX包（仅在推送tag时执行）
       - name: Upload VSIX artifact
-        if: startsWith(github.ref, 'refs/tags/') # 条件：只在推送 tag 时执行
+        if: startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v4
         with:
-          name: extension-vsix
-          path: '*.vsix' # 上传生成的 VSIX 包
+          name: extension-vsix-${{ github.ref_name }}
+          path: ${{ env.VSIX_FILE }}
+          retention-days: 30
+
+      # 10. 创建GitHub Release（仅在推送tag时执行）
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.VSIX_FILE }}
+          generate_release_notes: true # 自动生成发布说明
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
