@@ -79,8 +79,8 @@ export function canInsertLogInDocument(
     return false;
   }
 
-  // 扩展版本号无效时不允许插入，避免在未正确加载时执行
-  if (version == null || version === '') {
+  // 仅当版本号为显式空字符串时拒绝（undefined 时放行：开发宿主或部分环境下 context.extension 可能为 undefined）
+  if (version === '') {
     return false;
   }
 
