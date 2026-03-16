@@ -1,7 +1,7 @@
 {
   "name": "quick-console",
   "displayName": "Quick Console",
-  "version": "3.18.9",
+  "version": "3.18.10",
   "description": "Automated logging for JavaScript, TypeScript, and PHP. Insert, manage, and clean log messages with AST-powered precision.",
   "categories": [
     "Debuggers",
