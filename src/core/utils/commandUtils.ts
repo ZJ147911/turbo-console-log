@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 
 import { isPhpFile } from '../../helpers';
 
+/* eslint-disable @typescript-eslint/no-explicit-any -- 命令上下文类型需兼容多种处理器 */
 /**
  * 命令处理上下文接口
  */

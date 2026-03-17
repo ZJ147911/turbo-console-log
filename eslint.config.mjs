@@ -4,7 +4,7 @@ import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: ['src/mocha-tests/files/*'],
+    ignores: ['out/**', '**/out/**', 'src/mocha-tests/files/*'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

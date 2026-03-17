@@ -1,4 +1,5 @@
 /// <reference types="vscode" />
+/* eslint-disable @typescript-eslint/no-explicit-any -- 声明文件中第三方 API 使用 any */
 
 /**
  * 调试消息接口

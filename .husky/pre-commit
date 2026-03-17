@@ -2,11 +2,12 @@
 [ -f "$HOME/.bash_profile" ] && . "$HOME/.bash_profile"
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
-# 将项目 node_modules/.bin 加入 PATH，便于直接执行本地安装的 oxfmt
+# 将项目 node_modules/.bin 加入 PATH
 export PATH="$(pwd)/node_modules/.bin:$PATH"
 
-# 运行代码格式化（与 pnpm fmt 等价）
+# 1. 代码格式化
 oxfmt
-
-# 将格式化后的变更重新加入暂存区，随本次提交一起提交
 git add -u
+
+# 2. 代码检查
+pnpm run lint

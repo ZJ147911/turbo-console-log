@@ -93,7 +93,8 @@ export function canInsertLogInDocument(
  * @returns PHP调试消息处理器
  */
 export async function loadPhpDebugMessage(
-  extensionPath: string,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- 接口要求，实现中未使用
+  _extensionPath: string,
 ): Promise<DebugMessage | null> {
   return phpDebugMessage;
 }
