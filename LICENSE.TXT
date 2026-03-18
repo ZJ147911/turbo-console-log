@@ -6,4 +6,4 @@ Copyright (c) Turbo Console Log / Quick Console
 - Commercial use of the source code is prohibited without explicit authorization.
 - All proprietary assets (brand, logo, domain) are excluded from the open license.
 
-For full terms, see: https://gitee.com/zj147/turbo-console-log
+For full terms, see: https://github.com/ZJ147911/turbo-console-log
