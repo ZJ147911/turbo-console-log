@@ -29,9 +29,18 @@ const LANGUAGE_PATTERNS = {
       /^([\w$]+)\s*=\s*function\s*/, // 函数表达式
       /^([\w$]+)\s*=\s*\(/, // 箭头函数
       /^([\w$]+)\s*\([^)]*\)\s*=>/, // 简洁箭头函数
-      /^([\w$]+)\s*:\s*function\s*/, // 对象方法函数
-      /^([\w$]+)\s*:\s*\(/, // 对象方法箭头函数
-      /^([\w$]+)\s*:\s*\([^)]*\)\s*=>/, // 对象方法简洁箭头函数
+      /*
+       * 对象字面量中的方法（属性值函数）：getEnclosingContext 向上扫描时须先于「类方法」等宽泛规则匹配，
+       * 否则在 obj = { fn() { … } } 内打日志时 enclosingFunction 会错挂到外层。
+       * 顺序要求：命名 function（捕获内部名）须排在「key: function」匿名形式之前。
+       */
+      /^[\w$]+\s*:\s*async\s+function\s+([\w$]+)\s*\(/, // key: async function innerName(
+      /^[\w$]+\s*:\s*function\s+([\w$]+)\s*\(/, // key: function innerName(
+      /^([\w$]+)\s*:\s*function\s*/, // key: function (…) 匿名，用属性名
+      /^([\w$]+)\s*:\s*\(/, // key: (…) => 或 key: (
+      /^([\w$]+)\s*:\s*\([^)]*\)\s*=>/, // key: (a) =>
+      /^\*\s*([\w$]+)\s*\([^)]*\)\s*\{/, // * generatorMethod() { … }
+      /^([\w$]+)\s*\?\s*\([^)]*\)\s*\{/, // TS: optionalMethod?() { … }
       /^static\s+function\s+([\w$]+)\s*\(/, // 静态方法
       /^static\s+([\w$]+)\s*\(/, // 静态方法简写
       /^static\s+([\w$]+)\s*:\s*function\s*/, // 静态对象方法函数
