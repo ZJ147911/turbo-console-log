@@ -21,7 +21,7 @@ export async function activate(
   commandRegistry.registerCommands(commands);
 
   // 加载 PHP 调试消息处理器（JS/TS 使用内置的 jsDebugMessage）
-  const phpDebugMessage = await loadPhpDebugMessage(context.extensionPath);
+  const phpDebugMessage = loadPhpDebugMessage(context.extensionPath);
 
   // 将命令挂到 context.subscriptions，并注入配置与 JS/PHP 两个调试处理器
   commandRegistry.activateCommands(

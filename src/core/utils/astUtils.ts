@@ -97,11 +97,15 @@ const LANGUAGE_PATTERNS = {
       /^public\s+static\s+async\s+([\w$]+)\s*\(/, // public静态异步方法简写
       /^protected\s+static\s+async\s+([\w$]+)\s*\(/, // protected静态异步方法简写
       /^private\s+static\s+async\s+([\w$]+)\s*\(/, // private静态异步方法简写
-      // 添加无访问修饰符的方法支持
+      // 添加无访问修饰符的方法支持（含 TS 返回类型注解）
       /^([\w$]+)\s*\([^)]*\)\s*\{/, // 无访问修饰符的类方法
+      /^([\w$]+)\s*\([^)]*\)\s*:\s*[^;{=>]+\s*\{/, // 无访问修饰符的类方法（TS 返回类型）
       /^async\s+([\w$]+)\s*\([^)]*\)\s*\{/, // 无访问修饰符的异步类方法
+      /^async\s+([\w$]+)\s*\([^)]*\)\s*:\s*[^;{=>]+\s*\{/, // 无访问修饰符的异步类方法（TS 返回类型）
       /^static\s+([\w$]+)\s*\([^)]*\)\s*\{/, // 无访问修饰符的静态类方法
+      /^static\s+([\w$]+)\s*\([^)]*\)\s*:\s*[^;{=>]+\s*\{/, // 无访问修饰符的静态类方法（TS 返回类型）
       /^static\s+async\s+([\w$]+)\s*\([^)]*\)\s*\{/, // 无访问修饰符的静态异步类方法
+      /^static\s+async\s+([\w$]+)\s*\([^)]*\)\s*:\s*[^;{=>]+\s*\{/, // 无访问修饰符的静态异步类方法（TS 返回类型）
     ],
     classPattern: /^(export\s+)?class\s+([\w$]+)/, // 支持可选的export关键字，匹配 'class Test' 或 'export class Test'
     commentPatterns: [
@@ -154,21 +158,35 @@ const LANGUAGE_PATTERNS = {
   },
 };
 
+/** 预编译：JS 非函数定义行（interface/type/namespace/module）匹配 */
+const JS_SKIP_LINE_REGEX =
+  /^(?:export\s+)?(?:declare\s+)?(?:interface|type|namespace|module)\b/;
+
 /**
  * 获取文件的语言类型
  * @param fileName 文件名
  * @returns 语言类型 ('js' 或 'php')
  */
 function getLanguageType(fileName: string): 'js' | 'php' {
-  const extension = fileName.toLowerCase();
-  if (extension.endsWith('.php')) {
-    return 'php';
-  }
-  // 默认为 JavaScript/TypeScript
-  return 'js';
+  return fileName.toLowerCase().endsWith('.php') ? 'php' : 'js';
 }
 
 /** 匹配到“函数形式”但不是真正函数名的关键字（if/for/try 等），不当作 enclosingFunction 输出 */
+/**
+ * 判断 JS 行是否应跳过（非函数定义，如 interface/type/namespace/module 声明或仅签名的行）
+ * 与构建产物 hs() 逻辑一致
+ */
+function isSkipLineForJs(line: string): boolean {
+  if (!line) return false;
+  return (
+    JS_SKIP_LINE_REGEX.test(line) ||
+    (line.endsWith(';') &&
+      line.includes('(') &&
+      !line.includes('{') &&
+      !line.includes('=>'))
+  );
+}
+
 const JS_BLOCK_KEYWORDS = new Set([
   'if',
   'else',
@@ -230,6 +248,11 @@ export function getEnclosingContext(
       continue;
     }
 
+    // 跳过 JS 非函数定义行（interface/type/namespace/module 声明或仅签名的行）
+    if (languageType === 'js' && isSkipLineForJs(line)) {
+      continue;
+    }
+
     // 查找函数定义（匹配到的名称若是 if/try/for 等块关键字则忽略，继续向上找）
     let foundFunction = false;
     const blockKeywords =
@@ -260,7 +283,7 @@ export function getEnclosingContext(
         }
         const classMatch = classLine.match(patterns.classPattern);
         if (classMatch) {
-          enclosingClass = classMatch[2];
+          enclosingClass = (classMatch[2] ?? classMatch[1]) as string;
           break;
         }
       }
@@ -268,13 +291,13 @@ export function getEnclosingContext(
     }
 
     // 查找类定义（如果还没有找到函数）
-    if (!enclosingFunction) {
-      // 跳过HTML标签，除了<script>标签
-      if (!line.startsWith('<') || line.includes('<script')) {
-        const classMatch = line.match(patterns.classPattern);
-        if (classMatch) {
-          enclosingClass = classMatch[2];
-        }
+    if (
+      !enclosingFunction &&
+      (!line.startsWith('<') || line.includes('<script'))
+    ) {
+      const classMatch = line.match(patterns.classPattern);
+      if (classMatch) {
+        enclosingClass = (classMatch[2] ?? classMatch[1]) as string;
       }
     }
   }
@@ -336,6 +359,29 @@ const JS_RESERVED = new Set([
 /** PHP 字面量/类型名：不作为变量插入 log */
 const PHP_LITERALS = new Set(['null', 'true', 'false', 'array', 'object']);
 
+/**
+ * 剥离 TypeScript 类型语法，提取实际变量部分
+ * 支持：variable as Type、variable satisfies Interface、以及末尾的 ! 非空断言
+ * @param text 可能包含 TS 类型注解的文本
+ * @returns 剥离类型后的变量部分
+ */
+export function stripTsTypeSyntax(text: string): string {
+  let result = text.trim();
+  // 剥离 " as Type" 或 " satisfies Type"
+  const asMatch = result.match(/\s+as\s+/);
+  const satisfiesMatch = result.match(/\s+satisfies\s+/);
+  let cutIndex = result.length;
+  if (asMatch && asMatch.index !== undefined) {
+    cutIndex = Math.min(cutIndex, asMatch.index);
+  }
+  if (satisfiesMatch && satisfiesMatch.index !== undefined) {
+    cutIndex = Math.min(cutIndex, satisfiesMatch.index);
+  }
+  result = result.substring(0, cutIndex).trim();
+  // 剥离非空断言 !（如 obj!、obj!.prop）
+  return result.replace(/!+/g, '');
+}
+
 // 变量形式正则：模块级常量，只编译一次
 /** JS/TS：支持 identifier、obj.prop、obj?.prop、arr[0]、obj['key']、obj["key"] */
 const JS_VARIABLE_PATTERN =
@@ -387,10 +433,13 @@ export function isPrintableVariable(
   }
 
   if (languageType === 'js') {
-    if (JS_LITERALS.has(trimmedText) || JS_RESERVED.has(trimmedText)) {
+    // 忽略 TS 类型语法：剥离 as/satisfies/! 后再校验
+    const varPart = stripTsTypeSyntax(trimmedText);
+    if (varPart.length === 0) return false;
+    if (JS_LITERALS.has(varPart) || JS_RESERVED.has(varPart)) {
       return false;
     }
-    return JS_VARIABLE_PATTERN.test(trimmedText);
+    return JS_VARIABLE_PATTERN.test(varPart);
   }
 
   // PHP：先排除字面量，再按变量形式正则校验

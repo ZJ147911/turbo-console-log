@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 import { canInsertLogInDocument, isPhpFile } from '../../helpers';
 import { getTabSize } from '../utils';
-import { isPrintableVariable } from '../utils/astUtils';
+import { isPrintableVariable, stripTsTypeSyntax } from '../utils/astUtils';
 
 /**
  * 创建日志插入命令的工厂函数
@@ -40,50 +40,64 @@ export function createLogCommand(
         return;
       }
 
-      // 按文件类型选择调试消息处理器：PHP 用 phpDebugMessage，否则用 jsDebugMessage
-      let activeDebugMessage = jsDebugMessage;
-      if (isPhpFile(document.fileName) && phpDebugMessage) {
-        activeDebugMessage = phpDebugMessage;
-      }
-
-      // 若 logType 为函数则根据配置计算实际方法名（如自定义 log），否则直接使用字符串
+      const isPhp = isPhpFile(document.fileName);
+      const activeDebugMessage =
+        isPhp && phpDebugMessage ? phpDebugMessage : jsDebugMessage;
       const actualLogType =
         typeof logType === 'function' ? logType(extensionProperties) : logType;
+      const languageType = isPhp ? 'php' : 'js';
+
+      const edits: Array<{
+        varToLog: string;
+        lineOfSelectedVar: number;
+      }> = [];
+      let hasInvalidSelection = false;
 
       for (let index = 0; index < editor.selections.length; index++) {
-        const selection: vscode.Selection = editor.selections[index];
-        let wordUnderCursor = '';
-        const rangeUnderCursor: vscode.Range | undefined =
-          document.getWordRangeAtPosition(selection.active);
-        // if rangeUnderCursor is undefined, `document.getText(undefined)` will return the entire file.
-        if (rangeUnderCursor) {
-          wordUnderCursor = document.getText(rangeUnderCursor);
+        const selection = editor.selections[index];
+        const rangeUnderCursor = document.getWordRangeAtPosition(
+          selection.active,
+        );
+        const wordUnderCursor = rangeUnderCursor
+          ? document.getText(rangeUnderCursor)
+          : '';
+        const selectedVar = document.getText(selection) || wordUnderCursor;
+        if (selectedVar.trim().length === 0) continue;
+
+        if (isPrintableVariable(selectedVar, languageType)) {
+          edits.push({
+            varToLog:
+              languageType === 'js'
+                ? stripTsTypeSyntax(selectedVar)
+                : selectedVar,
+            lineOfSelectedVar: selection.active.line,
+          });
+        } else {
+          hasInvalidSelection = true;
         }
-        const selectedVar: string =
-          document.getText(selection) || wordUnderCursor;
-        const lineOfSelectedVar: number = selection.active.line;
-        if (selectedVar.trim().length !== 0) {
-          // 检查是否为可打印的变量
-          const languageType = isPhpFile(document.fileName) ? 'php' : 'js';
-          if (isPrintableVariable(selectedVar, languageType)) {
-            await editor.edit((editBuilder) => {
-              activeDebugMessage.msg(
-                editBuilder,
-                document,
-                selectedVar,
-                lineOfSelectedVar,
-                tabSize,
-                extensionProperties,
-                actualLogType,
-              );
-            });
-          } else {
-            // 如果不是可打印的变量，显示提示
-            vscode.window.showInformationMessage(
-              'Selected content is not a printable variable',
+      }
+
+      if (hasInvalidSelection) {
+        vscode.window.showInformationMessage(
+          'Selected content is not a printable variable',
+        );
+      }
+      if (edits.length > 0) {
+        // 从底向上插入，避免上方插入导致下方行号偏移
+        edits.sort((a, b) => b.lineOfSelectedVar - a.lineOfSelectedVar);
+        await editor.edit((editBuilder) => {
+          for (const { varToLog, lineOfSelectedVar } of edits) {
+            activeDebugMessage.msg(
+              editBuilder,
+              document,
+              varToLog,
+              lineOfSelectedVar,
+              tabSize,
+              extensionProperties,
+              actualLogType,
             );
           }
-        }
+        });
       }
     },
   };

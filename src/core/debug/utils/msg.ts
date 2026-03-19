@@ -58,6 +58,14 @@ export function msg(
     isPhp,
   );
 
+  // 以下一行缩进为准，获取前置空格
+  const nextLineIndex = lineOfSelectedVar + 1;
+  const indent =
+    nextLineIndex < document.lineCount
+      ? (document.lineAt(nextLineIndex).text.match(/^\s*/)?.[0] ?? '') ||
+        undefined
+      : undefined;
+
   // 生成完整的调试消息
   const debuggingMsg = LogMessageGenerator.generateLogMessage(
     debuggingMsgContent,
@@ -65,6 +73,7 @@ export function msg(
     tabSize,
     extensionProperties,
     isPhp,
+    indent,
   );
 
   // 插入调试消息到文档

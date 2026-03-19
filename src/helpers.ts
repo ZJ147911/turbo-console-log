@@ -89,13 +89,13 @@ export function canInsertLogInDocument(
 
 /**
  * 加载PHP调试消息处理器
- * @param extensionPath 扩展路径
+ * @param _extensionPath 扩展路径（预留，当前未使用）
  * @returns PHP调试消息处理器
  */
-export async function loadPhpDebugMessage(
+export function loadPhpDebugMessage(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars -- 接口要求，实现中未使用
   _extensionPath: string,
-): Promise<DebugMessage | null> {
+): DebugMessage | null {
   return phpDebugMessage;
 }
 
@@ -104,20 +104,20 @@ export async function loadPhpDebugMessage(
  * @param fileName 文件名
  * @returns 是否是JavaScript或TypeScript文件，或包含JavaScript/TypeScript代码的文件
  */
+const JS_TS_EXTENSIONS = new Set([
+  '.js',
+  '.jsx',
+  '.ts',
+  '.tsx',
+  '.html',
+  '.vue',
+  '.svelte',
+  '.astro',
+  '.mdx',
+]);
+
 export function isJavaScriptOrTypeScriptFile(fileName: string): boolean {
-  const jsTsExtensions = [
-    '.js',
-    '.jsx',
-    '.ts',
-    '.tsx',
-    '.html',
-    '.vue',
-    '.svelte',
-    '.astro',
-    '.mdx',
-  ];
-  const extension = path.extname(fileName);
-  return jsTsExtensions.includes(extension);
+  return JS_TS_EXTENSIONS.has(path.extname(fileName));
 }
 
 /**

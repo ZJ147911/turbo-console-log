@@ -87,6 +87,7 @@ export class LogMessageGenerator {
    * @param tabSize 制表符大小
    * @param extensionProperties 扩展配置属性
    * @param isPhp 是否是 PHP 文件
+   * @param indent 前置缩进字符串（可选，以下一行缩进为准；未提供时使用 tabSize 空格）
    * @returns 完整的调试消息
    */
   static generateLogMessage(
@@ -95,19 +96,15 @@ export class LogMessageGenerator {
     tabSize: number,
     extensionProperties: QuickConsole.ExtensionProperties,
     isPhp: boolean = false,
+    indent?: string,
   ): string {
-    const indent = ' '.repeat(tabSize);
+    const indentStr = indent ?? ' '.repeat(tabSize);
     const semicolon = extensionProperties.addSemicolonInTheEnd ? ';' : '';
 
-    if (isPhp) {
-      return `${indent}${logFunction}(${messageContent})${semicolon}`;
-    } else {
-      if (extensionProperties.wrapLogMessage) {
-        return `${indent}${extensionProperties.consoleObject}.${logFunction}(${messageContent})${semicolon}`;
-      } else {
-        return `${indent}${extensionProperties.consoleObject}.${logFunction}(${messageContent})${semicolon}`;
-      }
-    }
+    const logCall = isPhp
+      ? `${logFunction}(${messageContent})`
+      : `${extensionProperties.consoleObject}.${logFunction}(${messageContent})`;
+    return `${indentStr}${logCall}${semicolon}`;
   }
 
   /**
