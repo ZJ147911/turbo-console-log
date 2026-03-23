@@ -216,6 +216,122 @@ const PHP_BLOCK_KEYWORDS = new Set([
   'finally',
 ]);
 
+/**
+ * 当无名函数 / 无名箭头函数作为「函数调用的参数」时，用左侧最终赋值名作为 enclosingFunction
+ *（例如 const searchResult = debounceFn(() => { ... }) 内打日志 → searchResult）。
+ * 支持单行写法与「调用括号在上一行、下一行才是 () =>」的多行写法。
+ */
+function getAssignmentNameWhenCallHasAnonymousCallback(
+  line: string,
+  nextLine: string | undefined,
+): string | undefined {
+  /** 调用左侧的 callee（可含 new、链式 a.b） */
+  const callee = '(?:new\\s+)?[\\w$.]+';
+  const sameLinePatterns: RegExp[] = [
+    new RegExp(
+      `^export\\s+const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^export\\s+const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\([^)]*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^export\\s+const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*function\\s*\\(`,
+    ),
+    new RegExp(
+      `^export\\s+const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^export\\s+const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s+function\\s*\\(`,
+    ),
+    new RegExp(
+      `^const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\([^)]*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*function\\s*\\(`,
+    ),
+    new RegExp(
+      `^const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^const\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s+function\\s*\\(`,
+    ),
+    new RegExp(
+      `^let\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^let\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\([^)]*\\)\\s*=>`,
+    ),
+    new RegExp(`^let\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*function\\s*\\(`),
+    new RegExp(
+      `^let\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^let\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s+function\\s*\\(`,
+    ),
+    new RegExp(
+      `^var\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^var\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\([^)]*\\)\\s*=>`,
+    ),
+    new RegExp(`^var\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*function\\s*\\(`),
+    new RegExp(
+      `^var\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^var\\s+([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s+function\\s*\\(`,
+    ),
+    new RegExp(`^([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\(\\s*\\)\\s*=>`),
+    new RegExp(`^([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*\\([^)]*\\)\\s*=>`),
+    new RegExp(`^([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*function\\s*\\(`),
+    new RegExp(
+      `^([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s*\\(\\s*\\)\\s*=>`,
+    ),
+    new RegExp(
+      `^([\\w$]+)\\s*=\\s*${callee}\\s*\\(\\s*async\\s+function\\s*\\(`,
+    ),
+  ];
+  for (const re of sameLinePatterns) {
+    const m = line.match(re);
+    if (m) {
+      return m[1];
+    }
+  }
+
+  const next = nextLine?.trim() ?? '';
+  const nextLooksLikeAnonymousArg =
+    /^\(\s*\)\s*=>/.test(next) ||
+    /^\([^)]*\)\s*=>/.test(next) ||
+    /^async\s*\(\s*\)\s*=>/.test(next) ||
+    /^async\s*\([^)]*\)\s*=>/.test(next) ||
+    /^function\s*\(/.test(next) ||
+    /^async\s+function\s*\(/.test(next);
+
+  if (nextLooksLikeAnonymousArg) {
+    const mExport = line.match(
+      /^export\s+const\s+([\w$]+)\s*=\s*[\w$.]+\s*\(\s*$/,
+    );
+    if (mExport) {
+      return mExport[1];
+    }
+    const mDecl = line.match(
+      /^(?:const|let|var)\s+([\w$]+)\s*=\s*[\w$.]+\s*\(\s*$/,
+    );
+    if (mDecl) {
+      return mDecl[1];
+    }
+    const mRe = line.match(/^([\w$]+)\s*=\s*[\w$.]+\s*\(\s*$/);
+    if (mRe) {
+      return mRe[1];
+    }
+  }
+
+  return undefined;
+}
+
 export function getEnclosingContext(
   document: vscode.TextDocument,
   lineNumber: number,
@@ -257,14 +373,28 @@ export function getEnclosingContext(
     let foundFunction = false;
     const blockKeywords =
       languageType === 'js' ? JS_BLOCK_KEYWORDS : PHP_BLOCK_KEYWORDS;
-    for (const pattern of patterns.functionPatterns) {
-      const match = line.match(pattern);
-      if (match && match[1]) {
-        const name = match[1];
-        if (blockKeywords.has(name)) continue;
-        enclosingFunction = name;
+
+    if (languageType === 'js') {
+      const assignmentName = getAssignmentNameWhenCallHasAnonymousCallback(
+        line,
+        lines[i + 1],
+      );
+      if (assignmentName && !blockKeywords.has(assignmentName)) {
+        enclosingFunction = assignmentName;
         foundFunction = true;
-        break;
+      }
+    }
+
+    if (!foundFunction) {
+      for (const pattern of patterns.functionPatterns) {
+        const match = line.match(pattern);
+        if (match && match[1]) {
+          const name = match[1];
+          if (blockKeywords.has(name)) continue;
+          enclosingFunction = name;
+          foundFunction = true;
+          break;
+        }
       }
     }
 
